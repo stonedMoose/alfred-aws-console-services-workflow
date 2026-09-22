@@ -2,87 +2,84 @@ package searchers
 
 import (
 	"context"
-	"fmt"
+	"log"
+	"slices"
 	"strings"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/ecs"
 	"github.com/aws/aws-sdk-go-v2/service/ecs/types"
 	aw "github.com/deanishe/awgo"
-	"github.com/rkoval/alfred-aws-console-services-workflow/awsworkflow"
-	"github.com/rkoval/alfred-aws-console-services-workflow/caching"
 	"github.com/rkoval/alfred-aws-console-services-workflow/searchers/searchutil"
-	"github.com/rkoval/alfred-aws-console-services-workflow/util"
 )
+
+// describeClustersBatchSize is the most clusters DescribeClusters accepts per call.
+const describeClustersBatchSize = 100
 
 type ECSClusterSearcher struct{}
 
 func (s ECSClusterSearcher) Search(wf *aw.Workflow, searchArgs searchutil.SearchArgs) error {
-	cacheName := util.GetCurrentFilename()
-	entities := caching.LoadEntityArrayFromCache(wf, searchArgs, cacheName, s.fetch)
-	for _, entity := range entities {
-		s.addToWorkflow(wf, searchArgs, entity)
-	}
-	return nil
+	return searchEntities(wf, searchArgs, "ecs_clusters", s.fetch, s.addToWorkflow)
 }
 
-func (s ECSClusterSearcher) fetch(cfg aws.Config) ([]types.Cluster, error) {
-	svc := ecs.NewFromConfig(cfg)
-
-	var clusterARNs []string
-	paginator := ecs.NewListClustersPaginator(svc, &ecs.ListClustersInput{})
-	for paginator.HasMorePages() {
-		output, err := paginator.NextPage(context.TODO())
-		if err != nil {
-			return nil, err
-		}
-		clusterARNs = append(clusterARNs, output.ClusterArns...)
+// fetch lists the cluster ARNs, then describes them in batches to get their
+// names and tags.
+func (ECSClusterSearcher) fetch(cfg aws.Config) ([]types.Cluster, error) {
+	client := ecs.NewFromConfig(cfg)
+	clusterARNs, err := listClusterARNs(client)
+	if err != nil {
+		return nil, err
 	}
-
 	if len(clusterARNs) == 0 {
 		return []types.Cluster{}, nil
 	}
-
-	var clusters []types.Cluster
-	// DescribeClusters has a limit of 100 clusters per call
-	chunkSize := 100
-	for i := 0; i < len(clusterARNs); i += chunkSize {
-		end := i + chunkSize
-		if end > len(clusterARNs) {
-			end = len(clusterARNs)
-		}
-		chunk := clusterARNs[i:end]
-
-		descResp, err := svc.DescribeClusters(context.TODO(), &ecs.DescribeClustersInput{
-			Clusters: chunk,
-			Include: []types.ClusterField{
-				types.ClusterFieldTags, // Include tags
-			},
-		})
-		if err != nil {
-			// Log or handle error, but continue processing other chunks if possible
-			fmt.Printf("Error describing clusters chunk %d: %v\n", i/chunkSize+1, err) // Consider better logging
-			continue
-		}
-		clusters = append(clusters, descResp.Clusters...)
-	}
-
-	return clusters, nil
+	return describeClusters(client, clusterARNs), nil
 }
 
-func (s ECSClusterSearcher) addToWorkflow(wf *aw.Workflow, searchArgs searchutil.SearchArgs, entity types.Cluster) {
-	title := *entity.ClusterName
-	subtitle := *entity.ClusterArn
+func listClusterARNs(client *ecs.Client) ([]string, error) {
+	var clusterARNs []string
+	paginator := ecs.NewListClustersPaginator(client, &ecs.ListClustersInput{})
+	for paginator.HasMorePages() {
+		page, err := paginator.NextPage(context.TODO())
+		if err != nil {
+			return nil, err
+		}
+		clusterARNs = append(clusterARNs, page.ClusterArns...)
+	}
+	return clusterARNs, nil
+}
 
-	// Extract cluster name from ARN for the path
-	arnParts := strings.Split(*entity.ClusterArn, "/")
-	clusterName := arnParts[len(arnParts)-1]
+// describeClusters skips a batch that cannot be described so that the other
+// clusters still show.
+func describeClusters(client *ecs.Client, clusterARNs []string) []types.Cluster {
+	var clusters []types.Cluster
+	for batch := range slices.Chunk(clusterARNs, describeClustersBatchSize) {
+		resp, err := client.DescribeClusters(context.TODO(), &ecs.DescribeClustersInput{
+			Clusters: batch,
+			Include:  []types.ClusterField{types.ClusterFieldTags},
+		})
+		if err != nil {
+			log.Printf("skipping %d clusters that could not be described: %v", len(batch), err)
+			continue
+		}
+		clusters = append(clusters, resp.Clusters...)
+	}
+	return clusters
+}
 
-	path := fmt.Sprintf("/ecs/v2/clusters/%s/services?region=%s", clusterName, searchArgs.GetRegion()) // Verify correct path format
-	item := util.NewURLItem(wf, title).
-		Subtitle(subtitle).
-		Arg(util.ConstructAWSConsoleUrl(path, searchArgs.GetRegion())).
-		Icon(awsworkflow.GetImageIcon("ecs")) // Ensure "ecs" icon exists
+func (ECSClusterSearcher) addToWorkflow(wf *aw.Workflow, searchArgs searchutil.SearchArgs, cluster types.Cluster) {
+	arn := aws.ToString(cluster.ClusterArn)
+	searchArgs.AddConsoleResource(wf, searchutil.ConsoleResource{
+		Title:       aws.ToString(cluster.ClusterName),
+		ConsolePath: "/ecs/v2/clusters/" + clusterNameOf(arn) + "/services?region=" + searchArgs.GetRegion(),
+		ServiceID:   "ecs",
+		ID:          arn,
+		IDPrefix:    searchutil.ARNPrefix,
+	}).Subtitle(arn)
+}
 
-	searchArgs.AddMatch(item, "arn:", *entity.ClusterArn, title)
+// clusterNameOf is the name the console addresses a cluster by: the part of
+// its ARN after the last slash.
+func clusterNameOf(arn string) string {
+	return arn[strings.LastIndex(arn, "/")+1:]
 }

@@ -3,155 +3,111 @@ package searchers
 import (
 	"context"
 	"fmt"
-	"strings"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/apigateway"
 	"github.com/aws/aws-sdk-go-v2/service/apigatewayv2"
 	aw "github.com/deanishe/awgo"
-	"github.com/rkoval/alfred-aws-console-services-workflow/awsworkflow"
-	"github.com/rkoval/alfred-aws-console-services-workflow/caching"
+	"github.com/rkoval/alfred-aws-console-services-workflow/awspaging"
 	"github.com/rkoval/alfred-aws-console-services-workflow/searchers/searchutil"
-	"github.com/rkoval/alfred-aws-console-services-workflow/util"
 )
+
+// apiGatewayAPI unifies the REST APIs of API Gateway v1 and the HTTP and
+// WebSocket APIs of v2: they come from two different AWS APIs, with different
+// types, but sit side by side in the console.
+type apiGatewayAPI struct {
+	Id           string
+	Name         string
+	Description  string
+	ProtocolType string
+}
+
+const restProtocolType = "REST"
 
 type APIGatewayAPISearcher struct{}
 
 func (s APIGatewayAPISearcher) Search(wf *aw.Workflow, searchArgs searchutil.SearchArgs) error {
-	cacheName := util.GetCurrentFilename()
-	entities := caching.LoadEntityArrayFromCache(wf, searchArgs, cacheName, s.fetch)
-	for _, entity := range entities {
-		s.addToWorkflow(wf, searchArgs, entity)
-	}
-	return nil
+	return searchEntities(wf, searchArgs, "apigateway_apis", s.fetch, s.addToWorkflow)
 }
 
-// REST APIs and HTTP/WebSocket APIs come from two different AWS APIs but sit
-// side by side in the console, so both are fetched here
-func (s APIGatewayAPISearcher) fetch(cfg aws.Config) ([]awsworkflow.APIGatewayAPI, error) {
-	entities, err := fetchRestAPIs(cfg)
+func (APIGatewayAPISearcher) fetch(cfg aws.Config) ([]apiGatewayAPI, error) {
+	restAPIs, err := fetchRestAPIs(cfg)
 	if err != nil {
 		return nil, err
 	}
-
-	v2Entities, err := fetchV2APIs(cfg)
+	v2APIs, err := fetchV2APIs(cfg)
 	if err != nil {
 		return nil, err
 	}
-
-	return append(entities, v2Entities...), nil
+	return append(restAPIs, v2APIs...), nil
 }
 
-func fetchRestAPIs(cfg aws.Config) ([]awsworkflow.APIGatewayAPI, error) {
-	svc := apigateway.NewFromConfig(cfg)
-
-	var entities []awsworkflow.APIGatewayAPI
-	position := ""
-	for {
-		params := &apigateway.GetRestApisInput{
-			Limit: aws.Int32(500), // max allowed by this API
-		}
-		if position != "" {
-			params.Position = aws.String(position)
-		}
-		resp, err := svc.GetRestApis(context.TODO(), params)
+func fetchRestAPIs(cfg aws.Config) ([]apiGatewayAPI, error) {
+	client := apigateway.NewFromConfig(cfg)
+	return awspaging.FetchAllPages(func(position string) ([]apiGatewayAPI, *string, error) {
+		resp, err := client.GetRestApis(context.TODO(), &apigateway.GetRestApisInput{
+			Limit:    aws.Int32(500), // max allowed by this API
+			Position: awspaging.TokenOrNil(position),
+		})
 		if err != nil {
-			return nil, err
+			return nil, nil, err
 		}
-
+		apis := make([]apiGatewayAPI, 0, len(resp.Items))
 		for _, item := range resp.Items {
-			entity := awsworkflow.APIGatewayAPI{ProtocolType: "REST"}
-			if item.Id != nil {
-				entity.Id = *item.Id
-			}
-			if item.Name != nil {
-				entity.Name = *item.Name
-			}
-			if item.Description != nil {
-				entity.Description = *item.Description
-			}
-			entities = append(entities, entity)
+			apis = append(apis, apiGatewayAPI{
+				Id:           aws.ToString(item.Id),
+				Name:         aws.ToString(item.Name),
+				Description:  aws.ToString(item.Description),
+				ProtocolType: restProtocolType,
+			})
 		}
-
-		if resp.Position != nil && *resp.Position != "" {
-			position = *resp.Position
-		} else {
-			break
-		}
-	}
-
-	return entities, nil
+		return apis, resp.Position, nil
+	})
 }
 
-func fetchV2APIs(cfg aws.Config) ([]awsworkflow.APIGatewayAPI, error) {
-	svc := apigatewayv2.NewFromConfig(cfg)
-
-	var entities []awsworkflow.APIGatewayAPI
-	nextToken := ""
-	for {
-		params := &apigatewayv2.GetApisInput{
+func fetchV2APIs(cfg aws.Config) ([]apiGatewayAPI, error) {
+	client := apigatewayv2.NewFromConfig(cfg)
+	return awspaging.FetchAllPages(func(pageToken string) ([]apiGatewayAPI, *string, error) {
+		resp, err := client.GetApis(context.TODO(), &apigatewayv2.GetApisInput{
 			MaxResults: aws.String("500"), // this API takes its page size as a string
-		}
-		if nextToken != "" {
-			params.NextToken = aws.String(nextToken)
-		}
-		resp, err := svc.GetApis(context.TODO(), params)
+			NextToken:  awspaging.TokenOrNil(pageToken),
+		})
 		if err != nil {
-			return nil, err
+			return nil, nil, err
 		}
-
+		apis := make([]apiGatewayAPI, 0, len(resp.Items))
 		for _, item := range resp.Items {
-			entity := awsworkflow.APIGatewayAPI{ProtocolType: string(item.ProtocolType)}
-			if item.ApiId != nil {
-				entity.Id = *item.ApiId
-			}
-			if item.Name != nil {
-				entity.Name = *item.Name
-			}
-			if item.Description != nil {
-				entity.Description = *item.Description
-			}
-			entities = append(entities, entity)
+			apis = append(apis, apiGatewayAPI{
+				Id:           aws.ToString(item.ApiId),
+				Name:         aws.ToString(item.Name),
+				Description:  aws.ToString(item.Description),
+				ProtocolType: string(item.ProtocolType),
+			})
 		}
-
-		if resp.NextToken != nil && *resp.NextToken != "" {
-			nextToken = *resp.NextToken
-		} else {
-			break
-		}
-	}
-
-	return entities, nil
+		return apis, resp.NextToken, nil
+	})
 }
 
-func (s APIGatewayAPISearcher) addToWorkflow(wf *aw.Workflow, searchArgs searchutil.SearchArgs, entity awsworkflow.APIGatewayAPI) {
-	title := entity.Name
+func (APIGatewayAPISearcher) addToWorkflow(wf *aw.Workflow, searchArgs searchutil.SearchArgs, api apiGatewayAPI) {
+	title := api.Name
 	if title == "" {
-		title = entity.Id
+		title = api.Id
 	}
+	region := searchArgs.GetRegion()
+	searchArgs.AddConsoleResource(wf, searchutil.ConsoleResource{
+		Title: title,
+		// the region goes in the path because the console reads it from the
+		// query string alongside the api id
+		ConsolePath: fmt.Sprintf("/apigateway/main/apis/%s/%s?api=%s&region=%s", api.Id, api.consoleTab(), api.Id, region),
+		ServiceID:   "apigateway",
+	}).Subtitle(subtitleFrom(api.Id, api.ProtocolType, api.Description))
+}
 
-	subtitleArray := []string{entity.Id}
-	if entity.ProtocolType != "" {
-		subtitleArray = append(subtitleArray, entity.ProtocolType)
+// consoleTab is the tab the console opens an API on: REST APIs are made of
+// resources, the others of routes.
+func (api apiGatewayAPI) consoleTab() string {
+	if api.ProtocolType == restProtocolType {
+		return "resources"
 	}
-	if entity.Description != "" {
-		subtitleArray = append(subtitleArray, entity.Description)
-	}
-	subtitle := strings.Join(subtitleArray, " – ")
-
-	// a REST API opens on its resources, everything else on its routes
-	tab := "routes"
-	if entity.ProtocolType == "REST" {
-		tab = "resources"
-	}
-	// the region goes in the path because the console reads it from the query
-	// string alongside the api id
-	path := fmt.Sprintf("/apigateway/main/apis/%s/%s?api=%s&region=%s", entity.Id, tab, entity.Id, searchArgs.GetRegion())
-	item := util.NewURLItem(wf, title).
-		Subtitle(subtitle).
-		Arg(util.ConstructAWSConsoleUrl(path, searchArgs.GetRegion())).
-		Icon(awsworkflow.GetImageIcon("apigateway")).
-		Valid(true)
-
-	searchArgs.AddMatch(item, "", "", title)
+	return "routes"
 }

@@ -2,16 +2,13 @@ package searchers
 
 import (
 	"context"
-	"fmt"
 	"net/url"
-	"strings"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/cloudwatchlogs"
 	"github.com/aws/aws-sdk-go-v2/service/cloudwatchlogs/types"
 	aw "github.com/deanishe/awgo"
-	"github.com/rkoval/alfred-aws-console-services-workflow/awsworkflow"
-	"github.com/rkoval/alfred-aws-console-services-workflow/caching"
+	"github.com/rkoval/alfred-aws-console-services-workflow/awspaging"
 	"github.com/rkoval/alfred-aws-console-services-workflow/searchers/searchutil"
 	"github.com/rkoval/alfred-aws-console-services-workflow/util"
 )
@@ -19,59 +16,40 @@ import (
 type CloudWatchLogGroupSearcher struct{}
 
 func (s CloudWatchLogGroupSearcher) Search(wf *aw.Workflow, searchArgs searchutil.SearchArgs) error {
-	cacheName := util.GetCurrentFilename()
-	entities := caching.LoadEntityArrayFromCache(wf, searchArgs, cacheName, s.fetch)
-	for _, entity := range entities {
-		s.addToWorkflow(wf, searchArgs, entity)
-	}
-	return nil
+	return searchEntities(wf, searchArgs, "cloudwatch_log_groups", s.fetch, s.addToWorkflow)
 }
 
-func (s CloudWatchLogGroupSearcher) fetch(cfg aws.Config) ([]types.LogGroup, error) {
-	svc := cloudwatchlogs.NewFromConfig(cfg)
-
-	NextToken := ""
-	var entities []types.LogGroup
-	for {
-		params := &cloudwatchlogs.DescribeLogGroupsInput{
-			Limit: aws.Int32(50), // get as many as we can
-		}
-		if NextToken != "" {
-			params.NextToken = aws.String(NextToken)
-		}
-		resp, err := svc.DescribeLogGroups(context.TODO(), params)
+func (CloudWatchLogGroupSearcher) fetch(cfg aws.Config) ([]types.LogGroup, error) {
+	client := cloudwatchlogs.NewFromConfig(cfg)
+	return awspaging.FetchAllPages(func(pageToken string) ([]types.LogGroup, *string, error) {
+		resp, err := client.DescribeLogGroups(context.TODO(), &cloudwatchlogs.DescribeLogGroupsInput{
+			Limit:     aws.Int32(50), // get as many as we can
+			NextToken: awspaging.TokenOrNil(pageToken),
+		})
 		if err != nil {
-			return nil, err
+			return nil, nil, err
 		}
-
-		entities = append(entities, resp.LogGroups...)
-
-		if resp.NextToken != nil {
-			NextToken = *resp.NextToken
-		} else {
-			break
-		}
-	}
-
-	return entities, nil
+		return resp.LogGroups, resp.NextToken, nil
+	})
 }
 
-func (s CloudWatchLogGroupSearcher) addToWorkflow(wf *aw.Workflow, searchArgs searchutil.SearchArgs, entity types.LogGroup) {
-	title := *entity.LogGroupName
-	subtitleArray := []string{}
-	if entity.StoredBytes != nil {
-		subtitleArray = append(subtitleArray, fmt.Sprintf("%s stored", util.ByteFormat(*entity.StoredBytes, 2)))
-	}
-	if entity.RetentionInDays != nil {
-		subtitleArray = append(subtitleArray, fmt.Sprintf("%d day retention", *entity.RetentionInDays))
-	}
-	subtitle := strings.Join(subtitleArray, " – ")
+func (CloudWatchLogGroupSearcher) addToWorkflow(wf *aw.Workflow, searchArgs searchutil.SearchArgs, logGroup types.LogGroup) {
+	name := aws.ToString(logGroup.LogGroupName)
+	searchArgs.AddConsoleResource(wf, searchutil.ConsoleResource{
+		Title:       name,
+		ConsolePath: "/cloudwatch/home#logsV2:log-groups/log-group/" + url.PathEscape(name) + "/log-events",
+		ServiceID:   "cloudwatch",
+		ID:          aws.ToString(logGroup.Arn),
+		IDPrefix:    searchutil.ARNPrefix,
+	}).Subtitle(subtitleFrom(
+		storedBytesDetail(logGroup.StoredBytes),
+		formatIfSet("%d day retention", logGroup.RetentionInDays),
+	))
+}
 
-	path := fmt.Sprintf("/cloudwatch/home#logsV2:log-groups/log-group/%s/log-events", url.PathEscape(*entity.LogGroupName))
-	item := util.NewURLItem(wf, title).
-		Subtitle(subtitle).
-		Arg(util.ConstructAWSConsoleUrl(path, searchArgs.GetRegion())).
-		Icon(awsworkflow.GetImageIcon("cloudwatch"))
-
-	searchArgs.AddMatch(item, "arn:", *entity.Arn, title)
+func storedBytesDetail(storedBytes *int64) string {
+	if storedBytes == nil {
+		return ""
+	}
+	return util.ByteFormat(*storedBytes, 2) + " stored"
 }

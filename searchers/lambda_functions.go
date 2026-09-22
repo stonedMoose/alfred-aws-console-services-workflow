@@ -2,16 +2,13 @@ package searchers
 
 import (
 	"context"
-	"fmt"
 	"net/url"
-	"strings"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/lambda"
 	"github.com/aws/aws-sdk-go-v2/service/lambda/types"
 	aw "github.com/deanishe/awgo"
-	"github.com/rkoval/alfred-aws-console-services-workflow/awsworkflow"
-	"github.com/rkoval/alfred-aws-console-services-workflow/caching"
+	"github.com/rkoval/alfred-aws-console-services-workflow/awspaging"
 	"github.com/rkoval/alfred-aws-console-services-workflow/searchers/searchutil"
 	"github.com/rkoval/alfred-aws-console-services-workflow/util"
 )
@@ -19,62 +16,41 @@ import (
 type LambdaFunctionSearcher struct{}
 
 func (s LambdaFunctionSearcher) Search(wf *aw.Workflow, searchArgs searchutil.SearchArgs) error {
-	cacheName := util.GetCurrentFilename()
-	entities := caching.LoadEntityArrayFromCache(wf, searchArgs, cacheName, s.fetch)
-	for _, entity := range entities {
-		s.addToWorkflow(wf, searchArgs, entity)
-	}
-	return nil
+	return searchEntities(wf, searchArgs, "lambda_functions", s.fetch, s.addToWorkflow)
 }
 
-func (s LambdaFunctionSearcher) fetch(cfg aws.Config) ([]types.FunctionConfiguration, error) {
-	svc := lambda.NewFromConfig(cfg)
-
-	NextMarker := ""
-	var entities []types.FunctionConfiguration
-	for {
-		params := &lambda.ListFunctionsInput{
+func (LambdaFunctionSearcher) fetch(cfg aws.Config) ([]types.FunctionConfiguration, error) {
+	client := lambda.NewFromConfig(cfg)
+	return awspaging.FetchAllPages(func(marker string) ([]types.FunctionConfiguration, *string, error) {
+		resp, err := client.ListFunctions(context.TODO(), &lambda.ListFunctionsInput{
 			MaxItems: aws.Int32(200), // get as many as we can
-		}
-		if NextMarker != "" {
-			params.Marker = aws.String(NextMarker)
-		}
-		resp, err := svc.ListFunctions(context.TODO(), params)
+			Marker:   awspaging.TokenOrNil(marker),
+		})
 		if err != nil {
-			return nil, err
+			return nil, nil, err
 		}
-
-		entities = append(entities, resp.Functions...)
-
-		if resp.NextMarker != nil {
-			NextMarker = *resp.NextMarker
-		} else {
-			break
-		}
-	}
-
-	return entities, nil
+		return resp.Functions, resp.NextMarker, nil
+	})
 }
 
-func (s LambdaFunctionSearcher) addToWorkflow(wf *aw.Workflow, searchArgs searchutil.SearchArgs, entity types.FunctionConfiguration) {
-	title := *entity.FunctionName
-	subtitleArray := []string{}
-	if entity.Description != nil && *entity.Description != "" {
-		subtitleArray = append(subtitleArray, *entity.Description)
-	}
-	if entity.Runtime != "" {
-		subtitleArray = append(subtitleArray, string(entity.Runtime))
-	}
-	if entity.CodeSize != 0 {
-		subtitleArray = append(subtitleArray, util.ByteFormat(entity.CodeSize, 2))
-	}
-	subtitle := strings.Join(subtitleArray, " – ")
+func (LambdaFunctionSearcher) addToWorkflow(wf *aw.Workflow, searchArgs searchutil.SearchArgs, function types.FunctionConfiguration) {
+	name := aws.ToString(function.FunctionName)
+	searchArgs.AddConsoleResource(wf, searchutil.ConsoleResource{
+		Title:       name,
+		ConsolePath: "/lambda/home#/functions/" + url.PathEscape(name) + "?tab=configuration",
+		ServiceID:   "lambda",
+		ID:          aws.ToString(function.FunctionArn),
+		IDPrefix:    searchutil.ARNPrefix,
+	}).Subtitle(subtitleFrom(
+		aws.ToString(function.Description),
+		string(function.Runtime),
+		codeSizeDetail(function.CodeSize),
+	))
+}
 
-	path := fmt.Sprintf("/lambda/home#/functions/%s?tab=configuration", url.PathEscape(*entity.FunctionName))
-	item := util.NewURLItem(wf, title).
-		Subtitle(subtitle).
-		Arg(util.ConstructAWSConsoleUrl(path, searchArgs.GetRegion())).
-		Icon(awsworkflow.GetImageIcon("lambda"))
-
-	searchArgs.AddMatch(item, "arn:", *entity.FunctionArn, title)
+func codeSizeDetail(codeSize int64) string {
+	if codeSize == 0 {
+		return ""
+	}
+	return util.ByteFormat(codeSize, 2)
 }

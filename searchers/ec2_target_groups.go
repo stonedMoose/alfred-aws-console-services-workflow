@@ -3,79 +3,53 @@ package searchers
 import (
 	"context"
 	"fmt"
-	"strconv"
-	"strings"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/elasticloadbalancingv2"
 	"github.com/aws/aws-sdk-go-v2/service/elasticloadbalancingv2/types"
 	aw "github.com/deanishe/awgo"
-	"github.com/rkoval/alfred-aws-console-services-workflow/awsworkflow"
-	"github.com/rkoval/alfred-aws-console-services-workflow/caching"
+	"github.com/rkoval/alfred-aws-console-services-workflow/awspaging"
 	"github.com/rkoval/alfred-aws-console-services-workflow/searchers/searchutil"
-	"github.com/rkoval/alfred-aws-console-services-workflow/util"
 )
 
 type EC2TargetGroupSearcher struct{}
 
 func (s EC2TargetGroupSearcher) Search(wf *aw.Workflow, searchArgs searchutil.SearchArgs) error {
-	cacheName := util.GetCurrentFilename()
-	entities := caching.LoadEntityArrayFromCache(wf, searchArgs, cacheName, s.fetch)
-	for _, entity := range entities {
-		s.addToWorkflow(wf, searchArgs, entity)
-	}
-	return nil
+	return searchEntities(wf, searchArgs, "ec2_target_groups", s.fetch, s.addToWorkflow)
 }
 
-func (s EC2TargetGroupSearcher) fetch(cfg aws.Config) ([]types.TargetGroup, error) {
+func (EC2TargetGroupSearcher) fetch(cfg aws.Config) ([]types.TargetGroup, error) {
 	client := elasticloadbalancingv2.NewFromConfig(cfg)
-
-	entities := []types.TargetGroup{}
-	pageToken := ""
-	for {
-		params := &elasticloadbalancingv2.DescribeTargetGroupsInput{
+	return awspaging.FetchAllPages(func(marker string) ([]types.TargetGroup, *string, error) {
+		resp, err := client.DescribeTargetGroups(context.TODO(), &elasticloadbalancingv2.DescribeTargetGroupsInput{
 			PageSize: aws.Int32(400),
-		}
-		if pageToken != "" {
-			params.Marker = &pageToken
-		}
-		resp, err := client.DescribeTargetGroups(context.TODO(), params)
-
+			Marker:   awspaging.TokenOrNil(marker),
+		})
 		if err != nil {
-			return nil, err
+			return nil, nil, err
 		}
-
-		entities = append(entities, resp.TargetGroups...)
-
-		if resp.NextMarker != nil {
-			pageToken = *resp.NextMarker
-		} else {
-			break
-		}
-	}
-
-	return entities, nil
+		return resp.TargetGroups, resp.NextMarker, nil
+	})
 }
 
-func (s EC2TargetGroupSearcher) addToWorkflow(wf *aw.Workflow, searchArgs searchutil.SearchArgs, entity types.TargetGroup) {
-	title := *entity.TargetGroupName
+func (EC2TargetGroupSearcher) addToWorkflow(wf *aw.Workflow, searchArgs searchutil.SearchArgs, targetGroup types.TargetGroup) {
+	arn := aws.ToString(targetGroup.TargetGroupArn)
+	searchArgs.AddConsoleResource(wf, searchutil.ConsoleResource{
+		Title:       aws.ToString(targetGroup.TargetGroupName),
+		ConsolePath: "/ec2/home#TargetGroup:targetGroupArn=" + arn,
+		ServiceID:   "ec2",
+		ID:          arn,
+		IDPrefix:    searchutil.ARNPrefix,
+	}).Subtitle(subtitleFrom(
+		string(targetGroup.TargetType),
+		protocolPortDetail(targetGroup),
+		aws.ToString(targetGroup.VpcId),
+	))
+}
 
-	subtitleArray := []string{}
-	if entity.TargetType != "" {
-		subtitleArray = append(subtitleArray, string(entity.TargetType))
+func protocolPortDetail(targetGroup types.TargetGroup) string {
+	if targetGroup.Protocol == "" || targetGroup.Port == nil {
+		return ""
 	}
-	if entity.Protocol != "" && entity.Port != nil {
-		subtitleArray = append(subtitleArray, string(entity.Protocol)+":"+strconv.Itoa(int(*entity.Port)))
-	}
-	subtitleArray = util.AppendString(subtitleArray, entity.VpcId)
-	subtitle := strings.Join(subtitleArray, " – ")
-
-	path := fmt.Sprintf("/ec2/home#TargetGroup:targetGroupArn=%s", *entity.TargetGroupArn)
-	item := util.NewURLItem(wf, title).
-		Subtitle(subtitle).
-		Arg(util.ConstructAWSConsoleUrl(path, searchArgs.GetRegion())).
-		Icon(awsworkflow.GetImageIcon("ec2")).
-		Valid(true)
-
-	searchArgs.AddMatch(item, "arn:", *entity.TargetGroupArn, title)
+	return fmt.Sprintf("%s:%d", targetGroup.Protocol, *targetGroup.Port)
 }

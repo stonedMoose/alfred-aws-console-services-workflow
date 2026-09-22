@@ -9,88 +9,74 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/route53"
 	"github.com/aws/aws-sdk-go-v2/service/route53/types"
 	aw "github.com/deanishe/awgo"
-	"github.com/rkoval/alfred-aws-console-services-workflow/awsworkflow"
-	"github.com/rkoval/alfred-aws-console-services-workflow/caching"
+	"github.com/rkoval/alfred-aws-console-services-workflow/awspaging"
 	"github.com/rkoval/alfred-aws-console-services-workflow/searchers/searchutil"
-	"github.com/rkoval/alfred-aws-console-services-workflow/util"
 )
+
+// hostedZoneIDPrefix is what the SDK prepends to hosted zone ids and console
+// links cannot have.
+const hostedZoneIDPrefix = "/hostedzone/"
 
 type Route53HostedZoneSearcher struct{}
 
 func (s Route53HostedZoneSearcher) Search(wf *aw.Workflow, searchArgs searchutil.SearchArgs) error {
-	cacheName := util.GetCurrentFilename()
-	entities := caching.LoadEntityArrayFromCache(wf, searchArgs, cacheName, s.fetch)
-	for _, entity := range entities {
-		s.addToWorkflow(wf, searchArgs, entity)
-	}
-	return nil
+	return searchEntities(wf, searchArgs, "route53_hosted_zones", s.fetch, s.addToWorkflow)
 }
 
-func (s Route53HostedZoneSearcher) fetch(cfg aws.Config) ([]types.HostedZone, error) {
+func (Route53HostedZoneSearcher) fetch(cfg aws.Config) ([]types.HostedZone, error) {
 	client := route53.NewFromConfig(cfg)
-
-	entities := []types.HostedZone{}
-	pageToken := ""
-	for {
-		params := &route53.ListHostedZonesInput{
+	return awspaging.FetchAllPages(func(marker string) ([]types.HostedZone, *string, error) {
+		resp, err := client.ListHostedZones(context.TODO(), &route53.ListHostedZonesInput{
 			MaxItems: aws.Int32(100),
-		}
-		if pageToken != "" {
-			params.Marker = &pageToken
-		}
-		resp, err := client.ListHostedZones(context.TODO(), params)
-
+			Marker:   awspaging.TokenOrNil(marker),
+		})
 		if err != nil {
-			return nil, err
+			return nil, nil, err
 		}
-
-		entities = append(entities, resp.HostedZones...)
-
-		if resp.NextMarker != nil {
-			pageToken = *resp.NextMarker
-		} else {
-			break
-		}
-	}
-
-	return entities, nil
+		return resp.HostedZones, resp.NextMarker, nil
+	})
 }
 
-func (s Route53HostedZoneSearcher) addToWorkflow(wf *aw.Workflow, searchArgs searchutil.SearchArgs, entity types.HostedZone) {
-	title := *entity.Name
+func (Route53HostedZoneSearcher) addToWorkflow(wf *aw.Workflow, searchArgs searchutil.SearchArgs, zone types.HostedZone) {
+	id := aws.ToString(zone.Id)
+	searchArgs.AddConsoleResource(wf, searchutil.ConsoleResource{
+		Title:       aws.ToString(zone.Name),
+		ConsolePath: "/route53/v2/hostedzones#ListRecordSets/" + strings.TrimPrefix(id, hostedZoneIDPrefix),
+		ServiceID:   "route53",
+		ID:          id,
+		IDPrefix:    "Z",
+	}).Subtitle(subtitleFrom(
+		zoneVisibilityDetail(zone.Config),
+		zoneCommentDetail(zone.Config),
+		recordCountDetail(zone.ResourceRecordSetCount),
+		id,
+	))
+}
 
-	subtitleArray := []string{}
-	if entity.Config != nil {
-		config := *entity.Config
-
-		privateString := "Public"
-		if config.PrivateZone {
-			privateString = "Private"
-		}
-		subtitleArray = util.AppendString(subtitleArray, &privateString)
-
-		subtitleArray = util.AppendString(subtitleArray, config.Comment)
+func zoneVisibilityDetail(config *types.HostedZoneConfig) string {
+	switch {
+	case config == nil:
+		return ""
+	case config.PrivateZone:
+		return "Private"
+	default:
+		return "Public"
 	}
+}
 
-	if entity.ResourceRecordSetCount != nil {
-		recordSetCount := *entity.ResourceRecordSetCount
-		recordSetString := fmt.Sprint(recordSetCount) + " record"
-		if recordSetCount > 1 {
-			recordSetString += "s"
-		}
-		subtitleArray = util.AppendString(subtitleArray, &recordSetString)
+func zoneCommentDetail(config *types.HostedZoneConfig) string {
+	if config == nil {
+		return ""
 	}
-	subtitleArray = util.AppendString(subtitleArray, entity.Id)
-	subtitle := strings.Join(subtitleArray, " – ")
+	return aws.ToString(config.Comment)
+}
 
-	id := strings.Replace(*entity.Id, "/hostedzone/", "", 1) // aws sdk prepends this for some reason when console links can't have it
-
-	path := fmt.Sprintf("/route53/v2/hostedzones#ListRecordSets/%s", id)
-	item := util.NewURLItem(wf, title).
-		Subtitle(subtitle).
-		Arg(util.ConstructAWSConsoleUrl(path, searchArgs.GetRegion())).
-		Icon(awsworkflow.GetImageIcon("route53")).
-		Valid(true)
-
-	searchArgs.AddMatch(item, "Z", *entity.Id, title)
+func recordCountDetail(count *int64) string {
+	if count == nil {
+		return ""
+	}
+	if *count > 1 {
+		return fmt.Sprintf("%d records", *count)
+	}
+	return fmt.Sprintf("%d record", *count)
 }

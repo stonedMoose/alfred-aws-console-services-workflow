@@ -99,3 +99,13 @@ var AllAWSRegions []Region = []Region{
 		Description: "South America (São Paulo)",
 	},
 }
+
+// FindRegion returns the region of that name, or nil when there is none.
+func FindRegion(name string) *Region {
+	for _, region := range AllAWSRegions {
+		if region.Name == name {
+			return &region
+		}
+	}
+	return nil
+}

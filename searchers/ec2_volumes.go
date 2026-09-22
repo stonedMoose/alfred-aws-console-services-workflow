@@ -2,86 +2,46 @@ package searchers
 
 import (
 	"context"
-	"fmt"
-	"strconv"
-	"strings"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/ec2"
 	"github.com/aws/aws-sdk-go-v2/service/ec2/types"
 	aw "github.com/deanishe/awgo"
-	"github.com/rkoval/alfred-aws-console-services-workflow/awsworkflow"
-	"github.com/rkoval/alfred-aws-console-services-workflow/caching"
+	"github.com/rkoval/alfred-aws-console-services-workflow/awspaging"
 	"github.com/rkoval/alfred-aws-console-services-workflow/searchers/searchutil"
-	"github.com/rkoval/alfred-aws-console-services-workflow/util"
 )
 
 type EC2VolumeSearcher struct{}
 
 func (s EC2VolumeSearcher) Search(wf *aw.Workflow, searchArgs searchutil.SearchArgs) error {
-	cacheName := util.GetCurrentFilename()
-	entities := caching.LoadEntityArrayFromCache(wf, searchArgs, cacheName, s.fetch)
-	for _, entity := range entities {
-		s.addToWorkflow(wf, searchArgs, entity)
-	}
-	return nil
+	return searchEntities(wf, searchArgs, "ec2_volumes", s.fetch, s.addToWorkflow)
 }
 
-func (s EC2VolumeSearcher) fetch(cfg aws.Config) ([]types.Volume, error) {
-	svc := ec2.NewFromConfig(cfg)
-
-	var entities []types.Volume
-	nextToken := ""
-	for {
-		params := &ec2.DescribeVolumesInput{
+func (EC2VolumeSearcher) fetch(cfg aws.Config) ([]types.Volume, error) {
+	client := ec2.NewFromConfig(cfg)
+	return awspaging.FetchAllPages(func(pageToken string) ([]types.Volume, *string, error) {
+		resp, err := client.DescribeVolumes(context.TODO(), &ec2.DescribeVolumesInput{
 			MaxResults: aws.Int32(500), // max allowed by this API
-		}
-		if nextToken != "" {
-			params.NextToken = aws.String(nextToken)
-		}
-		resp, err := svc.DescribeVolumes(context.TODO(), params)
+			NextToken:  awspaging.TokenOrNil(pageToken),
+		})
 		if err != nil {
-			return nil, err
+			return nil, nil, err
 		}
-
-		entities = append(entities, resp.Volumes...)
-
-		if resp.NextToken != nil && *resp.NextToken != "" {
-			nextToken = *resp.NextToken
-		} else {
-			break
-		}
-	}
-
-	return entities, nil
+		return resp.Volumes, resp.NextToken, nil
+	})
 }
 
-func (s EC2VolumeSearcher) addToWorkflow(wf *aw.Workflow, searchArgs searchutil.SearchArgs, entity types.Volume) {
-	id := *entity.VolumeId
-	title := id
-
-	subtitleArray := []string{}
-	if name := util.GetEC2TagValue(entity.Tags, "Name"); name != "" {
-		title = name
-		subtitleArray = append(subtitleArray, id)
-	}
-	if entity.Size != nil {
-		subtitleArray = append(subtitleArray, strconv.Itoa(int(*entity.Size))+" GiB")
-	}
-	if entity.VolumeType != "" {
-		subtitleArray = append(subtitleArray, string(entity.VolumeType))
-	}
-	if entity.State != "" {
-		subtitleArray = append(subtitleArray, string(entity.State))
-	}
-	subtitle := strings.Join(subtitleArray, " – ")
-
-	path := fmt.Sprintf("/ec2/home#VolumeDetails:volumeId=%s", id)
-	item := util.NewURLItem(wf, title).
-		Subtitle(subtitle).
-		Arg(util.ConstructAWSConsoleUrl(path, searchArgs.GetRegion())).
-		Icon(awsworkflow.GetImageIcon("ec2")).
-		Valid(true)
-
-	searchArgs.AddMatch(item, "", "", title)
+func (EC2VolumeSearcher) addToWorkflow(wf *aw.Workflow, searchArgs searchutil.SearchArgs, volume types.Volume) {
+	id := aws.ToString(volume.VolumeId)
+	title, idDetail := namedOrID(ec2NameTag(volume.Tags), id)
+	searchArgs.AddConsoleResource(wf, searchutil.ConsoleResource{
+		Title:       title,
+		ConsolePath: "/ec2/home#VolumeDetails:volumeId=" + id,
+		ServiceID:   "ec2",
+	}).Subtitle(subtitleFrom(
+		idDetail,
+		formatIfSet("%d GiB", volume.Size),
+		string(volume.VolumeType),
+		string(volume.State),
+	))
 }

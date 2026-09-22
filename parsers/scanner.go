@@ -2,28 +2,93 @@ package parsers
 
 import (
 	"bufio"
-	"bytes"
 	"io"
-	"log"
 	"strings"
 
 	"github.com/rkoval/alfred-aws-console-services-workflow/aliases"
 )
 
-var eof = rune(0)
+const (
+	eof            = rune(0)
+	openAllKeyword = "OPEN_ALL"
+)
 
-// Scanner represents a lexical scanner.
+// Scanner splits the raw query into words and whitespace runs, and recognises
+// the aliases that give a word a special meaning.
 type Scanner struct {
 	reader *bufio.Reader
 }
 
-// NewScanner returns a new instance of Scanner.
+// NewScanner returns a scanner of reader.
 func NewScanner(reader io.Reader) *Scanner {
 	return &Scanner{reader: bufio.NewReader(reader)}
 }
 
-// read reads the next rune from the bufferred reader.
-// Returns the rune(0) if an error occurs (or io.EOF is returned).
+// Scan returns the next token, its literal value and whether whitespace
+// follows it.
+func (s *Scanner) Scan() (TokenType, string, bool) {
+	ch := s.read()
+	if ch == eof {
+		return EOF, "", false
+	}
+	s.unread()
+	if isWhitespace(ch) {
+		return WHITESPACE, s.scanWhile(isWhitespace), true
+	}
+	return s.scanWord()
+}
+
+func (s *Scanner) scanWord() (TokenType, string, bool) {
+	word := s.scanWhile(isNotWhitespace)
+	hasTrailingWhitespace := s.nextIsWhitespace()
+	tokenType, value := classifyWord(word)
+	return tokenType, value, hasTrailingWhitespace
+}
+
+// classifyWord recognises the aliases and keywords, stripping an alias from
+// the value it introduces.
+func classifyWord(word string) (TokenType, string) {
+	if value, found := strings.CutPrefix(word, aliases.Search); found {
+		return SEARCH_ALIAS, value
+	}
+	if value, found := strings.CutPrefix(word, aliases.OverrideAwsRegion); found {
+		return REGION_OVERRIDE, value
+	}
+	if value, found := strings.CutPrefix(word, aliases.OverrideAwsProfile); found {
+		return PROFILE_OVERRIDE, value
+	}
+	if word == openAllKeyword {
+		return OPEN_ALL, word
+	}
+	return WORD, word
+}
+
+// scanWhile consumes the runes satisfying accept and returns them.
+func (s *Scanner) scanWhile(accept func(rune) bool) string {
+	var literal strings.Builder
+	for {
+		ch := s.read()
+		if ch == eof {
+			return literal.String()
+		}
+		if !accept(ch) {
+			s.unread()
+			return literal.String()
+		}
+		literal.WriteRune(ch)
+	}
+}
+
+func (s *Scanner) nextIsWhitespace() bool {
+	ch := s.read()
+	if ch == eof {
+		return false
+	}
+	s.unread()
+	return isWhitespace(ch)
+}
+
+// read returns the next rune, or eof once the input is exhausted.
 func (s *Scanner) read() rune {
 	ch, _, err := s.reader.ReadRune()
 	if err != nil {
@@ -32,101 +97,14 @@ func (s *Scanner) read() rune {
 	return ch
 }
 
-// unread places the previously read rune back on the reader.
-func (s *Scanner) unread() { _ = s.reader.UnreadRune() }
-
-// Scan returns the next token and literal value.
-func (s *Scanner) Scan() (TokenType, string, bool) {
-	ch := s.read()
-
-	if ch == eof {
-		return EOF, "", false
-	}
-
-	s.unread()
-	if isWhitespace(ch) {
-		token, literal := s.scanWhitespace()
-		return token, literal, true
-	}
-	token, literal, hasTrailingWhitespace := s.scanWord()
-	return token, literal, hasTrailingWhitespace
-}
-
-// scanWhitespace consumes the current rune and all contiguous whitespace.
-func (s *Scanner) scanWhitespace() (tok TokenType, lit string) {
-	var buf bytes.Buffer
-	buf.WriteRune(s.read())
-
-	var i int
-	for {
-		if i >= 1000 {
-			// prevent against accidental infinite loop
-			log.Println("infinite loop in scanner.scanWord detected")
-			break
-		}
-		i++
-		ch := s.read()
-		if ch == eof {
-			break
-		} else if !isWhitespace(ch) {
-			s.unread()
-			break
-		} else {
-			buf.WriteRune(ch)
-		}
-	}
-
-	return WHITESPACE, buf.String()
+func (s *Scanner) unread() {
+	_ = s.reader.UnreadRune()
 }
 
 func isWhitespace(ch rune) bool {
 	return ch == ' ' || ch == '\t' || ch == '\n'
 }
 
-// scanWord consumes the current rune and all contiguous ident runes.
-func (s *Scanner) scanWord() (TokenType, string, bool) {
-	var buf bytes.Buffer
-	buf.WriteRune(s.read())
-
-	var i int
-	var hasTrailingWhitespace bool
-	for {
-		if i >= 1000 {
-			// prevent against accidental infinite loop
-			log.Println("infinite loop in scanner.scanWord detected")
-			break
-		}
-		i++
-		ch := s.read()
-		if ch == eof {
-			break
-		} else if isWhitespace(ch) {
-			hasTrailingWhitespace = true
-			s.unread()
-			break
-		} else {
-			_, _ = buf.WriteRune(ch)
-		}
-	}
-
-	stringBuf := buf.String()
-
-	if strings.HasPrefix(stringBuf, aliases.Search) {
-		return SEARCH_ALIAS, stringBuf[len(aliases.Search):], hasTrailingWhitespace
-	}
-
-	if strings.HasPrefix(stringBuf, aliases.OverrideAwsRegion) {
-		return REGION_OVERRIDE, stringBuf[len(aliases.OverrideAwsRegion):], hasTrailingWhitespace
-	}
-
-	if strings.HasPrefix(stringBuf, aliases.OverrideAwsProfile) {
-		return PROFILE_OVERRIDE, stringBuf[len(aliases.OverrideAwsProfile):], hasTrailingWhitespace
-	}
-
-	switch stringBuf {
-	case "OPEN_ALL":
-		return OPEN_ALL, stringBuf, hasTrailingWhitespace
-	}
-
-	return WORD, stringBuf, hasTrailingWhitespace
+func isNotWhitespace(ch rune) bool {
+	return !isWhitespace(ch)
 }

@@ -2,77 +2,43 @@ package searchers
 
 import (
 	"context"
-	"fmt"
 	"net/url"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/eventbridge"
 	"github.com/aws/aws-sdk-go-v2/service/eventbridge/types"
 	aw "github.com/deanishe/awgo"
-	"github.com/rkoval/alfred-aws-console-services-workflow/awsworkflow"
-	"github.com/rkoval/alfred-aws-console-services-workflow/caching"
+	"github.com/rkoval/alfred-aws-console-services-workflow/awspaging"
 	"github.com/rkoval/alfred-aws-console-services-workflow/searchers/searchutil"
-	"github.com/rkoval/alfred-aws-console-services-workflow/util"
 )
 
 type EventBridgeEventBusSearcher struct{}
 
 func (s EventBridgeEventBusSearcher) Search(wf *aw.Workflow, searchArgs searchutil.SearchArgs) error {
-	cacheName := util.GetCurrentFilename()
-	entities := caching.LoadEntityArrayFromCache(wf, searchArgs, cacheName, s.fetch)
-	for _, entity := range entities {
-		s.addToWorkflow(wf, searchArgs, entity)
-	}
-	return nil
+	return searchEntities(wf, searchArgs, "eventbridge_event_buses", s.fetch, s.addToWorkflow)
 }
 
-func (s EventBridgeEventBusSearcher) fetch(cfg aws.Config) ([]types.EventBus, error) {
-	svc := eventbridge.NewFromConfig(cfg)
-
-	var entities []types.EventBus
-	nextToken := ""
-	for {
-		params := &eventbridge.ListEventBusesInput{
-			Limit: aws.Int32(100), // max allowed by this API
-		}
-		if nextToken != "" {
-			params.NextToken = aws.String(nextToken)
-		}
-		resp, err := svc.ListEventBuses(context.TODO(), params)
+func (EventBridgeEventBusSearcher) fetch(cfg aws.Config) ([]types.EventBus, error) {
+	client := eventbridge.NewFromConfig(cfg)
+	return awspaging.FetchAllPages(func(pageToken string) ([]types.EventBus, *string, error) {
+		resp, err := client.ListEventBuses(context.TODO(), &eventbridge.ListEventBusesInput{
+			Limit:     aws.Int32(100), // max allowed by this API
+			NextToken: awspaging.TokenOrNil(pageToken),
+		})
 		if err != nil {
-			return nil, err
+			return nil, nil, err
 		}
-
-		entities = append(entities, resp.EventBuses...)
-
-		if resp.NextToken != nil && *resp.NextToken != "" {
-			nextToken = *resp.NextToken
-		} else {
-			break
-		}
-	}
-
-	return entities, nil
+		return resp.EventBuses, resp.NextToken, nil
+	})
 }
 
-func (s EventBridgeEventBusSearcher) addToWorkflow(wf *aw.Workflow, searchArgs searchutil.SearchArgs, entity types.EventBus) {
-	title := *entity.Name
-
-	subtitle := ""
-	if entity.Description != nil {
-		subtitle = *entity.Description
-	}
-
-	path := fmt.Sprintf("/events/home#/eventbus/%s", url.PathEscape(title))
-	item := util.NewURLItem(wf, title).
-		Subtitle(subtitle).
-		Arg(util.ConstructAWSConsoleUrl(path, searchArgs.GetRegion())).
-		Icon(awsworkflow.GetImageIcon("eventbridge")).
-		Valid(true)
-
-	arn := ""
-	if entity.Arn != nil {
-		arn = *entity.Arn
-	}
-	searchArgs.AddMatch(item, "arn:", arn, title)
+func (EventBridgeEventBusSearcher) addToWorkflow(wf *aw.Workflow, searchArgs searchutil.SearchArgs, eventBus types.EventBus) {
+	name := aws.ToString(eventBus.Name)
+	searchArgs.AddConsoleResource(wf, searchutil.ConsoleResource{
+		Title:       name,
+		ConsolePath: "/events/home#/eventbus/" + url.PathEscape(name),
+		ServiceID:   "eventbridge",
+		ID:          aws.ToString(eventBus.Arn),
+		IDPrefix:    searchutil.ARNPrefix,
+	}).Subtitle(aws.ToString(eventBus.Description))
 }

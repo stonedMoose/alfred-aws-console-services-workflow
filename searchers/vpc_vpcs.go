@@ -2,80 +2,52 @@ package searchers
 
 import (
 	"context"
-	"fmt"
-	"strings"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/ec2"
 	"github.com/aws/aws-sdk-go-v2/service/ec2/types"
 	aw "github.com/deanishe/awgo"
-	"github.com/rkoval/alfred-aws-console-services-workflow/awsworkflow"
-	"github.com/rkoval/alfred-aws-console-services-workflow/caching"
+	"github.com/rkoval/alfred-aws-console-services-workflow/awspaging"
 	"github.com/rkoval/alfred-aws-console-services-workflow/searchers/searchutil"
-	"github.com/rkoval/alfred-aws-console-services-workflow/util"
 )
 
 type VPCSearcher struct{}
 
 func (s VPCSearcher) Search(wf *aw.Workflow, searchArgs searchutil.SearchArgs) error {
-	cacheName := util.GetCurrentFilename()
-	entities := caching.LoadEntityArrayFromCache(wf, searchArgs, cacheName, s.fetch)
-	for _, entity := range entities {
-		s.addToWorkflow(wf, searchArgs, entity)
-	}
-	return nil
+	return searchEntities(wf, searchArgs, "vpc_vpcs", s.fetch, s.addToWorkflow)
 }
 
-func (s VPCSearcher) fetch(cfg aws.Config) ([]types.Vpc, error) {
-	svc := ec2.NewFromConfig(cfg)
-
-	var entities []types.Vpc
-	nextToken := ""
-	for {
-		params := &ec2.DescribeVpcsInput{
+func (VPCSearcher) fetch(cfg aws.Config) ([]types.Vpc, error) {
+	client := ec2.NewFromConfig(cfg)
+	return awspaging.FetchAllPages(func(pageToken string) ([]types.Vpc, *string, error) {
+		resp, err := client.DescribeVpcs(context.TODO(), &ec2.DescribeVpcsInput{
 			MaxResults: aws.Int32(1000), // get as many as we can
-		}
-		if nextToken != "" {
-			params.NextToken = aws.String(nextToken)
-		}
-		resp, err := svc.DescribeVpcs(context.TODO(), params)
+			NextToken:  awspaging.TokenOrNil(pageToken),
+		})
 		if err != nil {
-			return nil, err
+			return nil, nil, err
 		}
-
-		entities = append(entities, resp.Vpcs...)
-
-		if resp.NextToken != nil && *resp.NextToken != "" {
-			nextToken = *resp.NextToken
-		} else {
-			break
-		}
-	}
-
-	return entities, nil
+		return resp.Vpcs, resp.NextToken, nil
+	})
 }
 
-func (s VPCSearcher) addToWorkflow(wf *aw.Workflow, searchArgs searchutil.SearchArgs, entity types.Vpc) {
-	id := *entity.VpcId
-	title := id
+func (VPCSearcher) addToWorkflow(wf *aw.Workflow, searchArgs searchutil.SearchArgs, vpc types.Vpc) {
+	id := aws.ToString(vpc.VpcId)
+	title, idDetail := namedOrID(ec2NameTag(vpc.Tags), id)
+	searchArgs.AddConsoleResource(wf, searchutil.ConsoleResource{
+		Title:       title,
+		ConsolePath: "/vpc/home#VpcDetails:VpcId=" + id,
+		ServiceID:   "vpc",
+	}).Subtitle(subtitleFrom(
+		idDetail,
+		aws.ToString(vpc.CidrBlock),
+		defaultVPCDetail(vpc.IsDefault),
+	))
+}
 
-	subtitleArray := []string{}
-	if name := util.GetEC2TagValue(entity.Tags, "Name"); name != "" {
-		title = name
-		subtitleArray = append(subtitleArray, id)
+func defaultVPCDetail(isDefault *bool) string {
+	if aws.ToBool(isDefault) {
+		return "default"
 	}
-	subtitleArray = util.AppendString(subtitleArray, entity.CidrBlock)
-	if entity.IsDefault != nil && *entity.IsDefault {
-		subtitleArray = append(subtitleArray, "default")
-	}
-	subtitle := strings.Join(subtitleArray, " – ")
-
-	path := fmt.Sprintf("/vpc/home#VpcDetails:VpcId=%s", id)
-	item := util.NewURLItem(wf, title).
-		Subtitle(subtitle).
-		Arg(util.ConstructAWSConsoleUrl(path, searchArgs.GetRegion())).
-		Icon(awsworkflow.GetImageIcon("vpc")).
-		Valid(true)
-
-	searchArgs.AddMatch(item, "", "", title)
+	return ""
 }

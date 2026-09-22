@@ -2,70 +2,48 @@ package searchers
 
 import (
 	"context"
-	"fmt"
 	"net/url"
 	"strings"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/sqs"
 	aw "github.com/deanishe/awgo"
-	"github.com/rkoval/alfred-aws-console-services-workflow/awsworkflow"
-	"github.com/rkoval/alfred-aws-console-services-workflow/caching"
+	"github.com/rkoval/alfred-aws-console-services-workflow/awspaging"
 	"github.com/rkoval/alfred-aws-console-services-workflow/searchers/searchutil"
-	"github.com/rkoval/alfred-aws-console-services-workflow/util"
 )
 
 type SQSQueueSearcher struct{}
 
 func (s SQSQueueSearcher) Search(wf *aw.Workflow, searchArgs searchutil.SearchArgs) error {
-	cacheName := util.GetCurrentFilename()
-	entities := caching.LoadEntityArrayFromCache(wf, searchArgs, cacheName, s.fetch)
-	for _, entity := range entities {
-		s.addToWorkflow(wf, searchArgs, entity)
-	}
-	return nil
+	return searchEntities(wf, searchArgs, "sqs_queues", s.fetch, s.addToWorkflow)
 }
 
-// ListQueues returns queue URLs rather than queue objects, so that is what gets cached
-func (s SQSQueueSearcher) fetch(cfg aws.Config) ([]string, error) {
-	svc := sqs.NewFromConfig(cfg)
-
-	var entities []string
-	nextToken := ""
-	for {
-		params := &sqs.ListQueuesInput{
+// fetch returns queue URLs, which is all ListQueues gives and all the console
+// link needs.
+func (SQSQueueSearcher) fetch(cfg aws.Config) ([]string, error) {
+	client := sqs.NewFromConfig(cfg)
+	return awspaging.FetchAllPages(func(pageToken string) ([]string, *string, error) {
+		resp, err := client.ListQueues(context.TODO(), &sqs.ListQueuesInput{
 			MaxResults: aws.Int32(1000), // max allowed by this API
-		}
-		if nextToken != "" {
-			params.NextToken = aws.String(nextToken)
-		}
-		resp, err := svc.ListQueues(context.TODO(), params)
+			NextToken:  awspaging.TokenOrNil(pageToken),
+		})
 		if err != nil {
-			return nil, err
+			return nil, nil, err
 		}
-
-		entities = append(entities, resp.QueueUrls...)
-
-		if resp.NextToken != nil && *resp.NextToken != "" {
-			nextToken = *resp.NextToken
-		} else {
-			break
-		}
-	}
-
-	return entities, nil
+		return resp.QueueUrls, resp.NextToken, nil
+	})
 }
 
-func (s SQSQueueSearcher) addToWorkflow(wf *aw.Workflow, searchArgs searchutil.SearchArgs, entity string) {
-	// a queue URL looks like https://sqs.us-east-1.amazonaws.com/123456789012/my-queue
-	title := entity[strings.LastIndex(entity, "/")+1:]
+func (SQSQueueSearcher) addToWorkflow(wf *aw.Workflow, searchArgs searchutil.SearchArgs, queueURL string) {
+	searchArgs.AddConsoleResource(wf, searchutil.ConsoleResource{
+		Title:       queueNameOf(queueURL),
+		ConsolePath: "/sqs/v2/home#/queues/" + url.QueryEscape(queueURL),
+		ServiceID:   "sqs",
+	}).Subtitle(queueURL)
+}
 
-	path := fmt.Sprintf("/sqs/v2/home#/queues/%s", url.QueryEscape(entity))
-	item := util.NewURLItem(wf, title).
-		Subtitle(entity).
-		Arg(util.ConstructAWSConsoleUrl(path, searchArgs.GetRegion())).
-		Icon(awsworkflow.GetImageIcon("sqs")).
-		Valid(true)
-
-	searchArgs.AddMatch(item, "", "", title)
+// queueNameOf is the last segment of a queue URL, which looks like
+// https://sqs.us-east-1.amazonaws.com/123456789012/my-queue.
+func queueNameOf(queueURL string) string {
+	return queueURL[strings.LastIndex(queueURL, "/")+1:]
 }

@@ -2,81 +2,45 @@ package searchers
 
 import (
 	"context"
-	"fmt"
-	"strings"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/cloudtrail"
 	"github.com/aws/aws-sdk-go-v2/service/cloudtrail/types"
 	aw "github.com/deanishe/awgo"
-	"github.com/rkoval/alfred-aws-console-services-workflow/awsworkflow"
-	"github.com/rkoval/alfred-aws-console-services-workflow/caching"
+	"github.com/rkoval/alfred-aws-console-services-workflow/awspaging"
 	"github.com/rkoval/alfred-aws-console-services-workflow/searchers/searchutil"
-	"github.com/rkoval/alfred-aws-console-services-workflow/util"
 )
 
 type CloudTrailTrailSearcher struct{}
 
 func (s CloudTrailTrailSearcher) Search(wf *aw.Workflow, searchArgs searchutil.SearchArgs) error {
-	cacheName := util.GetCurrentFilename()
-	entities := caching.LoadEntityArrayFromCache(wf, searchArgs, cacheName, s.fetch)
-	for _, entity := range entities {
-		s.addToWorkflow(wf, searchArgs, entity)
-	}
-	return nil
+	return searchEntities(wf, searchArgs, "cloudtrail_trails", s.fetch, s.addToWorkflow)
 }
 
-func (s CloudTrailTrailSearcher) fetch(cfg aws.Config) ([]types.TrailInfo, error) {
-	svc := cloudtrail.NewFromConfig(cfg)
-
-	var entities []types.TrailInfo
-	nextToken := ""
-	for {
-		params := &cloudtrail.ListTrailsInput{}
-		if nextToken != "" {
-			params.NextToken = aws.String(nextToken)
-		}
-		resp, err := svc.ListTrails(context.TODO(), params)
+func (CloudTrailTrailSearcher) fetch(cfg aws.Config) ([]types.TrailInfo, error) {
+	client := cloudtrail.NewFromConfig(cfg)
+	return awspaging.FetchAllPages(func(pageToken string) ([]types.TrailInfo, *string, error) {
+		resp, err := client.ListTrails(context.TODO(), &cloudtrail.ListTrailsInput{
+			NextToken: awspaging.TokenOrNil(pageToken),
+		})
 		if err != nil {
-			return nil, err
+			return nil, nil, err
 		}
-
-		entities = append(entities, resp.Trails...)
-
-		if resp.NextToken != nil && *resp.NextToken != "" {
-			nextToken = *resp.NextToken
-		} else {
-			break
-		}
-	}
-
-	return entities, nil
+		return resp.Trails, resp.NextToken, nil
+	})
 }
 
-func (s CloudTrailTrailSearcher) addToWorkflow(wf *aw.Workflow, searchArgs searchutil.SearchArgs, entity types.TrailInfo) {
-	title := ""
-	if entity.Name != nil {
-		title = *entity.Name
-	}
-
-	subtitleArray := []string{}
-	subtitleArray = util.AppendString(subtitleArray, entity.HomeRegion)
-	subtitle := strings.Join(subtitleArray, " – ")
-
-	arn := ""
-	if entity.TrailARN != nil {
-		arn = *entity.TrailARN
-	}
+func (CloudTrailTrailSearcher) addToWorkflow(wf *aw.Workflow, searchArgs searchutil.SearchArgs, trail types.TrailInfo) {
+	arn := aws.ToString(trail.TrailARN)
+	title := aws.ToString(trail.Name)
 	if title == "" {
-		title = util.GetEndOfArn(arn)
+		title = arnResourceName(arn)
 	}
-
-	path := fmt.Sprintf("/cloudtrail/home#/trails/%s", arn)
-	item := util.NewURLItem(wf, title).
-		Subtitle(subtitle).
-		Arg(util.ConstructAWSConsoleUrl(path, searchArgs.GetRegion())).
-		Icon(awsworkflow.GetImageIcon("cloudtrail")).
-		Valid(true)
-
-	searchArgs.AddMatch(item, "arn:", arn, title)
+	searchArgs.AddConsoleResource(wf, searchutil.ConsoleResource{
+		Title:       title,
+		ConsolePath: "/cloudtrail/home#/trails/" + arn,
+		ServiceID:   "cloudtrail",
+		ID:          arn,
+		IDPrefix:    searchutil.ARNPrefix,
+	}).Subtitle(subtitleFrom(aws.ToString(trail.HomeRegion)))
 }

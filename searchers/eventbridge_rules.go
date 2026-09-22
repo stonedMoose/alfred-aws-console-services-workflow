@@ -2,7 +2,6 @@ package searchers
 
 import (
 	"context"
-	"fmt"
 	"net/url"
 	"strings"
 
@@ -10,73 +9,41 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/eventbridge"
 	"github.com/aws/aws-sdk-go-v2/service/eventbridge/types"
 	aw "github.com/deanishe/awgo"
-	"github.com/rkoval/alfred-aws-console-services-workflow/awsworkflow"
-	"github.com/rkoval/alfred-aws-console-services-workflow/caching"
+	"github.com/rkoval/alfred-aws-console-services-workflow/awspaging"
 	"github.com/rkoval/alfred-aws-console-services-workflow/searchers/searchutil"
-	"github.com/rkoval/alfred-aws-console-services-workflow/util"
 )
 
 type EventBridgeRuleSearcher struct{}
 
 func (s EventBridgeRuleSearcher) Search(wf *aw.Workflow, searchArgs searchutil.SearchArgs) error {
-	cacheName := util.GetCurrentFilename()
-	entities := caching.LoadEntityArrayFromCache(wf, searchArgs, cacheName, s.fetch)
-	for _, entity := range entities {
-		s.addToWorkflow(wf, searchArgs, entity)
-	}
-	return nil
+	return searchEntities(wf, searchArgs, "eventbridge_rules", s.fetch, s.addToWorkflow)
 }
 
-func (s EventBridgeRuleSearcher) fetch(cfg aws.Config) ([]types.Rule, error) {
-	svc := eventbridge.NewFromConfig(cfg)
-
-	var entities []types.Rule
-	nextToken := ""
-	for {
-		params := &eventbridge.ListRulesInput{
-			Limit: aws.Int32(100), // max allowed by this API
-		}
-		if nextToken != "" {
-			params.NextToken = aws.String(nextToken)
-		}
-		resp, err := svc.ListRules(context.TODO(), params)
+func (EventBridgeRuleSearcher) fetch(cfg aws.Config) ([]types.Rule, error) {
+	client := eventbridge.NewFromConfig(cfg)
+	return awspaging.FetchAllPages(func(pageToken string) ([]types.Rule, *string, error) {
+		resp, err := client.ListRules(context.TODO(), &eventbridge.ListRulesInput{
+			Limit:     aws.Int32(100), // max allowed by this API
+			NextToken: awspaging.TokenOrNil(pageToken),
+		})
 		if err != nil {
-			return nil, err
+			return nil, nil, err
 		}
-
-		entities = append(entities, resp.Rules...)
-
-		if resp.NextToken != nil && *resp.NextToken != "" {
-			nextToken = *resp.NextToken
-		} else {
-			break
-		}
-	}
-
-	return entities, nil
+		return resp.Rules, resp.NextToken, nil
+	})
 }
 
-func (s EventBridgeRuleSearcher) addToWorkflow(wf *aw.Workflow, searchArgs searchutil.SearchArgs, entity types.Rule) {
-	title := *entity.Name
-
-	subtitleArray := []string{}
-	if entity.State != "" {
-		subtitleArray = append(subtitleArray, strings.ToLower(string(entity.State)))
-	}
-	subtitleArray = util.AppendString(subtitleArray, entity.ScheduleExpression)
-	subtitleArray = util.AppendString(subtitleArray, entity.Description)
-	subtitle := strings.Join(subtitleArray, " – ")
-
-	path := fmt.Sprintf("/events/home#/rules/%s", url.PathEscape(title))
-	item := util.NewURLItem(wf, title).
-		Subtitle(subtitle).
-		Arg(util.ConstructAWSConsoleUrl(path, searchArgs.GetRegion())).
-		Icon(awsworkflow.GetImageIcon("eventbridge")).
-		Valid(true)
-
-	arn := ""
-	if entity.Arn != nil {
-		arn = *entity.Arn
-	}
-	searchArgs.AddMatch(item, "arn:", arn, title)
+func (EventBridgeRuleSearcher) addToWorkflow(wf *aw.Workflow, searchArgs searchutil.SearchArgs, rule types.Rule) {
+	name := aws.ToString(rule.Name)
+	searchArgs.AddConsoleResource(wf, searchutil.ConsoleResource{
+		Title:       name,
+		ConsolePath: "/events/home#/rules/" + url.PathEscape(name),
+		ServiceID:   "eventbridge",
+		ID:          aws.ToString(rule.Arn),
+		IDPrefix:    searchutil.ARNPrefix,
+	}).Subtitle(subtitleFrom(
+		strings.ToLower(string(rule.State)),
+		aws.ToString(rule.ScheduleExpression),
+		aws.ToString(rule.Description),
+	))
 }

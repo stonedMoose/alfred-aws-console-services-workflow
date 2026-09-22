@@ -2,134 +2,108 @@ package main
 
 import (
 	"fmt"
+	"os"
 	"regexp"
 	"strings"
-
-	"github.com/rkoval/alfred-aws-console-services-workflow/util"
+	"text/template"
 )
 
-func appendToSearchers(searcherNamer SearcherNamer) {
-	regex := regexp.MustCompile(`(\nvar SearchersByServiceId)`)
-	structInitializer := "&" + searcherNamer.StructName + "{}"
-	replacement := fmt.Sprintf("var %s = %s\n$1", searcherNamer.StructInstanceName, structInitializer)
-	replacedContent := util.ModifyFileWithRegexReplace("searchers/searchers_by_service_id.go", regex, replacement, structInitializer)
-	if replacedContent == "" {
+const (
+	registryFile     = "searchers/registry.go"
+	workflowTestFile = "workflow/workflow_test.go"
+)
+
+// lastMapEntryRegex finds the end of the last entry of a map literal, where a
+// new entry can be inserted.
+var lastMapEntryRegex = regexp.MustCompile(`(,\n)(})`)
+
+// appendToRegistry registers the searcher under its sub-service id and, when
+// the service has no searcher yet, under the bare service id as well.
+func appendToRegistry(namer SearcherNamer) {
+	subServiceKey := namer.ServiceLower + "_" + namer.EntityLowerPlural
+	content := addRegistryEntry(subServiceKey, namer.StructName)
+	if content == "" {
 		return
 	}
-
-	regex = regexp.MustCompile(`(,\n)(})`)
-	replacement = fmt.Sprintf("$1\t\"%s\": %s$1$2", searcherNamer.NameSnakeCasePlural, searcherNamer.StructInstanceName)
-	replacedContent = util.ModifyFileWithRegexReplace("searchers/searchers_by_service_id.go", regex, replacement, "")
-
-	if !strings.Contains(replacedContent, fmt.Sprintf("\"%s\"", searcherNamer.ServiceLower)) {
-		// append root service if this is the first one we're populating
-		regex = regexp.MustCompile(`(,\n)(})`)
-		replacement = fmt.Sprintf("$1\t\"%s\": %s$1$2", searcherNamer.ServiceLower, searcherNamer.StructInstanceName)
-		util.ModifyFileWithRegexReplace("searchers/searchers_by_service_id.go", regex, replacement, "")
+	if !strings.Contains(content, fmt.Sprintf("\"%s\"", namer.ServiceLower)) {
+		addRegistryEntry(namer.ServiceLower, namer.StructName)
 	}
 }
 
-func appendToWorkflowTest(searcherNamer SearcherNamer) {
-	filename := "workflow/workflow_test.go"
-	regex := regexp.MustCompile(`(\t},)(\n})`)
+func addRegistryEntry(key, structName string) string {
+	replacement := fmt.Sprintf("$1\t\"%s\": %s{}$1$2", key, structName)
+	return modifyFileWithRegexReplace(registryFile, lastMapEntryRegex, replacement, "\""+key+"\"")
+}
 
-	addWorkflowTestCaseString := func(query string) string {
-		testCaseString := fmt.Sprintf(`	{
+// appendToWorkflowTest adds the queries reaching the new searcher to the
+// workflow test, reusing the searcher's own fixture.
+func appendToWorkflowTest(namer SearcherNamer) {
+	lastTestCaseRegex := regexp.MustCompile(`(\t},)(\n})`)
+	addTestCase := func(query string) {
+		testCase := fmt.Sprintf(`	{
 		query:       "%s",
 		fixtureName: "../searchers/%s_test", // reuse test fixture from this other test
-	},`, query, searcherNamer.NameSnakeCasePlural)
-		replacement := fmt.Sprintf("$1\n%s$2", testCaseString)
-		return util.ModifyFileWithRegexReplace(filename, regex, replacement, "\""+query+"\"")
+	},`, query, namer.FileName)
+		modifyFileWithRegexReplace(workflowTestFile, lastTestCaseRegex, "$1\n"+testCase+"$2", "\""+query+"\"")
 	}
 
-	addWorkflowTestCaseString(searcherNamer.ServiceLower)
-	addWorkflowTestCaseString(searcherNamer.ServiceLower + " ")
-	addWorkflowTestCaseString(searcherNamer.ServiceLower + " " + searcherNamer.EntityLowerPlural)
-	addWorkflowTestCaseString(searcherNamer.ServiceLower + " " + searcherNamer.EntityLowerPlural + " ")
+	service := namer.ServiceLower
+	addTestCase(service)
+	addTestCase(service + " ")
+	addTestCase(service + " " + namer.EntityLowerPlural)
+	addTestCase(service + " " + namer.EntityLowerPlural + " ")
 }
 
-func writeSearcherFile(searcherNamer SearcherNamer) {
-	templateString := `package searchers
+const searcherTemplate = `package searchers
 
 import (
 	"context"
-	"fmt"
-	"log"
-	"strings"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
-	"github.com/aws/aws-sdk-go-v2/service/{{ .OperationDefinition.Package }}"
-	"github.com/aws/aws-sdk-go-v2/service/{{ .OperationDefinition.Package }}/types"
+	"github.com/aws/aws-sdk-go-v2/service/{{ .Package }}"
+	"github.com/aws/aws-sdk-go-v2/service/{{ .Package }}/types"
 	aw "github.com/deanishe/awgo"
-	"github.com/rkoval/alfred-aws-console-services-workflow/awsworkflow"
-	"github.com/rkoval/alfred-aws-console-services-workflow/caching"
+	"github.com/rkoval/alfred-aws-console-services-workflow/awspaging"
 	"github.com/rkoval/alfred-aws-console-services-workflow/searchers/searchutil"
-	"github.com/rkoval/alfred-aws-console-services-workflow/util"
 )
 
 type {{ .StructName }} struct{}
 
 func (s {{ .StructName }}) Search(wf *aw.Workflow, searchArgs searchutil.SearchArgs) error {
-	cacheName := util.GetCurrentFilename()
-	entities := caching.Load{{ .OperationDefinition.PackageTitle }}{{ .OperationDefinition.Item }}ArrayFromCache(wf, searchArgs, cacheName, s.fetch)
-	for _, entity := range entities {
-		s.addToWorkflow(wf, searchArgs, entity)
-	}
-	return nil
+	return searchEntities(wf, searchArgs, "{{ .FileName }}", s.fetch, s.addToWorkflow)
 }
 
-func (s {{ .StructName }}) fetch(cfg aws.Config) ([]types.{{ .OperationDefinition.Item }}, error) {
-	client := {{ .OperationDefinition.Package }}.NewFromConfig(cfg)
-
-	entities := []types.{{ .OperationDefinition.Item }}{}
-	{{if .OperationDefinition.PageInputToken }}pageToken := ""
-	for { {{ end }}
-		params := &{{ .OperationDefinition.Package }}.{{ .OperationDefinition.FunctionInput }}{
-			{{if .OperationDefinition.PageSize }}{{ .OperationDefinition.PageSize }}: aws.Int32(1000),{{ end }}
-		}
-		{{if .OperationDefinition.PageInputToken }}if pageToken != "" {
-			params.{{ .OperationDefinition.PageInputToken }} = &pageToken
-		}{{ end }}
-		resp, err := client.{{ .OperationDefinition.FunctionName }}(context.TODO(), params)
-
+func ({{ .StructName }}) fetch(cfg aws.Config) ([]types.{{ .Item }}, error) {
+	client := {{ .Package }}.NewFromConfig(cfg)
+	return awspaging.FetchAllPages(func(pageToken string) ([]types.{{ .Item }}, *string, error) {
+		resp, err := client.{{ .FunctionName }}(context.TODO(), &{{ .Package }}.{{ .FunctionInput }}{
+			{{- if .PageSize }}
+			{{ .PageSize }}: aws.Int32(100), // TODO max allowed by this API
+			{{- end }}
+			{{- if .PageInputToken }}
+			{{ .PageInputToken }}: awspaging.TokenOrNil(pageToken),
+			{{- end }}
+		})
 		if err != nil {
-			return nil, err
+			return nil, nil, err
 		}
-
-		entities = append(entities, resp.{{ .OperationDefinition.Items }}...)
-
-		{{if .OperationDefinition.PageOutputToken }}if resp.{{ .OperationDefinition.PageOutputToken }} != nil {
-			pageToken = *resp.{{ .OperationDefinition.PageOutputToken }}
-		} else {
-			break
-		}{{ end }}
-	{{if .OperationDefinition.PageInputToken }} }{{ end }}
-
-	return entities, nil
+		return resp.{{ .Items }}, {{ if .PageOutputToken }}resp.{{ .PageOutputToken }}{{ else }}nil{{ end }}, nil
+	})
 }
 
-func (s {{ .StructName }}) addToWorkflow(wf *aw.Workflow, searchArgs searchutil.SearchArgs, entity types.{{ .OperationDefinition.Item }}) {
-	title := entity.TODO
-
-	subtitleArray := []string{}
-	subtitleArray = util.AppendString(subtitleArray, entity.TODO)
-	subtitle := strings.Join(subtitleArray, " – ")
-
-	path := fmt.Sprintf("/{{ .ServiceLower }}/{{ .EntityLowerPlural }}", searchArgs.TODO)
-	item := util.NewURLItem(wf, title).
-		Subtitle(subtitle).
-		Arg(util.ConstructAWSConsoleUrl(path, searchArgs.GetRegion())).
-		Icon(awsworkflow.GetImageIcon("{{ .ServiceLower }}")).
-		Valid(true)
-
-	searchArgs.AddMatch(item, "arn:", *entity.TODOArn, title)
-}`
-
-	util.WriteTemplateToFile("searcher_file", templateString, fmt.Sprintf("searchers/%s.go", searcherNamer.NameSnakeCasePlural), searcherNamer)
+func ({{ .StructName }}) addToWorkflow(wf *aw.Workflow, searchArgs searchutil.SearchArgs, entity types.{{ .Item }}) {
+	title := aws.ToString(entity.TODO)
+	searchArgs.AddConsoleResource(wf, searchutil.ConsoleResource{
+		Title:       title,
+		ConsolePath: "/{{ .ServiceLower }}/{{ .EntityLowerPlural }}/" + title, // TODO check the console path
+		ServiceID:   "{{ .ServiceLower }}",
+		ID:          aws.ToString(entity.TODOArn),
+		IDPrefix:    searchutil.ARNPrefix,
+	}).Subtitle(subtitleFrom(aws.ToString(entity.TODO)))
 }
+`
 
-func writeSearcherTestFile(searcherNamer SearcherNamer) {
-	templateString := `package searchers
+const searcherTestTemplate = `package searchers
 
 import (
 	"testing"
@@ -139,7 +113,47 @@ import (
 
 func Test{{ .StructName }}(t *testing.T) {
 	TestSearcher(t, {{ .StructName }}{}, util.GetCurrentFilename())
-}`
+}
+`
 
-	util.WriteTemplateToFile("searcher_test_file", templateString, fmt.Sprintf("searchers/%s_test.go", searcherNamer.NameSnakeCasePlural), searcherNamer)
+func writeSearcherFile(namer SearcherNamer) {
+	writeTemplateToFile("searcher_file", searcherTemplate, fmt.Sprintf("searchers/%s.go", namer.FileName), namer)
+}
+
+func writeSearcherTestFile(namer SearcherNamer) {
+	writeTemplateToFile("searcher_test_file", searcherTestTemplate, fmt.Sprintf("searchers/%s_test.go", namer.FileName), namer)
+}
+
+func writeTemplateToFile(templateName, templateString, fileName string, data interface{}) {
+	t, err := template.New(templateName).Parse(templateString)
+	if err != nil {
+		panic(err)
+	}
+	file, err := os.Create(fileName)
+	if err != nil {
+		panic(err)
+	}
+	defer file.Close()
+	if err := t.Execute(file, data); err != nil {
+		panic(err)
+	}
+}
+
+// modifyFileWithRegexReplace rewrites the file with the regex replaced, and
+// returns the new content; it leaves the file alone and returns "" when the
+// file already contains ignoreIfContains.
+func modifyFileWithRegexReplace(filename string, regex *regexp.Regexp, replacement string, ignoreIfContains string) string {
+	raw, err := os.ReadFile(filename)
+	if err != nil {
+		panic(err)
+	}
+	content := string(raw)
+	if ignoreIfContains != "" && strings.Contains(content, ignoreIfContains) {
+		return ""
+	}
+	replaced := regex.ReplaceAllString(content, replacement)
+	if err := os.WriteFile(filename, []byte(replaced), 0600); err != nil {
+		panic(err)
+	}
+	return replaced
 }

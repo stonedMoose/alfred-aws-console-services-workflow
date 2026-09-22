@@ -10,26 +10,31 @@ import (
 	"github.com/rkoval/alfred-aws-console-services-workflow/workflow"
 )
 
-var wf *aw.Workflow
-var forceFetch bool
-var query string
-var ymlPath string
-var openAll bool
+const (
+	repository = "rkoval/alfred-aws-console-services-workflow"
+	issuesURL  = "https://github.com/rkoval/alfred-aws-console-services-workflow/issues"
+)
+
+var (
+	wf         *aw.Workflow
+	forceFetch bool
+	openAll    bool
+	query      string
+	ymlPath    string
+)
 
 func init() {
 	flag.BoolVar(&forceFetch, "fetch", false, "force fetch via AWS instead of cache")
 	flag.BoolVar(&openAll, "open_all", false, "open all URLs in a browser for the matching query")
 	flag.StringVar(&query, "query", "", "query to use")
-	flag.StringVar(&ymlPath, "yml_path", "console-services.yml", "query to use")
+	flag.StringVar(&ymlPath, "yml_path", "console-services.yml", "path of the console services catalogue")
 	flag.Parse()
-	wf = aw.New(
-		update.GitHub("rkoval/alfred-aws-console-services-workflow"), aw.HelpURL("https://github.com/rkoval/alfred-aws-console-services-workflow/issues"))
+	wf = aw.New(update.GitHub(repository), aw.HelpURL(issuesURL))
 }
 
 func main() {
 	wf.Run(func() {
 		log.Printf("running workflow with query: `%s`", query)
-		query = strings.TrimLeft(query, " ")
-		workflow.Run(wf, query, nil, forceFetch, openAll, ymlPath)
+		workflow.Run(wf, strings.TrimLeft(query, " "), nil, forceFetch, openAll, ymlPath)
 	})
 }

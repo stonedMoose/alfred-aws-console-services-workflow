@@ -2,68 +2,41 @@ package searchers
 
 import (
 	"context"
-	"fmt"
 	"net/url"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/eks"
 	aw "github.com/deanishe/awgo"
-	"github.com/rkoval/alfred-aws-console-services-workflow/awsworkflow"
-	"github.com/rkoval/alfred-aws-console-services-workflow/caching"
+	"github.com/rkoval/alfred-aws-console-services-workflow/awspaging"
 	"github.com/rkoval/alfred-aws-console-services-workflow/searchers/searchutil"
-	"github.com/rkoval/alfred-aws-console-services-workflow/util"
 )
 
 type EKSClusterSearcher struct{}
 
 func (s EKSClusterSearcher) Search(wf *aw.Workflow, searchArgs searchutil.SearchArgs) error {
-	cacheName := util.GetCurrentFilename()
-	entities := caching.LoadEntityArrayFromCache(wf, searchArgs, cacheName, s.fetch)
-	for _, entity := range entities {
-		s.addToWorkflow(wf, searchArgs, entity)
-	}
-	return nil
+	return searchEntities(wf, searchArgs, "eks_clusters", s.fetch, s.addToWorkflow)
 }
 
-// ListClusters only returns cluster names; describing each one to enrich the
-// subtitle would cost an API call per cluster
-func (s EKSClusterSearcher) fetch(cfg aws.Config) ([]string, error) {
-	svc := eks.NewFromConfig(cfg)
-
-	var entities []string
-	nextToken := ""
-	for {
-		params := &eks.ListClustersInput{
+// fetch lists cluster names only: describing each one to enrich the subtitle
+// would cost an API call per cluster.
+func (EKSClusterSearcher) fetch(cfg aws.Config) ([]string, error) {
+	client := eks.NewFromConfig(cfg)
+	return awspaging.FetchAllPages(func(pageToken string) ([]string, *string, error) {
+		resp, err := client.ListClusters(context.TODO(), &eks.ListClustersInput{
 			MaxResults: aws.Int32(100), // max allowed by this API
-		}
-		if nextToken != "" {
-			params.NextToken = aws.String(nextToken)
-		}
-		resp, err := svc.ListClusters(context.TODO(), params)
+			NextToken:  awspaging.TokenOrNil(pageToken),
+		})
 		if err != nil {
-			return nil, err
+			return nil, nil, err
 		}
-
-		entities = append(entities, resp.Clusters...)
-
-		if resp.NextToken != nil && *resp.NextToken != "" {
-			nextToken = *resp.NextToken
-		} else {
-			break
-		}
-	}
-
-	return entities, nil
+		return resp.Clusters, resp.NextToken, nil
+	})
 }
 
-func (s EKSClusterSearcher) addToWorkflow(wf *aw.Workflow, searchArgs searchutil.SearchArgs, entity string) {
-	title := entity
-
-	path := fmt.Sprintf("/eks/home#/clusters/%s", url.PathEscape(title))
-	item := util.NewURLItem(wf, title).
-		Arg(util.ConstructAWSConsoleUrl(path, searchArgs.GetRegion())).
-		Icon(awsworkflow.GetImageIcon("eks")).
-		Valid(true)
-
-	searchArgs.AddMatch(item, "", "", title)
+func (EKSClusterSearcher) addToWorkflow(wf *aw.Workflow, searchArgs searchutil.SearchArgs, clusterName string) {
+	searchArgs.AddConsoleResource(wf, searchutil.ConsoleResource{
+		Title:       clusterName,
+		ConsolePath: "/eks/home#/clusters/" + url.PathEscape(clusterName),
+		ServiceID:   "eks",
+	})
 }

@@ -2,80 +2,46 @@ package searchers
 
 import (
 	"context"
-	"fmt"
-	"strings"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/elasticloadbalancingv2"
 	"github.com/aws/aws-sdk-go-v2/service/elasticloadbalancingv2/types"
 	aw "github.com/deanishe/awgo"
-	"github.com/rkoval/alfred-aws-console-services-workflow/awsworkflow"
-	"github.com/rkoval/alfred-aws-console-services-workflow/caching"
+	"github.com/rkoval/alfred-aws-console-services-workflow/awspaging"
 	"github.com/rkoval/alfred-aws-console-services-workflow/searchers/searchutil"
-	"github.com/rkoval/alfred-aws-console-services-workflow/util"
 )
 
 type EC2LoadBalancerSearcher struct{}
 
 func (s EC2LoadBalancerSearcher) Search(wf *aw.Workflow, searchArgs searchutil.SearchArgs) error {
-	cacheName := util.GetCurrentFilename()
-	entities := caching.LoadEntityArrayFromCache(wf, searchArgs, cacheName, s.fetch)
-	for _, entity := range entities {
-		s.addToWorkflow(wf, searchArgs, entity)
-	}
-	return nil
+	return searchEntities(wf, searchArgs, "ec2_load_balancers", s.fetch, s.addToWorkflow)
 }
 
-func (s EC2LoadBalancerSearcher) fetch(cfg aws.Config) ([]types.LoadBalancer, error) {
+func (EC2LoadBalancerSearcher) fetch(cfg aws.Config) ([]types.LoadBalancer, error) {
 	client := elasticloadbalancingv2.NewFromConfig(cfg)
-
-	entities := []types.LoadBalancer{}
-	pageToken := ""
-	for {
-		params := &elasticloadbalancingv2.DescribeLoadBalancersInput{
+	return awspaging.FetchAllPages(func(marker string) ([]types.LoadBalancer, *string, error) {
+		resp, err := client.DescribeLoadBalancers(context.TODO(), &elasticloadbalancingv2.DescribeLoadBalancersInput{
 			PageSize: aws.Int32(400),
-		}
-		if pageToken != "" {
-			params.Marker = &pageToken
-		}
-		resp, err := client.DescribeLoadBalancers(context.TODO(), params)
-
+			Marker:   awspaging.TokenOrNil(marker),
+		})
 		if err != nil {
-			return nil, err
+			return nil, nil, err
 		}
-
-		entities = append(entities, resp.LoadBalancers...)
-
-		if resp.NextMarker != nil {
-			pageToken = *resp.NextMarker
-		} else {
-			break
-		}
-	}
-
-	return entities, nil
+		return resp.LoadBalancers, resp.NextMarker, nil
+	})
 }
 
-func (s EC2LoadBalancerSearcher) addToWorkflow(wf *aw.Workflow, searchArgs searchutil.SearchArgs, entity types.LoadBalancer) {
-	title := ""
-	if entity.LoadBalancerName != nil {
-		title = *entity.LoadBalancerName
-	} else {
-		title = *entity.LoadBalancerArn
+func (EC2LoadBalancerSearcher) addToWorkflow(wf *aw.Workflow, searchArgs searchutil.SearchArgs, loadBalancer types.LoadBalancer) {
+	arn := aws.ToString(loadBalancer.LoadBalancerArn)
+	title := arn
+	if loadBalancer.LoadBalancerName != nil {
+		title = *loadBalancer.LoadBalancerName
 	}
-
-	subtitleArray := []string{}
-	typeString := string(entity.Type)
-	subtitleArray = util.AppendString(subtitleArray, &typeString)
-	subtitleArray = util.AppendString(subtitleArray, entity.DNSName)
-	subtitle := strings.Join(subtitleArray, " – ")
-
-	path := fmt.Sprintf("/ec2/home#LoadBalancers:search=%s;sort=loadBalancerName", *entity.LoadBalancerArn)
-	item := util.NewURLItem(wf, title).
-		Subtitle(subtitle).
-		Arg(util.ConstructAWSConsoleUrl(path, searchArgs.GetRegion())).
-		Icon(awsworkflow.GetImageIcon("ec2")).
-		Valid(true)
-
-	searchArgs.AddMatch(item, "arn:", *entity.LoadBalancerArn, title)
+	searchArgs.AddConsoleResource(wf, searchutil.ConsoleResource{
+		Title:       title,
+		ConsolePath: "/ec2/home#LoadBalancers:search=" + arn + ";sort=loadBalancerName",
+		ServiceID:   "ec2",
+		ID:          arn,
+		IDPrefix:    searchutil.ARNPrefix,
+	}).Subtitle(subtitleFrom(string(loadBalancer.Type), aws.ToString(loadBalancer.DNSName)))
 }

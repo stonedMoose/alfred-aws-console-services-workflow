@@ -2,78 +2,45 @@ package searchers
 
 import (
 	"context"
-	"fmt"
-	"strings"
-	"time"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/sfn"
 	"github.com/aws/aws-sdk-go-v2/service/sfn/types"
 	aw "github.com/deanishe/awgo"
-	"github.com/rkoval/alfred-aws-console-services-workflow/awsworkflow"
-	"github.com/rkoval/alfred-aws-console-services-workflow/caching"
+	"github.com/rkoval/alfred-aws-console-services-workflow/awspaging"
 	"github.com/rkoval/alfred-aws-console-services-workflow/searchers/searchutil"
-	"github.com/rkoval/alfred-aws-console-services-workflow/util"
 )
 
 type StepFunctionsStateMachineSearcher struct{}
 
 func (s StepFunctionsStateMachineSearcher) Search(wf *aw.Workflow, searchArgs searchutil.SearchArgs) error {
-	cacheName := util.GetCurrentFilename()
-	entities := caching.LoadEntityArrayFromCache(wf, searchArgs, cacheName, s.fetch)
-	for _, entity := range entities {
-		s.addToWorkflow(wf, searchArgs, entity)
-	}
-	return nil
+	return searchEntities(wf, searchArgs, "step_functions_state_machines", s.fetch, s.addToWorkflow)
 }
 
-func (s StepFunctionsStateMachineSearcher) fetch(cfg aws.Config) ([]types.StateMachineListItem, error) {
-	svc := sfn.NewFromConfig(cfg)
-
-	var entities []types.StateMachineListItem
-	nextToken := ""
-	for {
-		params := &sfn.ListStateMachinesInput{
+func (StepFunctionsStateMachineSearcher) fetch(cfg aws.Config) ([]types.StateMachineListItem, error) {
+	client := sfn.NewFromConfig(cfg)
+	return awspaging.FetchAllPages(func(pageToken string) ([]types.StateMachineListItem, *string, error) {
+		resp, err := client.ListStateMachines(context.TODO(), &sfn.ListStateMachinesInput{
 			MaxResults: 1000, // max allowed by this API
-		}
-		if nextToken != "" {
-			params.NextToken = aws.String(nextToken)
-		}
-		resp, err := svc.ListStateMachines(context.TODO(), params)
+			NextToken:  awspaging.TokenOrNil(pageToken),
+		})
 		if err != nil {
-			return nil, err
+			return nil, nil, err
 		}
-
-		entities = append(entities, resp.StateMachines...)
-
-		if resp.NextToken != nil && *resp.NextToken != "" {
-			nextToken = *resp.NextToken
-		} else {
-			break
-		}
-	}
-
-	return entities, nil
+		return resp.StateMachines, resp.NextToken, nil
+	})
 }
 
-func (s StepFunctionsStateMachineSearcher) addToWorkflow(wf *aw.Workflow, searchArgs searchutil.SearchArgs, entity types.StateMachineListItem) {
-	title := *entity.Name
-
-	subtitleArray := []string{}
-	if entity.Type != "" {
-		subtitleArray = append(subtitleArray, string(entity.Type))
-	}
-	if entity.CreationDate != nil {
-		subtitleArray = append(subtitleArray, "Created "+entity.CreationDate.Format(time.UnixDate))
-	}
-	subtitle := strings.Join(subtitleArray, " – ")
-
-	path := fmt.Sprintf("/states/home#/statemachines/view/%s", *entity.StateMachineArn)
-	item := util.NewURLItem(wf, title).
-		Subtitle(subtitle).
-		Arg(util.ConstructAWSConsoleUrl(path, searchArgs.GetRegion())).
-		Icon(awsworkflow.GetImageIcon("stepfunctions")).
-		Valid(true)
-
-	searchArgs.AddMatch(item, "arn:", *entity.StateMachineArn, title)
+func (StepFunctionsStateMachineSearcher) addToWorkflow(wf *aw.Workflow, searchArgs searchutil.SearchArgs, stateMachine types.StateMachineListItem) {
+	arn := aws.ToString(stateMachine.StateMachineArn)
+	searchArgs.AddConsoleResource(wf, searchutil.ConsoleResource{
+		Title:       aws.ToString(stateMachine.Name),
+		ConsolePath: "/states/home#/statemachines/view/" + arn,
+		ServiceID:   "stepfunctions",
+		ID:          arn,
+		IDPrefix:    searchutil.ARNPrefix,
+	}).Subtitle(subtitleFrom(
+		string(stateMachine.Type),
+		dateDetail("Created", stateMachine.CreationDate),
+	))
 }

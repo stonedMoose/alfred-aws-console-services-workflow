@@ -2,90 +2,64 @@ package searchers
 
 import (
 	"context"
-	"fmt"
-	"strings"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/sns"
 	"github.com/aws/aws-sdk-go-v2/service/sns/types"
 	aw "github.com/deanishe/awgo"
-	"github.com/rkoval/alfred-aws-console-services-workflow/awsworkflow"
-	"github.com/rkoval/alfred-aws-console-services-workflow/caching"
+	"github.com/rkoval/alfred-aws-console-services-workflow/awspaging"
 	"github.com/rkoval/alfred-aws-console-services-workflow/searchers/searchutil"
-	"github.com/rkoval/alfred-aws-console-services-workflow/util"
 )
+
+// pendingSubscriptionArn is what SNS reports instead of an ARN while the
+// endpoint has not confirmed the subscription.
+const pendingSubscriptionArn = "PendingConfirmation"
 
 type SNSSubscriptionSearcher struct{}
 
 func (s SNSSubscriptionSearcher) Search(wf *aw.Workflow, searchArgs searchutil.SearchArgs) error {
-	cacheName := util.GetCurrentFilename()
-	entities := caching.LoadEntityArrayFromCache(wf, searchArgs, cacheName, s.fetch)
-	for _, entity := range entities {
-		s.addToWorkflow(wf, searchArgs, entity)
-	}
-	return nil
+	return searchEntities(wf, searchArgs, "sns_subscriptions", s.fetch, s.addToWorkflow)
 }
 
-func (s SNSSubscriptionSearcher) fetch(cfg aws.Config) ([]types.Subscription, error) {
+func (SNSSubscriptionSearcher) fetch(cfg aws.Config) ([]types.Subscription, error) {
 	client := sns.NewFromConfig(cfg)
-
-	entities := []types.Subscription{}
-	pageToken := ""
-	for {
-		params := &sns.ListSubscriptionsInput{}
-		if pageToken != "" {
-			params.NextToken = &pageToken
-		}
-		resp, err := client.ListSubscriptions(context.TODO(), params)
-
+	return awspaging.FetchAllPages(func(pageToken string) ([]types.Subscription, *string, error) {
+		resp, err := client.ListSubscriptions(context.TODO(), &sns.ListSubscriptionsInput{
+			NextToken: awspaging.TokenOrNil(pageToken),
+		})
 		if err != nil {
-			return nil, err
+			return nil, nil, err
 		}
-
-		entities = append(entities, resp.Subscriptions...)
-
-		if resp.NextToken != nil {
-			pageToken = *resp.NextToken
-		} else {
-			break
-		}
-	}
-
-	return entities, nil
+		return resp.Subscriptions, resp.NextToken, nil
+	})
 }
 
-func (s SNSSubscriptionSearcher) addToWorkflow(wf *aw.Workflow, searchArgs searchutil.SearchArgs, entity types.Subscription) {
-	topicName := util.GetEndOfArn(*entity.TopicArn)
-	title := topicName
-
-	isPending := entity.SubscriptionArn == nil || *entity.SubscriptionArn == "PendingConfirmation"
-	subtitleArray := []string{}
-	subtitleArray = util.AppendString(subtitleArray, entity.Protocol)
-	subtitleArray = util.AppendString(subtitleArray, entity.Endpoint)
-	var subtitle string
-
-	var path string
-	if isPending {
-		// subscription is still pending, so there's no permalink to it yet
-		path = "/sns/v3/home#/subscriptions"
-		subtitle = "🕘 " + subtitle
-	} else {
-		path = fmt.Sprintf(
-			"/sns/v3/home#/subscription/%s",
-			*entity.SubscriptionArn,
-		)
-		subtitle = "✅ " + subtitle
-		subscriptionId := util.GetEndOfArn(*entity.SubscriptionArn)
-		subtitleArray = util.AppendString(subtitleArray, &subscriptionId)
+// addToWorkflow sends a confirmed subscription to its own page and a pending
+// one to the subscription list, where it can be confirmed.
+func (SNSSubscriptionSearcher) addToWorkflow(wf *aw.Workflow, searchArgs searchutil.SearchArgs, subscription types.Subscription) {
+	protocol := aws.ToString(subscription.Protocol)
+	endpoint := aws.ToString(subscription.Endpoint)
+	if isPendingConfirmation(subscription) {
+		addSubscriptionItem(wf, searchArgs, subscription, "/sns/v3/home#/subscriptions").
+			Subtitle("🕘 " + subtitleFrom(protocol, endpoint))
+		return
 	}
+	arn := aws.ToString(subscription.SubscriptionArn)
+	addSubscriptionItem(wf, searchArgs, subscription, "/sns/v3/home#/subscription/"+arn).
+		Subtitle("✅ " + subtitleFrom(protocol, endpoint, arnResourceName(arn)))
+}
 
-	subtitle += strings.Join(subtitleArray, " – ")
+func isPendingConfirmation(subscription types.Subscription) bool {
+	return subscription.SubscriptionArn == nil || *subscription.SubscriptionArn == pendingSubscriptionArn
+}
 
-	item := util.NewURLItem(wf, title).
-		Subtitle(subtitle).
-		Arg(util.ConstructAWSConsoleUrl(path, searchArgs.GetRegion())).
-		Icon(awsworkflow.GetImageIcon("sns")).
-		Valid(true)
-
-	searchArgs.AddMatch(item, "arn:", *entity.TopicArn, title)
+func addSubscriptionItem(wf *aw.Workflow, searchArgs searchutil.SearchArgs, subscription types.Subscription, consolePath string) *aw.Item {
+	topicArn := aws.ToString(subscription.TopicArn)
+	return searchArgs.AddConsoleResource(wf, searchutil.ConsoleResource{
+		Title:       arnResourceName(topicArn),
+		ConsolePath: consolePath,
+		ServiceID:   "sns",
+		ID:          topicArn,
+		IDPrefix:    searchutil.ARNPrefix,
+	})
 }

@@ -2,76 +2,43 @@ package searchers
 
 import (
 	"context"
-	"fmt"
-	"strings"
-	"time"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/codepipeline"
 	"github.com/aws/aws-sdk-go-v2/service/codepipeline/types"
 	aw "github.com/deanishe/awgo"
-	"github.com/rkoval/alfred-aws-console-services-workflow/awsworkflow"
-	"github.com/rkoval/alfred-aws-console-services-workflow/caching"
+	"github.com/rkoval/alfred-aws-console-services-workflow/awspaging"
 	"github.com/rkoval/alfred-aws-console-services-workflow/searchers/searchutil"
-	"github.com/rkoval/alfred-aws-console-services-workflow/util"
 )
 
 type CodePipelinePipelinesSearcher struct{}
 
 func (s CodePipelinePipelinesSearcher) Search(wf *aw.Workflow, searchArgs searchutil.SearchArgs) error {
-	cacheName := util.GetCurrentFilename()
-	entities := caching.LoadEntityArrayFromCache(wf, searchArgs, cacheName, s.fetch)
-	for _, entity := range entities {
-		s.addToWorkflow(wf, searchArgs, entity)
-	}
-	return nil
+	return searchEntities(wf, searchArgs, "codepipeline_pipelines", s.fetch, s.addToWorkflow)
 }
 
-func (s CodePipelinePipelinesSearcher) fetch(cfg aws.Config) ([]types.PipelineSummary, error) {
-	svc := codepipeline.NewFromConfig(cfg)
-
-	NextToken := ""
-	var entities []types.PipelineSummary
-	for {
-		params := &codepipeline.ListPipelinesInput{
+func (CodePipelinePipelinesSearcher) fetch(cfg aws.Config) ([]types.PipelineSummary, error) {
+	client := codepipeline.NewFromConfig(cfg)
+	return awspaging.FetchAllPages(func(pageToken string) ([]types.PipelineSummary, *string, error) {
+		resp, err := client.ListPipelines(context.TODO(), &codepipeline.ListPipelinesInput{
 			MaxResults: aws.Int32(100),
-		}
-		if NextToken != "" {
-			params.NextToken = aws.String(NextToken)
-		}
-		resp, err := svc.ListPipelines(context.TODO(), params)
+			NextToken:  awspaging.TokenOrNil(pageToken),
+		})
 		if err != nil {
-			return nil, err
+			return nil, nil, err
 		}
-
-		entities = append(entities, resp.Pipelines...)
-
-		if resp.NextToken != nil {
-			NextToken = *resp.NextToken
-		} else {
-			break
-		}
-	}
-
-	return entities, nil
+		return resp.Pipelines, resp.NextToken, nil
+	})
 }
 
-func (s CodePipelinePipelinesSearcher) addToWorkflow(wf *aw.Workflow, searchArgs searchutil.SearchArgs, entity types.PipelineSummary) {
-	title := *entity.Name
-	subtitleArray := []string{}
-	if entity.Version != nil {
-		subtitleArray = append(subtitleArray, fmt.Sprintf("Version %d", *entity.Version))
-	}
-	if entity.Created != nil {
-		subtitleArray = append(subtitleArray, fmt.Sprintf("Created %s", entity.Created.Format(time.UnixDate)))
-	}
-	subtitle := strings.Join(subtitleArray, " – ")
-
-	path := fmt.Sprintf("/codesuite/codepipeline/pipelines/%s/view", title)
-	item := util.NewURLItem(wf, title).
-		Subtitle(subtitle).
-		Arg(util.ConstructAWSConsoleUrl(path, searchArgs.GetRegion())).
-		Icon(awsworkflow.GetImageIcon("codepipeline"))
-
-	searchArgs.AddMatch(item, "", "", title)
+func (CodePipelinePipelinesSearcher) addToWorkflow(wf *aw.Workflow, searchArgs searchutil.SearchArgs, pipeline types.PipelineSummary) {
+	name := aws.ToString(pipeline.Name)
+	searchArgs.AddConsoleResource(wf, searchutil.ConsoleResource{
+		Title:       name,
+		ConsolePath: "/codesuite/codepipeline/pipelines/" + name + "/view",
+		ServiceID:   "codepipeline",
+	}).Subtitle(subtitleFrom(
+		formatIfSet("Version %d", pipeline.Version),
+		dateDetail("Created", pipeline.Created),
+	))
 }

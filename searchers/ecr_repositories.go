@@ -2,88 +2,48 @@ package searchers
 
 import (
 	"context"
-	"fmt"
 	"net/url"
 	"strings"
-	"time"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/ecr"
 	"github.com/aws/aws-sdk-go-v2/service/ecr/types"
 	aw "github.com/deanishe/awgo"
-	"github.com/rkoval/alfred-aws-console-services-workflow/awsworkflow"
-	"github.com/rkoval/alfred-aws-console-services-workflow/caching"
+	"github.com/rkoval/alfred-aws-console-services-workflow/awspaging"
 	"github.com/rkoval/alfred-aws-console-services-workflow/searchers/searchutil"
-	"github.com/rkoval/alfred-aws-console-services-workflow/util"
 )
 
 type ECRRepositorySearcher struct{}
 
 func (s ECRRepositorySearcher) Search(wf *aw.Workflow, searchArgs searchutil.SearchArgs) error {
-	cacheName := util.GetCurrentFilename()
-	entities := caching.LoadEntityArrayFromCache(wf, searchArgs, cacheName, s.fetch)
-	for _, entity := range entities {
-		s.addToWorkflow(wf, searchArgs, entity)
-	}
-	return nil
+	return searchEntities(wf, searchArgs, "ecr_repositories", s.fetch, s.addToWorkflow)
 }
 
-func (s ECRRepositorySearcher) fetch(cfg aws.Config) ([]types.Repository, error) {
-	svc := ecr.NewFromConfig(cfg)
-
-	var entities []types.Repository
-	nextToken := ""
-	for {
-		params := &ecr.DescribeRepositoriesInput{
+func (ECRRepositorySearcher) fetch(cfg aws.Config) ([]types.Repository, error) {
+	client := ecr.NewFromConfig(cfg)
+	return awspaging.FetchAllPages(func(pageToken string) ([]types.Repository, *string, error) {
+		resp, err := client.DescribeRepositories(context.TODO(), &ecr.DescribeRepositoriesInput{
 			MaxResults: aws.Int32(1000), // max allowed by this API
-		}
-		if nextToken != "" {
-			params.NextToken = aws.String(nextToken)
-		}
-		resp, err := svc.DescribeRepositories(context.TODO(), params)
+			NextToken:  awspaging.TokenOrNil(pageToken),
+		})
 		if err != nil {
-			return nil, err
+			return nil, nil, err
 		}
-
-		entities = append(entities, resp.Repositories...)
-
-		if resp.NextToken != nil && *resp.NextToken != "" {
-			nextToken = *resp.NextToken
-		} else {
-			break
-		}
-	}
-
-	return entities, nil
+		return resp.Repositories, resp.NextToken, nil
+	})
 }
 
-func (s ECRRepositorySearcher) addToWorkflow(wf *aw.Workflow, searchArgs searchutil.SearchArgs, entity types.Repository) {
-	title := *entity.RepositoryName
-
-	subtitleArray := []string{}
-	subtitleArray = util.AppendString(subtitleArray, entity.RepositoryUri)
-	if entity.ImageTagMutability != "" {
-		subtitleArray = append(subtitleArray, strings.ToLower(string(entity.ImageTagMutability)))
-	}
-	if entity.CreatedAt != nil {
-		subtitleArray = append(subtitleArray, "Created "+entity.CreatedAt.Format(time.UnixDate))
-	}
-	subtitle := strings.Join(subtitleArray, " – ")
-
-	registryId := ""
-	if entity.RegistryId != nil {
-		registryId = *entity.RegistryId
-	}
-	path := fmt.Sprintf("/ecr/repositories/private/%s/%s", registryId, url.PathEscape(title))
-	item := util.NewURLItem(wf, title).
-		Subtitle(subtitle).
-		Arg(util.ConstructAWSConsoleUrl(path, searchArgs.GetRegion())).
-		Icon(awsworkflow.GetImageIcon("ecr")).
-		Valid(true)
-
-	arn := ""
-	if entity.RepositoryArn != nil {
-		arn = *entity.RepositoryArn
-	}
-	searchArgs.AddMatch(item, "arn:", arn, title)
+func (ECRRepositorySearcher) addToWorkflow(wf *aw.Workflow, searchArgs searchutil.SearchArgs, repository types.Repository) {
+	name := aws.ToString(repository.RepositoryName)
+	searchArgs.AddConsoleResource(wf, searchutil.ConsoleResource{
+		Title:       name,
+		ConsolePath: "/ecr/repositories/private/" + aws.ToString(repository.RegistryId) + "/" + url.PathEscape(name),
+		ServiceID:   "ecr",
+		ID:          aws.ToString(repository.RepositoryArn),
+		IDPrefix:    searchutil.ARNPrefix,
+	}).Subtitle(subtitleFrom(
+		aws.ToString(repository.RepositoryUri),
+		strings.ToLower(string(repository.ImageTagMutability)),
+		dateDetail("Created", repository.CreatedAt),
+	))
 }

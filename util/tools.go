@@ -8,72 +8,62 @@ import (
 	"strings"
 )
 
+// GetCurrentFilename returns the name, without extension, of the Go file that
+// calls it.
 func GetCurrentFilename() string {
-	_, current_file, _, _ := runtime.Caller(1)
-	baseFile := filepath.Base(current_file)
+	_, callerFile, _, _ := runtime.Caller(1)
+	baseFile := filepath.Base(callerFile)
 	return strings.TrimSuffix(baseFile, filepath.Ext(baseFile))
 }
 
-func RoundUp(input float64, places int) (newVal float64) {
-	var round float64
-	pow := math.Pow(10, float64(places))
-	digit := pow * input
-	round = math.Ceil(digit)
-	newVal = round / pow
-	return
+type byteUnit struct {
+	threshold float64
+	size      float64
+	symbol    string
 }
 
-func AppendString(arr []string, str *string) []string {
-	if str != nil && *str != "" {
-		arr = append(arr, *str)
-	}
-	return arr
+var byteUnits = []byteUnit{
+	{threshold: 1e15, size: 1 << 50, symbol: "PB"},
+	{threshold: 1e12, size: 1 << 40, symbol: "TB"},
+	{threshold: 1e9, size: 1 << 30, symbol: "GB"},
+	{threshold: 1e6, size: 1 << 20, symbol: "MB"},
+	{threshold: 1e3, size: 1 << 10, symbol: "KB"},
 }
 
-// adapted from https://www.socketloop.com/tutorials/golang-byte-format-example
-func ByteFormat(inputNum int64, precision int) string {
-
+// ByteFormat renders a byte count in the largest fitting unit, rounded up to
+// the given number of decimal places.
+// Adapted from https://www.socketloop.com/tutorials/golang-byte-format-example
+func ByteFormat(byteCount int64, precision int) string {
 	if precision <= 0 {
 		precision = 1
 	}
-
-	var unit string
-	var returnVal float64
-
-	floatInputNum := float64(inputNum)
-	if inputNum >= 1000000000000000 {
-		returnVal = RoundUp((floatInputNum / 1125899906842624), precision)
-		unit = "PB" // petabyte
-	} else if floatInputNum >= 1000000000000 {
-		returnVal = RoundUp((floatInputNum / 1099511627776), precision)
-		unit = "TB" // terrabyte
-	} else if floatInputNum >= 1000000000 {
-		returnVal = RoundUp((floatInputNum / 1073741824), precision)
-		unit = "GB" // gigabyte
-	} else if floatInputNum >= 1000000 {
-		returnVal = RoundUp((floatInputNum / 1048576), precision)
-		unit = "MB" // megabyte
-	} else if floatInputNum >= 1000 {
-		returnVal = RoundUp((floatInputNum / 1024), precision)
-		unit = "KB" // kilobyte
-	} else {
-		returnVal = floatInputNum
-		unit = "B" // byte
+	count := float64(byteCount)
+	for _, unit := range byteUnits {
+		if count >= unit.threshold {
+			return formatFloat(roundUp(count/unit.size, precision)) + " " + unit.symbol
+		}
 	}
-
-	return strconv.FormatFloat(returnVal, 'f', -1, 64) + " " + unit
-
+	return formatFloat(count) + " B"
 }
 
-func ReverseString(s string) string {
-	var sb strings.Builder
+func formatFloat(value float64) string {
+	return strconv.FormatFloat(value, 'f', -1, 64)
+}
+
+func roundUp(value float64, places int) float64 {
+	scale := math.Pow(10, float64(places))
+	return math.Ceil(value*scale) / scale
+}
+
+// ReplaceLast replaces the last occurrence of old in s with replacement.
+func ReplaceLast(s, old, replacement string) string {
+	return reverse(strings.Replace(reverse(s), reverse(old), reverse(replacement), 1))
+}
+
+func reverse(s string) string {
 	runes := []rune(s)
-	for i := len(runes) - 1; 0 <= i; i-- {
-		sb.WriteRune(runes[i])
+	for i, j := 0, len(runes)-1; i < j; i, j = i+1, j-1 {
+		runes[i], runes[j] = runes[j], runes[i]
 	}
-	return sb.String()
-}
-
-func ReplaceRight(s string, old string, new string, n int) string {
-	return ReverseString(strings.Replace(ReverseString(s), ReverseString(old), ReverseString(new), 1))
+	return string(runes)
 }

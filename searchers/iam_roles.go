@@ -2,82 +2,47 @@ package searchers
 
 import (
 	"context"
-	"fmt"
 	"net/url"
-	"strings"
-	"time"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/iam"
 	"github.com/aws/aws-sdk-go-v2/service/iam/types"
 	aw "github.com/deanishe/awgo"
-	"github.com/rkoval/alfred-aws-console-services-workflow/awsworkflow"
-	"github.com/rkoval/alfred-aws-console-services-workflow/caching"
+	"github.com/rkoval/alfred-aws-console-services-workflow/awspaging"
 	"github.com/rkoval/alfred-aws-console-services-workflow/searchers/searchutil"
-	"github.com/rkoval/alfred-aws-console-services-workflow/util"
 )
 
 type IAMRoleSearcher struct{}
 
 func (s IAMRoleSearcher) Search(wf *aw.Workflow, searchArgs searchutil.SearchArgs) error {
-	cacheName := util.GetCurrentFilename()
-	entities := caching.LoadEntityArrayFromCache(wf, searchArgs, cacheName, s.fetch)
-	for _, entity := range entities {
-		s.addToWorkflow(wf, searchArgs, entity)
-	}
-	return nil
+	return searchEntities(wf, searchArgs, "iam_roles", s.fetch, s.addToWorkflow)
 }
 
-func (s IAMRoleSearcher) fetch(cfg aws.Config) ([]types.Role, error) {
-	svc := iam.NewFromConfig(cfg)
-
-	var entities []types.Role
-	marker := ""
-	for {
-		params := &iam.ListRolesInput{
+func (IAMRoleSearcher) fetch(cfg aws.Config) ([]types.Role, error) {
+	client := iam.NewFromConfig(cfg)
+	return awspaging.FetchAllPages(func(marker string) ([]types.Role, *string, error) {
+		resp, err := client.ListRoles(context.TODO(), &iam.ListRolesInput{
 			MaxItems: aws.Int32(1000), // get as many as we can
-		}
-		if marker != "" {
-			params.Marker = aws.String(marker)
-		}
-		resp, err := svc.ListRoles(context.TODO(), params)
+			Marker:   awspaging.TokenOrNil(marker),
+		})
 		if err != nil {
-			return nil, err
+			return nil, nil, err
 		}
-
-		entities = append(entities, resp.Roles...)
-
-		if resp.IsTruncated && resp.Marker != nil {
-			marker = *resp.Marker
-		} else {
-			break
-		}
-	}
-
-	return entities, nil
+		return resp.Roles, awspaging.NextPageTokenIf(resp.IsTruncated, resp.Marker), nil
+	})
 }
 
-func (s IAMRoleSearcher) addToWorkflow(wf *aw.Workflow, searchArgs searchutil.SearchArgs, entity types.Role) {
-	title := *entity.RoleName
-
-	subtitleArray := []string{}
-	subtitleArray = util.AppendString(subtitleArray, entity.Description)
-	subtitleArray = util.AppendString(subtitleArray, entity.Path)
-	if entity.CreateDate != nil {
-		subtitleArray = append(subtitleArray, "Created "+entity.CreateDate.Format(time.UnixDate))
-	}
-	subtitle := strings.Join(subtitleArray, " – ")
-
-	path := fmt.Sprintf("/iamv2/home#/roles/details/%s", url.PathEscape(title))
-	item := util.NewURLItem(wf, title).
-		Subtitle(subtitle).
-		Arg(util.ConstructAWSConsoleUrl(path, searchArgs.GetRegion())).
-		Icon(awsworkflow.GetImageIcon("iam")).
-		Valid(true)
-
-	arn := ""
-	if entity.Arn != nil {
-		arn = *entity.Arn
-	}
-	searchArgs.AddMatch(item, "arn:", arn, title)
+func (IAMRoleSearcher) addToWorkflow(wf *aw.Workflow, searchArgs searchutil.SearchArgs, role types.Role) {
+	name := aws.ToString(role.RoleName)
+	searchArgs.AddConsoleResource(wf, searchutil.ConsoleResource{
+		Title:       name,
+		ConsolePath: "/iamv2/home#/roles/details/" + url.PathEscape(name),
+		ServiceID:   "iam",
+		ID:          aws.ToString(role.Arn),
+		IDPrefix:    searchutil.ARNPrefix,
+	}).Subtitle(subtitleFrom(
+		aws.ToString(role.Description),
+		aws.ToString(role.Path),
+		dateDetail("Created", role.CreateDate),
+	))
 }

@@ -2,15 +2,13 @@ package searchers
 
 import (
 	"context"
-	"fmt"
 	"strings"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/efs"
 	"github.com/aws/aws-sdk-go-v2/service/efs/types"
 	aw "github.com/deanishe/awgo"
-	"github.com/rkoval/alfred-aws-console-services-workflow/awsworkflow"
-	"github.com/rkoval/alfred-aws-console-services-workflow/caching"
+	"github.com/rkoval/alfred-aws-console-services-workflow/awspaging"
 	"github.com/rkoval/alfred-aws-console-services-workflow/searchers/searchutil"
 	"github.com/rkoval/alfred-aws-console-services-workflow/util"
 )
@@ -18,70 +16,42 @@ import (
 type EFSFileSystemSearcher struct{}
 
 func (s EFSFileSystemSearcher) Search(wf *aw.Workflow, searchArgs searchutil.SearchArgs) error {
-	cacheName := util.GetCurrentFilename()
-	entities := caching.LoadEntityArrayFromCache(wf, searchArgs, cacheName, s.fetch)
-	for _, entity := range entities {
-		s.addToWorkflow(wf, searchArgs, entity)
-	}
-	return nil
+	return searchEntities(wf, searchArgs, "efs_file_systems", s.fetch, s.addToWorkflow)
 }
 
-func (s EFSFileSystemSearcher) fetch(cfg aws.Config) ([]types.FileSystemDescription, error) {
-	svc := efs.NewFromConfig(cfg)
-
-	var entities []types.FileSystemDescription
-	marker := ""
-	for {
-		params := &efs.DescribeFileSystemsInput{
+func (EFSFileSystemSearcher) fetch(cfg aws.Config) ([]types.FileSystemDescription, error) {
+	client := efs.NewFromConfig(cfg)
+	return awspaging.FetchAllPages(func(marker string) ([]types.FileSystemDescription, *string, error) {
+		resp, err := client.DescribeFileSystems(context.TODO(), &efs.DescribeFileSystemsInput{
 			MaxItems: aws.Int32(100), // max allowed by this API
-		}
-		if marker != "" {
-			params.Marker = aws.String(marker)
-		}
-		resp, err := svc.DescribeFileSystems(context.TODO(), params)
+			Marker:   awspaging.TokenOrNil(marker),
+		})
 		if err != nil {
-			return nil, err
+			return nil, nil, err
 		}
-
-		entities = append(entities, resp.FileSystems...)
-
-		if resp.NextMarker != nil && *resp.NextMarker != "" {
-			marker = *resp.NextMarker
-		} else {
-			break
-		}
-	}
-
-	return entities, nil
+		return resp.FileSystems, resp.NextMarker, nil
+	})
 }
 
-func (s EFSFileSystemSearcher) addToWorkflow(wf *aw.Workflow, searchArgs searchutil.SearchArgs, entity types.FileSystemDescription) {
-	id := *entity.FileSystemId
-	title := id
+func (EFSFileSystemSearcher) addToWorkflow(wf *aw.Workflow, searchArgs searchutil.SearchArgs, fileSystem types.FileSystemDescription) {
+	id := aws.ToString(fileSystem.FileSystemId)
+	title, idDetail := namedOrID(aws.ToString(fileSystem.Name), id)
+	searchArgs.AddConsoleResource(wf, searchutil.ConsoleResource{
+		Title:       title,
+		ConsolePath: "/efs/home#/file-systems/" + id,
+		ServiceID:   "efs",
+		ID:          aws.ToString(fileSystem.FileSystemArn),
+		IDPrefix:    searchutil.ARNPrefix,
+	}).Subtitle(subtitleFrom(
+		idDetail,
+		strings.ToLower(string(fileSystem.LifeCycleState)),
+		fileSystemSizeDetail(fileSystem.SizeInBytes),
+	))
+}
 
-	subtitleArray := []string{}
-	if entity.Name != nil && *entity.Name != "" {
-		title = *entity.Name
-		subtitleArray = append(subtitleArray, id)
+func fileSystemSizeDetail(size *types.FileSystemSize) string {
+	if size == nil || size.Value == 0 {
+		return ""
 	}
-	if entity.LifeCycleState != "" {
-		subtitleArray = append(subtitleArray, strings.ToLower(string(entity.LifeCycleState)))
-	}
-	if entity.SizeInBytes != nil && entity.SizeInBytes.Value != 0 {
-		subtitleArray = append(subtitleArray, util.ByteFormat(entity.SizeInBytes.Value, 2))
-	}
-	subtitle := strings.Join(subtitleArray, " – ")
-
-	path := fmt.Sprintf("/efs/home#/file-systems/%s", id)
-	item := util.NewURLItem(wf, title).
-		Subtitle(subtitle).
-		Arg(util.ConstructAWSConsoleUrl(path, searchArgs.GetRegion())).
-		Icon(awsworkflow.GetImageIcon("efs")).
-		Valid(true)
-
-	arn := ""
-	if entity.FileSystemArn != nil {
-		arn = *entity.FileSystemArn
-	}
-	searchArgs.AddMatch(item, "arn:", arn, title)
+	return util.ByteFormat(size.Value, 2)
 }

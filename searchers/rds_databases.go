@@ -2,84 +2,56 @@ package searchers
 
 import (
 	"context"
-	"fmt"
-	"strings"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/rds"
 	"github.com/aws/aws-sdk-go-v2/service/rds/types"
 	aw "github.com/deanishe/awgo"
-	"github.com/rkoval/alfred-aws-console-services-workflow/awsworkflow"
-	"github.com/rkoval/alfred-aws-console-services-workflow/caching"
+	"github.com/rkoval/alfred-aws-console-services-workflow/awspaging"
 	"github.com/rkoval/alfred-aws-console-services-workflow/searchers/searchutil"
-	"github.com/rkoval/alfred-aws-console-services-workflow/util"
 )
 
 type RDSDatabaseSearcher struct{}
 
 func (s RDSDatabaseSearcher) Search(wf *aw.Workflow, searchArgs searchutil.SearchArgs) error {
-	cacheName := util.GetCurrentFilename()
-	es := caching.LoadEntityArrayFromCache(wf, searchArgs, cacheName, s.fetch)
-	for _, entity := range es {
-		s.addToWorkflow(wf, searchArgs, entity)
-	}
-	return nil
+	return searchEntities(wf, searchArgs, "rds_databases", s.fetch, s.addToWorkflow)
 }
 
-func (s RDSDatabaseSearcher) fetch(cfg aws.Config) ([]types.DBInstance, error) {
-	svc := rds.NewFromConfig(cfg)
-
-	pageToken := ""
-	var entities []types.DBInstance
-	for {
-		params := &rds.DescribeDBInstancesInput{
+func (RDSDatabaseSearcher) fetch(cfg aws.Config) ([]types.DBInstance, error) {
+	client := rds.NewFromConfig(cfg)
+	return awspaging.FetchAllPages(func(marker string) ([]types.DBInstance, *string, error) {
+		resp, err := client.DescribeDBInstances(context.TODO(), &rds.DescribeDBInstancesInput{
 			MaxRecords: aws.Int32(100),
-		}
-		if pageToken != "" {
-			params.Marker = aws.String(pageToken)
-		}
-		resp, err := svc.DescribeDBInstances(context.TODO(), params)
+			Marker:     awspaging.TokenOrNil(marker),
+		})
 		if err != nil {
-			return nil, err
+			return nil, nil, err
 		}
-
-		entities = append(entities, resp.DBInstances...)
-
-		if resp.Marker != nil {
-			pageToken = *resp.Marker
-		} else {
-			break
-		}
-	}
-
-	return entities, nil
+		return resp.DBInstances, resp.Marker, nil
+	})
 }
 
-func (s RDSDatabaseSearcher) addToWorkflow(wf *aw.Workflow, searchArgs searchutil.SearchArgs, entity types.DBInstance) {
-	subtitleArray := []string{}
-	var engineString string
-	if entity.Engine != nil && *entity.Engine != "" {
-		engineString += *entity.Engine
+func (RDSDatabaseSearcher) addToWorkflow(wf *aw.Workflow, searchArgs searchutil.SearchArgs, instance types.DBInstance) {
+	id := aws.ToString(instance.DBInstanceIdentifier)
+	searchArgs.AddConsoleResource(wf, searchutil.ConsoleResource{
+		Title:       id,
+		ConsolePath: "/rds/home#database:id=" + id + ";is-cluster=false",
+		ServiceID:   "rds",
+		ID:          aws.ToString(instance.DBInstanceArn),
+		IDPrefix:    searchutil.ARNPrefix,
+	}).Subtitle(subtitleFrom(
+		joinKnown(" ", aws.ToString(instance.Engine), aws.ToString(instance.EngineVersion)),
+		aws.ToString(instance.DBInstanceClass),
+		databaseNameDetail(instance, id),
+	))
+}
+
+// databaseNameDetail mentions the database name only when it adds to the
+// instance identifier.
+func databaseNameDetail(instance types.DBInstance, instanceID string) string {
+	name := aws.ToString(instance.DBName)
+	if name == instanceID {
+		return ""
 	}
-	if entity.EngineVersion != nil && *entity.EngineVersion != "" {
-		engineString += " " + *entity.EngineVersion
-	}
-	subtitleArray = util.AppendString(subtitleArray, &engineString)
-	subtitleArray = util.AppendString(subtitleArray, entity.DBInstanceClass)
-
-	title := *entity.DBInstanceIdentifier
-	if entity.DBName != nil && *entity.DBName != title {
-		subtitleArray = util.AppendString(subtitleArray, entity.DBName)
-	}
-
-	subtitle := strings.Join(subtitleArray, " – ")
-
-	path := fmt.Sprintf("/rds/home#database:id=%s;is-cluster=false", *entity.DBInstanceIdentifier)
-	item := util.NewURLItem(wf, title).
-		Subtitle(subtitle).
-		Arg(util.ConstructAWSConsoleUrl(path, searchArgs.GetRegion())).
-		Icon(awsworkflow.GetImageIcon("rds")).
-		Valid(true)
-
-	searchArgs.AddMatch(item, "arn:", *entity.DBInstanceArn, title)
+	return name
 }

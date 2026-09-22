@@ -1,124 +1,110 @@
+// Package caching keeps the resources a searcher lists in the workflow cache,
+// so that Alfred answers instantly while AWS is only asked in the background.
 package caching
 
 import (
-	"errors"
 	"log"
 	"os"
-	"strings"
+	"os/exec"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
-	cloudformation "github.com/aws/aws-sdk-go-v2/service/cloudformation/types"
-	cloudwatchlogs "github.com/aws/aws-sdk-go-v2/service/cloudwatchlogs/types"
-	codepipeline "github.com/aws/aws-sdk-go-v2/service/codepipeline/types"
-	ec2 "github.com/aws/aws-sdk-go-v2/service/ec2/types"
-	ecr "github.com/aws/aws-sdk-go-v2/service/ecr/types"
-	ecs "github.com/aws/aws-sdk-go-v2/service/ecs/types"
-	elasticache "github.com/aws/aws-sdk-go-v2/service/elasticache/types"
-	elasticbeanstalk "github.com/aws/aws-sdk-go-v2/service/elasticbeanstalk/types"
-	elasticloadbalancingv2 "github.com/aws/aws-sdk-go-v2/service/elasticloadbalancingv2/types"
-	lambda "github.com/aws/aws-sdk-go-v2/service/lambda/types"
-	rds "github.com/aws/aws-sdk-go-v2/service/rds/types"
-	route53 "github.com/aws/aws-sdk-go-v2/service/route53/types"
-	s3 "github.com/aws/aws-sdk-go-v2/service/s3/types"
-	secretsmanager "github.com/aws/aws-sdk-go-v2/service/secretsmanager/types"
-	sns "github.com/aws/aws-sdk-go-v2/service/sns/types"
-	ssm "github.com/aws/aws-sdk-go-v2/service/ssm/types"
-	wafv2 "github.com/aws/aws-sdk-go-v2/service/wafv2/types"
-	"github.com/aws/smithy-go"
-	apprunner "github.com/aws/aws-sdk-go-v2/service/apprunner/types"
-	autoscaling "github.com/aws/aws-sdk-go-v2/service/autoscaling/types"
-	batch "github.com/aws/aws-sdk-go-v2/service/batch/types"
-	sfn "github.com/aws/aws-sdk-go-v2/service/sfn/types"
-	efs "github.com/aws/aws-sdk-go-v2/service/efs/types"
-	acm "github.com/aws/aws-sdk-go-v2/service/acm/types"
-	cloudfront "github.com/aws/aws-sdk-go-v2/service/cloudfront/types"
-	iam "github.com/aws/aws-sdk-go-v2/service/iam/types"
-	kms "github.com/aws/aws-sdk-go-v2/service/kms/types"
-	cloudtrail "github.com/aws/aws-sdk-go-v2/service/cloudtrail/types"
-	eventbridge "github.com/aws/aws-sdk-go-v2/service/eventbridge/types"
-	redshift "github.com/aws/aws-sdk-go-v2/service/redshift/types"
-	cognitoidentity "github.com/aws/aws-sdk-go-v2/service/cognitoidentity/types"
-	cognitoidp "github.com/aws/aws-sdk-go-v2/service/cognitoidentityprovider/types"
-	awsworkflow "github.com/rkoval/alfred-aws-console-services-workflow/awsworkflow"
 	aw "github.com/deanishe/awgo"
 	"github.com/rkoval/alfred-aws-console-services-workflow/searchers/searchutil"
 )
 
-type Entity interface {
-	cloudwatchlogs.LogGroup | ec2.Instance | s3.Bucket | ec2.SecurityGroup | elasticbeanstalk.EnvironmentDescription | wafv2.IPSetSummary | wafv2.WebACLSummary | lambda.FunctionConfiguration | cloudformation.Stack | rds.DBInstance | sns.Topic | sns.Subscription | elasticache.CacheCluster | elasticloadbalancingv2.LoadBalancer | elasticbeanstalk.ApplicationDescription | route53.HostedZone | cloudwatchlogs.QueryDefinition | codepipeline.PipelineSummary | ecs.Cluster | ssm.ParameterMetadata | secretsmanager.SecretListEntry | ecr.Repository | sfn.StateMachineListItem | elasticloadbalancingv2.TargetGroup | autoscaling.AutoScalingGroup | batch.JobQueueDetail | apprunner.ServiceSummary | ec2.Vpc | ec2.Subnet | ec2.Volume | ec2.Snapshot | ec2.Image | ec2.KeyPairInfo | efs.FileSystemDescription | iam.Role | iam.User | iam.Policy | iam.Group | kms.AliasListEntry | acm.CertificateSummary | cloudfront.DistributionSummary | awsworkflow.APIGatewayAPI | eventbridge.Rule | eventbridge.EventBus | redshift.Cluster | cloudtrail.TrailInfo | cognitoidp.UserPoolDescriptionType | cognitoidentity.IdentityPoolShortDescription |
-		// some list APIs (DynamoDB tables, SQS queues, ...) only hand back names or URLs
-		string
+// backgroundFetchJob names the background job that refreshes a stale cache.
+const backgroundFetchJob = "fetch"
+
+// LoadEntities returns the entities of one resource kind: freshly fetched from
+// AWS when the fetch is forced, otherwise from the cache, with a refresh
+// scheduled in the background once the cache has grown stale.
+func LoadEntities[Entity any](wf *aw.Workflow, searchArgs searchutil.SearchArgs, cacheKey string, fetch func(aws.Config) ([]Entity, error)) []Entity {
+	// TODO optimization: global services (s3 buckets, ...) could share one
+	// cache across regions instead of fetching once per region
+	cache := entityCache[Entity]{
+		wf:         wf,
+		searchArgs: searchArgs,
+		key:        cacheKey + "_" + searchArgs.Cfg.Region + "_" + searchArgs.Profile,
+		fetch:      fetch,
+	}
+	if searchArgs.ForceFetch {
+		return cache.refresh()
+	}
+	return cache.load()
 }
 
-func LoadEntityArrayFromCache[K Entity](wf *aw.Workflow, searchArgs searchutil.SearchArgs, cacheName string, fetcher func(aws.Config) ([]K, error)) []K {
-	// TODO optimization: not all services have sa region associated with them, so cache can be reused across regions (e.g., s3 buckets are global)
-	cacheName += "_" + searchArgs.Cfg.Region + "_" + searchArgs.Profile
+// entityCache is the cache entry of one resource kind for one region and profile.
+type entityCache[Entity any] struct {
+	wf         *aw.Workflow
+	searchArgs searchutil.SearchArgs
+	key        string
+	fetch      func(aws.Config) ([]Entity, error)
+}
 
-	results := []K{}
-	lastFetchErrPath := wf.CacheDir() + "/last-fetch-err.txt"
-	if searchArgs.ForceFetch {
-		log.Printf("fetching from aws ...")
-		results, err := fetcher(searchArgs.Cfg)
-
-		if err != nil {
-			log.Printf("fetch error occurred. writing to %s ...", lastFetchErrPath)
-			var errString string
-			var missingRegionError *aws.MissingRegionError
-			if errors.As(err, &missingRegionError) {
-				errString = "MissingRegion"
-			} else {
-				var apiErr smithy.APIError
-				if errors.As(err, &apiErr) {
-					errCode := apiErr.ErrorCode()
-					if errCode == "AccessDeniedException" {
-						errString = "You do not have access to fetch these. Check your IAM permissions"
-					} else {
-						errString = errCode
-
-						message := apiErr.ErrorMessage()
-						if message != "" {
-							errString += ": " + message
-						}
-					}
-				}
-			}
-			if errString == "" {
-				errString = err.Error()
-			}
-			if strings.Contains(errString, "failed to retrieve credentials") {
-				// workaround hack; aws-sdk-go-v2 will automatically attempt to get credentials from the metadata service URL if file not specified,
-				// but that's bad given that we will never be run in AWS. as a result, just populate an error string that informs users better
-				errString = "NoCredentialProviders"
-			}
-			_ = os.WriteFile(lastFetchErrPath, []byte(errString), 0600)
-			panic(err)
-		} else {
-			os.Remove(lastFetchErrPath)
-		}
-		log.Printf("fetched %d results from aws", len(results))
-
-		log.Printf("storing %d results with cache key `%s` to %s ...", len(results), cacheName, wf.CacheDir())
-		if err := wf.Cache.StoreJSON(cacheName, results); err != nil {
-			panic(err)
-		}
-		return results
-	}
-
-	err := handleExpiredCache(wf, cacheName, lastFetchErrPath, searchArgs)
+func (c entityCache[Entity]) refresh() []Entity {
+	log.Printf("fetching from aws ...")
+	entities, err := c.fetch(c.searchArgs.Cfg)
 	if err != nil {
-		return []K{}
+		recordFetchError(c.wf, err)
+		panic(err)
 	}
+	clearFetchError(c.wf)
+	log.Printf("fetched %d results from aws", len(entities))
+	c.store(entities)
+	return entities
+}
 
-	if wf.Cache.Exists(cacheName) {
-		log.Printf("using cache with key `%s` in %s ...", cacheName, wf.CacheDir())
-		if err := wf.Cache.LoadJSON(cacheName, &results); err != nil {
-			panic(err)
+func (c entityCache[Entity]) store(entities []Entity) {
+	log.Printf("storing %d results with cache key `%s` to %s ...", len(entities), c.key, c.wf.CacheDir())
+	if err := c.wf.Cache.StoreJSON(c.key, entities); err != nil {
+		panic(err)
+	}
+}
+
+func (c entityCache[Entity]) load() []Entity {
+	if c.isStale() {
+		c.refreshInBackground()
+		if err := reportLastFetchError(c.wf, c.searchArgs); err != nil {
+			return []Entity{}
 		}
-	} else {
-		log.Printf("cache with key `%s` did not exist in %s ...", cacheName, wf.CacheDir())
-		wf.NewItem("Fetching ...").
-			Icon(aw.IconInfo)
 	}
+	if !c.wf.Cache.Exists(c.key) {
+		log.Printf("cache with key `%s` did not exist in %s ...", c.key, c.wf.CacheDir())
+		c.wf.NewItem("Fetching ...").Icon(aw.IconInfo)
+		return []Entity{}
+	}
+	return c.loadStored()
+}
 
-	return results
+func (c entityCache[Entity]) loadStored() []Entity {
+	log.Printf("using cache with key `%s` in %s ...", c.key, c.wf.CacheDir())
+	entities := []Entity{}
+	if err := c.wf.Cache.LoadJSON(c.key, &entities); err != nil {
+		panic(err)
+	}
+	return entities
+}
+
+func (c entityCache[Entity]) isStale() bool {
+	maxAge := maxCacheAge()
+	if !c.wf.Cache.Expired(c.key, maxAge) {
+		return false
+	}
+	log.Printf("cache with key `%s` was expired (older than %d seconds) in %s", c.key, int(maxAge.Seconds()), c.wf.CacheDir())
+	return true
+}
+
+// refreshInBackground runs the workflow again with a forced fetch, so that the
+// results Alfred shows right away get replaced by fresh ones.
+func (c entityCache[Entity]) refreshInBackground() {
+	c.wf.Rerun(0.5)
+	if c.wf.IsRunning(backgroundFetchJob) {
+		log.Printf("background job `%s` already running", backgroundFetchJob)
+		return
+	}
+	cmd := exec.Command(os.Args[0], "-query="+c.searchArgs.FullQuery, "-fetch")
+	log.Printf("running `%s` in background as job `%s` ...", cmd, backgroundFetchJob)
+	if err := c.wf.RunInBackground(backgroundFetchJob, cmd); err != nil {
+		panic(err)
+	}
 }

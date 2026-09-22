@@ -1,88 +1,34 @@
+// Command searcher scaffolds a new searcher from the AWS API operation that
+// lists its resources: the searcher file, its test, its registry entries and
+// its workflow test cases.
+//
+//	go run ./generators/searcher Service Entity com.amazonaws.package#Operation
 package main
 
 import (
-	"encoding/json"
-	"errors"
 	"flag"
 	"fmt"
 	"log"
 	"os"
-	"os/exec"
-	"path/filepath"
 	"regexp"
 	"strings"
 
-	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/iancoleman/strcase"
 	"github.com/rkoval/alfred-aws-console-services-workflow/parsers"
 )
 
 func init() {
-	awsServices := parsers.ParseConsoleServicesYml("./console-services.yml")
-	for _, awsService := range awsServices {
-		if awsService.ShortName != "" {
-			strcase.ConfigureAcronym(awsService.ShortName, strings.ToLower(awsService.ShortName))
-		}
-	}
+	configureAcronyms()
 	flag.Parse()
 }
 
-type OperationDefinition struct {
-	Package         string
-	PackageTitle    string
-	FunctionName    string
-	FunctionInput   string
-	Item            string
-	Items           string
-	PageInputToken  string
-	PageOutputToken string
-	PageSize        string
-}
-
-type SearcherNamer struct {
-	ServiceTitle        string
-	ServiceLower        string
-	EntityTitle         string
-	EntityLower         string
-	EntityLowerPlural   string
-	Name                string
-	NameLower           string
-	NameCamelCase       string
-	NameSnakeCase       string
-	NameSnakeCasePlural string
-	StructName          string
-	StructInstanceName  string
-	OperationDefinition
-}
-
-var numberAfterUnderscore *regexp.Regexp = regexp.MustCompile(`_([0-9]+)`)
-
-func NewSearcherNamer(service, entity string, operationDefinition OperationDefinition) SearcherNamer {
-	if entity[len(entity)-1:] == "s" {
-		log.Fatalf("Entity should be singular for casing to work properly")
-	}
-
-	serviceTitle := strings.ToTitle(service)
-	entityTitle := strings.ToTitle(entity)
-	serviceLower := strings.ToLower(service)
-	name := serviceTitle + entityTitle
-	nameSnakeCase := strcase.ToSnake(name)
-	nameSnakeCase = numberAfterUnderscore.ReplaceAllString(nameSnakeCase, "$1") // strcase will tree numbers as new word; we do not want this for the conventions here
-
-	return SearcherNamer{
-		ServiceTitle:        serviceTitle,
-		ServiceLower:        serviceLower,
-		EntityTitle:         entityTitle,
-		EntityLower:         strings.ToLower(entity),
-		EntityLowerPlural:   strings.ToLower(entity) + "s", // TODO make this proper english
-		Name:                name,
-		NameLower:           strings.ToLower(name),
-		NameCamelCase:       strcase.ToCamel(name),
-		NameSnakeCase:       nameSnakeCase,
-		NameSnakeCasePlural: nameSnakeCase + "s", // TODO make this proper english
-		StructName:          name + "Searcher",
-		StructInstanceName:  serviceLower + entityTitle + "Searcher",
-		OperationDefinition: operationDefinition,
+// configureAcronyms teaches strcase the short names of the services, so that
+// "SNS" stays "sns" in snake case rather than becoming "s_n_s".
+func configureAcronyms() {
+	for _, awsService := range parsers.ParseConsoleServicesYml("./console-services.yml") {
+		if awsService.ShortName != "" {
+			strcase.ConfigureAcronym(awsService.ShortName, strings.ToLower(awsService.ShortName))
+		}
 	}
 }
 
@@ -91,33 +37,30 @@ func main() {
 	if len(args) < 3 {
 		usage()
 	}
+	service, entity, operation := args[0], args[1], args[2]
 
-	operation := args[2]
 	pkg, functionName := parseOperation(operation)
-	goGetPkg(pkg)
+	goGetPackage(pkg)
+	definition := readOperationDefinition(operation, pkg, functionName)
+	namer := NewSearcherNamer(service, entity, definition)
 
-	operationDefinition := getOperationDefinition(operation, pkg, functionName)
-	searcherNamer := NewSearcherNamer(args[0], args[1], operationDefinition)
-
-	appendToSearchers(searcherNamer)
-	appendToWorkflowTest(searcherNamer)
-	writeSearcherFile(searcherNamer)
-	writeSearcherTestFile(searcherNamer)
+	appendToRegistry(namer)
+	appendToWorkflowTest(namer)
+	writeSearcherFile(namer)
+	writeSearcherTestFile(namer)
 }
 
-func goGetPkg(pkg string) {
-	cmd := exec.Command("go", "get", "github.com/aws/"+aws.SDKName+"/service/"+pkg)
-	cmd.Stdin = os.Stdin
-	cmd.Stdout = os.Stdout
-	cmd.Stderr = os.Stderr
-	err := cmd.Run()
-	if err != nil {
-		panic(err)
-	}
+func usage() {
+	flag.Usage()
+	fmt.Println("go run ./generators/searcher Service Entity com.amazonaws.package#FunctionName")
+	os.Exit(1)
 }
 
-func parseOperation(operation string) (string, string) {
-	operationNameRegex := regexp.MustCompile("com.amazonaws.([a-z0-9]+)#([a-zA-Z]+)")
+var operationNameRegex = regexp.MustCompile("com.amazonaws.([a-z0-9]+)#([a-zA-Z]+)")
+
+// parseOperation splits "com.amazonaws.pkg#FunctionName" into its package and
+// function name.
+func parseOperation(operation string) (pkg, functionName string) {
 	matches := operationNameRegex.FindStringSubmatch(operation)
 	if len(matches) != 3 {
 		log.Fatalln("operation argument must have the form \"com.amazonaws.pkg#FunctionName\"")
@@ -125,92 +68,36 @@ func parseOperation(operation string) (string, string) {
 	return matches[1], matches[2]
 }
 
-func getOperationDefinition(operation, pkg, functionName string) OperationDefinition {
-	gopath, exists := os.LookupEnv("GOPATH")
-	if !exists {
-		userHome, err := os.UserHomeDir()
-		if err != nil {
-			panic(err)
-		}
-		gopath += userHome + "/go"
-	}
-
-	globPath := gopath + "/pkg/mod/github.com/aws/" + aws.SDKName + "@v" + aws.SDKVersion + "/codegen/sdk-codegen/aws-models/" + pkg + ".*.json"
-	matches, err := filepath.Glob(globPath)
-	if err != nil {
-		panic(err)
-	}
-	if len(matches) <= 0 {
-		panic(errors.New("Unable to find a file with glob \"" + globPath + "\""))
-	} else if len(matches) >= 2 {
-		panic(errors.New("More than one file with glob \"" + globPath + "\""))
-	}
-	filename := matches[0]
-	log.Println("using " + filename + " to derive types ...")
-
-	apiJsonRaw, err := os.ReadFile(filename)
-	if err != nil {
-		panic(err)
-	}
-
-	var j interface{}
-	err = json.Unmarshal(apiJsonRaw, &j)
-	if err != nil {
-		panic(err)
-	}
-
-	definition := getJsonPath(j, "shapes", operation).(map[string]interface{})
-
-	_, functionInput := parseOperation(getJsonPath(definition, "input", "target").(string))
-	functionOutputShape := getJsonPath(definition, "output", "target").(string)
-
-	operationDefinition := OperationDefinition{
-		Package:       pkg,
-		PackageTitle:  strings.ToTitle(pkg),
-		FunctionName:  functionName,
-		FunctionInput: functionInput,
-	}
-
-	paginatedMaybe := getJsonPath(definition, "traits", "smithy.api#paginated")
-	if paginatedMaybe != nil {
-		paginated := paginatedMaybe.(map[string]interface{})
-		items := paginated["items"].(string)
-
-		operationDefinition.Items = items
-
-		functionOutputItemsShape := getJsonPath(j, "shapes", functionOutputShape, "members", items, "target").(string)
-		_, item := parseOperation(getJsonPath(j, "shapes", functionOutputItemsShape, "member", "target").(string))
-
-		operationDefinition.Item = item
-
-		pageInputToken := paginated["inputToken"]
-		if pageInputToken != nil {
-			operationDefinition.PageInputToken = pageInputToken.(string)
-		}
-		pageOutputToken := paginated["outputToken"]
-		if pageOutputToken != nil {
-			operationDefinition.PageOutputToken = pageOutputToken.(string)
-		}
-		pageSize := paginated["pageSize"]
-		if pageSize != nil {
-			operationDefinition.PageSize = pageSize.(string)
-		}
-	}
-
-	return operationDefinition
+// SearcherNamer derives every name the generated files need from the service
+// and entity names.
+type SearcherNamer struct {
+	ServiceLower      string
+	EntityLowerPlural string
+	StructName        string
+	FileName          string
+	OperationDefinition
 }
 
-func getJsonPath(json interface{}, keys ...string) interface{} {
-	value := json
-	for _, key := range keys {
-		value = value.(map[string]interface{})[key]
-	}
+var numberAfterUnderscore = regexp.MustCompile(`_([0-9]+)`)
 
-	return value
+// NewSearcherNamer expects entity in the singular, so that the plural forms
+// can be derived from it.
+func NewSearcherNamer(service, entity string, definition OperationDefinition) SearcherNamer {
+	if strings.HasSuffix(entity, "s") {
+		log.Fatalf("Entity should be singular for casing to work properly")
+	}
+	name := strings.ToTitle(service) + strings.ToTitle(entity)
+	return SearcherNamer{
+		ServiceLower:        strings.ToLower(service),
+		EntityLowerPlural:   strings.ToLower(entity) + "s", // TODO make this proper english
+		StructName:          name + "Searcher",
+		FileName:            snakeCase(name) + "s", // TODO make this proper english
+		OperationDefinition: definition,
+	}
 }
 
-func usage() {
-	flag.Usage()
-	fmt.Println("go run searcher.go Service Entity com.amazonaws.package#functionName")
-	os.Exit(1)
+// snakeCase keeps digits attached to the word before them, as in "ec2",
+// where strcase would start a new word.
+func snakeCase(name string) string {
+	return numberAfterUnderscore.ReplaceAllString(strcase.ToSnake(name), "$1")
 }

@@ -3,53 +3,36 @@ package searchers
 import (
 	"context"
 	"fmt"
-	"time"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/s3"
 	"github.com/aws/aws-sdk-go-v2/service/s3/types"
 	aw "github.com/deanishe/awgo"
-	"github.com/rkoval/alfred-aws-console-services-workflow/awsworkflow"
-	"github.com/rkoval/alfred-aws-console-services-workflow/caching"
 	"github.com/rkoval/alfred-aws-console-services-workflow/searchers/searchutil"
-	"github.com/rkoval/alfred-aws-console-services-workflow/util"
 )
 
 type S3BucketSearcher struct{}
 
 func (s S3BucketSearcher) Search(wf *aw.Workflow, searchArgs searchutil.SearchArgs) error {
-	cacheName := util.GetCurrentFilename()
-	es := caching.LoadEntityArrayFromCache(wf, searchArgs, cacheName, s.fetch)
-	for _, entity := range es {
-		s.addToWorkflow(wf, searchArgs, entity)
-	}
-	return nil
+	return searchEntities(wf, searchArgs, "s3_buckets", s.fetch, s.addToWorkflow)
 }
 
-func (s S3BucketSearcher) fetch(cfg aws.Config) ([]types.Bucket, error) {
-	svc := s3.NewFromConfig(cfg)
-
-	resp, err := svc.ListBuckets(context.TODO(), &s3.ListBucketsInput{})
+func (S3BucketSearcher) fetch(cfg aws.Config) ([]types.Bucket, error) {
+	client := s3.NewFromConfig(cfg)
+	resp, err := client.ListBuckets(context.TODO(), &s3.ListBucketsInput{})
 	if err != nil {
 		return nil, err
 	}
-
-	buckets := []types.Bucket{}
-	buckets = append(buckets, resp.Buckets...)
-	return buckets, nil
+	return resp.Buckets, nil
 }
 
-func (s S3BucketSearcher) addToWorkflow(wf *aw.Workflow, searchArgs searchutil.SearchArgs, entity types.Bucket) {
-	title := *entity.Name
-	subtitle := "Created " + entity.CreationDate.Format(time.UnixDate)
-
-	// must manually append region here because wafv2 is technically a global region, but entities within it are region-specific
-	path := fmt.Sprintf("/s3/buckets/%s/?region=%s&tab=objects", *entity.Name, searchArgs.Cfg.Region)
-	item := util.NewURLItem(wf, title).
-		Subtitle(subtitle).
-		Arg(util.ConstructAWSConsoleUrl(path, searchArgs.GetRegion())).
-		Icon(awsworkflow.GetImageIcon("s3")).
-		Valid(true)
-
-	searchArgs.AddMatch(item, "", "", title)
+func (S3BucketSearcher) addToWorkflow(wf *aw.Workflow, searchArgs searchutil.SearchArgs, bucket types.Bucket) {
+	name := aws.ToString(bucket.Name)
+	searchArgs.AddConsoleResource(wf, searchutil.ConsoleResource{
+		Title: name,
+		// the region goes in the path because the console reads it from the
+		// query string next to the bucket name
+		ConsolePath: fmt.Sprintf("/s3/buckets/%s/?region=%s&tab=objects", name, searchArgs.Cfg.Region),
+		ServiceID:   "s3",
+	}).Subtitle(dateDetail("Created", bucket.CreationDate))
 }

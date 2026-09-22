@@ -4,82 +4,60 @@ import (
 	"context"
 	"fmt"
 	"net/url"
-	"strconv"
-	"strings"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/autoscaling"
 	"github.com/aws/aws-sdk-go-v2/service/autoscaling/types"
 	aw "github.com/deanishe/awgo"
-	"github.com/rkoval/alfred-aws-console-services-workflow/awsworkflow"
-	"github.com/rkoval/alfred-aws-console-services-workflow/caching"
+	"github.com/rkoval/alfred-aws-console-services-workflow/awspaging"
 	"github.com/rkoval/alfred-aws-console-services-workflow/searchers/searchutil"
-	"github.com/rkoval/alfred-aws-console-services-workflow/util"
 )
 
 type EC2AutoScalingGroupSearcher struct{}
 
 func (s EC2AutoScalingGroupSearcher) Search(wf *aw.Workflow, searchArgs searchutil.SearchArgs) error {
-	cacheName := util.GetCurrentFilename()
-	entities := caching.LoadEntityArrayFromCache(wf, searchArgs, cacheName, s.fetch)
-	for _, entity := range entities {
-		s.addToWorkflow(wf, searchArgs, entity)
-	}
-	return nil
+	return searchEntities(wf, searchArgs, "ec2_auto_scaling_groups", s.fetch, s.addToWorkflow)
 }
 
-func (s EC2AutoScalingGroupSearcher) fetch(cfg aws.Config) ([]types.AutoScalingGroup, error) {
-	svc := autoscaling.NewFromConfig(cfg)
-
-	var entities []types.AutoScalingGroup
-	nextToken := ""
-	for {
-		params := &autoscaling.DescribeAutoScalingGroupsInput{
+func (EC2AutoScalingGroupSearcher) fetch(cfg aws.Config) ([]types.AutoScalingGroup, error) {
+	client := autoscaling.NewFromConfig(cfg)
+	return awspaging.FetchAllPages(func(pageToken string) ([]types.AutoScalingGroup, *string, error) {
+		resp, err := client.DescribeAutoScalingGroups(context.TODO(), &autoscaling.DescribeAutoScalingGroupsInput{
 			MaxRecords: aws.Int32(100), // max allowed by this API
-		}
-		if nextToken != "" {
-			params.NextToken = aws.String(nextToken)
-		}
-		resp, err := svc.DescribeAutoScalingGroups(context.TODO(), params)
+			NextToken:  awspaging.TokenOrNil(pageToken),
+		})
 		if err != nil {
-			return nil, err
+			return nil, nil, err
 		}
-
-		entities = append(entities, resp.AutoScalingGroups...)
-
-		if resp.NextToken != nil && *resp.NextToken != "" {
-			nextToken = *resp.NextToken
-		} else {
-			break
-		}
-	}
-
-	return entities, nil
+		return resp.AutoScalingGroups, resp.NextToken, nil
+	})
 }
 
-func (s EC2AutoScalingGroupSearcher) addToWorkflow(wf *aw.Workflow, searchArgs searchutil.SearchArgs, entity types.AutoScalingGroup) {
-	title := *entity.AutoScalingGroupName
+func (EC2AutoScalingGroupSearcher) addToWorkflow(wf *aw.Workflow, searchArgs searchutil.SearchArgs, group types.AutoScalingGroup) {
+	name := aws.ToString(group.AutoScalingGroupName)
+	searchArgs.AddConsoleResource(wf, searchutil.ConsoleResource{
+		Title:       name,
+		ConsolePath: "/ec2autoscaling/home#/details/" + url.PathEscape(name),
+		ServiceID:   "ec2",
+		ID:          aws.ToString(group.AutoScalingGroupARN),
+		IDPrefix:    searchutil.ARNPrefix,
+	}).Subtitle(subtitleFrom(
+		capacityDetail(group),
+		sizeRangeDetail(group),
+		aws.ToString(group.LaunchConfigurationName),
+	))
+}
 
-	subtitleArray := []string{}
-	if entity.DesiredCapacity != nil {
-		subtitleArray = append(subtitleArray, strconv.Itoa(len(entity.Instances))+"/"+strconv.Itoa(int(*entity.DesiredCapacity))+" instances")
+func capacityDetail(group types.AutoScalingGroup) string {
+	if group.DesiredCapacity == nil {
+		return ""
 	}
-	if entity.MinSize != nil && entity.MaxSize != nil {
-		subtitleArray = append(subtitleArray, "min "+strconv.Itoa(int(*entity.MinSize))+" – max "+strconv.Itoa(int(*entity.MaxSize)))
-	}
-	subtitleArray = util.AppendString(subtitleArray, entity.LaunchConfigurationName)
-	subtitle := strings.Join(subtitleArray, " – ")
+	return fmt.Sprintf("%d/%d instances", len(group.Instances), *group.DesiredCapacity)
+}
 
-	path := fmt.Sprintf("/ec2autoscaling/home#/details/%s", url.PathEscape(title))
-	item := util.NewURLItem(wf, title).
-		Subtitle(subtitle).
-		Arg(util.ConstructAWSConsoleUrl(path, searchArgs.GetRegion())).
-		Icon(awsworkflow.GetImageIcon("ec2")).
-		Valid(true)
-
-	arn := ""
-	if entity.AutoScalingGroupARN != nil {
-		arn = *entity.AutoScalingGroupARN
+func sizeRangeDetail(group types.AutoScalingGroup) string {
+	if group.MinSize == nil || group.MaxSize == nil {
+		return ""
 	}
-	searchArgs.AddMatch(item, "arn:", arn, title)
+	return fmt.Sprintf("min %d – max %d", *group.MinSize, *group.MaxSize)
 }

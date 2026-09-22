@@ -4,6 +4,8 @@ import (
 	aw "github.com/deanishe/awgo"
 )
 
+// NewURLItem adds an item whose action opens a URL, with a cmd modifier that
+// copies the URL instead.
 func NewURLItem(wf *aw.Workflow, title string) *aw.Item {
 	item := wf.NewItem(title).
 		Valid(true).
@@ -15,12 +17,8 @@ func NewURLItem(wf *aw.Workflow, title string) *aw.Item {
 	return item
 }
 
-func NewBlankItem(wf *aw.Workflow) *aw.Item {
-	item := wf.NewItem("\n").
-		Icon(&aw.Icon{Value: "blank"})
-
-	item.Cmd().Subtitle("\n")
-	item.Alt().Subtitle("\n")
-	item.Ctrl().Subtitle("\n")
-	return item
+// ServiceIcon returns the icon of an AWS service, shipped in the images folder
+// under the service id.
+func ServiceIcon(serviceID string) *aw.Icon {
+	return &aw.Icon{Value: "images/" + serviceID + ".png"}
 }

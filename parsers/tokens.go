@@ -1,6 +1,6 @@
 package parsers
 
-// Token represents a lexical token.
+// TokenType tells what a piece of the query is.
 type TokenType int
 
 const (
@@ -10,13 +10,13 @@ const (
 	WHITESPACE
 	WORD
 
-	// special tokens
 	OPEN_ALL
 	SEARCH_ALIAS
 	REGION_OVERRIDE
 	PROFILE_OVERRIDE
 )
 
+// Token is a piece of the query. For aliases, Value is what follows the alias.
 type Token struct {
 	Type  TokenType
 	Value string

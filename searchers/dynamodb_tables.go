@@ -2,69 +2,42 @@ package searchers
 
 import (
 	"context"
-	"fmt"
 	"net/url"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/dynamodb"
 	aw "github.com/deanishe/awgo"
-	"github.com/rkoval/alfred-aws-console-services-workflow/awsworkflow"
-	"github.com/rkoval/alfred-aws-console-services-workflow/caching"
+	"github.com/rkoval/alfred-aws-console-services-workflow/awspaging"
 	"github.com/rkoval/alfred-aws-console-services-workflow/searchers/searchutil"
-	"github.com/rkoval/alfred-aws-console-services-workflow/util"
 )
 
 type DynamoDBTableSearcher struct{}
 
 func (s DynamoDBTableSearcher) Search(wf *aw.Workflow, searchArgs searchutil.SearchArgs) error {
-	cacheName := util.GetCurrentFilename()
-	entities := caching.LoadEntityArrayFromCache(wf, searchArgs, cacheName, s.fetch)
-	for _, entity := range entities {
-		s.addToWorkflow(wf, searchArgs, entity)
-	}
-	return nil
+	return searchEntities(wf, searchArgs, "dynamodb_tables", s.fetch, s.addToWorkflow)
 }
 
-// ListTables only returns table names, so that is all this searcher has to work
-// with. Describing every table to build a richer subtitle would cost one API
-// call per table, which is far too slow for a workflow that runs on each keystroke.
-func (s DynamoDBTableSearcher) fetch(cfg aws.Config) ([]string, error) {
-	svc := dynamodb.NewFromConfig(cfg)
-
-	var entities []string
-	exclusiveStartTableName := ""
-	for {
-		params := &dynamodb.ListTablesInput{
-			Limit: aws.Int32(100), // max allowed by this API
-		}
-		if exclusiveStartTableName != "" {
-			params.ExclusiveStartTableName = aws.String(exclusiveStartTableName)
-		}
-		resp, err := svc.ListTables(context.TODO(), params)
+// fetch lists table names only, which is all ListTables returns. Describing
+// every table for a richer subtitle would cost one API call per table, far too
+// slow for a workflow that runs on each keystroke.
+func (DynamoDBTableSearcher) fetch(cfg aws.Config) ([]string, error) {
+	client := dynamodb.NewFromConfig(cfg)
+	return awspaging.FetchAllPages(func(lastTableName string) ([]string, *string, error) {
+		resp, err := client.ListTables(context.TODO(), &dynamodb.ListTablesInput{
+			Limit:                   aws.Int32(100), // max allowed by this API
+			ExclusiveStartTableName: awspaging.TokenOrNil(lastTableName),
+		})
 		if err != nil {
-			return nil, err
+			return nil, nil, err
 		}
-
-		entities = append(entities, resp.TableNames...)
-
-		if resp.LastEvaluatedTableName != nil {
-			exclusiveStartTableName = *resp.LastEvaluatedTableName
-		} else {
-			break
-		}
-	}
-
-	return entities, nil
+		return resp.TableNames, resp.LastEvaluatedTableName, nil
+	})
 }
 
-func (s DynamoDBTableSearcher) addToWorkflow(wf *aw.Workflow, searchArgs searchutil.SearchArgs, entity string) {
-	title := entity
-
-	path := fmt.Sprintf("/dynamodbv2/home#table?name=%s", url.QueryEscape(title))
-	item := util.NewURLItem(wf, title).
-		Arg(util.ConstructAWSConsoleUrl(path, searchArgs.GetRegion())).
-		Icon(awsworkflow.GetImageIcon("dynamodb")).
-		Valid(true)
-
-	searchArgs.AddMatch(item, "", "", title)
+func (DynamoDBTableSearcher) addToWorkflow(wf *aw.Workflow, searchArgs searchutil.SearchArgs, tableName string) {
+	searchArgs.AddConsoleResource(wf, searchutil.ConsoleResource{
+		Title:       tableName,
+		ConsolePath: "/dynamodbv2/home#table?name=" + url.QueryEscape(tableName),
+		ServiceID:   "dynamodb",
+	})
 }

@@ -8,14 +8,14 @@ import (
 	"gopkg.in/yaml.v2"
 )
 
+// ParseConsoleServicesYml reads the catalogue of console services.
 func ParseConsoleServicesYml(ymlPath string) []awsworkflow.AwsService {
-	awsServices := []awsworkflow.AwsService{}
 	yamlFile, err := os.ReadFile(ymlPath)
 	if err != nil {
 		log.Fatal(err)
 	}
-	err = yaml.Unmarshal(yamlFile, &awsServices)
-	if err != nil {
+	awsServices := []awsworkflow.AwsService{}
+	if err := yaml.Unmarshal(yamlFile, &awsServices); err != nil {
 		log.Fatal(err)
 	}
 	return awsServices

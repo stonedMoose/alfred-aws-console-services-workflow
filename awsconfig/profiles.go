@@ -9,16 +9,20 @@ import (
 	"gopkg.in/ini.v1"
 )
 
-// Profile represents an AWS profile with its configuration
+// Profile is a named AWS profile from the shared credentials or config file.
 type Profile struct {
 	Name   string
 	Region string
 }
 
-// Package-level variables
+// configProfilePrefix is what the config file puts before every profile name
+// but the default one.
+const configProfilePrefix = "profile "
+
 var awsProfiles []Profile
 
-// GetAwsProfiles returns all AWS profiles from credentials and config files
+// GetAwsProfiles lists the profiles of the credentials and config files,
+// reading them once.
 func GetAwsProfiles() []Profile {
 	if len(awsProfiles) <= 0 {
 		loadAwsProfiles()
@@ -26,113 +30,114 @@ func GetAwsProfiles() []Profile {
 	return awsProfiles
 }
 
-// GetAwsCredentialsFilePath returns the path to AWS credentials file
+// FindProfile returns the profile of that name, or nil when there is none.
+func FindProfile(name string) *Profile {
+	for _, profile := range GetAwsProfiles() {
+		if profile.Name == name {
+			return &profile
+		}
+	}
+	return nil
+}
+
 func GetAwsCredentialsFilePath() string {
-	path := os.Getenv("AWS_SHARED_CREDENTIALS_FILE")
-	if path == "" {
-		path = config.DefaultSharedCredentialsFilename()
+	if path := os.Getenv("AWS_SHARED_CREDENTIALS_FILE"); path != "" {
+		return path
 	}
-	return path
+	return config.DefaultSharedCredentialsFilename()
 }
 
-// GetAwsProfileFilePath returns the path to AWS config file
 func GetAwsProfileFilePath() string {
-	path := os.Getenv("AWS_CONFIG_FILE")
-	if path == "" {
-		path = config.DefaultSharedConfigFilename()
+	if path := os.Getenv("AWS_CONFIG_FILE"); path != "" {
+		return path
 	}
-	return path
+	return config.DefaultSharedConfigFilename()
 }
 
-// loadAwsProfiles loads profiles from AWS credentials and config files
 func loadAwsProfiles() {
-	credentialsIniFile, err := ini.Load(GetAwsCredentialsFilePath())
-	if err != nil {
-		log.Println(err)
-	}
-	configIniFile, err := ini.Load(GetAwsProfileFilePath())
-	if err != nil {
-		log.Println(err)
-	}
-
+	credentialsFile := loadIniFile(GetAwsCredentialsFilePath())
+	configFile := loadIniFile(GetAwsProfileFilePath())
 	awsProfiles = nil
+	addCredentialsProfiles(credentialsFile, configFile)
+	addSSOProfiles(configFile)
+}
 
-	// First load profiles from credentials file
-	if credentialsIniFile != nil {
-		for _, section := range credentialsIniFile.Sections() {
-			if section.Name() == ini.DefaultSection {
-				continue
-			}
-
-			profileName := section.Name()
-			var region string
-
-			if configIniFile != nil {
-				var configSectionName string
-				if profileName == "default" {
-					configSectionName = profileName
-				} else {
-					configSectionName = "profile " + profileName
-				}
-				configSection, _ := configIniFile.GetSection(configSectionName)
-				region = getRegionFromSection(configSection)
-			}
-
-			addProfile(profileName, region)
-		}
+// loadIniFile returns nil, after logging why, when the file cannot be read.
+func loadIniFile(path string) *ini.File {
+	file, err := ini.Load(path)
+	if err != nil {
+		log.Println(err)
 	}
+	return file
+}
 
-	// Then load SSO profiles from config file
-	if configIniFile != nil {
-		for _, section := range configIniFile.Sections() {
-			if section.Name() == ini.DefaultSection || !strings.HasPrefix(section.Name(), "profile ") {
-				continue
-			}
-
-			profileName := strings.TrimPrefix(section.Name(), "profile ")
-			if profileExists(profileName) {
-				continue
-			}
-
-			ssoSessionKey, _ := section.GetKey("sso_session")
-			ssoStartUrlKey, _ := section.GetKey("sso_start_url")
-
-			if ssoSessionKey != nil || ssoStartUrlKey != nil {
-				region := getRegionFromSection(section)
-				addProfile(profileName, region)
-			}
+// addCredentialsProfiles adds every profile of the credentials file, with the
+// region its section of the config file gives it.
+func addCredentialsProfiles(credentialsFile, configFile *ini.File) {
+	if credentialsFile == nil {
+		return
+	}
+	for _, section := range credentialsFile.Sections() {
+		if section.Name() == ini.DefaultSection {
+			continue
 		}
+		addProfile(section.Name(), configuredRegion(configFile, section.Name()))
 	}
 }
 
-// addProfile creates and adds a profile to awsProfiles
+func configuredRegion(configFile *ini.File, profileName string) string {
+	if configFile == nil {
+		return ""
+	}
+	section, _ := configFile.GetSection(configSectionName(profileName))
+	return regionOf(section)
+}
+
+func configSectionName(profileName string) string {
+	if profileName == "default" {
+		return profileName
+	}
+	return configProfilePrefix + profileName
+}
+
+// addSSOProfiles adds the profiles that only exist in the config file
+// because they sign in through SSO rather than with stored credentials.
+func addSSOProfiles(configFile *ini.File) {
+	if configFile == nil {
+		return
+	}
+	for _, section := range configFile.Sections() {
+		profileName, isProfile := strings.CutPrefix(section.Name(), configProfilePrefix)
+		if !isProfile || profileExists(profileName) || !usesSSO(section) {
+			continue
+		}
+		addProfile(profileName, regionOf(section))
+	}
+}
+
+func usesSSO(section *ini.Section) bool {
+	return section.HasKey("sso_session") || section.HasKey("sso_start_url")
+}
+
 func addProfile(name, region string) {
-	profile := Profile{
-		Name:   name,
-		Region: region,
-	}
-	awsProfiles = append(awsProfiles, profile)
+	awsProfiles = append(awsProfiles, Profile{Name: name, Region: region})
 }
 
-// profileExists checks if a profile with the given name already exists in awsProfiles
 func profileExists(name string) bool {
-	for _, p := range awsProfiles {
-		if p.Name == name {
+	for _, profile := range awsProfiles {
+		if profile.Name == name {
 			return true
 		}
 	}
 	return false
 }
 
-// getRegionFromSection extracts the region value from a section if it exists
-func getRegionFromSection(section *ini.Section) string {
+func regionOf(section *ini.Section) string {
 	if section == nil {
 		return ""
 	}
-
-	regionKey, _ := section.GetKey("region")
-	if regionKey != nil {
-		return regionKey.Value()
+	if region, err := section.GetKey("region"); err == nil {
+		return region.Value()
 	}
 	return ""
 }

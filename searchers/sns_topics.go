@@ -2,67 +2,41 @@ package searchers
 
 import (
 	"context"
-	"fmt"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/sns"
 	"github.com/aws/aws-sdk-go-v2/service/sns/types"
 	aw "github.com/deanishe/awgo"
-	"github.com/rkoval/alfred-aws-console-services-workflow/awsworkflow"
-	"github.com/rkoval/alfred-aws-console-services-workflow/caching"
+	"github.com/rkoval/alfred-aws-console-services-workflow/awspaging"
 	"github.com/rkoval/alfred-aws-console-services-workflow/searchers/searchutil"
-	"github.com/rkoval/alfred-aws-console-services-workflow/util"
 )
 
 type SNSTopicSearcher struct{}
 
 func (s SNSTopicSearcher) Search(wf *aw.Workflow, searchArgs searchutil.SearchArgs) error {
-	cacheName := util.GetCurrentFilename()
-	entities := caching.LoadEntityArrayFromCache(wf, searchArgs, cacheName, s.fetch)
-	for _, entity := range entities {
-		s.addToWorkflow(wf, searchArgs, entity)
-	}
-	return nil
+	return searchEntities(wf, searchArgs, "sns_topics", s.fetch, s.addToWorkflow)
 }
 
-func (s SNSTopicSearcher) fetch(cfg aws.Config) ([]types.Topic, error) {
+func (SNSTopicSearcher) fetch(cfg aws.Config) ([]types.Topic, error) {
 	client := sns.NewFromConfig(cfg)
-
-	entities := []types.Topic{}
-	pageToken := ""
-	for {
-		params := &sns.ListTopicsInput{}
-		if pageToken != "" {
-			params.NextToken = &pageToken
-		}
-		resp, err := client.ListTopics(context.TODO(), params)
-
+	return awspaging.FetchAllPages(func(pageToken string) ([]types.Topic, *string, error) {
+		resp, err := client.ListTopics(context.TODO(), &sns.ListTopicsInput{
+			NextToken: awspaging.TokenOrNil(pageToken),
+		})
 		if err != nil {
-			return nil, err
+			return nil, nil, err
 		}
-
-		entities = append(entities, resp.Topics...)
-
-		if resp.NextToken != nil {
-			pageToken = *resp.NextToken
-		} else {
-			break
-		}
-	}
-
-	return entities, nil
+		return resp.Topics, resp.NextToken, nil
+	})
 }
 
-func (s SNSTopicSearcher) addToWorkflow(wf *aw.Workflow, searchArgs searchutil.SearchArgs, entity types.Topic) {
-	subtitle := *entity.TopicArn
-	title := util.GetEndOfArn(*entity.TopicArn)
-
-	path := fmt.Sprintf("/sns/v3/home#/topic/%s", *entity.TopicArn)
-	item := util.NewURLItem(wf, title).
-		Subtitle(subtitle).
-		Arg(util.ConstructAWSConsoleUrl(path, searchArgs.GetRegion())).
-		Icon(awsworkflow.GetImageIcon("sns")).
-		Valid(true)
-
-	searchArgs.AddMatch(item, "arn:", *entity.TopicArn, title)
+func (SNSTopicSearcher) addToWorkflow(wf *aw.Workflow, searchArgs searchutil.SearchArgs, topic types.Topic) {
+	arn := aws.ToString(topic.TopicArn)
+	searchArgs.AddConsoleResource(wf, searchutil.ConsoleResource{
+		Title:       arnResourceName(arn),
+		ConsolePath: "/sns/v3/home#/topic/" + arn,
+		ServiceID:   "sns",
+		ID:          arn,
+		IDPrefix:    searchutil.ARNPrefix,
+	}).Subtitle(arn)
 }

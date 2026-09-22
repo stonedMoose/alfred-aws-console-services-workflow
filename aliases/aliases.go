@@ -1,24 +1,27 @@
+// Package aliases holds the prefixes that give a query word a special
+// meaning, each overridable through the environment.
 package aliases
 
 import "os"
 
-var OverrideAwsRegion string
-var OverrideAwsProfile string
-var Search string
+var (
+	// OverrideAwsRegion introduces a region to search in, e.g. "$us-east-1".
+	OverrideAwsRegion string
+	// OverrideAwsProfile introduces a profile to search with, e.g. "@work".
+	OverrideAwsProfile string
+	// Search introduces a resource search within a service, e.g. "ec2 ,web".
+	Search string
+)
 
 func init() {
-	OverrideAwsRegion = os.Getenv("ALFRED_AWS_CONSOLE_SERVICES_OVERRIDE_AWS_REGION_ALIAS")
-	if OverrideAwsRegion == "" {
-		OverrideAwsRegion = "$"
-	}
+	OverrideAwsRegion = envOrDefault("ALFRED_AWS_CONSOLE_SERVICES_OVERRIDE_AWS_REGION_ALIAS", "$")
+	OverrideAwsProfile = envOrDefault("ALFRED_AWS_CONSOLE_SERVICES_OVERRIDE_AWS_PROFILE_ALIAS", "@")
+	Search = envOrDefault("ALFRED_AWS_CONSOLE_SERVICES_WORKFLOW_SEARCH_ALIAS", ",")
+}
 
-	OverrideAwsProfile = os.Getenv("ALFRED_AWS_CONSOLE_SERVICES_OVERRIDE_AWS_PROFILE_ALIAS")
-	if OverrideAwsProfile == "" {
-		OverrideAwsProfile = "@"
+func envOrDefault(name, defaultValue string) string {
+	if value := os.Getenv(name); value != "" {
+		return value
 	}
-
-	Search = os.Getenv("ALFRED_AWS_CONSOLE_SERVICES_WORKFLOW_SEARCH_ALIAS")
-	if Search == "" {
-		Search = ","
-	}
+	return defaultValue
 }

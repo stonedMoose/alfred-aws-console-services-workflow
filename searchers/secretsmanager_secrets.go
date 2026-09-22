@@ -2,86 +2,55 @@ package searchers
 
 import (
 	"context"
-	"fmt"
 	"net/url"
-	"strings"
-	"time"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/secretsmanager"
 	"github.com/aws/aws-sdk-go-v2/service/secretsmanager/types"
 	aw "github.com/deanishe/awgo"
-	"github.com/rkoval/alfred-aws-console-services-workflow/awsworkflow"
-	"github.com/rkoval/alfred-aws-console-services-workflow/caching"
+	"github.com/rkoval/alfred-aws-console-services-workflow/awspaging"
 	"github.com/rkoval/alfred-aws-console-services-workflow/searchers/searchutil"
-	"github.com/rkoval/alfred-aws-console-services-workflow/util"
 )
 
 type SecretsManagerSecretSearcher struct{}
 
 func (s SecretsManagerSecretSearcher) Search(wf *aw.Workflow, searchArgs searchutil.SearchArgs) error {
-	cacheName := util.GetCurrentFilename()
-	entities := caching.LoadEntityArrayFromCache(wf, searchArgs, cacheName, s.fetch)
-	for _, entity := range entities {
-		s.addToWorkflow(wf, searchArgs, entity)
-	}
-	return nil
+	return searchEntities(wf, searchArgs, "secretsmanager_secrets", s.fetch, s.addToWorkflow)
 }
 
-func (s SecretsManagerSecretSearcher) fetch(cfg aws.Config) ([]types.SecretListEntry, error) {
-	svc := secretsmanager.NewFromConfig(cfg)
-
-	var entities []types.SecretListEntry
-	nextToken := ""
-	for {
-		params := &secretsmanager.ListSecretsInput{
+func (SecretsManagerSecretSearcher) fetch(cfg aws.Config) ([]types.SecretListEntry, error) {
+	client := secretsmanager.NewFromConfig(cfg)
+	return awspaging.FetchAllPages(func(pageToken string) ([]types.SecretListEntry, *string, error) {
+		resp, err := client.ListSecrets(context.TODO(), &secretsmanager.ListSecretsInput{
 			MaxResults: aws.Int32(100), // max allowed by this API
-		}
-		if nextToken != "" {
-			params.NextToken = aws.String(nextToken)
-		}
-		resp, err := svc.ListSecrets(context.TODO(), params)
+			NextToken:  awspaging.TokenOrNil(pageToken),
+		})
 		if err != nil {
-			return nil, err
+			return nil, nil, err
 		}
-
-		entities = append(entities, resp.SecretList...)
-
-		if resp.NextToken != nil && *resp.NextToken != "" {
-			nextToken = *resp.NextToken
-		} else {
-			break
-		}
-	}
-
-	return entities, nil
+		return resp.SecretList, resp.NextToken, nil
+	})
 }
 
-func (s SecretsManagerSecretSearcher) addToWorkflow(wf *aw.Workflow, searchArgs searchutil.SearchArgs, entity types.SecretListEntry) {
-	title := *entity.Name
+func (SecretsManagerSecretSearcher) addToWorkflow(wf *aw.Workflow, searchArgs searchutil.SearchArgs, secret types.SecretListEntry) {
+	name := aws.ToString(secret.Name)
+	searchArgs.AddConsoleResource(wf, searchutil.ConsoleResource{
+		Title: name,
+		// the console reads the region from the query string, next to the secret name
+		ConsolePath: "/secretsmanager/secret?name=" + url.QueryEscape(name) + "&region=" + searchArgs.GetRegion(),
+		ServiceID:   "secretsmanager",
+		ID:          aws.ToString(secret.ARN),
+		IDPrefix:    searchutil.ARNPrefix,
+	}).Subtitle(subtitleFrom(
+		aws.ToString(secret.Description),
+		rotationDetail(secret.RotationEnabled),
+		dateDetail("Changed", secret.LastChangedDate),
+	))
+}
 
-	subtitleArray := []string{}
-	subtitleArray = util.AppendString(subtitleArray, entity.Description)
-	if entity.RotationEnabled != nil && *entity.RotationEnabled {
-		subtitleArray = append(subtitleArray, "rotation enabled")
+func rotationDetail(rotationEnabled *bool) string {
+	if aws.ToBool(rotationEnabled) {
+		return "rotation enabled"
 	}
-	if entity.LastChangedDate != nil {
-		subtitleArray = append(subtitleArray, "Changed "+entity.LastChangedDate.Format(time.UnixDate))
-	}
-	subtitle := strings.Join(subtitleArray, " – ")
-
-	// the region is written into the path here because the console reads it from
-	// the query string alongside the secret name
-	path := fmt.Sprintf("/secretsmanager/secret?name=%s&region=%s", url.QueryEscape(title), searchArgs.GetRegion())
-	item := util.NewURLItem(wf, title).
-		Subtitle(subtitle).
-		Arg(util.ConstructAWSConsoleUrl(path, searchArgs.GetRegion())).
-		Icon(awsworkflow.GetImageIcon("secretsmanager")).
-		Valid(true)
-
-	arn := ""
-	if entity.ARN != nil {
-		arn = *entity.ARN
-	}
-	searchArgs.AddMatch(item, "arn:", arn, title)
+	return ""
 }
