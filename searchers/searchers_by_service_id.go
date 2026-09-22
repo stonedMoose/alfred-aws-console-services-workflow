@@ -28,8 +28,33 @@ var ecrRepositorySearcher = &ECRRepositorySearcher{}
 var secretsManagerSecretSearcher = &SecretsManagerSecretSearcher{}
 var sqsQueueSearcher = &SQSQueueSearcher{}
 var ssmParameterSearcher = &SSMParameterSearcher{}
+var eksClusterSearcher = &EKSClusterSearcher{}
+var stepFunctionsStateMachineSearcher = &StepFunctionsStateMachineSearcher{}
+var ec2TargetGroupSearcher = &EC2TargetGroupSearcher{}
+var ec2AutoScalingGroupSearcher = &EC2AutoScalingGroupSearcher{}
+var ecsTaskDefinitionSearcher = &ECSTaskDefinitionSearcher{}
+var batchJobQueueSearcher = &BatchJobQueueSearcher{}
+var appRunnerServiceSearcher = &AppRunnerServiceSearcher{}
+var vpcSearcher = &VPCSearcher{}
+var vpcSubnetSearcher = &VPCSubnetSearcher{}
+var ec2VolumeSearcher = &EC2VolumeSearcher{}
+var ec2SnapshotSearcher = &EC2SnapshotSearcher{}
+var ec2ImageSearcher = &EC2ImageSearcher{}
+var ec2KeyPairSearcher = &EC2KeyPairSearcher{}
+var efsFileSystemSearcher = &EFSFileSystemSearcher{}
+var iamRoleSearcher = &IAMRoleSearcher{}
+var iamUserSearcher = &IAMUserSearcher{}
+var iamPolicySearcher = &IAMPolicySearcher{}
+var iamGroupSearcher = &IAMGroupSearcher{}
+var kmsKeySearcher = &KMSKeySearcher{}
+var acmCertificateSearcher = &ACMCertificateSearcher{}
+var cloudFrontDistributionSearcher = &CloudFrontDistributionSearcher{}
 
 var SearchersByServiceId map[string]Searcher = map[string]Searcher{
+	"apprunner": appRunnerServiceSearcher,
+	"apprunner_services": appRunnerServiceSearcher,
+	"batch": batchJobQueueSearcher,
+	"batch_jobqueues": batchJobQueueSearcher,
 	"cloudformation":                cloudFormationStackSearcher,
 	"cloudformation_stacks":         cloudFormationStackSearcher,
 	"cloudwatch":                    cloudWatchLogGroupSearcher,
@@ -40,13 +65,18 @@ var SearchersByServiceId map[string]Searcher = map[string]Searcher{
 	"dynamodb":                      dynamoDBTableSearcher,
 	"dynamodb_tables":               dynamoDBTableSearcher,
 	"ec2":                           ec2InstanceSearcher,
+	"ec2_autoscalinggroups": ec2AutoScalingGroupSearcher,
 	"ec2_instances":                 ec2InstanceSearcher,
 	"ec2_loadbalancers":             ec2LoadBalancerSearcher,
 	"ec2_securitygroups":            ec2SecurityGroupSearcher,
+	"ec2_targetgroups": ec2TargetGroupSearcher,
 	"ecr":                           ecrRepositorySearcher,
 	"ecr_privaterepositories":       ecrRepositorySearcher,
 	"ecs":                           ecsClusterSearcher,
 	"ecs_clusters":                  ecsClusterSearcher,
+	"ecs_taskdefinitions": ecsTaskDefinitionSearcher,
+	"eks": eksClusterSearcher,
+	"eks_clusters": eksClusterSearcher,
 	"elasticache":                   elasticacheRedisClusterSearcher,
 	"elasticache_memcached":         elasticacheMemcachedClusterSearcher,
 	"elasticache_redis":             elasticacheRedisClusterSearcher,
@@ -68,9 +98,32 @@ var SearchersByServiceId map[string]Searcher = map[string]Searcher{
 	"sns_topics":                    snsTopicSearcher,
 	"sqs":                           sqsQueueSearcher,
 	"sqs_queues":                    sqsQueueSearcher,
+	"stepfunctions": stepFunctionsStateMachineSearcher,
+	"stepfunctions_statemachines": stepFunctionsStateMachineSearcher,
 	"systemsmanager":                ssmParameterSearcher,
 	"systemsmanager_parameterstore": ssmParameterSearcher,
 	"waf":                           wafWebACLSearcher,
 	"waf_ipsets":                    wafIPSetSearcher,
 	"waf_webacls":                   wafWebACLSearcher,
+
+	"vpc": vpcSearcher,
+	"vpc_vpcs": vpcSearcher,
+	"vpc_subnets": vpcSubnetSearcher,
+	"ec2_volumes": ec2VolumeSearcher,
+	"ec2_snapshots": ec2SnapshotSearcher,
+	"ec2_amis": ec2ImageSearcher,
+	"ec2_keypairs": ec2KeyPairSearcher,
+	"efs": efsFileSystemSearcher,
+	"efs_filesystems": efsFileSystemSearcher,
+	"iam": iamRoleSearcher,
+	"iam_roles": iamRoleSearcher,
+	"iam_users": iamUserSearcher,
+	"iam_policies": iamPolicySearcher,
+	"iam_usergroups": iamGroupSearcher,
+	"kms": kmsKeySearcher,
+	"kms_customermanagedkeys": kmsKeySearcher,
+	"acm": acmCertificateSearcher,
+	"acm_certificatemanager": acmCertificateSearcher,
+	"cloudfront": cloudFrontDistributionSearcher,
+	"cloudfront_distributions": cloudFrontDistributionSearcher,
 }

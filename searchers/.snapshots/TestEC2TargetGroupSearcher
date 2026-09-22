@@ -1,0 +1,218 @@
+([]*aw.Item) (len=6) {
+  (*aw.Item)({
+    title: (string) (len=26) "aaaaaaaaaaaaaaa-aaaaaaaaaa",
+    subtitle: (*string)((len=40) "instance – TCP:3030 – vpc-aaaaaaaaaa"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=27) "aaaaaaaaaaaaaaa-aaaaaaaaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=199) "https://us-west-2.console.aws.amazon.com/ec2/home?region=us-west-2#TargetGroup:targetGroupArn=arn:aws:elasticloadbalancing:us-west-2:0000000000:aaaaaaaaaaa/aaaaaaaaaaaaaaa-aaaaaaaaaa/aaaaaaaaaaaaaaaa"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=14) "images/ec2.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=23) "aaaaaa-aaaaa-aaaaaaaaaa",
+    subtitle: (*string)((len=40) "instance – TCP:5050 – vpc-aaaaaaaaaa"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=24) "aaaaaa-aaaaa-aaaaaaaaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=196) "https://us-west-2.console.aws.amazon.com/ec2/home?region=us-west-2#TargetGroup:targetGroupArn=arn:aws:elasticloadbalancing:us-west-2:0000000000:aaaaaaaaaaa/aaaaaa-aaaaa-aaaaaaaaaa/aaaaaaaaaaaaaaaa"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=14) "images/ec2.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=25) "aaaaaa-aaaaa-aaaaaaaaaaaa",
+    subtitle: (*string)((len=38) "instance – TCP:22 – vpc-aaaaaaaaaa"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=26) "aaaaaa-aaaaa-aaaaaaaaaaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=198) "https://us-west-2.console.aws.amazon.com/ec2/home?region=us-west-2#TargetGroup:targetGroupArn=arn:aws:elasticloadbalancing:us-west-2:0000000000:aaaaaaaaaaa/aaaaaa-aaaaa-aaaaaaaaaaaa/aaaaaaaaaaaaaaaa"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=14) "images/ec2.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=23) "aaaaaa-aaaaa-aaaaaaaaaa",
+    subtitle: (*string)((len=40) "instance – TCP:8929 – vpc-aaaaaaaaaa"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=24) "aaaaaa-aaaaa-aaaaaaaaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=196) "https://us-west-2.console.aws.amazon.com/ec2/home?region=us-west-2#TargetGroup:targetGroupArn=arn:aws:elasticloadbalancing:us-west-2:0000000000:aaaaaaaaaaa/aaaaaa-aaaaa-aaaaaaaaaa/aaaaaaaaaaaaaaaa"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=14) "images/ec2.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=25) "aaaaaa-aaaaa-aaaaaaaaaaaa",
+    subtitle: (*string)((len=40) "instance – TCP:8090 – vpc-aaaaaaaaaa"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=26) "aaaaaa-aaaaa-aaaaaaaaaaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=198) "https://us-west-2.console.aws.amazon.com/ec2/home?region=us-west-2#TargetGroup:targetGroupArn=arn:aws:elasticloadbalancing:us-west-2:0000000000:aaaaaaaaaaa/aaaaaa-aaaaa-aaaaaaaaaaaa/aaaaaaaaaaaaaaaa"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=14) "images/ec2.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=25) "aaaaaa-aaaaa-aaaaaaaaaaaa",
+    subtitle: (*string)((len=41) "instance – HTTP:8008 – vpc-aaaaaaaaaa"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=26) "aaaaaa-aaaaa-aaaaaaaaaaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=198) "https://us-west-2.console.aws.amazon.com/ec2/home?region=us-west-2#TargetGroup:targetGroupArn=arn:aws:elasticloadbalancing:us-west-2:0000000000:aaaaaaaaaaa/aaaaaa-aaaaa-aaaaaaaaaaaa/aaaaaaaaaaaaaaaa"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=14) "images/ec2.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  })
+}

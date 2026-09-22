@@ -1,0 +1,38 @@
+([]*aw.Item) (len=1) {
+  (*aw.Item)({
+    title: (string) (len=24) "cloudfront distributions",
+    subtitle: (*string)((len=39) "🔎⭐️ CloudFront – Distributions"),
+    match: (*string)((len=27) "distributions Distributions"),
+    uid: (*string)((len=13) "distributions"),
+    autocomplete: (*string)((len=25) "cloudfront distributions "),
+    arg: ([]string) (len=1) {
+      (string) (len=47) "https://console.aws.amazon.com/cloudfront/home#"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=21) "images/cloudfront.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  })
+}

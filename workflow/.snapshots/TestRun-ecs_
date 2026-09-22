@@ -73,7 +73,7 @@
   }),
   (*aw.Item)({
     title: (string) (len=19) "ecs taskdefinitions",
-    subtitle: (*string)((len=24) "ECS – Task Definitions"),
+    subtitle: (*string)((len=29) "🔎 ECS – Task Definitions"),
     match: (*string)((len=32) "taskdefinitions Task Definitions"),
     uid: (*string)((len=15) "taskdefinitions"),
     autocomplete: (*string)((len=20) "ecs taskdefinitions "),

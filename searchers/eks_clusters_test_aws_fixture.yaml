@@ -1,0 +1,50 @@
+---
+version: 2
+interactions:
+    - id: 0
+      request:
+        proto: ""
+        proto_major: 0
+        proto_minor: 0
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: ""
+        remote_addr: ""
+        request_uri: ""
+        body: ""
+        form: {}
+        headers: {}
+        url: https://eks.us-west-2.amazonaws.com/clusters?maxResults=100
+        method: GET
+      response:
+        proto: HTTP/2.0
+        proto_major: 2
+        proto_minor: 0
+        transfer_encoding: []
+        trailer: {}
+        content_length: 32
+        uncompressed: false
+        body: |-
+            {
+              "clusters": [],
+              "nextToken": null
+            }
+        headers:
+            Access-Control-Allow-Headers:
+                - '*,Authorization,Date,X-Amz-Date,X-Amz-Security-Token,X-Amz-Target,content-type,x-amz-content-sha256,x-amz-user-agent,x-amzn-platform-id,x-amzn-trace-id'
+            Access-Control-Allow-Methods:
+                - GET,HEAD,PUT,POST,DELETE,OPTIONS
+            Access-Control-Allow-Origin:
+                - '*'
+            Access-Control-Expose-Headers:
+                - x-amzn-errortype,x-amzn-errormessage,x-amzn-trace-id,x-amzn-requestid,x-amz-apigw-id,date
+            Content-Type:
+                - application/json
+            X-Amz-Apigw-Id:
+                - EGFwdFfxjoEEFgQ=
+            X-Amzn-Trace-Id:
+                - Root=1-6ab25002-53814fb71432d8f256aed25c
+        status: 200 OK
+        code: 200
+        duration: 150.818083ms

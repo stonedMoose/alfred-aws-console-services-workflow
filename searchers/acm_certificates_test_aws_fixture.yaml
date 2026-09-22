@@ -1,0 +1,151 @@
+---
+version: 2
+interactions:
+    - id: 0
+      request:
+        proto: ""
+        proto_major: 0
+        proto_minor: 0
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: ""
+        remote_addr: ""
+        request_uri: ""
+        body: '{"MaxItems":1000}'
+        form: {}
+        headers:
+            Content-Type:
+                - application/x-amz-json-1.1
+            X-Amz-Target:
+                - CertificateManager.ListCertificates
+        url: https://acm.us-west-2.amazonaws.com/
+        method: POST
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        transfer_encoding: []
+        trailer: {}
+        content_length: 2622
+        uncompressed: false
+        body: |-
+            {
+              "CertificateSummaryList": [
+                {
+                  "CertificateArn": "arn:aws:acm:us-west-2:0000000000:aaaaaaaaaaa/aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
+                  "CertificateKeyPairOrigin": "AWS_MANAGED",
+                  "CreatedAt": 1779027916.637,
+                  "DomainName": "aaaaaa.aaaaaa.aa",
+                  "ExportOption": "DISABLED",
+                  "Exported": false,
+                  "ExtendedKeyUsages": [
+                    "TLS_WEB_SERVER_AUTHENTICATION"
+                  ],
+                  "HasAdditionalSubjectAlternativeNames": false,
+                  "InUse": true,
+                  "IssuedAt": 1779027934.061,
+                  "KeyAlgorithm": "RSA-2048",
+                  "KeyUsages": [
+                    "DIGITAL_SIGNATURE",
+                    "KEY_ENCIPHERMENT"
+                  ],
+                  "NotAfter": 1796083199,
+                  "NotBefore": 1778976000,
+                  "RenewalEligibility": "ELIGIBLE",
+                  "Status": "ISSUED",
+                  "SubjectAlternativeNameSummaries": [
+                    "gitlab.flease.fr"
+                  ],
+                  "Type": "AMAZON_ISSUED"
+                },
+                {
+                  "CertificateArn": "arn:aws:acm:us-west-2:0000000000:aaaaaaaaaaa/aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
+                  "CertificateKeyPairOrigin": "AWS_MANAGED",
+                  "CreatedAt": 1779304591.872,
+                  "DomainName": "aaaaa.aaaaaa.aa",
+                  "ExportOption": "DISABLED",
+                  "Exported": false,
+                  "ExtendedKeyUsages": [
+                    "TLS_WEB_SERVER_AUTHENTICATION"
+                  ],
+                  "HasAdditionalSubjectAlternativeNames": false,
+                  "InUse": true,
+                  "IssuedAt": 1779304644.048,
+                  "KeyAlgorithm": "RSA-2048",
+                  "KeyUsages": [
+                    "DIGITAL_SIGNATURE",
+                    "KEY_ENCIPHERMENT"
+                  ],
+                  "NotAfter": 1796342399,
+                  "NotBefore": 1779235200,
+                  "RenewalEligibility": "ELIGIBLE",
+                  "Status": "ISSUED",
+                  "SubjectAlternativeNameSummaries": [
+                    "pages.flease.fr",
+                    "*.pages.flease.fr"
+                  ],
+                  "Type": "AMAZON_ISSUED"
+                },
+                {
+                  "CertificateArn": "arn:aws:acm:us-west-2:0000000000:aaaaaaaaaaa/aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
+                  "CertificateKeyPairOrigin": "AWS_MANAGED",
+                  "CreatedAt": 1789596495.253,
+                  "DomainName": "aaa.aaaaaa.aa",
+                  "ExportOption": "DISABLED",
+                  "Exported": false,
+                  "ExtendedKeyUsages": [
+                    "TLS_WEB_SERVER_AUTHENTICATION"
+                  ],
+                  "HasAdditionalSubjectAlternativeNames": false,
+                  "InUse": true,
+                  "IssuedAt": 1789596544.073,
+                  "KeyAlgorithm": "RSA-2048",
+                  "KeyUsages": [
+                    "DIGITAL_SIGNATURE",
+                    "KEY_ENCIPHERMENT"
+                  ],
+                  "NotAfter": 1806623999,
+                  "NotBefore": 1789516800,
+                  "RenewalEligibility": "ELIGIBLE",
+                  "Status": "ISSUED",
+                  "SubjectAlternativeNameSummaries": [
+                    "mcp.flease.fr"
+                  ],
+                  "Type": "AMAZON_ISSUED"
+                },
+                {
+                  "CertificateArn": "arn:aws:acm:us-west-2:0000000000:aaaaaaaaaaa/aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
+                  "CertificateKeyPairOrigin": "AWS_MANAGED",
+                  "CreatedAt": 1789648170.509,
+                  "DomainName": "aaaaaa.aaaaaa.aa",
+                  "ExportOption": "DISABLED",
+                  "Exported": false,
+                  "ExtendedKeyUsages": [
+                    "TLS_WEB_SERVER_AUTHENTICATION"
+                  ],
+                  "HasAdditionalSubjectAlternativeNames": false,
+                  "InUse": true,
+                  "IssuedAt": 1789648188.56,
+                  "KeyAlgorithm": "RSA-2048",
+                  "KeyUsages": [
+                    "DIGITAL_SIGNATURE",
+                    "KEY_ENCIPHERMENT"
+                  ],
+                  "NotAfter": 1806710399,
+                  "NotBefore": 1789603200,
+                  "RenewalEligibility": "ELIGIBLE",
+                  "Status": "ISSUED",
+                  "SubjectAlternativeNameSummaries": [
+                    "flaude.flease.fr"
+                  ],
+                  "Type": "AMAZON_ISSUED"
+                }
+              ]
+            }
+        headers:
+            Content-Type:
+                - application/x-amz-json-1.1
+        status: 200 OK
+        code: 200
+        duration: 404.5735ms

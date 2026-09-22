@@ -1,0 +1,146 @@
+([]*aw.Item) (len=4) {
+  (*aw.Item)({
+    title: (string) (len=18) "apprunner services",
+    subtitle: (*string)((len=34) "🔎⭐️ App Runner – Services"),
+    match: (*string)((len=17) "services Services"),
+    uid: (*string)((len=8) "services"),
+    autocomplete: (*string)((len=19) "apprunner services "),
+    arg: ([]string) (len=1) {
+      (string) (len=82) "https://us-west-2.console.aws.amazon.com/apprunner/home?region=us-west-2#/services"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=20) "images/apprunner.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=21) "apprunner connections",
+    subtitle: (*string)((len=33) "App Runner – Connected accounts"),
+    match: (*string)((len=30) "connections Connected accounts"),
+    uid: (*string)((len=11) "connections"),
+    autocomplete: (*string)((len=22) "apprunner connections "),
+    arg: ([]string) (len=1) {
+      (string) (len=85) "https://us-west-2.console.aws.amazon.com/apprunner/home?region=us-west-2#/connections"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=20) "images/apprunner.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=30) "apprunner networkconfiguration",
+    subtitle: (*string)((len=36) "App Runner – Network configuration"),
+    match: (*string)((len=42) "networkconfiguration Network configuration"),
+    uid: (*string)((len=20) "networkconfiguration"),
+    autocomplete: (*string)((len=31) "apprunner networkconfiguration "),
+    arg: ([]string) (len=1) {
+      (string) (len=94) "https://us-west-2.console.aws.amazon.com/apprunner/home?region=us-west-2#/networkconfiguration"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=20) "images/apprunner.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=34) "apprunner autoscalingconfiguration",
+    subtitle: (*string)((len=41) "App Runner – Auto scaling configuration"),
+    match: (*string)((len=51) "autoscalingconfiguration Auto scaling configuration"),
+    uid: (*string)((len=24) "autoscalingconfiguration"),
+    autocomplete: (*string)((len=35) "apprunner autoscalingconfiguration "),
+    arg: ([]string) (len=1) {
+      (string) (len=98) "https://us-west-2.console.aws.amazon.com/apprunner/home?region=us-west-2#/autoscalingconfiguration"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=20) "images/apprunner.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  })
+}

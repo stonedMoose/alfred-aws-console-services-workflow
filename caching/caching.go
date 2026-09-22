@@ -25,12 +25,21 @@ import (
 	ssm "github.com/aws/aws-sdk-go-v2/service/ssm/types"
 	wafv2 "github.com/aws/aws-sdk-go-v2/service/wafv2/types"
 	"github.com/aws/smithy-go"
+	apprunner "github.com/aws/aws-sdk-go-v2/service/apprunner/types"
+	autoscaling "github.com/aws/aws-sdk-go-v2/service/autoscaling/types"
+	batch "github.com/aws/aws-sdk-go-v2/service/batch/types"
+	sfn "github.com/aws/aws-sdk-go-v2/service/sfn/types"
+	efs "github.com/aws/aws-sdk-go-v2/service/efs/types"
+	acm "github.com/aws/aws-sdk-go-v2/service/acm/types"
+	cloudfront "github.com/aws/aws-sdk-go-v2/service/cloudfront/types"
+	iam "github.com/aws/aws-sdk-go-v2/service/iam/types"
+	kms "github.com/aws/aws-sdk-go-v2/service/kms/types"
 	aw "github.com/deanishe/awgo"
 	"github.com/rkoval/alfred-aws-console-services-workflow/searchers/searchutil"
 )
 
 type Entity interface {
-	cloudwatchlogs.LogGroup | ec2.Instance | s3.Bucket | ec2.SecurityGroup | elasticbeanstalk.EnvironmentDescription | wafv2.IPSetSummary | wafv2.WebACLSummary | lambda.FunctionConfiguration | cloudformation.Stack | rds.DBInstance | sns.Topic | sns.Subscription | elasticache.CacheCluster | elasticloadbalancingv2.LoadBalancer | elasticbeanstalk.ApplicationDescription | route53.HostedZone | cloudwatchlogs.QueryDefinition | codepipeline.PipelineSummary | ecs.Cluster | ssm.ParameterMetadata | secretsmanager.SecretListEntry | ecr.Repository |
+	cloudwatchlogs.LogGroup | ec2.Instance | s3.Bucket | ec2.SecurityGroup | elasticbeanstalk.EnvironmentDescription | wafv2.IPSetSummary | wafv2.WebACLSummary | lambda.FunctionConfiguration | cloudformation.Stack | rds.DBInstance | sns.Topic | sns.Subscription | elasticache.CacheCluster | elasticloadbalancingv2.LoadBalancer | elasticbeanstalk.ApplicationDescription | route53.HostedZone | cloudwatchlogs.QueryDefinition | codepipeline.PipelineSummary | ecs.Cluster | ssm.ParameterMetadata | secretsmanager.SecretListEntry | ecr.Repository | sfn.StateMachineListItem | elasticloadbalancingv2.TargetGroup | autoscaling.AutoScalingGroup | batch.JobQueueDetail | apprunner.ServiceSummary | ec2.Vpc | ec2.Subnet | ec2.Volume | ec2.Snapshot | ec2.Image | ec2.KeyPairInfo | efs.FileSystemDescription | iam.Role | iam.User | iam.Policy | iam.Group | kms.AliasListEntry | acm.CertificateSummary | cloudfront.DistributionSummary |
 		// some list APIs (DynamoDB tables, SQS queues, ...) only hand back names or URLs
 		string
 }

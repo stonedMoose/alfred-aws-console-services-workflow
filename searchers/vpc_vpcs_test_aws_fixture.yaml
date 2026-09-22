@@ -1,0 +1,53 @@
+---
+version: 2
+interactions:
+    - id: 0
+      request:
+        proto: ""
+        proto_major: 0
+        proto_minor: 0
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: ""
+        remote_addr: ""
+        request_uri: ""
+        body: Action=DescribeVpcs&MaxResults=1000&Version=2016-11-15
+        form:
+            Action:
+                - DescribeVpcs
+            MaxResults:
+                - "1000"
+            Version:
+                - "2016-11-15"
+        headers:
+            Content-Type:
+                - application/x-www-form-urlencoded
+        url: https://ec2.us-west-2.amazonaws.com/
+        method: POST
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        transfer_encoding:
+            - chunked
+        trailer: {}
+        content_length: -1
+        uncompressed: true
+        body: |-
+            <?xml version="1.0" encoding="UTF-8"?>
+            <DescribeVpcsResponse xmlns="http://ec2.amazonaws.com/doc/2016-11-15/"><requestId>00000000-0000-0000-0000-000000000000</requestId><vpcSet><item><vpcId>vpc-aaaaaaaaaa</vpcId><ownerId>00000000</ownerId><state>available</state><cidrBlock>10.0.0.0/16</cidrBlock><cidrBlockAssociationSet><item><cidrBlock>10.0.0.0/16</cidrBlock><associationId>vpc-cidr-assoc-0a205d04d7765be8f</associationId><cidrBlockState><state>associated</state></cidrBlockState></item></cidrBlockAssociationSet><dhcpOptionsId>dopt-1a7d7f7c</dhcpOptionsId><tagSet><item><key>Name</key><value>aaa-aaa</value></item></tagSet><instanceTenancy>default</instanceTenancy><isDefault>false</isDefault><blockPublicAccessStates><internetGatewayBlockMode>off</internetGatewayBlockMode></blockPublicAccessStates></item><item><vpcId>vpc-aaaaaaaaaa</vpcId><ownerId>00000000</ownerId><state>available</state><cidrBlock>10.0.0.0/16</cidrBlock><cidrBlockAssociationSet><item><cidrBlock>10.0.0.0/16</cidrBlock><associationId>vpc-cidr-assoc-0bc08962cfcaca13f</associationId><cidrBlockState><state>associated</state></cidrBlockState></item></cidrBlockAssociationSet><dhcpOptionsId>dopt-1a7d7f7c</dhcpOptionsId><tagSet><item><key>Datadog</key><value>aaaa</value></item><item><key>aws:cloudformation:logical-id</key><value>aaa</value></item><item><key>DatadogAgentlessScanner</key><value>aaaa</value></item><item><key>Name</key><value>aaaaaaaaaaaaaaaaaaaaaaa</value></item><item><key>aws:cloudformation:stack-id</key><value>arn:aws:cloudformation:us-west-2:0000000000:aaaaa/aaaaaaaaaaaaaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaaa/aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa</value></item><item><key>aws:cloudformation:stack-name</key><value>aaaaaaaaaaaaaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaaa</value></item></tagSet><instanceTenancy>default</instanceTenancy><isDefault>false</isDefault><blockPublicAccessStates><internetGatewayBlockMode>off</internetGatewayBlockMode></blockPublicAccessStates></item><item><vpcId>vpc-aaaaaaaaaa</vpcId><ownerId>00000000</ownerId><state>available</state><cidrBlock>10.0.0.0/16</cidrBlock><cidrBlockAssociationSet><item><cidrBlock>10.0.0.0/16</cidrBlock><associationId>vpc-cidr-assoc-0adb906491446466b</associationId><cidrBlockState><state>associated</state></cidrBlockState></item></cidrBlockAssociationSet><dhcpOptionsId>dopt-1a7d7f7c</dhcpOptionsId><tagSet><item><key>Name</key><value>aaaaaaaaa-aaaa-aaa</value></item></tagSet><instanceTenancy>default</instanceTenancy><isDefault>false</isDefault><blockPublicAccessStates><internetGatewayBlockMode>off</internetGatewayBlockMode></blockPublicAccessStates></item><item><vpcId>vpc-aaaaaaaaaa</vpcId><ownerId>00000000</ownerId><state>available</state><cidrBlock>172.31.0.0/16</cidrBlock><cidrBlockAssociationSet><item><cidrBlock>172.31.0.0/16</cidrBlock><associationId>vpc-cidr-assoc-462ad22c</associationId><cidrBlockState><state>associated</state></cidrBlockState></item></cidrBlockAssociationSet><dhcpOptionsId>dopt-1a7d7f7c</dhcpOptionsId><instanceTenancy>default</instanceTenancy><isDefault>true</isDefault><blockPublicAccessStates><internetGatewayBlockMode>off</internetGatewayBlockMode></blockPublicAccessStates></item></vpcSet></DescribeVpcsResponse>
+        headers:
+            Cache-Control:
+                - no-cache, no-store
+            Content-Type:
+                - text/xml;charset=UTF-8
+            Server:
+                - AmazonEC2
+            Strict-Transport-Security:
+                - max-age=31536000; includeSubDomains
+            Vary:
+                - accept-encoding
+        status: 200 OK
+        code: 200
+        duration: 130.740291ms

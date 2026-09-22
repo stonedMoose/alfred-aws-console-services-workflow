@@ -1,0 +1,74 @@
+([]*aw.Item) (len=2) {
+  (*aw.Item)({
+    title: (string) (len=9) "iam users",
+    subtitle: (*string)((len=18) "🔎 IAM – Users"),
+    match: (*string)((len=11) "users Users"),
+    uid: (*string)((len=5) "users"),
+    autocomplete: (*string)((len=10) "iam users "),
+    arg: ([]string) (len=1) {
+      (string) (len=48) "https://console.aws.amazon.com/iamv2/home#/users"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=14) "images/iam.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=14) "iam usergroups",
+    subtitle: (*string)((len=24) "🔎 IAM – User groups"),
+    match: (*string)((len=22) "usergroups User groups"),
+    uid: (*string)((len=10) "usergroups"),
+    autocomplete: (*string)((len=15) "iam usergroups "),
+    arg: ([]string) (len=1) {
+      (string) (len=49) "https://console.aws.amazon.com/iamv2/home#/groups"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=14) "images/iam.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  })
+}

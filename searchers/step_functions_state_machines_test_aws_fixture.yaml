@@ -1,0 +1,164 @@
+---
+version: 2
+interactions:
+    - id: 0
+      request:
+        proto: ""
+        proto_major: 0
+        proto_minor: 0
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: ""
+        remote_addr: ""
+        request_uri: ""
+        body: '{"maxResults":1000}'
+        form: {}
+        headers:
+            Content-Type:
+                - application/x-amz-json-1.0
+            X-Amz-Target:
+                - AWSStepFunctions.ListStateMachines
+        url: https://states.us-west-2.amazonaws.com/
+        method: POST
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        transfer_encoding: []
+        trailer: {}
+        content_length: 4464
+        uncompressed: false
+        body: |-
+            {
+              "stateMachines": [
+                {
+                  "creationDate": 1779976944.216,
+                  "name": "aaaaaaaaa-aaa-aaaaaaaaaaaaaaaaaaaaaa",
+                  "stateMachineArn": "arn:aws:states:us-west-2:0000000000:aaaaaaaaaaaa:aaaaaaaaa-aaa-aaaaaaaaaaaaaaaaaaaaaa",
+                  "type": "STANDARD"
+                },
+                {
+                  "creationDate": 1779976895.933,
+                  "name": "aaaaaaaaa-aaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "stateMachineArn": "arn:aws:states:us-west-2:0000000000:aaaaaaaaaaaa:aaaaaaaaa-aaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "type": "STANDARD"
+                },
+                {
+                  "creationDate": 1787240334.883,
+                  "name": "aaaaaaaaa-aa-aaaa-aaaaaaaaaaaaaaaaaaaaaa",
+                  "stateMachineArn": "arn:aws:states:us-west-2:0000000000:aaaaaaaaaaaa:aaaaaaaaa-aa-aaaa-aaaaaaaaaaaaaaaaaaaaaa",
+                  "type": "STANDARD"
+                },
+                {
+                  "creationDate": 1787240287.211,
+                  "name": "aaaaaaaaa-aa-aaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "stateMachineArn": "arn:aws:states:us-west-2:0000000000:aaaaaaaaaaaa:aaaaaaaaa-aa-aaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "type": "STANDARD"
+                },
+                {
+                  "creationDate": 1790005232.6,
+                  "name": "aaaaaaaaa-aa-aaaa-aaaaaaaaaaaaaaaaaaaaaa",
+                  "stateMachineArn": "arn:aws:states:us-west-2:0000000000:aaaaaaaaaaaa:aaaaaaaaa-aa-aaaa-aaaaaaaaaaaaaaaaaaaaaa",
+                  "type": "STANDARD"
+                },
+                {
+                  "creationDate": 1790005184.95,
+                  "name": "aaaaaaaaa-aa-aaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "stateMachineArn": "arn:aws:states:us-west-2:0000000000:aaaaaaaaaaaa:aaaaaaaaa-aa-aaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "type": "STANDARD"
+                },
+                {
+                  "creationDate": 1790006889.136,
+                  "name": "aaaaaaaaa-aa-aaaaaaaaaa-aaaaaaaaaaaaaaaaaaaaaa",
+                  "stateMachineArn": "arn:aws:states:us-west-2:0000000000:aaaaaaaaaaaa:aaaaaaaaa-aa-aaaaaaaaaa-aaaaaaaaaaaaaaaaaaaaaa",
+                  "type": "STANDARD"
+                },
+                {
+                  "creationDate": 1790006840.826,
+                  "name": "aaaaaaaaa-aa-aaaaaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "stateMachineArn": "arn:aws:states:us-west-2:0000000000:aaaaaaaaaaaa:aaaaaaaaa-aa-aaaaaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "type": "STANDARD"
+                },
+                {
+                  "creationDate": 1789109466.414,
+                  "name": "aaaaaaaaa-aa-aaaa-aaaaaaaaaaaaaaaaaaaaaa",
+                  "stateMachineArn": "arn:aws:states:us-west-2:0000000000:aaaaaaaaaaaa:aaaaaaaaa-aa-aaaa-aaaaaaaaaaaaaaaaaaaaaa",
+                  "type": "STANDARD"
+                },
+                {
+                  "creationDate": 1789109419.093,
+                  "name": "aaaaaaaaa-aa-aaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "stateMachineArn": "arn:aws:states:us-west-2:0000000000:aaaaaaaaaaaa:aaaaaaaaa-aa-aaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "type": "STANDARD"
+                },
+                {
+                  "creationDate": 1789052253.298,
+                  "name": "aaaaaaaaa-aa-aaaa-aaaaaaaaaaaaaaaaaaaaaa",
+                  "stateMachineArn": "arn:aws:states:us-west-2:0000000000:aaaaaaaaaaaa:aaaaaaaaa-aa-aaaa-aaaaaaaaaaaaaaaaaaaaaa",
+                  "type": "STANDARD"
+                },
+                {
+                  "creationDate": 1789052204.694,
+                  "name": "aaaaaaaaa-aa-aaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "stateMachineArn": "arn:aws:states:us-west-2:0000000000:aaaaaaaaaaaa:aaaaaaaaa-aa-aaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "type": "STANDARD"
+                },
+                {
+                  "creationDate": 1789603476.879,
+                  "name": "aaaaaaaaa-aa-aaaa-aaaaaaaaaaaaaaaaaaaaaa",
+                  "stateMachineArn": "arn:aws:states:us-west-2:0000000000:aaaaaaaaaaaa:aaaaaaaaa-aa-aaaa-aaaaaaaaaaaaaaaaaaaaaa",
+                  "type": "STANDARD"
+                },
+                {
+                  "creationDate": 1789603429.633,
+                  "name": "aaaaaaaaa-aa-aaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "stateMachineArn": "arn:aws:states:us-west-2:0000000000:aaaaaaaaaaaa:aaaaaaaaa-aa-aaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "type": "STANDARD"
+                },
+                {
+                  "creationDate": 1789401606.474,
+                  "name": "aaaaaaaaa-aa-aaaa-aaaaaaaaaaaaaaaaaaaaaa",
+                  "stateMachineArn": "arn:aws:states:us-west-2:0000000000:aaaaaaaaaaaa:aaaaaaaaa-aa-aaaa-aaaaaaaaaaaaaaaaaaaaaa",
+                  "type": "STANDARD"
+                },
+                {
+                  "creationDate": 1789401558.965,
+                  "name": "aaaaaaaaa-aa-aaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "stateMachineArn": "arn:aws:states:us-west-2:0000000000:aaaaaaaaaaaa:aaaaaaaaa-aa-aaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "type": "STANDARD"
+                },
+                {
+                  "creationDate": 1789735928.884,
+                  "name": "aaaaaaaaa-aa-aaaa-aaaaaaaaaaaaaaaaaaaaaa",
+                  "stateMachineArn": "arn:aws:states:us-west-2:0000000000:aaaaaaaaaaaa:aaaaaaaaa-aa-aaaa-aaaaaaaaaaaaaaaaaaaaaa",
+                  "type": "STANDARD"
+                },
+                {
+                  "creationDate": 1789735879.771,
+                  "name": "aaaaaaaaa-aa-aaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "stateMachineArn": "arn:aws:states:us-west-2:0000000000:aaaaaaaaaaaa:aaaaaaaaa-aa-aaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "type": "STANDARD"
+                },
+                {
+                  "creationDate": 1779848794.393,
+                  "name": "aaaaaaaaa-aaaa-aaaaaaaaaaaaaaaaaaaaaa",
+                  "stateMachineArn": "arn:aws:states:us-west-2:0000000000:aaaaaaaaaaaa:aaaaaaaaa-aaaa-aaaaaaaaaaaaaaaaaaaaaa",
+                  "type": "STANDARD"
+                },
+                {
+                  "creationDate": 1779848746.559,
+                  "name": "aaaaaaaaa-aaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "stateMachineArn": "arn:aws:states:us-west-2:0000000000:aaaaaaaaaaaa:aaaaaaaaa-aaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "type": "STANDARD"
+                }
+              ]
+            }
+        headers:
+            Connection:
+                - keep-alive
+            Content-Type:
+                - application/x-amz-json-1.0
+        status: 200 OK
+        code: 200
+        duration: 142.607791ms

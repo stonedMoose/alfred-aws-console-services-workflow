@@ -1,0 +1,112 @@
+---
+version: 2
+interactions:
+    - id: 0
+      request:
+        proto: ""
+        proto_major: 0
+        proto_minor: 0
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: ""
+        remote_addr: ""
+        request_uri: ""
+        body: Action=ListUsers&MaxItems=1000&Version=2010-05-08
+        form:
+            Action:
+                - ListUsers
+            MaxItems:
+                - "1000"
+            Version:
+                - "2010-05-08"
+        headers:
+            Content-Type:
+                - application/x-www-form-urlencoded
+        url: https://iam.amazonaws.com/
+        method: POST
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        transfer_encoding: []
+        trailer: {}
+        content_length: 2591
+        uncompressed: false
+        body: |
+            <ListUsersResponse xmlns="https://iam.amazonaws.com/doc/2010-05-08/">
+              <ListUsersResult>
+                <IsTruncated>false</IsTruncated>
+                <Users>
+                  <member>
+                    <Path>/</Path>
+                    <PasswordLastUsed>2026-09-21T07:33:41Z</PasswordLastUsed>
+                    <UserName>aaaaaa</UserName>
+                    <Arn>arn:aws:iam::0000000000:aaaa/aaaaaa</Arn>
+                    <UserId>AIDA3TKU6RJJM4HSOHRN7</UserId>
+                    <CreateDate>2025-02-13T10:15:59Z</CreateDate>
+                  </member>
+                  <member>
+                    <Path>/</Path>
+                    <UserName>aaaaaa</UserName>
+                    <Arn>arn:aws:iam::0000000000:aaaa/aaaaaa</Arn>
+                    <UserId>AIDA3TKU6RJJLZAXU2NRV</UserId>
+                    <CreateDate>2021-08-16T12:14:20Z</CreateDate>
+                  </member>
+                  <member>
+                    <Path>/</Path>
+                    <UserName>aaaaaa-aaa-aaaa</UserName>
+                    <Arn>arn:aws:iam::0000000000:aaaa/aaaaaa-aaa-aaaa</Arn>
+                    <UserId>AIDA3TKU6RJJOHUUWH73Z</UserId>
+                    <CreateDate>2026-05-15T23:50:47Z</CreateDate>
+                  </member>
+                  <member>
+                    <Path>/</Path>
+                    <PasswordLastUsed>2026-09-22T09:09:41Z</PasswordLastUsed>
+                    <UserName>aaaaaa</UserName>
+                    <Arn>arn:aws:iam::0000000000:aaaa/aaaaaa</Arn>
+                    <UserId>AIDA3TKU6RJJE3MLXYOP5</UserId>
+                    <CreateDate>2021-01-04T10:29:48Z</CreateDate>
+                  </member>
+                  <member>
+                    <Path>/</Path>
+                    <UserName>aaaaaaaa</UserName>
+                    <Arn>arn:aws:iam::0000000000:aaaa/aaaaaaaa</Arn>
+                    <UserId>AIDA3TKU6RJJAONVOHFZF</UserId>
+                    <CreateDate>2025-04-17T14:17:07Z</CreateDate>
+                  </member>
+                  <member>
+                    <Path>/</Path>
+                    <UserName>aaaaaaaaaaaaaaa</UserName>
+                    <Arn>arn:aws:iam::0000000000:aaaa/aaaaaaaaaaaaaaa</Arn>
+                    <UserId>AIDA3TKU6RJJMJDYS6Q5H</UserId>
+                    <CreateDate>2024-10-01T07:45:06Z</CreateDate>
+                  </member>
+                  <member>
+                    <Path>/</Path>
+                    <PasswordLastUsed>2026-09-17T19:06:54Z</PasswordLastUsed>
+                    <UserName>aaaaaa</UserName>
+                    <Arn>arn:aws:iam::0000000000:aaaa/aaaaaa</Arn>
+                    <UserId>AIDA3TKU6RJJPDYUM2STU</UserId>
+                    <CreateDate>2022-01-10T14:37:50Z</CreateDate>
+                  </member>
+                  <member>
+                    <Path>/</Path>
+                    <PasswordLastUsed>2026-09-21T12:10:17Z</PasswordLastUsed>
+                    <UserName>aaaaaaa</UserName>
+                    <Arn>arn:aws:iam::0000000000:aaaa/aaaaaaa</Arn>
+                    <UserId>AIDA3TKU6RJJDF5YX2DRB</UserId>
+                    <CreateDate>2023-05-02T08:20:49Z</CreateDate>
+                  </member>
+                </Users>
+              </ListUsersResult>
+              <ResponseMetadata>
+                <RequestId>00000000-0000-0000-0000-000000000000</RequestId>
+              </ResponseMetadata>
+            </ListUsersResponse>
+        headers:
+            Content-Type:
+                - text/xml
+        status: 200 OK
+        code: 200
+        duration: 110.666416ms

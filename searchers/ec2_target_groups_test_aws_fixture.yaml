@@ -1,0 +1,186 @@
+---
+version: 2
+interactions:
+    - id: 0
+      request:
+        proto: ""
+        proto_major: 0
+        proto_minor: 0
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: ""
+        remote_addr: ""
+        request_uri: ""
+        body: Action=DescribeTargetGroups&PageSize=400&Version=2015-12-01
+        form:
+            Action:
+                - DescribeTargetGroups
+            PageSize:
+                - "400"
+            Version:
+                - "2015-12-01"
+        headers:
+            Content-Type:
+                - application/x-www-form-urlencoded
+        url: https://elasticloadbalancing.us-west-2.amazonaws.com/
+        method: POST
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        transfer_encoding: []
+        trailer: {}
+        content_length: 7287
+        uncompressed: false
+        body: |
+            <DescribeTargetGroupsResponse xmlns="http://elasticloadbalancing.amazonaws.com/doc/2015-12-01/">
+              <DescribeTargetGroupsResult>
+                <TargetGroups>
+                  <member>
+                    <HealthCheckEnabled>true</HealthCheckEnabled>
+                    <TargetGroupArn>arn:aws:elasticloadbalancing:us-west-2:0000000000:aaaaaaaaaaa/aaaaaaaaaaaaaaa-aaaaaaaaaa/aaaaaaaaaaaaaaaa</TargetGroupArn>
+                    <HealthCheckTimeoutSeconds>6</HealthCheckTimeoutSeconds>
+                    <HealthCheckPort>traffic-port</HealthCheckPort>
+                    <TargetType>instance</TargetType>
+                    <Matcher>
+                      <HttpCode>200-399</HttpCode>
+                    </Matcher>
+                    <HealthCheckProtocol>HTTP</HealthCheckProtocol>
+                    <TargetGroupName>aaaaaaaaaaaaaaa-aaaaaaaaaa</TargetGroupName>
+                    <IpAddressType>ipv4</IpAddressType>
+                    <Protocol>TCP</Protocol>
+                    <HealthCheckPath>/actuator/health</HealthCheckPath>
+                    <Port>3030</Port>
+                    <VpcId>vpc-aaaaaaaaaa</VpcId>
+                    <HealthyThresholdCount>3</HealthyThresholdCount>
+                    <HealthCheckIntervalSeconds>30</HealthCheckIntervalSeconds>
+                    <LoadBalancerArns>
+                      <member>arn:aws:elasticloadbalancing:us-west-2:0000000000:loadbalancer/net/CarDataConsumerNLB/593756ec4f356f94</member>
+                    </LoadBalancerArns>
+                    <UnhealthyThresholdCount>3</UnhealthyThresholdCount>
+                  </member>
+                  <member>
+                    <HealthCheckEnabled>true</HealthCheckEnabled>
+                    <TargetGroupArn>arn:aws:elasticloadbalancing:us-west-2:0000000000:aaaaaaaaaaa/aaaaaa-aaaaa-aaaaaaaaaa/aaaaaaaaaaaaaaaa</TargetGroupArn>
+                    <HealthCheckTimeoutSeconds>10</HealthCheckTimeoutSeconds>
+                    <HealthCheckPort>5050</HealthCheckPort>
+                    <TargetType>instance</TargetType>
+                    <Matcher>
+                      <HttpCode>200,401</HttpCode>
+                    </Matcher>
+                    <HealthCheckProtocol>HTTP</HealthCheckProtocol>
+                    <TargetGroupName>aaaaaa-aaaaa-aaaaaaaaaa</TargetGroupName>
+                    <IpAddressType>ipv4</IpAddressType>
+                    <Protocol>TCP</Protocol>
+                    <HealthCheckPath>/v2/</HealthCheckPath>
+                    <Port>5050</Port>
+                    <VpcId>vpc-aaaaaaaaaa</VpcId>
+                    <HealthyThresholdCount>5</HealthyThresholdCount>
+                    <HealthCheckIntervalSeconds>30</HealthCheckIntervalSeconds>
+                    <LoadBalancerArns>
+                      <member>arn:aws:elasticloadbalancing:us-west-2:0000000000:loadbalancer/net/Gitlab-Nlb05-HOZ3hBEAeCCx/30a91e2e9b8e8720</member>
+                    </LoadBalancerArns>
+                    <UnhealthyThresholdCount>5</UnhealthyThresholdCount>
+                  </member>
+                  <member>
+                    <HealthCheckEnabled>true</HealthCheckEnabled>
+                    <TargetGroupArn>arn:aws:elasticloadbalancing:us-west-2:0000000000:aaaaaaaaaaa/aaaaaa-aaaaa-aaaaaaaaaaaa/aaaaaaaaaaaaaaaa</TargetGroupArn>
+                    <HealthCheckTimeoutSeconds>10</HealthCheckTimeoutSeconds>
+                    <HealthCheckPort>traffic-port</HealthCheckPort>
+                    <TargetType>instance</TargetType>
+                    <HealthCheckProtocol>TCP</HealthCheckProtocol>
+                    <TargetGroupName>aaaaaa-aaaaa-aaaaaaaaaaaa</TargetGroupName>
+                    <IpAddressType>ipv4</IpAddressType>
+                    <Protocol>TCP</Protocol>
+                    <Port>22</Port>
+                    <VpcId>vpc-aaaaaaaaaa</VpcId>
+                    <HealthyThresholdCount>5</HealthyThresholdCount>
+                    <HealthCheckIntervalSeconds>30</HealthCheckIntervalSeconds>
+                    <LoadBalancerArns>
+                      <member>arn:aws:elasticloadbalancing:us-west-2:0000000000:loadbalancer/net/Gitlab-Nlb05-HOZ3hBEAeCCx/30a91e2e9b8e8720</member>
+                    </LoadBalancerArns>
+                    <UnhealthyThresholdCount>3</UnhealthyThresholdCount>
+                  </member>
+                  <member>
+                    <HealthCheckEnabled>true</HealthCheckEnabled>
+                    <TargetGroupArn>arn:aws:elasticloadbalancing:us-west-2:0000000000:aaaaaaaaaaa/aaaaaa-aaaaa-aaaaaaaaaa/aaaaaaaaaaaaaaaa</TargetGroupArn>
+                    <HealthCheckTimeoutSeconds>10</HealthCheckTimeoutSeconds>
+                    <HealthCheckPort>8929</HealthCheckPort>
+                    <TargetType>instance</TargetType>
+                    <Matcher>
+                      <HttpCode>200</HttpCode>
+                    </Matcher>
+                    <HealthCheckProtocol>HTTP</HealthCheckProtocol>
+                    <TargetGroupName>aaaaaa-aaaaa-aaaaaaaaaa</TargetGroupName>
+                    <IpAddressType>ipv4</IpAddressType>
+                    <Protocol>TCP</Protocol>
+                    <HealthCheckPath>/users/sign_in</HealthCheckPath>
+                    <Port>8929</Port>
+                    <VpcId>vpc-aaaaaaaaaa</VpcId>
+                    <HealthyThresholdCount>5</HealthyThresholdCount>
+                    <HealthCheckIntervalSeconds>30</HealthCheckIntervalSeconds>
+                    <LoadBalancerArns>
+                      <member>arn:aws:elasticloadbalancing:us-west-2:0000000000:loadbalancer/net/Gitlab-Nlb05-HOZ3hBEAeCCx/30a91e2e9b8e8720</member>
+                    </LoadBalancerArns>
+                    <UnhealthyThresholdCount>5</UnhealthyThresholdCount>
+                  </member>
+                  <member>
+                    <HealthCheckEnabled>true</HealthCheckEnabled>
+                    <TargetGroupArn>arn:aws:elasticloadbalancing:us-west-2:0000000000:aaaaaaaaaaa/aaaaaa-aaaaa-aaaaaaaaaaaa/aaaaaaaaaaaaaaaa</TargetGroupArn>
+                    <HealthCheckTimeoutSeconds>10</HealthCheckTimeoutSeconds>
+                    <HealthCheckPort>8090</HealthCheckPort>
+                    <TargetType>instance</TargetType>
+                    <Matcher>
+                      <HttpCode>200</HttpCode>
+                    </Matcher>
+                    <HealthCheckProtocol>HTTP</HealthCheckProtocol>
+                    <TargetGroupName>aaaaaa-aaaaa-aaaaaaaaaaaa</TargetGroupName>
+                    <IpAddressType>ipv4</IpAddressType>
+                    <Protocol>TCP</Protocol>
+                    <HealthCheckPath>/-/healthz</HealthCheckPath>
+                    <Port>8090</Port>
+                    <VpcId>vpc-aaaaaaaaaa</VpcId>
+                    <HealthyThresholdCount>5</HealthyThresholdCount>
+                    <HealthCheckIntervalSeconds>30</HealthCheckIntervalSeconds>
+                    <LoadBalancerArns>
+                      <member>arn:aws:elasticloadbalancing:us-west-2:0000000000:loadbalancer/net/Gitlab-Pages-eqOb2VC2BAs7/1d98138767edf641</member>
+                    </LoadBalancerArns>
+                    <UnhealthyThresholdCount>5</UnhealthyThresholdCount>
+                  </member>
+                  <member>
+                    <HealthCheckEnabled>true</HealthCheckEnabled>
+                    <TargetGroupArn>arn:aws:elasticloadbalancing:us-west-2:0000000000:aaaaaaaaaaa/aaaaaa-aaaaa-aaaaaaaaaaaa/aaaaaaaaaaaaaaaa</TargetGroupArn>
+                    <HealthCheckTimeoutSeconds>5</HealthCheckTimeoutSeconds>
+                    <HealthCheckPort>8008</HealthCheckPort>
+                    <TargetType>instance</TargetType>
+                    <Matcher>
+                      <HttpCode>200</HttpCode>
+                    </Matcher>
+                    <HealthCheckProtocol>HTTP</HealthCheckProtocol>
+                    <TargetGroupName>aaaaaa-aaaaa-aaaaaaaaaaaa</TargetGroupName>
+                    <IpAddressType>ipv4</IpAddressType>
+                    <Protocol>HTTP</Protocol>
+                    <HealthCheckPath>/health</HealthCheckPath>
+                    <Port>8008</Port>
+                    <VpcId>vpc-aaaaaaaaaa</VpcId>
+                    <HealthyThresholdCount>5</HealthyThresholdCount>
+                    <HealthCheckIntervalSeconds>30</HealthCheckIntervalSeconds>
+                    <ProtocolVersion>HTTP1</ProtocolVersion>
+                    <LoadBalancerArns>
+                      <member>arn:aws:elasticloadbalancing:us-west-2:0000000000:loadbalancer/app/Prospe-Prosp-En9FlbCU7OvO/1eb24df07efecd5b</member>
+                    </LoadBalancerArns>
+                    <UnhealthyThresholdCount>2</UnhealthyThresholdCount>
+                  </member>
+                </TargetGroups>
+              </DescribeTargetGroupsResult>
+              <ResponseMetadata>
+                <RequestId>00000000-0000-0000-0000-000000000000</RequestId>
+              </ResponseMetadata>
+            </DescribeTargetGroupsResponse>
+        headers:
+            Content-Type:
+                - text/xml
+        status: 200 OK
+        code: 200
+        duration: 156.258625ms

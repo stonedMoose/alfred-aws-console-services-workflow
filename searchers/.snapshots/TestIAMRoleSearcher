@@ -1,0 +1,1802 @@
+([]*aw.Item) (len=50) {
+  (*aw.Item)({
+    title: (string) (len=31) "aaa-aaa-aaaa-aaaaa-aaaaaaa-aaaa",
+    subtitle: (*string)((len=42) "/ – Created Thu Jan 21 23:18:17 UTC 2021"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=32) "aaa-aaa-aaaa-aaaaa-aaaaaaa-aaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=115) "https://us-west-2.console.aws.amazon.com/iamv2/home?region=us-west-2#/roles/details/aaa-aaa-aaaa-aaaaa-aaaaaaa-aaaa"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=14) "images/iam.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=27) "aaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    subtitle: (*string)((len=55) "/service-role/ – Created Wed Feb 14 08:44:51 UTC 2024"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=28) "aaaaaaaaaaaaaaaaaaaaaaaaaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=111) "https://us-west-2.console.aws.amazon.com/iamv2/home?region=us-west-2#/roles/details/aaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=14) "images/iam.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=51) "aaaaaaaaaaaaaa_aaaaaaaaaaaaaaaaaaa_aaaaaaaaaaaaaaaa",
+    subtitle: (*string)((len=83) "/aws-reserved/sso.amazonaws.com/us-west-2/ – Created Thu Apr  6 09:45:38 UTC 2023"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=52) "aaaaaaaaaaaaaa_aaaaaaaaaaaaaaaaaaa_aaaaaaaaaaaaaaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=135) "https://us-west-2.console.aws.amazon.com/iamv2/home?region=us-west-2#/roles/details/aaaaaaaaaaaaaa_aaaaaaaaaaaaaaaaaaa_aaaaaaaaaaaaaaaa"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=14) "images/iam.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=31) "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    subtitle: (*string)((len=89) "/aws-service-role/access-analyzer.amazonaws.com/ – Created Mon Sep 30 07:19:52 UTC 2024"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=32) "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=115) "https://us-west-2.console.aws.amazon.com/iamv2/home?region=us-west-2#/roles/details/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=14) "images/iam.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=45) "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    subtitle: (*string)((len=183) "aaaaaaa aaaaaa aaaa aaa aaaaaa aaaaaaa aaaa aaaaa aaaaaaa aa aaaa aaaaaa aa aaaa aaaaaa – /aws-service-role/email.cognito-idp.amazonaws.com/ – Created Fri Jan 29 17:23:24 UTC 2021"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=46) "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=129) "https://us-west-2.console.aws.amazon.com/iamv2/home?region=us-west-2#/roles/details/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=14) "images/iam.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=32) "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    subtitle: (*string)((len=166) "a aaaaaaa-aaaaaa aaaa aaaaaaaa aaa aaaaaa aaaaaaaaa aa aaaaaa aaaa aaaaaaaaa.  – /aws-service-role/guardduty.amazonaws.com/ – Created Mon Sep 30 07:25:43 UTC 2024"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=33) "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=116) "https://us-west-2.console.aws.amazon.com/iamv2/home?region=us-west-2#/roles/details/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=14) "images/iam.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=49) "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    subtitle: (*string)((len=198) "a aaaaaaa-aaaaaa aaaa aaaaaaaa aaa aaaaaa aaaaaaaaa aaaaaaa aaaa aa aaaaaa aaaa aaaaaaaaa.  – /aws-service-role/malware-aaaaaaaaaa.guardduty.amazonaws.com/ – Created Mon Sep 30 07:25:43 UTC 2024"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=50) "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=133) "https://us-west-2.console.aws.amazon.com/iamv2/home?region=us-west-2#/roles/details/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=14) "images/iam.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=26) "aaaaaaaaaaaaaaaaaaaaaaaaaa",
+    subtitle: (*string)((len=145) "aaaaaaaa aaaaaa aa aaa aaaaaaaaa aaaaaaa aa aaaa aa aaaaaa aaa. – /aws-service-role/ssm.amazonaws.com/ – Created Fri Dec  3 10:58:01 UTC 2021"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=27) "aaaaaaaaaaaaaaaaaaaaaaaaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=110) "https://us-west-2.console.aws.amazon.com/iamv2/home?region=us-west-2#/roles/details/aaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=14) "images/iam.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=27) "aaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    subtitle: (*string)((len=147) "aaa aaaaaaa aaaaaa aaaa aa aaaa aa aaaaaa aaa aaaaaaa. – /aws-service-role/ops.apigateway.amazonaws.com/ – Created Sun Feb  7 18:32:21 UTC 2021"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=28) "aaaaaaaaaaaaaaaaaaaaaaaaaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=111) "https://us-west-2.console.aws.amazon.com/iamv2/home?region=us-west-2#/roles/details/aaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=14) "images/iam.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=53) "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa_aaaaaaaaaaaaa",
+    subtitle: (*string)((len=106) "/aws-service-role/dynamodb.application-autoscaling.amazonaws.com/ – Created Fri Mar  5 23:26:05 UTC 2021"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=54) "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa_aaaaaaaaaaaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=137) "https://us-west-2.console.aws.amazon.com/iamv2/home?region=us-west-2#/roles/details/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa_aaaaaaaaaaaaa"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=14) "images/iam.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=28) "aaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    subtitle: (*string)((len=194) "aaaaaaa aaaaaaa-aaaaaa aaaa aaaaaaa aaaaaa aa aaa aaaaaaaa aaa aaaaaaaaa aaaa aa aaaaaaa aa aaaa aaaaaaa – /aws-service-role/autoscaling.amazonaws.com/ – Created Tue Aug  5 15:13:31 UTC 2025"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=29) "aaaaaaaaaaaaaaaaaaaaaaaaaaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=112) "https://us-west-2.console.aws.amazon.com/iamv2/home?region=us-west-2#/roles/details/aaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=14) "images/iam.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=27) "aaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    subtitle: (*string)((len=141) "aaa aaaaaaa aaaaaa aaaa aaaa aa aaa aaaaaaa. – /aws-service-role/management.chatbot.amazonaws.com/ – Created Thu Sep  5 12:52:24 UTC 2024"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=28) "aaaaaaaaaaaaaaaaaaaaaaaaaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=111) "https://us-west-2.console.aws.amazon.com/iamv2/home?region=us-west-2#/roles/details/aaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=14) "images/iam.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=23) "aaaaaaaaaaaaaaaaaaaaaaa",
+    subtitle: (*string)((len=80) "/aws-service-role/backup.amazonaws.com/ – Created Wed Feb 14 08:44:58 UTC 2024"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=24) "aaaaaaaaaaaaaaaaaaaaaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=107) "https://us-west-2.console.aws.amazon.com/iamv2/home?region=us-west-2#/roles/details/aaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=14) "images/iam.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=33) "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    subtitle: (*string)((len=91) "/aws-service-role/logger.cloudfront.amazonaws.com/ – Created Mon Jan 25 09:21:05 UTC 2021"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=34) "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=117) "https://us-west-2.console.aws.amazon.com/iamv2/home?region=us-west-2#/roles/details/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=14) "images/iam.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=30) "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    subtitle: (*string)((len=87) "/aws-service-role/codewhisperer.amazonaws.com/ – Created Thu Apr 20 09:13:43 UTC 2023"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=31) "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=114) "https://us-west-2.console.aws.amazon.com/iamv2/home?region=us-west-2#/roles/details/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=14) "images/iam.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=33) "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    subtitle: (*string)((len=186) "aaaaaa aaaaaaaaaaaaaaaa aa aaaa aaa aaaaaaaa aaa aaaaaaa aaaaaaaa aaaaaaa aa aaaa aaaaaa. – /aws-service-role/compute-aaaaaaaaaa.amazonaws.com/ – Created Tue Oct  1 09:43:37 UTC 2024"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=34) "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=117) "https://us-west-2.console.aws.amazon.com/iamv2/home?region=us-west-2#/roles/details/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=14) "images/iam.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=23) "aaaaaaaaaaaaaaaaaaaaaaa",
+    subtitle: (*string)((len=80) "/aws-service-role/config.amazonaws.com/ – Created Mon Sep 30 08:57:43 UTC 2024"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=24) "aaaaaaaaaaaaaaaaaaaaaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=107) "https://us-west-2.console.aws.amazon.com/iamv2/home?region=us-west-2#/roles/details/aaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=14) "images/iam.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=36) "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    subtitle: (*string)((len=221) "aaaaaa aaaa aaaaaaaaaaaa aaa aa aaaaaaaa aaaaaaaaaaaa aaaaaaaaaaa aaa aaaaaaa aaaaaaaaaaaa-aaaaaaa aaaa aaa aaaaaaaa. – /aws-service-role/cost-optimization-hub.bcm.amazonaws.com/ – Created Tue Oct  1 09:47:13 UTC 2024"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=37) "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=120) "https://us-west-2.console.aws.amazon.com/iamv2/home?region=us-west-2#/roles/details/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=14) "images/iam.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=24) "aaaaaaaaaaaaaaaaaaaaaaaa",
+    subtitle: (*string)((len=119) "aaaaaaa aaa aaaa aaaaaaa aaaaaa aaaa – /aws-service-role/spot.amazonaws.com/ – Created Fri Jan 22 09:15:55 UTC 2021"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=25) "aaaaaaaaaaaaaaaaaaaaaaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=108) "https://us-west-2.console.aws.amazon.com/iamv2/home?region=us-west-2#/roles/details/aaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=14) "images/iam.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=20) "aaaaaaaaaaaaaaaaaaaa",
+    subtitle: (*string)((len=131) "aaaa aa aaaaaa aaaaaa aaa aa aaaaaa aaaa aaaaaaa. – /aws-service-role/ecs.amazonaws.com/ – Created Wed Nov 10 14:03:11 UTC 2021"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=21) "aaaaaaaaaaaaaaaaaaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=104) "https://us-west-2.console.aws.amazon.com/iamv2/home?region=us-west-2#/roles/details/aaaaaaaaaaaaaaaaaaaa"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=14) "images/iam.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=37) "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    subtitle: (*string)((len=146) "aaaaaa aaa aa aaaa aaa aaaaaaaa aa aaaa aaaaaa. – /aws-service-role/elasticloadbalancing.amazonaws.com/ – Created Thu Jun  2 14:09:51 UTC 2022"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=38) "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=121) "https://us-west-2.console.aws.amazon.com/iamv2/home?region=us-west-2#/roles/details/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=14) "images/iam.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=34) "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    subtitle: (*string)((len=163) "aaaaaa aaaaaa aaaaaaaaaaa aa aaaa aaa aaaaaaaa aa aaaaaaaa'a aaaaaa – /aws-service-role/globalaccelerator.amazonaws.com/ – Created Thu Jun  2 14:40:17 UTC 2022"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=35) "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=118) "https://us-west-2.console.aws.amazon.com/iamv2/home?region=us-west-2#/roles/details/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=14) "images/iam.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=29) "aaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    subtitle: (*string)((len=86) "/aws-service-role/imagebuilder.amazonaws.com/ – Created Sat May 16 20:31:49 UTC 2026"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=30) "aaaaaaaaaaaaaaaaaaaaaaaaaaaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=113) "https://us-west-2.console.aws.amazon.com/iamv2/home?region=us-west-2#/roles/details/aaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=14) "images/iam.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=33) "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    subtitle: (*string)((len=91) "/aws-service-role/replicator.lambda.amazonaws.com/ – Created Mon Jan 25 09:21:05 UTC 2021"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=34) "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=117) "https://us-west-2.console.aws.amazon.com/iamv2/home?region=us-west-2#/roles/details/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=14) "images/iam.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=30) "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    subtitle: (*string)((len=201) "aaaaaaa-aaaaaa aaaa aaaa aa aaa aaaaaaaaaaaaa aa aaaaaa aaaaaaaaaaa aa aaaaa aaa aaaaaaaa aaaa aaaaaaaaaaaaa. – /aws-service-role/organizations.amazonaws.com/ – Created Mon Jan  4 11:06:05 UTC 2021"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=31) "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=114) "https://us-west-2.console.aws.amazon.com/iamv2/home?region=us-west-2#/roles/details/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=14) "images/iam.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=64) "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+    subtitle: (*string)((len=42) "/ – Created Tue Sep 15 14:46:22 UTC 2026"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=65) "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=148) "https://us-west-2.console.aws.amazon.com/iamv2/home?region=us-west-2#/roles/details/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=14) "images/iam.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=49) "aaaaaaaaa-aa-aaaa-aaaaaaa-aaaaaaaaaa-aaaaaaaaaaaa",
+    subtitle: (*string)((len=42) "/ – Created Fri Sep 18 12:59:29 UTC 2026"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=50) "aaaaaaaaa-aa-aaaa-aaaaaaa-aaaaaaaaaa-aaaaaaaaaaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=133) "https://us-west-2.console.aws.amazon.com/iamv2/home?region=us-west-2#/roles/details/aaaaaaaaa-aa-aaaa-aaaaaaa-aaaaaaaaaa-aaaaaaaaaaaa"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=14) "images/iam.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=49) "aaaaaaaaa-aa-aaaa-aaaaaaa-aaaaaaaaaa-aaaaaaaaaaaa",
+    subtitle: (*string)((len=42) "/ – Created Fri Sep 18 12:59:29 UTC 2026"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=50) "aaaaaaaaa-aa-aaaa-aaaaaaa-aaaaaaaaaa-aaaaaaaaaaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=133) "https://us-west-2.console.aws.amazon.com/iamv2/home?region=us-west-2#/roles/details/aaaaaaaaa-aa-aaaa-aaaaaaa-aaaaaaaaaa-aaaaaaaaaaaa"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=14) "images/iam.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=49) "aaaaaaaaa-aa-aaaa-aaaaaaa-aaaaaaaaaa-aaaaaaaaaaaa",
+    subtitle: (*string)((len=42) "/ – Created Fri Sep 18 12:43:52 UTC 2026"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=50) "aaaaaaaaa-aa-aaaa-aaaaaaa-aaaaaaaaaa-aaaaaaaaaaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=133) "https://us-west-2.console.aws.amazon.com/iamv2/home?region=us-west-2#/roles/details/aaaaaaaaa-aa-aaaa-aaaaaaa-aaaaaaaaaa-aaaaaaaaaaaa"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=14) "images/iam.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=64) "aaaaaaaaa-aa-aaaa-aaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+    subtitle: (*string)((len=42) "/ – Created Fri Sep 18 12:44:14 UTC 2026"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=65) "aaaaaaaaa-aa-aaaa-aaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=148) "https://us-west-2.console.aws.amazon.com/iamv2/home?region=us-west-2#/roles/details/aaaaaaaaa-aa-aaaa-aaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=14) "images/iam.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=64) "aaaaaaaaa-aa-aaaa-aaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+    subtitle: (*string)((len=42) "/ – Created Fri Sep 18 12:43:51 UTC 2026"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=65) "aaaaaaaaa-aa-aaaa-aaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=148) "https://us-west-2.console.aws.amazon.com/iamv2/home?region=us-west-2#/roles/details/aaaaaaaaa-aa-aaaa-aaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=14) "images/iam.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=62) "aaaaaaaaa-aa-aaaa-aaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+    subtitle: (*string)((len=42) "/ – Created Fri Sep 18 12:43:50 UTC 2026"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=63) "aaaaaaaaa-aa-aaaa-aaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=146) "https://us-west-2.console.aws.amazon.com/iamv2/home?region=us-west-2#/roles/details/aaaaaaaaa-aa-aaaa-aaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=14) "images/iam.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=64) "aaaaaaaaa-aa-aaaa-aaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+    subtitle: (*string)((len=42) "/ – Created Fri Sep 18 12:43:52 UTC 2026"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=65) "aaaaaaaaa-aa-aaaa-aaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=148) "https://us-west-2.console.aws.amazon.com/iamv2/home?region=us-west-2#/roles/details/aaaaaaaaa-aa-aaaa-aaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=14) "images/iam.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=62) "aaaaaaaaa-aa-aaaa-aaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+    subtitle: (*string)((len=42) "/ – Created Fri Sep 18 12:43:52 UTC 2026"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=63) "aaaaaaaaa-aa-aaaa-aaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=146) "https://us-west-2.console.aws.amazon.com/iamv2/home?region=us-west-2#/roles/details/aaaaaaaaa-aa-aaaa-aaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=14) "images/iam.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=62) "aaaaaaaaa-aa-aaaa-aaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+    subtitle: (*string)((len=42) "/ – Created Fri Sep 18 12:43:53 UTC 2026"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=63) "aaaaaaaaa-aa-aaaa-aaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=146) "https://us-west-2.console.aws.amazon.com/iamv2/home?region=us-west-2#/roles/details/aaaaaaaaa-aa-aaaa-aaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=14) "images/iam.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=64) "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+    subtitle: (*string)((len=42) "/ – Created Fri Sep 18 12:56:38 UTC 2026"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=65) "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=148) "https://us-west-2.console.aws.amazon.com/iamv2/home?region=us-west-2#/roles/details/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=14) "images/iam.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=64) "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+    subtitle: (*string)((len=42) "/ – Created Fri Sep 18 12:56:38 UTC 2026"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=65) "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=148) "https://us-west-2.console.aws.amazon.com/iamv2/home?region=us-west-2#/roles/details/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=14) "images/iam.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=64) "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+    subtitle: (*string)((len=42) "/ – Created Fri Sep 18 12:56:37 UTC 2026"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=65) "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=148) "https://us-west-2.console.aws.amazon.com/iamv2/home?region=us-west-2#/roles/details/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=14) "images/iam.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=64) "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+    subtitle: (*string)((len=42) "/ – Created Fri Sep 18 12:52:59 UTC 2026"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=65) "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=148) "https://us-west-2.console.aws.amazon.com/iamv2/home?region=us-west-2#/roles/details/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=14) "images/iam.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=64) "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+    subtitle: (*string)((len=42) "/ – Created Fri Sep 18 12:52:45 UTC 2026"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=65) "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=148) "https://us-west-2.console.aws.amazon.com/iamv2/home?region=us-west-2#/roles/details/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=14) "images/iam.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=64) "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+    subtitle: (*string)((len=42) "/ – Created Fri Sep 18 12:52:59 UTC 2026"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=65) "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=148) "https://us-west-2.console.aws.amazon.com/iamv2/home?region=us-west-2#/roles/details/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=14) "images/iam.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=64) "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+    subtitle: (*string)((len=42) "/ – Created Fri Sep 18 12:52:59 UTC 2026"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=65) "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=148) "https://us-west-2.console.aws.amazon.com/iamv2/home?region=us-west-2#/roles/details/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=14) "images/iam.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=64) "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+    subtitle: (*string)((len=42) "/ – Created Fri Sep 18 12:53:01 UTC 2026"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=65) "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=148) "https://us-west-2.console.aws.amazon.com/iamv2/home?region=us-west-2#/roles/details/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=14) "images/iam.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=64) "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+    subtitle: (*string)((len=42) "/ – Created Fri Sep 18 12:52:59 UTC 2026"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=65) "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=148) "https://us-west-2.console.aws.amazon.com/iamv2/home?region=us-west-2#/roles/details/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=14) "images/iam.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=64) "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+    subtitle: (*string)((len=42) "/ – Created Fri Sep 18 12:52:59 UTC 2026"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=65) "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=148) "https://us-west-2.console.aws.amazon.com/iamv2/home?region=us-west-2#/roles/details/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=14) "images/iam.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=64) "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+    subtitle: (*string)((len=42) "/ – Created Fri Sep 18 12:52:59 UTC 2026"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=65) "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=148) "https://us-west-2.console.aws.amazon.com/iamv2/home?region=us-west-2#/roles/details/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=14) "images/iam.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=64) "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+    subtitle: (*string)((len=42) "/ – Created Fri Sep 18 12:52:59 UTC 2026"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=65) "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=148) "https://us-west-2.console.aws.amazon.com/iamv2/home?region=us-west-2#/roles/details/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=14) "images/iam.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=62) "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+    subtitle: (*string)((len=42) "/ – Created Fri Sep 18 12:52:59 UTC 2026"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=63) "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=146) "https://us-west-2.console.aws.amazon.com/iamv2/home?region=us-west-2#/roles/details/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=14) "images/iam.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=64) "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+    subtitle: (*string)((len=42) "/ – Created Fri Sep 18 12:52:59 UTC 2026"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=65) "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=148) "https://us-west-2.console.aws.amazon.com/iamv2/home?region=us-west-2#/roles/details/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=14) "images/iam.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=64) "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+    subtitle: (*string)((len=42) "/ – Created Fri Sep 18 12:52:59 UTC 2026"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=65) "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=148) "https://us-west-2.console.aws.amazon.com/iamv2/home?region=us-west-2#/roles/details/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=14) "images/iam.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  })
+}

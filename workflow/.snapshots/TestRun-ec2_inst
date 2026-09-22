@@ -181,7 +181,7 @@
   }),
   (*aw.Item)({
     title: (string) (len=21) "ec2 autoscalinggroups",
-    subtitle: (*string)((len=27) "EC2 – Auto Scaling Groups"),
+    subtitle: (*string)((len=32) "🔎 EC2 – Auto Scaling Groups"),
     match: (*string)((len=37) "autoscalinggroups Auto Scaling Groups"),
     uid: (*string)((len=17) "autoscalinggroups"),
     autocomplete: (*string)((len=22) "ec2 autoscalinggroups "),

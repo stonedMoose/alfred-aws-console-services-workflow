@@ -1,0 +1,184 @@
+---
+version: 2
+interactions:
+    - id: 0
+      request:
+        proto: ""
+        proto_major: 0
+        proto_minor: 0
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: ""
+        remote_addr: ""
+        request_uri: ""
+        body: '{"Limit":100}'
+        form: {}
+        headers:
+            Content-Type:
+                - application/x-amz-json-1.1
+            X-Amz-Target:
+                - TrentService.ListAliases
+        url: https://kms.us-west-2.amazonaws.com/
+        method: POST
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        transfer_encoding: []
+        trailer: {}
+        content_length: 4087
+        uncompressed: false
+        body: |-
+            {
+              "AliasCount": 21,
+              "Aliases": [
+                {
+                  "AliasArn": "arn:aws:kms:us-west-2:0000000000:aaaaa/aaa/aaa",
+                  "AliasName": "aaaaa/aaa/aaa",
+                  "CreationDate": 1774799151.647,
+                  "LastUpdatedDate": 1774799151.647,
+                  "TargetKeyId": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
+                },
+                {
+                  "AliasArn": "arn:aws:kms:us-west-2:0000000000:aaaaa/aaa/aaaaaa",
+                  "AliasName": "aaaaa/aaa/aaaaaa",
+                  "CreationDate": 1682719166.447,
+                  "LastUpdatedDate": 1682719166.447,
+                  "TargetKeyId": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
+                },
+                {
+                  "AliasArn": "arn:aws:kms:us-west-2:0000000000:aaaaa/aaa/aaaaaaaaaaaa",
+                  "AliasName": "aaaaa/aaa/aaaaaaaaaaaa",
+                  "CreationDate": 1634802859.617,
+                  "LastUpdatedDate": 1634802859.617,
+                  "TargetKeyId": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
+                },
+                {
+                  "AliasArn": "arn:aws:kms:us-west-2:0000000000:aaaaa/aaa/aaaaaaaaaa",
+                  "AliasName": "aaaaa/aaa/aaaaaaaaaa",
+                  "CreationDate": 1609927643.912,
+                  "LastUpdatedDate": 1609927643.912,
+                  "TargetKeyId": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
+                },
+                {
+                  "AliasArn": "arn:aws:kms:us-west-2:0000000000:aaaaa/aaa/aaaaaaaa",
+                  "AliasName": "aaaaa/aaa/aaaaaaaa",
+                  "CreationDate": 1613393491.557,
+                  "LastUpdatedDate": 1613393491.557,
+                  "TargetKeyId": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
+                },
+                {
+                  "AliasArn": "arn:aws:kms:us-west-2:0000000000:aaaaa/aaa/aaa",
+                  "AliasName": "aaaaa/aaa/aaa",
+                  "CreationDate": 1754464716.411,
+                  "LastUpdatedDate": 1754464716.411,
+                  "TargetKeyId": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
+                },
+                {
+                  "AliasArn": "arn:aws:kms:us-west-2:0000000000:aaaaa/aaa/aaaaaaaaaaaaaaaaa",
+                  "AliasName": "aaaaa/aaa/aaaaaaaaaaaaaaaaa"
+                },
+                {
+                  "AliasArn": "arn:aws:kms:us-west-2:0000000000:aaaaa/aaa/aa",
+                  "AliasName": "aaaaa/aaa/aa",
+                  "CreationDate": 1618828632.879,
+                  "LastUpdatedDate": 1618828632.879,
+                  "TargetKeyId": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
+                },
+                {
+                  "AliasArn": "arn:aws:kms:us-west-2:0000000000:aaaaa/aaa/aaaa",
+                  "AliasName": "aaaaa/aaa/aaaa"
+                },
+                {
+                  "AliasArn": "arn:aws:kms:us-west-2:0000000000:aaaaa/aaa/aaaaaa",
+                  "AliasName": "aaaaa/aaa/aaaaaa",
+                  "CreationDate": 1647963045.506,
+                  "LastUpdatedDate": 1647963045.506,
+                  "TargetKeyId": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
+                },
+                {
+                  "AliasArn": "arn:aws:kms:us-west-2:0000000000:aaaaa/aaa/aaaaaaaaaaaa",
+                  "AliasName": "aaaaa/aaa/aaaaaaaaaaaa"
+                },
+                {
+                  "AliasArn": "arn:aws:kms:us-west-2:0000000000:aaaaa/aaa/aaaaaa",
+                  "AliasName": "aaaaa/aaa/aaaaaa",
+                  "CreationDate": 1609760997.865,
+                  "LastUpdatedDate": 1609760997.865,
+                  "TargetKeyId": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
+                },
+                {
+                  "AliasArn": "arn:aws:kms:us-west-2:0000000000:aaaaa/aaa/aaaaaaaaa",
+                  "AliasName": "aaaaa/aaa/aaaaaaaaa",
+                  "CreationDate": 1641542710.937,
+                  "LastUpdatedDate": 1641542710.937,
+                  "TargetKeyId": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
+                },
+                {
+                  "AliasArn": "arn:aws:kms:us-west-2:0000000000:aaaaa/aaa/aaa",
+                  "AliasName": "aaaaa/aaa/aaa",
+                  "CreationDate": 1617640727.05,
+                  "LastUpdatedDate": 1617640727.05,
+                  "TargetKeyId": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
+                },
+                {
+                  "AliasArn": "arn:aws:kms:us-west-2:0000000000:aaaaa/aaa/aaaaaaaa",
+                  "AliasName": "aaaaa/aaa/aaaaaaaa"
+                },
+                {
+                  "AliasArn": "arn:aws:kms:us-west-2:0000000000:aaaaa/aaa/aa",
+                  "AliasName": "aaaaa/aaa/aa",
+                  "CreationDate": 1609927734.85,
+                  "LastUpdatedDate": 1609927734.85,
+                  "TargetKeyId": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
+                },
+                {
+                  "AliasArn": "arn:aws:kms:us-west-2:0000000000:aaaaa/aaa/aaaaaaaaaaaaaa",
+                  "AliasName": "aaaaa/aaa/aaaaaaaaaaaaaa",
+                  "CreationDate": 1617624575.807,
+                  "LastUpdatedDate": 1617624575.807,
+                  "TargetKeyId": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
+                },
+                {
+                  "AliasArn": "arn:aws:kms:us-west-2:0000000000:aaaaa/aaa/aaa",
+                  "AliasName": "aaaaa/aaa/aaa",
+                  "CreationDate": 1623743450.056,
+                  "LastUpdatedDate": 1623743450.056,
+                  "TargetKeyId": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
+                },
+                {
+                  "AliasArn": "arn:aws:kms:us-west-2:0000000000:aaaaa/aaa/aaa",
+                  "AliasName": "aaaaa/aaa/aaa",
+                  "CreationDate": 1732892235.666,
+                  "LastUpdatedDate": 1732892235.666,
+                  "TargetKeyId": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
+                },
+                {
+                  "AliasArn": "arn:aws:kms:us-west-2:0000000000:aaaaa/aaa/aaaa",
+                  "AliasName": "aaaaa/aaa/aaaa"
+                },
+                {
+                  "AliasArn": "arn:aws:kms:us-west-2:0000000000:aaaaa/aaaaaaaaaa-aaaaaaaaaa-aaaaaa",
+                  "AliasName": "aaaaa/aaaaaaaaaa-aaaaaaaaaa-aaaaaa",
+                  "CreationDate": 1727681254.021,
+                  "LastUpdatedDate": 1727681254.021,
+                  "TargetKeyId": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
+                }
+              ],
+              "Truncated": false
+            }
+        headers:
+            Cache-Control:
+                - no-cache, no-store, must-revalidate, private
+            Connection:
+                - keep-alive
+            Content-Type:
+                - application/x-amz-json-1.1
+            Expires:
+                - "0"
+            Pragma:
+                - no-cache
+        status: 200 OK
+        code: 200
+        duration: 136.504375ms

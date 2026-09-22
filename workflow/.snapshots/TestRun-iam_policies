@@ -1,0 +1,74 @@
+([]*aw.Item) (len=2) {
+  (*aw.Item)({
+    title: (string) (len=12) "iam policies",
+    subtitle: (*string)((len=21) "🔎 IAM – Policies"),
+    match: (*string)((len=17) "policies Policies"),
+    uid: (*string)((len=8) "policies"),
+    autocomplete: (*string)((len=13) "iam policies "),
+    arg: ([]string) (len=1) {
+      (string) (len=51) "https://console.aws.amazon.com/iamv2/home#/policies"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=14) "images/iam.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=8) "iam scps",
+    subtitle: (*string)((len=39) "IAM – Service control policies (SCPs)"),
+    match: (*string)((len=36) "scps Service control policies (SCPs)"),
+    uid: (*string)((len=4) "scps"),
+    autocomplete: (*string)((len=9) "iam scps "),
+    arg: ([]string) (len=1) {
+      (string) (len=77) "https://console.aws.amazon.com/iam/home#/organizations/ServiceControlPolicies"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=14) "images/iam.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  })
+}

@@ -1,0 +1,110 @@
+([]*aw.Item) (len=3) {
+  (*aw.Item)({
+    title: (string) (len=3) "vpc",
+    subtitle: (*string)((len=55) "🗂 Virtual Private Cloud – Isolated Cloud Resources"),
+    match: (*string)((len=25) "vpc Virtual Private Cloud"),
+    uid: (*string)((len=3) "vpc"),
+    autocomplete: (*string)((len=4) "vpc "),
+    arg: ([]string) (len=1) {
+      (string) (len=77) "https://us-west-2.console.aws.amazon.com/vpc/home?region=us-west-2#dashboard:"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=14) "images/vpc.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=14) "developertools",
+    subtitle: (*string)((len=84) "🗂 Developer Tools – Host code, build, test, and deploy your applications to AWS"),
+    match: (*string)((len=40) "developertools Developer Tools codesuite"),
+    uid: (*string)((len=14) "developertools"),
+    autocomplete: (*string)((len=15) "developertools "),
+    arg: ([]string) (len=1) {
+      (string) (len=91) "https://us-west-2.console.aws.amazon.com/codesuite/settings/notifications?region=us-west-2#"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=25) "images/developertools.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=14) "serverlessrepo",
+    subtitle: (*string)((len=119) "🗂 Serverless Application Repository – Assemble, deploy, and share serverless applications within teams or publicly"),
+    match: (*string)((len=48) "serverlessrepo Serverless Application Repository"),
+    uid: (*string)((len=14) "serverlessrepo"),
+    autocomplete: (*string)((len=15) "serverlessrepo "),
+    arg: ([]string) (len=1) {
+      (string) (len=101) "https://us-west-2.console.aws.amazon.com/serverlessrepo/home?region=us-west-2#/available-applications"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=25) "images/serverlessrepo.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  })
+}

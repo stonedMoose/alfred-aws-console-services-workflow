@@ -1,0 +1,74 @@
+([]*aw.Item) (len=2) {
+  (*aw.Item)({
+    title: (string) (len=22) "acm certificatemanager",
+    subtitle: (*string)((len=38) "🔎⭐️ ACM – Certificate manager"),
+    match: (*string)((len=38) "certificatemanager Certificate manager"),
+    uid: (*string)((len=18) "certificatemanager"),
+    autocomplete: (*string)((len=23) "acm certificatemanager "),
+    arg: ([]string) (len=1) {
+      (string) (len=68) "https://us-west-2.console.aws.amazon.com/acm/home?region=us-west-2#/"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=14) "images/acm.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=14) "acm privatecas",
+    subtitle: (*string)((len=39) "ACM – Private certificate authorities"),
+    match: (*string)((len=42) "privatecas Private certificate authorities"),
+    uid: (*string)((len=10) "privatecas"),
+    autocomplete: (*string)((len=15) "acm privatecas "),
+    arg: ([]string) (len=1) {
+      (string) (len=72) "https://us-west-2.console.aws.amazon.com/acm-pca/home?region=us-west-2#/"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=14) "images/acm.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  })
+}

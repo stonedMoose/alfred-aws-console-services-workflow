@@ -1,0 +1,80 @@
+---
+version: 2
+interactions:
+    - id: 0
+      request:
+        proto: ""
+        proto_major: 0
+        proto_minor: 0
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: ""
+        remote_addr: ""
+        request_uri: ""
+        body: Action=ListGroups&MaxItems=1000&Version=2010-05-08
+        form:
+            Action:
+                - ListGroups
+            MaxItems:
+                - "1000"
+            Version:
+                - "2010-05-08"
+        headers:
+            Content-Type:
+                - application/x-www-form-urlencoded
+        url: https://iam.amazonaws.com/
+        method: POST
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        transfer_encoding: []
+        trailer: {}
+        content_length: 1385
+        uncompressed: false
+        body: |
+            <ListGroupsResponse xmlns="https://iam.amazonaws.com/doc/2010-05-08/">
+              <ListGroupsResult>
+                <IsTruncated>false</IsTruncated>
+                <Groups>
+                  <member>
+                    <Path>/</Path>
+                    <GroupName>aaaaaaaaaaaaa</GroupName>
+                    <GroupId>AGPA3TKU6RJJMQ3NIRXMB</GroupId>
+                    <Arn>arn:aws:iam::0000000000:aaaaa/aaaaaaaaaaaaa</Arn>
+                    <CreateDate>2021-01-04T10:47:23Z</CreateDate>
+                  </member>
+                  <member>
+                    <Path>/</Path>
+                    <GroupName>aaaaaaaaa</GroupName>
+                    <GroupId>AGPA3TKU6RJJBPDEZQEKA</GroupId>
+                    <Arn>arn:aws:iam::0000000000:aaaaa/aaaaaaaaa</Arn>
+                    <CreateDate>2021-01-04T10:37:47Z</CreateDate>
+                  </member>
+                  <member>
+                    <Path>/</Path>
+                    <GroupName>aaaaaa-aaaaaaaaaa-aaaaaaaaaa</GroupName>
+                    <GroupId>AGPA3TKU6RJJH2ZA4KIAR</GroupId>
+                    <Arn>arn:aws:iam::0000000000:aaaaa/aaaaaa-aaaaaaaaaa-aaaaaaaaaa</Arn>
+                    <CreateDate>2021-01-06T14:04:18Z</CreateDate>
+                  </member>
+                  <member>
+                    <Path>/</Path>
+                    <GroupName>aaaaaaaa</GroupName>
+                    <GroupId>AGPA3TKU6RJJIGXB4DBEM</GroupId>
+                    <Arn>arn:aws:iam::0000000000:aaaaa/aaaaaaaa</Arn>
+                    <CreateDate>2026-04-14T10:17:07Z</CreateDate>
+                  </member>
+                </Groups>
+              </ListGroupsResult>
+              <ResponseMetadata>
+                <RequestId>00000000-0000-0000-0000-000000000000</RequestId>
+              </ResponseMetadata>
+            </ListGroupsResponse>
+        headers:
+            Content-Type:
+                - text/xml
+        status: 200 OK
+        code: 200
+        duration: 428.793666ms

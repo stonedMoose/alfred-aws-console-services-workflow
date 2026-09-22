@@ -183,6 +183,9 @@ var expandedSecurityGroupIdRegex *regexp.Regexp = regexp.MustCompile(`securitygr
 var volumeIdRegex *regexp.Regexp = regexp.MustCompile(`vol-[a-zA-Z0-9]{8,}`)
 var attachmentIdRegex *regexp.Regexp = regexp.MustCompile(`eni-attach-[a-zA-Z0-9]{8,}`)
 var reservationIdRegex *regexp.Regexp = regexp.MustCompile(`r-[a-zA-Z0-9]{8,}`)
+var snapshotIdRegex *regexp.Regexp = regexp.MustCompile(`snap-[a-zA-Z0-9]{8,}`)
+var fileSystemIdRegex *regexp.Regexp = regexp.MustCompile(`fs-[a-zA-Z0-9]{8,}`)
+var keyPairIdRegex *regexp.Regexp = regexp.MustCompile(`key-[a-zA-Z0-9]{8,}`)
 
 var accountIdInArn *regexp.Regexp = regexp.MustCompile(`:[0-9]{10,}:`)
 var longNumberInXmlTag *regexp.Regexp = regexp.MustCompile(`>[0-9]{8,}<`) // we're going to assume that any numeric xml values are identifications of some sort, so just sanitize it
@@ -232,6 +235,9 @@ func sanitizeBody(body string) string {
 	body = volumeIdRegex.ReplaceAllString(body, "vol-aaaaaaaaaa")
 	body = attachmentIdRegex.ReplaceAllString(body, "eni-attach-aaaaaaaaaa")
 	body = reservationIdRegex.ReplaceAllString(body, "r-aaaaaaaaaa")
+	body = snapshotIdRegex.ReplaceAllString(body, "snap-aaaaaaaaaa")
+	body = fileSystemIdRegex.ReplaceAllString(body, "fs-aaaaaaaaaa")
+	body = keyPairIdRegex.ReplaceAllString(body, "key-aaaaaaaaaa")
 
 	body = accountIdInArn.ReplaceAllString(body, ":0000000000:")
 	body = longNumberInXmlTag.ReplaceAllString(body, ">00000000<")
@@ -320,29 +326,50 @@ func normalizeRegion(s string) string {
 	return awsRegionRegex.ReplaceAllString(s, replayRegion)
 }
 
-// The JSON protocol services (SSM, Secrets Manager, ECR, SQS, DynamoDB, ...)
-// carry resource names in plain JSON fields that the XML-oriented sanitizers
-// above never see. These are the fields whose values identify real resources.
-var jsonFieldsToSanitize = map[string]bool{
-	"ARN":                     true,
-	"Arn":                     true,
-	"Description":             true,
-	"ExclusiveStartTableName": true,
-	"KeyId":                   true,
-	"KmsKeyId":                true,
-	"LastEvaluatedTableName":  true,
-	"LastModifiedUser":        true,
-	"Name":                    true,
-	"NextToken":               true,
-	"QueueUrl":                true,
-	"QueueUrls":               true,
-	"TableName":               true,
-	"TableNames":              true,
-	"nextToken":               true,
-	"registryId":              true,
-	"repositoryArn":           true,
-	"repositoryName":          true,
-	"repositoryUri":           true,
+// The JSON protocol services carry resource names in plain fields that the
+// XML-oriented sanitizers above never see. Rather than enumerate every field
+// of every service, any field whose name ends in one of these is treated as
+// identifying.
+var sensitiveFieldSuffixes = []string{
+	"arn",
+	"arns",
+	"description",
+	"name",
+	"names",
+	"token",
+	"uri",
+	"uris",
+	"url",
+	"urls",
+}
+
+// fields that carry identifying values but are not named after them
+var extraSensitiveFields = map[string]bool{
+	"bucket":                  true,
+	"clusters":                true,
+	"comment":                 true,
+	"exclusivestarttablename": true,
+	"families":                true,
+	"keyfingerprint":          true,
+	"originpath":              true,
+	"prefix":                  true,
+	"keyid":                   true,
+	"registryid":              true,
+	"targetkeyid":             true,
+	"value":                   true,
+}
+
+func isSensitiveField(key string) bool {
+	lower := strings.ToLower(key)
+	if extraSensitiveFields[lower] {
+		return true
+	}
+	for _, suffix := range sensitiveFieldSuffixes {
+		if strings.HasSuffix(lower, suffix) {
+			return true
+		}
+	}
+	return false
 }
 
 var resourceNameWordRegex *regexp.Regexp = regexp.MustCompile(`[A-Za-z0-9]+`)
@@ -365,9 +392,28 @@ func sanitizeResourceName(name string) string {
 		}
 	}
 
-	return prefix + resourceNameWordRegex.ReplaceAllStringFunc(rest, func(word string) string {
-		return strings.Repeat("a", len(word))
-	})
+	return prefix + sanitizeWordsOutsideEntities(rest)
+}
+
+// XML character entities have to survive intact — turning `&quot;` into
+// `&aaaa;` leaves a body that no longer parses
+var xmlEntityRegex *regexp.Regexp = regexp.MustCompile(`&(?:[a-zA-Z]+|#[0-9]+);`)
+
+func sanitizeWordsOutsideEntities(s string) string {
+	entities := xmlEntityRegex.FindAllString(s, -1)
+	parts := xmlEntityRegex.Split(s, -1)
+
+	var builder strings.Builder
+	for i, part := range parts {
+		builder.WriteString(resourceNameWordRegex.ReplaceAllStringFunc(part, func(word string) string {
+			return strings.Repeat("a", len(word))
+		}))
+		if i < len(entities) {
+			builder.WriteString(entities[i])
+		}
+	}
+
+	return builder.String()
 }
 
 // array members inherit the key of the array they belong to, so that
@@ -385,12 +431,72 @@ func sanitizeJSONValue(key string, value interface{}) interface{} {
 		}
 		return typed
 	case string:
-		if jsonFieldsToSanitize[key] {
+		if isSensitiveField(key) {
 			return sanitizeResourceName(typed)
 		}
 		return typed
 	}
 	return value
+}
+
+// The XML protocol services carry the same values in element text. A leaf
+// element's text cannot contain "<", so the closing tag needs no backreference
+// (which RE2 could not express anyway).
+var xmlLeafElementRegex *regexp.Regexp = regexp.MustCompile(`<([A-Za-z][A-Za-z0-9]*)>([^<]*)</[A-Za-z][A-Za-z0-9]*>`)
+
+// a paginated request echoes the token it was given, so the token in a
+// response body has to stay byte for byte what the next request carries
+var xmlPaginationTags = map[string]bool{
+	"marker":     true,
+	"nextmarker": true,
+	"nexttoken":  true,
+}
+
+// policy documents are url encoded json that can name external accounts and
+// identity providers, and nothing in this workflow reads them
+var xmlTagsToBlank = map[string]string{
+	"assumerolepolicydocument": "%7B%7D",
+	"policydocument":           "%7B%7D",
+}
+
+func sanitizeXMLTags(body string) string {
+	return xmlLeafElementRegex.ReplaceAllStringFunc(body, func(match string) string {
+		submatches := xmlLeafElementRegex.FindStringSubmatch(match)
+		if len(submatches) < 3 {
+			return match
+		}
+		tag, text := submatches[1], submatches[2]
+
+		if xmlPaginationTags[strings.ToLower(tag)] {
+			// these already get consistent treatment above and in the request
+			// query params, and rewriting them here would break replay
+			return match
+		}
+		if blanked, ok := xmlTagsToBlank[strings.ToLower(tag)]; ok {
+			return fmt.Sprintf("<%s>%s</%s>", tag, blanked, tag)
+		}
+		if !isSensitiveField(tag) {
+			return match
+		}
+		return fmt.Sprintf("<%s>%s</%s>", tag, sanitizeResourceName(text), tag)
+	})
+}
+
+// EC2 hangs resource names off a tag set rather than a dedicated element, so
+// the values inside one are sanitized while tags elsewhere are left alone
+var ec2TagSetRegex *regexp.Regexp = regexp.MustCompile(`(?is)<(tagSet|tagSpecificationSet)>(.*?)</(?:tagSet|tagSpecificationSet)>`)
+var ec2TagValueRegex *regexp.Regexp = regexp.MustCompile(`(?is)<value>(.*?)</value>`)
+
+func sanitizeEC2TagSets(body string) string {
+	return ec2TagSetRegex.ReplaceAllStringFunc(body, func(tagSet string) string {
+		return ec2TagValueRegex.ReplaceAllStringFunc(tagSet, func(match string) string {
+			submatches := ec2TagValueRegex.FindStringSubmatch(match)
+			if len(submatches) < 2 {
+				return match
+			}
+			return fmt.Sprintf("<value>%s</value>", sanitizeResourceName(submatches[1]))
+		})
+	})
 }
 
 func sanitizeJSONBody(body string) string {
@@ -427,8 +533,8 @@ func sanitizeAndFormatBodyHook(i *cassette.Interaction) error {
 	i.Request.Host = normalizeRegion(i.Request.Host)
 	i.Request.RequestURI = normalizeRegion(i.Request.RequestURI)
 
-	i.Request.Body = sanitizeJSONBody(sanitizeBody(normalizeRegion(i.Request.Body)))
-	i.Response.Body = sanitizeJSONBody(sanitizeBody(normalizeRegion(i.Response.Body)))
+	i.Request.Body = sanitizeJSONBody(sanitizeEC2TagSets(sanitizeXMLTags(sanitizeBody(normalizeRegion(i.Request.Body)))))
+	i.Response.Body = sanitizeJSONBody(sanitizeEC2TagSets(sanitizeXMLTags(sanitizeBody(normalizeRegion(i.Response.Body)))))
 
 	if err := prettyFormatInteraction(i); err != nil {
 		return err

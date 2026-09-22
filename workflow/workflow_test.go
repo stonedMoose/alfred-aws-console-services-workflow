@@ -771,6 +771,302 @@ var tcs []testCase = []testCase{
 		query:       "systemsmanager parameterstore ",
 		fixtureName: "../searchers/ssm_parameters_test", // reuse test fixture from this other test
 	},
+	{
+		query:       "eks",
+		fixtureName: "../searchers/eks_clusters_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "eks ",
+		fixtureName: "../searchers/eks_clusters_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "eks clusters",
+		fixtureName: "../searchers/eks_clusters_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "eks clusters ",
+		fixtureName: "../searchers/eks_clusters_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "stepfunctions",
+		fixtureName: "../searchers/step_functions_state_machines_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "stepfunctions ",
+		fixtureName: "../searchers/step_functions_state_machines_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "stepfunctions statemachines",
+		fixtureName: "../searchers/step_functions_state_machines_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "stepfunctions statemachines ",
+		fixtureName: "../searchers/step_functions_state_machines_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "ec2",
+		fixtureName: "../searchers/ec2_target_groups_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "ec2 ",
+		fixtureName: "../searchers/ec2_target_groups_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "ec2 targetgroups",
+		fixtureName: "../searchers/ec2_target_groups_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "ec2 targetgroups ",
+		fixtureName: "../searchers/ec2_target_groups_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "ec2",
+		fixtureName: "../searchers/ec2_auto_scaling_groups_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "ec2 ",
+		fixtureName: "../searchers/ec2_auto_scaling_groups_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "ec2 autoscalinggroups",
+		fixtureName: "../searchers/ec2_auto_scaling_groups_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "ec2 autoscalinggroups ",
+		fixtureName: "../searchers/ec2_auto_scaling_groups_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "ecs taskdefinitions",
+		fixtureName: "../searchers/ecs_task_definitions_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "ecs taskdefinitions ",
+		fixtureName: "../searchers/ecs_task_definitions_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "batch",
+		fixtureName: "../searchers/batch_job_queues_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "batch ",
+		fixtureName: "../searchers/batch_job_queues_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "batch jobqueues",
+		fixtureName: "../searchers/batch_job_queues_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "batch jobqueues ",
+		fixtureName: "../searchers/batch_job_queues_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "apprunner",
+		fixtureName: "../searchers/apprunner_services_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "apprunner ",
+		fixtureName: "../searchers/apprunner_services_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "apprunner services",
+		fixtureName: "../searchers/apprunner_services_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "apprunner services ",
+		fixtureName: "../searchers/apprunner_services_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "vpc",
+		fixtureName: "../searchers/vpc_vpcs_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "vpc ",
+		fixtureName: "../searchers/vpc_vpcs_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "vpc vpcs",
+		fixtureName: "../searchers/vpc_vpcs_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "vpc vpcs ",
+		fixtureName: "../searchers/vpc_vpcs_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "vpc",
+		fixtureName: "../searchers/vpc_subnets_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "vpc ",
+		fixtureName: "../searchers/vpc_subnets_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "vpc subnets",
+		fixtureName: "../searchers/vpc_subnets_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "vpc subnets ",
+		fixtureName: "../searchers/vpc_subnets_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "ec2 volumes",
+		fixtureName: "../searchers/ec2_volumes_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "ec2 volumes ",
+		fixtureName: "../searchers/ec2_volumes_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "ec2 snapshots",
+		fixtureName: "../searchers/ec2_snapshots_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "ec2 snapshots ",
+		fixtureName: "../searchers/ec2_snapshots_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "ec2 amis",
+		fixtureName: "../searchers/ec2_amis_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "ec2 amis ",
+		fixtureName: "../searchers/ec2_amis_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "ec2 keypairs",
+		fixtureName: "../searchers/ec2_key_pairs_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "ec2 keypairs ",
+		fixtureName: "../searchers/ec2_key_pairs_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "efs",
+		fixtureName: "../searchers/efs_file_systems_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "efs ",
+		fixtureName: "../searchers/efs_file_systems_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "efs filesystems",
+		fixtureName: "../searchers/efs_file_systems_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "efs filesystems ",
+		fixtureName: "../searchers/efs_file_systems_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "iam",
+		fixtureName: "../searchers/iam_roles_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "iam ",
+		fixtureName: "../searchers/iam_roles_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "iam roles",
+		fixtureName: "../searchers/iam_roles_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "iam roles ",
+		fixtureName: "../searchers/iam_roles_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "iam",
+		fixtureName: "../searchers/iam_users_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "iam ",
+		fixtureName: "../searchers/iam_users_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "iam users",
+		fixtureName: "../searchers/iam_users_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "iam users ",
+		fixtureName: "../searchers/iam_users_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "iam",
+		fixtureName: "../searchers/iam_policies_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "iam ",
+		fixtureName: "../searchers/iam_policies_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "iam policies",
+		fixtureName: "../searchers/iam_policies_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "iam policies ",
+		fixtureName: "../searchers/iam_policies_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "iam",
+		fixtureName: "../searchers/iam_groups_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "iam ",
+		fixtureName: "../searchers/iam_groups_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "iam usergroups",
+		fixtureName: "../searchers/iam_groups_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "iam usergroups ",
+		fixtureName: "../searchers/iam_groups_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "kms",
+		fixtureName: "../searchers/kms_keys_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "kms ",
+		fixtureName: "../searchers/kms_keys_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "kms customermanagedkeys",
+		fixtureName: "../searchers/kms_keys_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "kms customermanagedkeys ",
+		fixtureName: "../searchers/kms_keys_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "acm",
+		fixtureName: "../searchers/acm_certificates_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "acm ",
+		fixtureName: "../searchers/acm_certificates_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "acm certificatemanager",
+		fixtureName: "../searchers/acm_certificates_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "acm certificatemanager ",
+		fixtureName: "../searchers/acm_certificates_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "cloudfront",
+		fixtureName: "../searchers/cloudfront_distributions_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "cloudfront ",
+		fixtureName: "../searchers/cloudfront_distributions_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "cloudfront distributions",
+		fixtureName: "../searchers/cloudfront_distributions_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "cloudfront distributions ",
+		fixtureName: "../searchers/cloudfront_distributions_test", // reuse test fixture from this other test
+	},
 }
 
 func testWorkflow(t *testing.T, tc testCase, forceFetch, snapshot bool) []*aw.Item {

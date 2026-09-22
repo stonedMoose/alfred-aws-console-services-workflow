@@ -1,0 +1,48 @@
+---
+version: 2
+interactions:
+    - id: 0
+      request:
+        proto: ""
+        proto_major: 0
+        proto_minor: 0
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: ""
+        remote_addr: ""
+        request_uri: ""
+        body: Action=DescribeKeyPairs&Version=2016-11-15
+        form:
+            Action:
+                - DescribeKeyPairs
+            Version:
+                - "2016-11-15"
+        headers:
+            Content-Type:
+                - application/x-www-form-urlencoded
+        url: https://ec2.us-west-2.amazonaws.com/
+        method: POST
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        transfer_encoding: []
+        trailer: {}
+        content_length: 1227
+        uncompressed: false
+        body: |-
+            <?xml version="1.0" encoding="UTF-8"?>
+            <DescribeKeyPairsResponse xmlns="http://ec2.amazonaws.com/doc/2016-11-15/"><requestId>00000000-0000-0000-0000-000000000000</requestId><keySet><item><keyName>aaaaaaaaaa</keyName><keyPairId>key-aaaaaaaaaa</keyPairId><keyFingerprint>aa:aa:aa:aa:aa:aa:aa:aa:aa:aa:aa:aa:aa:aa:aa:aa:aa:aa:aa:aa</keyFingerprint><keyType>rsa</keyType><createTime>2025-02-06T13:03:51.563Z</createTime><tagSet/></item></keySet></DescribeKeyPairsResponse>
+        headers:
+            Cache-Control:
+                - no-cache, no-store
+            Content-Type:
+                - text/xml;charset=UTF-8
+            Server:
+                - AmazonEC2
+            Strict-Transport-Security:
+                - max-age=31536000; includeSubDomains
+        status: 200 OK
+        code: 200
+        duration: 151.308291ms
