@@ -6,7 +6,7 @@
     uid: (*string)(<nil>),
     autocomplete: (*string)((len=40) "acm certificatemanager aaaaaa.aaaaaa.aa "),
     arg: ([]string) (len=1) {
-      (string) (len=129) "https://us-west-2.console.aws.amazon.com/acm/home?region=us-west-2#/certificates/aaaaaaaaaaa/aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
+      (string) (len=117) "https://us-west-2.console.aws.amazon.com/acm/home?region=us-west-2#/certificates/aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
     },
     valid: (bool) true,
     file: (bool) false,
@@ -42,7 +42,7 @@
     uid: (*string)(<nil>),
     autocomplete: (*string)((len=39) "acm certificatemanager aaaaa.aaaaaa.aa "),
     arg: ([]string) (len=1) {
-      (string) (len=129) "https://us-west-2.console.aws.amazon.com/acm/home?region=us-west-2#/certificates/aaaaaaaaaaa/aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
+      (string) (len=117) "https://us-west-2.console.aws.amazon.com/acm/home?region=us-west-2#/certificates/aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
     },
     valid: (bool) true,
     file: (bool) false,
@@ -78,7 +78,7 @@
     uid: (*string)(<nil>),
     autocomplete: (*string)((len=37) "acm certificatemanager aaa.aaaaaa.aa "),
     arg: ([]string) (len=1) {
-      (string) (len=129) "https://us-west-2.console.aws.amazon.com/acm/home?region=us-west-2#/certificates/aaaaaaaaaaa/aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
+      (string) (len=117) "https://us-west-2.console.aws.amazon.com/acm/home?region=us-west-2#/certificates/aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
     },
     valid: (bool) true,
     file: (bool) false,
@@ -114,7 +114,7 @@
     uid: (*string)(<nil>),
     autocomplete: (*string)((len=40) "acm certificatemanager aaaaaa.aaaaaa.aa "),
     arg: ([]string) (len=1) {
-      (string) (len=129) "https://us-west-2.console.aws.amazon.com/acm/home?region=us-west-2#/certificates/aaaaaaaaaaa/aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
+      (string) (len=117) "https://us-west-2.console.aws.amazon.com/acm/home?region=us-west-2#/certificates/aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
     },
     valid: (bool) true,
     file: (bool) false,

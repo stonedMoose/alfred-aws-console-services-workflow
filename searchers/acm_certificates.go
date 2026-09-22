@@ -77,11 +77,14 @@ func (s ACMCertificateSearcher) addToWorkflow(wf *aw.Workflow, searchArgs search
 	if entity.CertificateArn != nil {
 		arn = *entity.CertificateArn
 	}
+	// the console addresses a certificate by the id at the end of its arn,
+	// which sits after the last slash rather than the last colon
+	id := arn[strings.LastIndex(arn, "/")+1:]
 	if title == "" {
-		title = util.GetEndOfArn(arn)
+		title = id
 	}
 
-	path := fmt.Sprintf("/acm/home#/certificates/%s", util.GetEndOfArn(arn))
+	path := fmt.Sprintf("/acm/home#/certificates/%s", id)
 	item := util.NewURLItem(wf, title).
 		Subtitle(subtitle).
 		Arg(util.ConstructAWSConsoleUrl(path, searchArgs.GetRegion())).
