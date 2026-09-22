@@ -1,0 +1,38 @@
+([]*aw.Item) (len=1) {
+  (*aw.Item)({
+    title: (string) (len=10) "cloudtrail",
+    subtitle: (*string)((len=53) "🗂 CloudTrail – Track User Activity and API Usage"),
+    match: (*string)((len=21) "cloudtrail CloudTrail"),
+    uid: (*string)((len=10) "cloudtrail"),
+    autocomplete: (*string)((len=11) "cloudtrail "),
+    arg: ([]string) (len=1) {
+      (string) (len=84) "https://us-west-2.console.aws.amazon.com/cloudtrail/home?region=us-west-2#/dashboard"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=21) "images/cloudtrail.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  })
+}

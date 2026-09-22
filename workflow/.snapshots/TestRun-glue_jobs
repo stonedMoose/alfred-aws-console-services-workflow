@@ -1,0 +1,74 @@
+([]*aw.Item) (len=2) {
+  (*aw.Item)({
+    title: (string) (len=9) "glue jobs",
+    subtitle: (*string)((len=18) "🔎 Glue – Jobs"),
+    match: (*string)((len=9) "jobs Jobs"),
+    uid: (*string)((len=4) "jobs"),
+    autocomplete: (*string)((len=10) "glue jobs "),
+    arg: ([]string) (len=1) {
+      (string) (len=79) "https://us-west-2.console.aws.amazon.com/gluestudio/home?region=us-west-2#/jobs"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=15) "images/glue.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=14) "glue notebooks",
+    subtitle: (*string)((len=26) "Glue – Jupyter Notebooks"),
+    match: (*string)((len=27) "notebooks Jupyter Notebooks"),
+    uid: (*string)((len=9) "notebooks"),
+    autocomplete: (*string)((len=15) "glue notebooks "),
+    arg: ([]string) (len=1) {
+      (string) (len=91) "https://us-west-2.console.aws.amazon.com/gluestudio/home?region=us-west-2#/notebook/jupyter"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=15) "images/glue.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  })
+}

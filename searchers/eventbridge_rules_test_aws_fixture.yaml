@@ -1,0 +1,1202 @@
+---
+version: 2
+interactions:
+    - id: 0
+      request:
+        proto: ""
+        proto_major: 0
+        proto_minor: 0
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: ""
+        remote_addr: ""
+        request_uri: ""
+        body: '{"Limit":100}'
+        form: {}
+        headers:
+            Content-Type:
+                - application/x-amz-json-1.1
+            X-Amz-Target:
+                - AWSEvents.ListRules
+        url: https://events.us-west-2.amazonaws.com/
+        method: POST
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        transfer_encoding: []
+        trailer: {}
+        content_length: 28931
+        uncompressed: false
+        body: |-
+            {
+              "NextToken": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa+aaa+aaaaaaaaaaaa/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa+aaaaaaaaaaaaaaaaaaaaaaa/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa==",
+              "Rules": [
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "rate(15 minutes)",
+                  "State": "ENABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaaaaaaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaaaaaaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(30 3 ? * SUN *)",
+                  "State": "ENABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaaaaaaaaaaa-aaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "EventPattern": "{\"detail-type\":[\"EC2 Image Builder Image State Change\"],\"resources\":[{\"prefix\":\"arn:aws:imagebuilder:us-west-2:0000000000:image/gitlab-runner-worker/\"}],\"source\":[\"aws.imagebuilder\"],\"detail\":{\"state\":{\"status\":[\"FAILED\"]}}}",
+                  "Name": "aaaaaaaaaaaaaaaaaa-aaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "State": "ENABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaaaaaaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "EventPattern": "{\"detail-type\":[\"EC2 Image Builder Image State Change\"],\"resources\":[{\"prefix\":\"arn:aws:imagebuilder:us-west-2:0000000000:image/gitlab-runner-worker/\"}],\"source\":[\"aws.imagebuilder\"],\"detail\":{\"state\":{\"status\":[\"AVAILABLE\"]}}}",
+                  "Name": "aaaaaaaaaaaaaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "State": "ENABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(0 6 ? * MON-FRI *)",
+                  "State": "ENABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(0 19 ? * MON-FRI *)",
+                  "State": "ENABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(0 3 * * ? *)",
+                  "State": "ENABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aaa-aaaa-aaaaa--aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aaa-aaaa-aaaaa--aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 15 ? * MON-FRI *)",
+                  "State": "ENABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aaa-aaaa-aaaaa--aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aaa-aaaa-aaaaa--aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 14 ? * MON-FRI *)",
+                  "State": "ENABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aaa-aaaa-aaaaa--aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aaa-aaaa-aaaaa--aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 12 ? * MON-FRI *)",
+                  "State": "ENABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aaa-aaaa-aaaaa--aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aaa-aaaa-aaaaa--aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 13 ? * MON-FRI *)",
+                  "State": "ENABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aaa-aaaa-aaaaa--aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aaa-aaaa-aaaaa--aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 16 ? * MON-FRI *)",
+                  "State": "ENABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aaa-aaaa-aaaaa--aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aaa-aaaa-aaaaa--aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 10 ? * MON-FRI *)",
+                  "State": "ENABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aaa-aaaa-aaaaa--aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aaa-aaaa-aaaaa--aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 08 ? * MON-FRI *)",
+                  "State": "ENABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aaa-aaaa-aaaaa--aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aaa-aaaa-aaaaa--aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 18 ? * MON-FRI *)",
+                  "State": "ENABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aaa-aaaa-aaaaa--aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aaa-aaaa-aaaaa--aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(0 15 ? * TUE,FRI *)",
+                  "State": "ENABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aaa-aaaa-aaaaa--aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aaa-aaaa-aaaaa--aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 09 ? * MON-FRI *)",
+                  "State": "ENABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aaa-aaaa-aaaaa--aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aaa-aaaa-aaaaa--aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "ScheduleExpression": "cron(0 8 ? * MON-FRI *)",
+                  "State": "ENABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aaa-aaaa-aaaaa--aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aaa-aaaa-aaaaa--aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 12 ? * MON-FRI *)",
+                  "State": "ENABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aaa-aaaa-aaaaa--aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aaa-aaaa-aaaaa--aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "ScheduleExpression": "cron(15 12 ? * MON-FRI *)",
+                  "State": "ENABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aaa-aaaa-aaaaa--aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aaa-aaaa-aaaaa--aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 16 ? * MON-FRI *)",
+                  "State": "ENABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 15 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 14 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 12 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 13 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 16 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 10 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 08 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 18 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(0 15 ? * TUE,FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 09 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "ScheduleExpression": "cron(0 8 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 12 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "ScheduleExpression": "cron(15 12 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 16 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "ScheduleExpression": "cron(30 09 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 15 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 14 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 12 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 13 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 16 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 10 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 08 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 18 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(0 15 ? * TUE,FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 09 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "ScheduleExpression": "cron(0 8 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 12 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "ScheduleExpression": "cron(15 12 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 16 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaaaaaaaa-aaa-aaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaaaaaaaa-aaa-aaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 15 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaaaaaaaa-aaa-aaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaaaaaaaa-aaa-aaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 14 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaaaaaaaa-aaa-aaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaaaaaaaa-aaa-aaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 12 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaaaaaaaa-aaa-aaaaaaaaaa-aaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaaaaaaaa-aaa-aaaaaaaaaa-aaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 13 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaaaaaaaa-aaa-aaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaaaaaaaa-aaa-aaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 16 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaaaaaaaa-aaa-aaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaaaaaaaa-aaa-aaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 10 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaaaaaaaa-aaa-aaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaaaaaaaa-aaa-aaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 08 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaaaaaaaa-aaa-aaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaaaaaaaa-aaa-aaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 18 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaaaaaaaa-aaa-aaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaaaaaaaa-aaa-aaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(0 15 ? * TUE,FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaaaaaaaa-aaa-aaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaaaaaaaa-aaa-aaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 09 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaaaaaaaa-aaa-aaaaaaaaaa-aaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaaaaaaaa-aaa-aaaaaaaaaa-aaaaaaaaaa",
+                  "ScheduleExpression": "cron(0 8 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaaaaaaaa-aaa-aaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaaaaaaaa-aaa-aaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 12 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaaaaaaaa-aaa-aaaaaaaaaa-aaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaaaaaaaa-aaa-aaaaaaaaaa-aaaaaaaaaa",
+                  "ScheduleExpression": "cron(15 12 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaaaaaaaa-aaa-aaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaaaaaaaa-aaa-aaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 16 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 15 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 14 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 12 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 13 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 16 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 10 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 08 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 18 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(0 15 ? * TUE,FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 09 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "ScheduleExpression": "cron(0 8 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 12 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "ScheduleExpression": "cron(15 12 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 16 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 15 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 14 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 12 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 13 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 16 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 10 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 08 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 18 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(0 15 ? * TUE,FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 09 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "ScheduleExpression": "cron(0 8 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 12 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "ScheduleExpression": "cron(15 12 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 16 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 15 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 14 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 12 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 13 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 16 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 10 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 08 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 18 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                }
+              ]
+            }
+        headers:
+            Content-Type:
+                - application/x-amz-json-1.1
+        status: 200 OK
+        code: 200
+        duration: 48.537875ms
+    - id: 1
+      request:
+        proto: ""
+        proto_major: 0
+        proto_minor: 0
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: ""
+        remote_addr: ""
+        request_uri: ""
+        body: '{"Limit":100,"NextToken":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa+aaa+aaaaaaaaaaaa/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa+aaaaaaaaaaaaaaaaaaaaaaa/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa=="}'
+        form: {}
+        headers:
+            Content-Type:
+                - application/x-amz-json-1.1
+            X-Amz-Target:
+                - AWSEvents.ListRules
+        url: https://events.us-west-2.amazonaws.com/
+        method: POST
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        transfer_encoding: []
+        trailer: {}
+        content_length: 16997
+        uncompressed: false
+        body: |-
+            {
+              "Rules": [
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(0 15 ? * TUE,FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 09 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "ScheduleExpression": "cron(0 8 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 12 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "ScheduleExpression": "cron(15 12 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 16 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 15 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 14 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 12 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 13 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 16 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 10 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 08 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 18 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(0 15 ? * TUE,FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 09 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "ScheduleExpression": "cron(0 8 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 12 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "ScheduleExpression": "cron(15 12 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 16 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 15 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 14 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 12 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 13 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 16 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 10 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 08 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 18 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(0 15 ? * TUE,FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 09 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "ScheduleExpression": "cron(0 8 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 12 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "ScheduleExpression": "cron(15 12 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 16 ? * MON-FRI *)",
+                  "State": "DISABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aaaa-aaaa-aaaaa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aaaa-aaaa-aaaaa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 07 ? * SUN-SAT *)",
+                  "State": "ENABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aaaa-aaaa-aaaaa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aaaa-aaaa-aaaaa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 09 ? * SUN-SAT *)",
+                  "State": "ENABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aaaa-aaaa-aaaaa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aaaa-aaaa-aaaaa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 04 ? * SUN-SAT *)",
+                  "State": "ENABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aaaa-aaaa-aaaaa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aaaa-aaaa-aaaaa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 03 ? * SUN-SAT *)",
+                  "State": "ENABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aaaa-aaaa-aaaaa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aaaa-aaaa-aaaaa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 03 ? * SUN-SAT *)",
+                  "State": "ENABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aaaa-aaaa-aaaaa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aaaa-aaaa-aaaaa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 08 ? * SUN-SAT *)",
+                  "State": "ENABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aaaa-aaaa-aaaaa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aaaa-aaaa-aaaaa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 03 ? * SUN-SAT *)",
+                  "State": "ENABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aaaa-aaaa-aaaaa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aaaa-aaaa-aaaaa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 06 ? * MON-FRI *)",
+                  "State": "ENABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aaaa-aaaa-aaaaa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aaaa-aaaa-aaaaa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(0 6 ? * TUE,FRI *)",
+                  "State": "ENABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aaaa-aaaa-aaaaa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aaaa-aaaa-aaaaa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(0 05 * * ? *)",
+                  "State": "ENABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aaaa-aaaa-aaaaa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aaaa-aaaa-aaaaa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(0 06 * * ? *)",
+                  "State": "ENABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aaaa-aaaa-aaaaa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aaaa-aaaa-aaaaa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 08 ? * MON-FRI *)",
+                  "State": "ENABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aaaa-aaaa-aaaaa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aaaa-aaaa-aaaaa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "ScheduleExpression": "cron(0 8 ? * MON-FRI *)",
+                  "State": "ENABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aaaa-aaaa-aaaaa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aaaa-aaaa-aaaaa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 12 ? * SUN-SAT *)",
+                  "State": "ENABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aaaa-aaaa-aaaaa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aaaa-aaaa-aaaaa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "ScheduleExpression": "cron(15 03 ? * SUN-SAT *)",
+                  "State": "ENABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aaaa-aaaa-aaaaa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aaaa-aaaa-aaaaa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 03 ? * SUN-SAT *)",
+                  "State": "ENABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaa-aaaa-aaaa-aaaaa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaa-aaaa-aaaa-aaaaa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "ScheduleExpression": "cron(0 07 * * ? *)",
+                  "State": "ENABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaa-aaaaaaaaaa-aaaaaaa-aaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaa-aaaaaaaaaa-aaaaaaa-aaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(30 6 * * ? *)",
+                  "State": "ENABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaa-aaaa-aaaa-aaaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaa-aaaa-aaaa-aaaaa-aa-aaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaa",
+                  "ScheduleExpression": "cron(0 * * * ? *)",
+                  "State": "ENABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaaaaaa-aaaa-aaaaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaaaaaa-aaaa-aaaaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(*/8 7-21 * * ? *)",
+                  "State": "ENABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaa-aaa-aaaaaaaaa-aaaa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaa-aaa-aaaaaaaaa-aaaa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 12 * * ? *)",
+                  "State": "ENABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaa-aaa-aaaaaaaaa-aaaa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaa-aaa-aaaaaaaaa-aaaa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 10 ? * MON-FRI *)",
+                  "State": "ENABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaa-aaa-aaaaaaaaa-aaaa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaa-aaa-aaaaaaaaa-aaaa-aaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 03 * * ? *)",
+                  "State": "ENABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaa-aaaa-aaaaaaaaa-aaa-aaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaa-aaaa-aaaaaaaaa-aaa-aaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 12 * * ? *)",
+                  "State": "ENABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaa-aaaa-aaaaaaaaa-aaa-aaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaa-aaaa-aaaaaaaaa-aaa-aaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 10 ? * MON-FRI *)",
+                  "State": "ENABLED"
+                },
+                {
+                  "Arn": "arn:aws:events:us-west-2:0000000000:aaaa/aaaaaa-aaaa-aaaaaaaaa-aaa-aaaaaaaaaa-aaaaaaaaaaaa",
+                  "EventBusName": "aaaaaaa",
+                  "Name": "aaaaaa-aaaa-aaaaaaaaa-aaa-aaaaaaaaaa-aaaaaaaaaaaa",
+                  "ScheduleExpression": "cron(00 03 * * ? *)",
+                  "State": "ENABLED"
+                }
+              ]
+            }
+        headers:
+            Content-Type:
+                - application/x-amz-json-1.1
+        status: 200 OK
+        code: 200
+        duration: 43.284166ms

@@ -34,12 +34,16 @@ import (
 	cloudfront "github.com/aws/aws-sdk-go-v2/service/cloudfront/types"
 	iam "github.com/aws/aws-sdk-go-v2/service/iam/types"
 	kms "github.com/aws/aws-sdk-go-v2/service/kms/types"
+	cloudtrail "github.com/aws/aws-sdk-go-v2/service/cloudtrail/types"
+	eventbridge "github.com/aws/aws-sdk-go-v2/service/eventbridge/types"
+	redshift "github.com/aws/aws-sdk-go-v2/service/redshift/types"
+	awsworkflow "github.com/rkoval/alfred-aws-console-services-workflow/awsworkflow"
 	aw "github.com/deanishe/awgo"
 	"github.com/rkoval/alfred-aws-console-services-workflow/searchers/searchutil"
 )
 
 type Entity interface {
-	cloudwatchlogs.LogGroup | ec2.Instance | s3.Bucket | ec2.SecurityGroup | elasticbeanstalk.EnvironmentDescription | wafv2.IPSetSummary | wafv2.WebACLSummary | lambda.FunctionConfiguration | cloudformation.Stack | rds.DBInstance | sns.Topic | sns.Subscription | elasticache.CacheCluster | elasticloadbalancingv2.LoadBalancer | elasticbeanstalk.ApplicationDescription | route53.HostedZone | cloudwatchlogs.QueryDefinition | codepipeline.PipelineSummary | ecs.Cluster | ssm.ParameterMetadata | secretsmanager.SecretListEntry | ecr.Repository | sfn.StateMachineListItem | elasticloadbalancingv2.TargetGroup | autoscaling.AutoScalingGroup | batch.JobQueueDetail | apprunner.ServiceSummary | ec2.Vpc | ec2.Subnet | ec2.Volume | ec2.Snapshot | ec2.Image | ec2.KeyPairInfo | efs.FileSystemDescription | iam.Role | iam.User | iam.Policy | iam.Group | kms.AliasListEntry | acm.CertificateSummary | cloudfront.DistributionSummary |
+	cloudwatchlogs.LogGroup | ec2.Instance | s3.Bucket | ec2.SecurityGroup | elasticbeanstalk.EnvironmentDescription | wafv2.IPSetSummary | wafv2.WebACLSummary | lambda.FunctionConfiguration | cloudformation.Stack | rds.DBInstance | sns.Topic | sns.Subscription | elasticache.CacheCluster | elasticloadbalancingv2.LoadBalancer | elasticbeanstalk.ApplicationDescription | route53.HostedZone | cloudwatchlogs.QueryDefinition | codepipeline.PipelineSummary | ecs.Cluster | ssm.ParameterMetadata | secretsmanager.SecretListEntry | ecr.Repository | sfn.StateMachineListItem | elasticloadbalancingv2.TargetGroup | autoscaling.AutoScalingGroup | batch.JobQueueDetail | apprunner.ServiceSummary | ec2.Vpc | ec2.Subnet | ec2.Volume | ec2.Snapshot | ec2.Image | ec2.KeyPairInfo | efs.FileSystemDescription | iam.Role | iam.User | iam.Policy | iam.Group | kms.AliasListEntry | acm.CertificateSummary | cloudfront.DistributionSummary | awsworkflow.APIGatewayAPI | eventbridge.Rule | eventbridge.EventBus | redshift.Cluster | cloudtrail.TrailInfo |
 		// some list APIs (DynamoDB tables, SQS queues, ...) only hand back names or URLs
 		string
 }

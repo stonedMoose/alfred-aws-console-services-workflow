@@ -1,0 +1,47 @@
+---
+version: 2
+interactions:
+    - id: 0
+      request:
+        proto: ""
+        proto_major: 0
+        proto_minor: 0
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: ""
+        remote_addr: ""
+        request_uri: ""
+        body: '{}'
+        form: {}
+        headers:
+            Content-Type:
+                - application/x-amz-json-1.1
+            X-Amz-Target:
+                - CloudTrail_20131101.ListTrails
+        url: https://cloudtrail.us-west-2.amazonaws.com/
+        method: POST
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        transfer_encoding: []
+        trailer: {}
+        content_length: 145
+        uncompressed: false
+        body: |-
+            {
+              "Trails": [
+                {
+                  "HomeRegion": "us-west-2",
+                  "Name": "aaaaaaaaaa-aaaaaa",
+                  "TrailARN": "arn:aws:cloudtrail:us-west-2:0000000000:aaaaa/aaaaaaaaaa-aaaaaa"
+                }
+              ]
+            }
+        headers:
+            Content-Type:
+                - application/x-amz-json-1.1
+        status: 200 OK
+        code: 200
+        duration: 152.786958ms

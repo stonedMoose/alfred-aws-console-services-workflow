@@ -49,6 +49,14 @@ var iamGroupSearcher = &IAMGroupSearcher{}
 var kmsKeySearcher = &KMSKeySearcher{}
 var acmCertificateSearcher = &ACMCertificateSearcher{}
 var cloudFrontDistributionSearcher = &CloudFrontDistributionSearcher{}
+var apiGatewayAPISearcher = &APIGatewayAPISearcher{}
+var eventBridgeRuleSearcher = &EventBridgeRuleSearcher{}
+var eventBridgeEventBusSearcher = &EventBridgeEventBusSearcher{}
+var kinesisStreamSearcher = &KinesisStreamSearcher{}
+var codeBuildProjectSearcher = &CodeBuildProjectSearcher{}
+var glueJobSearcher = &GlueJobSearcher{}
+var redshiftClusterSearcher = &RedshiftClusterSearcher{}
+var cloudTrailTrailSearcher = &CloudTrailTrailSearcher{}
 
 var SearchersByServiceId map[string]Searcher = map[string]Searcher{
 	"apprunner": appRunnerServiceSearcher,
@@ -126,4 +134,18 @@ var SearchersByServiceId map[string]Searcher = map[string]Searcher{
 	"acm_certificatemanager": acmCertificateSearcher,
 	"cloudfront": cloudFrontDistributionSearcher,
 	"cloudfront_distributions": cloudFrontDistributionSearcher,
+	"apigateway": apiGatewayAPISearcher,
+	"apigateway_apis": apiGatewayAPISearcher,
+	"eventbridge": eventBridgeRuleSearcher,
+	"eventbridge_rules": eventBridgeRuleSearcher,
+	"eventbridge_eventbuses": eventBridgeEventBusSearcher,
+	"kinesis": kinesisStreamSearcher,
+	"kinesis_datastreams": kinesisStreamSearcher,
+	"codebuild": codeBuildProjectSearcher,
+	"codebuild_projects": codeBuildProjectSearcher,
+	"glue_jobs": glueJobSearcher,
+	"redshift": redshiftClusterSearcher,
+	"redshift_clusters": redshiftClusterSearcher,
+	"cloudtrail": cloudTrailTrailSearcher,
+	"cloudtrail_trails": cloudTrailTrailSearcher,
 }

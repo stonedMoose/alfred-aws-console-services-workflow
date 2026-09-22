@@ -1,0 +1,50 @@
+---
+version: 2
+interactions:
+    - id: 0
+      request:
+        proto: ""
+        proto_major: 0
+        proto_minor: 0
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: ""
+        remote_addr: ""
+        request_uri: ""
+        body: Action=DescribeClusters&MaxRecords=100&Version=2012-12-01
+        form:
+            Action:
+                - DescribeClusters
+            MaxRecords:
+                - "100"
+            Version:
+                - "2012-12-01"
+        headers:
+            Content-Type:
+                - application/x-www-form-urlencoded
+        url: https://redshift.us-west-2.amazonaws.com/
+        method: POST
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        transfer_encoding: []
+        trailer: {}
+        content_length: 287
+        uncompressed: false
+        body: |
+            <DescribeClustersResponse xmlns="http://redshift.amazonaws.com/doc/2012-12-01/">
+              <DescribeClustersResult>
+                <Clusters/>
+              </DescribeClustersResult>
+              <ResponseMetadata>
+                <RequestId>00000000-0000-0000-0000-000000000000</RequestId>
+              </ResponseMetadata>
+            </DescribeClustersResponse>
+        headers:
+            Content-Type:
+                - text/xml
+        status: 200 OK
+        code: 200
+        duration: 157.127583ms

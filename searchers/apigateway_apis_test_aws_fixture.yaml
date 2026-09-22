@@ -1,0 +1,678 @@
+---
+version: 2
+interactions:
+    - id: 0
+      request:
+        proto: ""
+        proto_major: 0
+        proto_minor: 0
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: ""
+        remote_addr: ""
+        request_uri: ""
+        body: ""
+        form: {}
+        headers:
+            Accept:
+                - application/json
+        url: https://apigateway.us-west-2.amazonaws.com/restapis?limit=500
+        method: GET
+      response:
+        proto: HTTP/2.0
+        proto_major: 2
+        proto_minor: 0
+        transfer_encoding: []
+        trailer: {}
+        content_length: 14852
+        uncompressed: false
+        body: |-
+            {
+              "item": [
+                {
+                  "apiKeySource": "HEADER",
+                  "apiStatus": "AVAILABLE",
+                  "binaryMediaTypes": [
+                    "application/pdf",
+                    "image/png",
+                    "image/jpeg",
+                    "multipart/form-data",
+                    "text/csv"
+                  ],
+                  "createdDate": 1789109502,
+                  "description": "aaaaaaaaa/aa-aaaa aaaa aaa",
+                  "disableExecuteApiEndpoint": false,
+                  "endpointConfiguration": {
+                    "ipAddressType": "ipv4",
+                    "types": [
+                      "REGIONAL"
+                    ]
+                  },
+                  "id": "aaaaaaaaaa",
+                  "name": "aaaaaaaaa-aa-aaaa-aaaaaaa",
+                  "rootResourceId": "7a3r393yn6",
+                  "securityPolicy": "TLS_1_0",
+                  "tags": {
+                    "aws:cloudformation:logical-id": "dashboardpr1717RestApi14E736F3",
+                    "aws:cloudformation:stack-id": "arn:aws:cloudformation:us-west-2:0000000000:stack/dashboard-pr-1717-main-stack-ApiRootStackNestedStackApiRootStackNestedStackResource1C7-JV1VYPFOI2BG/00000000-0000-0000-0000-000000000000",
+                    "aws:cloudformation:stack-name": "aaaaaaaaa-aa-aaaa-aaaa-aaaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                    "env": "dev",
+                    "project": "dashboard",
+                    "service": "dashboard-backend",
+                    "stage": "pr-1717",
+                    "version": "0.100.1"
+                  }
+                },
+                {
+                  "apiKeySource": "HEADER",
+                  "apiStatus": "AVAILABLE",
+                  "binaryMediaTypes": [
+                    "application/pdf",
+                    "image/png",
+                    "image/jpeg",
+                    "multipart/form-data",
+                    "text/csv"
+                  ],
+                  "createdDate": 1789052289,
+                  "description": "aaaaaaaaa/aa-aaaa aaaa aaa",
+                  "disableExecuteApiEndpoint": false,
+                  "endpointConfiguration": {
+                    "ipAddressType": "ipv4",
+                    "types": [
+                      "REGIONAL"
+                    ]
+                  },
+                  "id": "aaaaaaaaaa",
+                  "name": "aaaaaaaaa-aa-aaaa-aaaaaaa",
+                  "rootResourceId": "8u3cz1dxhk",
+                  "securityPolicy": "TLS_1_0",
+                  "tags": {
+                    "aws:cloudformation:logical-id": "dashboardpr1798RestApi41DAA3CF",
+                    "aws:cloudformation:stack-id": "arn:aws:cloudformation:us-west-2:0000000000:stack/dashboard-pr-1798-main-stack-ApiRootStackNestedStackApiRootStackNestedStackResource1C7-11KNMPU4H0GPC/00000000-0000-0000-0000-000000000000",
+                    "aws:cloudformation:stack-name": "aaaaaaaaa-aa-aaaa-aaaa-aaaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaaa",
+                    "env": "dev",
+                    "project": "dashboard",
+                    "service": "dashboard-backend",
+                    "stage": "pr-1798",
+                    "version": "0.100.1"
+                  }
+                },
+                {
+                  "apiKeySource": "HEADER",
+                  "apiStatus": "AVAILABLE",
+                  "binaryMediaTypes": [
+                    "application/pdf",
+                    "image/png",
+                    "image/jpeg",
+                    "multipart/form-data",
+                    "text/csv"
+                  ],
+                  "createdDate": 1787240371,
+                  "description": "aaaaaaaaa/aa-aaaa aaaa aaa",
+                  "disableExecuteApiEndpoint": false,
+                  "endpointConfiguration": {
+                    "ipAddressType": "ipv4",
+                    "types": [
+                      "REGIONAL"
+                    ]
+                  },
+                  "id": "aaaaaaaaaa",
+                  "name": "aaaaaaaaa-aa-aaaa-aaaaaaa",
+                  "rootResourceId": "5i4ln1u579",
+                  "securityPolicy": "TLS_1_0",
+                  "tags": {
+                    "aws:cloudformation:logical-id": "dashboardpr1098RestApi1187095C",
+                    "aws:cloudformation:stack-id": "arn:aws:cloudformation:us-west-2:0000000000:stack/dashboard-pr-1098-main-stack-ApiRootStackNestedStackApiRootStackNestedStackResource1C7-Y8TRH447F0E0/00000000-0000-0000-0000-000000000000",
+                    "aws:cloudformation:stack-name": "aaaaaaaaa-aa-aaaa-aaaa-aaaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                    "env": "dev",
+                    "project": "dashboard",
+                    "service": "dashboard-backend",
+                    "stage": "pr-1098",
+                    "version": "0.100.1"
+                  }
+                },
+                {
+                  "apiKeySource": "HEADER",
+                  "apiStatus": "AVAILABLE",
+                  "binaryMediaTypes": [
+                    "application/pdf",
+                    "image/png",
+                    "image/jpeg",
+                    "multipart/form-data",
+                    "text/csv"
+                  ],
+                  "createdDate": 1789401642,
+                  "description": "aaaaaaaaa/aa-aaaa aaaa aaa",
+                  "disableExecuteApiEndpoint": false,
+                  "endpointConfiguration": {
+                    "ipAddressType": "ipv4",
+                    "types": [
+                      "REGIONAL"
+                    ]
+                  },
+                  "id": "aaaaaaaaaa",
+                  "name": "aaaaaaaaa-aa-aaaa-aaaaaaa",
+                  "rootResourceId": "nwg0jm24mc",
+                  "securityPolicy": "TLS_1_0",
+                  "tags": {
+                    "aws:cloudformation:logical-id": "dashboardpr1808RestApi0CACFF75",
+                    "aws:cloudformation:stack-id": "arn:aws:cloudformation:us-west-2:0000000000:stack/dashboard-pr-1808-main-stack-ApiRootStackNestedStackApiRootStackNestedStackResource1C7-36K40VMEQ8JV/00000000-0000-0000-0000-000000000000",
+                    "aws:cloudformation:stack-name": "aaaaaaaaa-aa-aaaa-aaaa-aaaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                    "env": "dev",
+                    "project": "dashboard",
+                    "service": "dashboard-backend",
+                    "stage": "pr-1808",
+                    "version": "0.100.1"
+                  }
+                },
+                {
+                  "apiKeySource": "HEADER",
+                  "apiStatus": "AVAILABLE",
+                  "binaryMediaTypes": [
+                    "application/pdf",
+                    "image/png",
+                    "image/jpeg",
+                    "multipart/form-data"
+                  ],
+                  "createdDate": 1679410899,
+                  "description": "aaaa/aaa aaaa aaa",
+                  "disableExecuteApiEndpoint": false,
+                  "endpointConfiguration": {
+                    "types": [
+                      "REGIONAL"
+                    ]
+                  },
+                  "id": "aaaaaaaaaa",
+                  "name": "aaaa-aaa-aaaaaaa",
+                  "rootResourceId": "qfm5jahgp3",
+                  "securityPolicy": "TLS_1_0",
+                  "tags": {
+                    "aws:cloudformation:logical-id": "metaintRestApiBF7212A3",
+                    "aws:cloudformation:stack-id": "arn:aws:cloudformation:us-west-2:0000000000:stack/flease-meta-main-stack-ApiRootStackNestedStackApiRootStackNestedStackResource1C7DCE15-1J0E611XZNO86/00000000-0000-0000-0000-000000000000",
+                    "aws:cloudformation:stack-name": "aaaaaa-aaaa-aaaa-aaaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaaa",
+                    "env": "int",
+                    "project": "meta",
+                    "service": "meta-backend",
+                    "stage": "int",
+                    "version": "2.63.8"
+                  }
+                },
+                {
+                  "apiKeySource": "HEADER",
+                  "apiStatus": "AVAILABLE",
+                  "createdDate": 1790064559,
+                  "disableExecuteApiEndpoint": false,
+                  "endpointConfiguration": {
+                    "ipAddressType": "ipv4",
+                    "types": [
+                      "EDGE"
+                    ]
+                  },
+                  "id": "aaaaaaaaaa",
+                  "name": "aaaaaaaaa-aaaaaa-aaaaaaaaaa",
+                  "rootResourceId": "vsinn8cu4l",
+                  "securityPolicy": "TLS_1_0",
+                  "tags": {
+                    "aws:cloudformation:logical-id": "ApiF70053CD",
+                    "aws:cloudformation:stack-id": "arn:aws:cloudformation:us-west-2:0000000000:stack/StripeLettrageStack/00000000-0000-0000-0000-000000000000",
+                    "aws:cloudformation:stack-name": "aaaaaaaaaaaaaaaaaaa"
+                  }
+                },
+                {
+                  "apiKeySource": "HEADER",
+                  "apiStatus": "AVAILABLE",
+                  "binaryMediaTypes": [
+                    "application/pdf",
+                    "image/png",
+                    "image/jpeg",
+                    "multipart/form-data"
+                  ],
+                  "createdDate": 1779988746,
+                  "description": "aaaaaaaaaa/aaaa aaaa aaa",
+                  "disableExecuteApiEndpoint": false,
+                  "endpointConfiguration": {
+                    "ipAddressType": "ipv4",
+                    "types": [
+                      "REGIONAL"
+                    ]
+                  },
+                  "id": "aaaaaaaaaa",
+                  "name": "aaaaaaaaaa-aaaa-aaaaaaa",
+                  "rootResourceId": "64g3wlu2n6",
+                  "securityPolicy": "TLS_1_0",
+                  "tags": {
+                    "aws:cloudformation:logical-id": "verifleaseprodRestApi4B4996CC",
+                    "aws:cloudformation:stack-id": "arn:aws:cloudformation:us-west-2:0000000000:stack/veriflease-prod-MainStack-ApiRootStackNestedStackApiRootStackNestedStackResource1C7DCE-EE9DEK4O2U7I/00000000-0000-0000-0000-000000000000",
+                    "aws:cloudformation:stack-name": "aaaaaaaaaa-aaaa-aaaaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                    "env": "prod",
+                    "project": "veriflease",
+                    "service": "veriflease-backend",
+                    "stage": "prod",
+                    "version": "0.1.0"
+                  }
+                },
+                {
+                  "apiKeySource": "HEADER",
+                  "apiStatus": "AVAILABLE",
+                  "binaryMediaTypes": [
+                    "application/pdf",
+                    "image/png",
+                    "image/jpeg",
+                    "multipart/form-data",
+                    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                    "application/zip"
+                  ],
+                  "createdDate": 1780244361,
+                  "description": "aaaaaa/aaaa aaaa aaa",
+                  "disableExecuteApiEndpoint": false,
+                  "endpointConfiguration": {
+                    "ipAddressType": "ipv4",
+                    "types": [
+                      "REGIONAL"
+                    ]
+                  },
+                  "id": "aaaaaaaaaa",
+                  "name": "aaaaaa-aaaa-aaaaaaa",
+                  "rootResourceId": "a5tqeyc52g",
+                  "securityPolicy": "TLS_1_0",
+                  "tags": {
+                    "aws:cloudformation:logical-id": "webappprodRestApiD38ADAC9",
+                    "aws:cloudformation:stack-id": "arn:aws:cloudformation:us-west-2:0000000000:stack/webapp-prod-MainStack-ApiRootStackNestedStackApiRootStackNestedStackResource1C7DCE15-T24CV7KLK2LH/00000000-0000-0000-0000-000000000000",
+                    "aws:cloudformation:stack-name": "aaaaaa-aaaa-aaaaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                    "env": "prod",
+                    "project": "webapp",
+                    "service": "webapp-backend",
+                    "stage": "prod",
+                    "version": "1.21.0"
+                  }
+                },
+                {
+                  "apiKeySource": "HEADER",
+                  "apiStatus": "AVAILABLE",
+                  "binaryMediaTypes": [
+                    "application/pdf",
+                    "image/png",
+                    "image/jpeg",
+                    "multipart/form-data",
+                    "text/csv"
+                  ],
+                  "createdDate": 1779976978,
+                  "description": "aaaaaaaaa/aaa aaaa aaa",
+                  "disableExecuteApiEndpoint": false,
+                  "endpointConfiguration": {
+                    "ipAddressType": "ipv4",
+                    "types": [
+                      "REGIONAL"
+                    ]
+                  },
+                  "id": "aaaaaaaaaa",
+                  "name": "aaaaaaaaa-aaa-aaaaaaa",
+                  "rootResourceId": "7y4v2pr0x9",
+                  "securityPolicy": "TLS_1_0",
+                  "tags": {
+                    "aws:cloudformation:logical-id": "dashboardintRestApi01D50389",
+                    "aws:cloudformation:stack-id": "arn:aws:cloudformation:us-west-2:0000000000:stack/dashboard-int-main-stack-ApiRootStackNestedStackApiRootStackNestedStackResource1C7DCE1-1LUQFNBF7XUNE/00000000-0000-0000-0000-000000000000",
+                    "aws:cloudformation:stack-name": "aaaaaaaaa-aaa-aaaa-aaaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaaa",
+                    "env": "int",
+                    "project": "dashboard",
+                    "service": "dashboard-backend",
+                    "stage": "int",
+                    "version": "0.100.1"
+                  }
+                },
+                {
+                  "apiKeySource": "HEADER",
+                  "apiStatus": "AVAILABLE",
+                  "binaryMediaTypes": [
+                    "application/pdf",
+                    "image/png",
+                    "image/jpeg",
+                    "multipart/form-data",
+                    "text/csv"
+                  ],
+                  "createdDate": 1779848828,
+                  "description": "aaaaaaaaa/aaaa aaaa aaa",
+                  "disableExecuteApiEndpoint": false,
+                  "endpointConfiguration": {
+                    "ipAddressType": "ipv4",
+                    "types": [
+                      "REGIONAL"
+                    ]
+                  },
+                  "id": "aaaaaaaaaa",
+                  "name": "aaaaaaaaa-aaaa-aaaaaaa",
+                  "rootResourceId": "o9aszosisl",
+                  "securityPolicy": "TLS_1_0",
+                  "tags": {
+                    "aws:cloudformation:logical-id": "dashboardprodRestApi28541FE4",
+                    "aws:cloudformation:stack-id": "arn:aws:cloudformation:us-west-2:0000000000:stack/dashboard-prod-main-stack-ApiRootStackNestedStackApiRootStackNestedStackResource1C7DCE-GBHZDL3X8CGP/00000000-0000-0000-0000-000000000000",
+                    "aws:cloudformation:stack-name": "aaaaaaaaa-aaaa-aaaa-aaaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                    "env": "prod",
+                    "project": "dashboard",
+                    "service": "dashboard-backend",
+                    "stage": "prod",
+                    "version": "0.100.1"
+                  }
+                },
+                {
+                  "apiKeySource": "HEADER",
+                  "apiStatus": "AVAILABLE",
+                  "binaryMediaTypes": [
+                    "application/pdf",
+                    "image/png",
+                    "image/jpeg",
+                    "multipart/form-data",
+                    "text/csv"
+                  ],
+                  "createdDate": 1740066035,
+                  "description": "aaaaaaaaa/aa-aaaa aaaa aaa",
+                  "disableExecuteApiEndpoint": false,
+                  "endpointConfiguration": {
+                    "types": [
+                      "REGIONAL"
+                    ]
+                  },
+                  "id": "aaaaaaaaaa",
+                  "name": "aaaaaaaaa-aa-aaaa-aaaaaaa",
+                  "rootResourceId": "1lw990x5rc",
+                  "securityPolicy": "TLS_1_0",
+                  "tags": {
+                    "aws:cloudformation:logical-id": "dashboardpr1168RestApiB16CA712",
+                    "aws:cloudformation:stack-id": "arn:aws:cloudformation:us-west-2:0000000000:stack/dashboard-pr-1168-MainStack-ApiRootStackNestedStackApiRootStackNestedStackResource1C7D-6T0P0CG2FUID/00000000-0000-0000-0000-000000000000",
+                    "aws:cloudformation:stack-name": "aaaaaaaaa-aa-aaaa-aaaaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                    "project": "dashboard",
+                    "stage": "pr-1168"
+                  }
+                },
+                {
+                  "apiKeySource": "HEADER",
+                  "apiStatus": "AVAILABLE",
+                  "binaryMediaTypes": [
+                    "application/pdf",
+                    "image/png",
+                    "image/jpeg",
+                    "multipart/form-data",
+                    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                    "application/zip"
+                  ],
+                  "createdDate": 1780178087,
+                  "description": "aaaaaa/aaa aaaa aaa",
+                  "disableExecuteApiEndpoint": false,
+                  "endpointConfiguration": {
+                    "ipAddressType": "ipv4",
+                    "types": [
+                      "REGIONAL"
+                    ]
+                  },
+                  "id": "aaaaaaaaaa",
+                  "name": "aaaaaa-aaa-aaaaaaa",
+                  "rootResourceId": "qpl8w40nr8",
+                  "securityPolicy": "TLS_1_0",
+                  "tags": {
+                    "aws:cloudformation:logical-id": "webappintRestApi365D24CE",
+                    "aws:cloudformation:stack-id": "arn:aws:cloudformation:us-west-2:0000000000:stack/webapp-int-MainStack-ApiRootStackNestedStackApiRootStackNestedStackResource1C7DCE15-1EZK89TXF91LT/00000000-0000-0000-0000-000000000000",
+                    "aws:cloudformation:stack-name": "aaaaaa-aaa-aaaaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaaa",
+                    "env": "int",
+                    "project": "webapp",
+                    "service": "webapp-backend",
+                    "stage": "int",
+                    "version": "1.21.0"
+                  }
+                },
+                {
+                  "apiKeySource": "HEADER",
+                  "apiStatus": "AVAILABLE",
+                  "binaryMediaTypes": [
+                    "application/pdf",
+                    "image/png",
+                    "image/jpeg",
+                    "multipart/form-data",
+                    "text/csv"
+                  ],
+                  "createdDate": 1789603513,
+                  "description": "aaaaaaaaa/aa-aaaa aaaa aaa",
+                  "disableExecuteApiEndpoint": false,
+                  "endpointConfiguration": {
+                    "ipAddressType": "ipv4",
+                    "types": [
+                      "REGIONAL"
+                    ]
+                  },
+                  "id": "aaaaaaaaaa",
+                  "name": "aaaaaaaaa-aa-aaaa-aaaaaaa",
+                  "rootResourceId": "dakhew5nwb",
+                  "securityPolicy": "TLS_1_0",
+                  "tags": {
+                    "aws:cloudformation:logical-id": "dashboardpr1806RestApiB89902A1",
+                    "aws:cloudformation:stack-id": "arn:aws:cloudformation:us-west-2:0000000000:stack/dashboard-pr-1806-main-stack-ApiRootStackNestedStackApiRootStackNestedStackResource1C7-1CFHJLYK9SROJ/00000000-0000-0000-0000-000000000000",
+                    "aws:cloudformation:stack-name": "aaaaaaaaa-aa-aaaa-aaaa-aaaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaaa",
+                    "env": "dev",
+                    "project": "dashboard",
+                    "service": "dashboard-backend",
+                    "stage": "pr-1806",
+                    "version": "0.100.1"
+                  }
+                },
+                {
+                  "apiKeySource": "HEADER",
+                  "apiStatus": "AVAILABLE",
+                  "binaryMediaTypes": [
+                    "application/pdf",
+                    "image/png",
+                    "image/jpeg",
+                    "multipart/form-data",
+                    "text/csv"
+                  ],
+                  "createdDate": 1790005268,
+                  "description": "aaaaaaaaa/aa-aaaa aaaa aaa",
+                  "disableExecuteApiEndpoint": false,
+                  "endpointConfiguration": {
+                    "ipAddressType": "ipv4",
+                    "types": [
+                      "REGIONAL"
+                    ]
+                  },
+                  "id": "aaaaaaaaaa",
+                  "name": "aaaaaaaaa-aa-aaaa-aaaaaaa",
+                  "rootResourceId": "6reephua6d",
+                  "securityPolicy": "TLS_1_0",
+                  "tags": {
+                    "aws:cloudformation:logical-id": "dashboardpr1443RestApiA0715609",
+                    "aws:cloudformation:stack-id": "arn:aws:cloudformation:us-west-2:0000000000:stack/dashboard-pr-1443-main-stack-ApiRootStackNestedStackApiRootStackNestedStackResource1C7-8QM46WOZSHRK/00000000-0000-0000-0000-000000000000",
+                    "aws:cloudformation:stack-name": "aaaaaaaaa-aa-aaaa-aaaa-aaaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                    "env": "dev",
+                    "project": "dashboard",
+                    "service": "dashboard-backend",
+                    "stage": "pr-1443",
+                    "version": "0.100.1"
+                  }
+                },
+                {
+                  "apiKeySource": "HEADER",
+                  "apiStatus": "AVAILABLE",
+                  "binaryMediaTypes": [
+                    "application/pdf",
+                    "image/png",
+                    "image/jpeg",
+                    "multipart/form-data",
+                    "text/csv"
+                  ],
+                  "createdDate": 1789735964,
+                  "description": "aaaaaaaaa/aa-aaaa aaaa aaa",
+                  "disableExecuteApiEndpoint": false,
+                  "endpointConfiguration": {
+                    "ipAddressType": "ipv4",
+                    "types": [
+                      "REGIONAL"
+                    ]
+                  },
+                  "id": "aaaaaaaaaa",
+                  "name": "aaaaaaaaa-aa-aaaa-aaaaaaa",
+                  "rootResourceId": "ckhu754tqj",
+                  "securityPolicy": "TLS_1_0",
+                  "tags": {
+                    "aws:cloudformation:logical-id": "dashboardpr1811RestApiFC314AFB",
+                    "aws:cloudformation:stack-id": "arn:aws:cloudformation:us-west-2:0000000000:stack/dashboard-pr-1811-main-stack-ApiRootStackNestedStackApiRootStackNestedStackResource1C7-ITWGCCB7UR4L/00000000-0000-0000-0000-000000000000",
+                    "aws:cloudformation:stack-name": "aaaaaaaaa-aa-aaaa-aaaa-aaaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                    "env": "dev",
+                    "project": "dashboard",
+                    "service": "dashboard-backend",
+                    "stage": "pr-1811",
+                    "version": "0.100.1"
+                  }
+                },
+                {
+                  "apiKeySource": "HEADER",
+                  "apiStatus": "AVAILABLE",
+                  "binaryMediaTypes": [
+                    "application/pdf",
+                    "image/png",
+                    "image/jpeg",
+                    "multipart/form-data",
+                    "text/csv"
+                  ],
+                  "createdDate": 1790006925,
+                  "description": "aaaaaaaaa/aa-aaaaaaaaaa aaaa aaa",
+                  "disableExecuteApiEndpoint": false,
+                  "endpointConfiguration": {
+                    "ipAddressType": "ipv4",
+                    "types": [
+                      "REGIONAL"
+                    ]
+                  },
+                  "id": "aaaaaaaaaa",
+                  "name": "aaaaaaaaa-aa-aaaaaaaaaa-aaaaaaa",
+                  "rootResourceId": "h50dyuftk0",
+                  "securityPolicy": "TLS_1_0",
+                  "tags": {
+                    "aws:cloudformation:logical-id": "dashboardpr1443lot2RestApi3A463043",
+                    "aws:cloudformation:stack-id": "arn:aws:cloudformation:us-west-2:0000000000:stack/dashboard-pr-aaaaaaaaaa-main-stack-ApiRootStackNestedStackApiRootStackNestedStackResourc-1P6ZPPAAFB8RA/00000000-0000-0000-0000-000000000000",
+                    "aws:cloudformation:stack-name": "aaaaaaaaa-aa-aaaaaaaaaa-aaaa-aaaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaaa",
+                    "env": "dev",
+                    "project": "dashboard",
+                    "service": "dashboard-backend",
+                    "stage": "pr-aaaaaaaaaa",
+                    "version": "0.100.1"
+                  }
+                }
+              ]
+            }
+        headers:
+            Content-Type:
+                - application/json
+            X-Amz-Apigw-Id:
+                - EGOTzICRjoEEc-A=
+        status: 200 OK
+        code: 200
+        duration: 197.023875ms
+    - id: 1
+      request:
+        proto: ""
+        proto_major: 0
+        proto_minor: 0
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: ""
+        remote_addr: ""
+        request_uri: ""
+        body: ""
+        form: {}
+        headers: {}
+        url: https://apigateway.us-west-2.amazonaws.com/v2/apis?maxResults=500
+        method: GET
+      response:
+        proto: HTTP/2.0
+        proto_major: 2
+        proto_minor: 0
+        transfer_encoding: []
+        trailer: {}
+        content_length: 2408
+        uncompressed: false
+        body: |-
+            {
+              "items": [
+                {
+                  "apiEndpoint": "aaaaa://aaaaaaaaaa.aaaaaaa-aaa.aa-aaaa-a.aaaaaaaaa.aaa",
+                  "apiId": "aaaaaaaaaa",
+                  "apiKeySelectionExpression": "$request.header.x-api-key",
+                  "createdDate": "2026-09-16T22:08:15Z",
+                  "disableExecuteApiEndpoint": false,
+                  "ipAddressType": "ipv4",
+                  "name": "aaaaaa-aaa",
+                  "protocolType": "HTTP",
+                  "routeSelectionExpression": "$request.method $request.path",
+                  "tags": {
+                    "aws:cloudformation:logical-id": "McpHttpApi9E3BE292",
+                    "aws:cloudformation:stack-id": "arn:aws:cloudformation:us-west-2:0000000000:stack/flaude-mcp/00000000-0000-0000-0000-000000000000",
+                    "aws:cloudformation:stack-name": "aaaaaa-aaa"
+                  }
+                },
+                {
+                  "apiEndpoint": "aaaaa://aaaaaaaaaa.aaaaaaa-aaa.aa-aaaa-a.aaaaaaaaa.aaa",
+                  "apiId": "aaaaaaaaaa",
+                  "apiKeySelectionExpression": "$request.header.x-api-key",
+                  "corsConfiguration": {
+                    "allowCredentials": false,
+                    "allowHeaders": [
+                      "authorization",
+                      "content-type"
+                    ],
+                    "allowMethods": [
+                      "GET",
+                      "POST",
+                      "PATCH",
+                      "PUT",
+                      "DELETE",
+                      "OPTIONS"
+                    ],
+                    "allowOrigins": [
+                      "http://localhost:5173"
+                    ],
+                    "maxAge": 3600
+                  },
+                  "createdDate": "2026-09-16T21:55:25Z",
+                  "disableExecuteApiEndpoint": false,
+                  "ipAddressType": "ipv4",
+                  "name": "aaaaaaaaaaaaaaa",
+                  "protocolType": "HTTP",
+                  "routeSelectionExpression": "$request.method $request.path",
+                  "tags": {
+                    "aws:cloudformation:logical-id": "ProspectatorApi",
+                    "aws:cloudformation:stack-id": "arn:aws:cloudformation:us-west-2:0000000000:stack/ProspectatorApiStack/00000000-0000-0000-0000-000000000000",
+                    "aws:cloudformation:stack-name": "aaaaaaaaaaaaaaaaaaaa"
+                  }
+                },
+                {
+                  "apiEndpoint": "aaaaa://aaaaaaaaaa.aaaaaaa-aaa.aa-aaaa-a.aaaaaaaaa.aaa",
+                  "apiId": "aaaaaaaaaa",
+                  "apiKeySelectionExpression": "$request.header.x-api-key",
+                  "createdDate": "2026-09-17T12:29:30Z",
+                  "disableExecuteApiEndpoint": false,
+                  "ipAddressType": "ipv4",
+                  "name": "aaaaaa-aaaaaaa",
+                  "protocolType": "HTTP",
+                  "routeSelectionExpression": "$request.method $request.path",
+                  "tags": {
+                    "aws:cloudformation:logical-id": "UpdatesHttpApiCF9A62DA",
+                    "aws:cloudformation:stack-id": "arn:aws:cloudformation:us-west-2:0000000000:stack/flaude-updates/00000000-0000-0000-0000-000000000000",
+                    "aws:cloudformation:stack-name": "aaaaaa-aaaaaaa"
+                  }
+                }
+              ]
+            }
+        headers:
+            Access-Control-Allow-Origin:
+                - '*'
+            Access-Control-Expose-Headers:
+                - x-amzn-RequestId,x-amzn-ErrorType,x-amzn-ErrorMessage,Date
+            Content-Type:
+                - application/json
+            X-Amz-Apigw-Id:
+                - EGOT2GzUDoEEpsw=
+            X-Amzn-Trace-Id:
+                - Root=1-6ab25db1-2fc2c41241a3549161eae5af
+        status: 200 OK
+        code: 200
+        duration: 89.4255ms

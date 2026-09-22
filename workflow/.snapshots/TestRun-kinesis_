@@ -1,0 +1,182 @@
+([]*aw.Item) (len=5) {
+  (*aw.Item)({
+    title: (string) (len=17) "kinesis dashboard",
+    subtitle: (*string)((len=21) "Kinesis – Dashboard"),
+    match: (*string)((len=19) "dashboard Dashboard"),
+    uid: (*string)((len=9) "dashboard"),
+    autocomplete: (*string)((len=18) "kinesis dashboard "),
+    arg: ([]string) (len=1) {
+      (string) (len=80) "https://us-west-2.console.aws.amazon.com/kinesis/home?region=us-west-2#dashboard"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=18) "images/kinesis.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=19) "kinesis datastreams",
+    subtitle: (*string)((len=35) "🔎⭐️ Kinesis – Data streams"),
+    match: (*string)((len=24) "datastreams Data streams"),
+    uid: (*string)((len=11) "datastreams"),
+    autocomplete: (*string)((len=20) "kinesis datastreams "),
+    arg: ([]string) (len=1) {
+      (string) (len=84) "https://us-west-2.console.aws.amazon.com/kinesis/home?region=us-west-2#/streams/list"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=18) "images/kinesis.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=16) "kinesis firehose",
+    subtitle: (*string)((len=37) "Kinesis – Firehose delivery streams"),
+    match: (*string)((len=34) "firehose Firehose delivery streams"),
+    uid: (*string)((len=8) "firehose"),
+    autocomplete: (*string)((len=17) "kinesis firehose "),
+    arg: ([]string) (len=1) {
+      (string) (len=87) "https://us-west-2.console.aws.amazon.com/firehose/home?region=us-west-2#/dashboard/list"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=18) "images/kinesis.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=20) "kinesis videostreams",
+    subtitle: (*string)((len=25) "Kinesis – Video streams"),
+    match: (*string)((len=26) "videostreams Video streams"),
+    uid: (*string)((len=12) "videostreams"),
+    autocomplete: (*string)((len=21) "kinesis videostreams "),
+    arg: ([]string) (len=1) {
+      (string) (len=75) "https://us-west-2.console.aws.amazon.com/kinesisvideo/home?region=us-west-2"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=18) "images/kinesis.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=17) "kinesis analytics",
+    subtitle: (*string)((len=34) "Kinesis – Analytics applications"),
+    match: (*string)((len=32) "analytics Analytics applications"),
+    uid: (*string)((len=9) "analytics"),
+    autocomplete: (*string)((len=18) "kinesis analytics "),
+    arg: ([]string) (len=1) {
+      (string) (len=103) "https://us-west-2.console.aws.amazon.com/kinesisanalytics/home?region=us-west-2#/applications/dashboard"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=18) "images/kinesis.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  })
+}

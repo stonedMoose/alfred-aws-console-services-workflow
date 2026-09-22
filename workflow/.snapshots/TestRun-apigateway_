@@ -1,0 +1,110 @@
+([]*aw.Item) (len=3) {
+  (*aw.Item)({
+    title: (string) (len=15) "apigateway apis",
+    subtitle: (*string)((len=31) "🔎⭐️ API Gateway – APIs"),
+    match: (*string)((len=9) "apis APIs"),
+    uid: (*string)((len=4) "apis"),
+    autocomplete: (*string)((len=16) "apigateway apis "),
+    arg: ([]string) (len=1) {
+      (string) (len=79) "https://us-west-2.console.aws.amazon.com/apigateway/main/apis?region=us-west-2#"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=21) "images/apigateway.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=28) "apigateway customdomainnames",
+    subtitle: (*string)((len=35) "API Gateway – Custom domain names"),
+    match: (*string)((len=37) "customdomainnames Custom domain names"),
+    uid: (*string)((len=17) "customdomainnames"),
+    autocomplete: (*string)((len=29) "apigateway customdomainnames "),
+    arg: ([]string) (len=1) {
+      (string) (len=95) "https://us-west-2.console.aws.amazon.com/apigateway/main/publish/domain-names?region=us-west-2#"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=21) "images/apigateway.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=19) "apigateway vpclinks",
+    subtitle: (*string)((len=25) "API Gateway – VPC links"),
+    match: (*string)((len=18) "vpclinks VPC links"),
+    uid: (*string)((len=8) "vpclinks"),
+    autocomplete: (*string)((len=20) "apigateway vpclinks "),
+    arg: ([]string) (len=1) {
+      (string) (len=89) "https://us-west-2.console.aws.amazon.com/apigateway/main/vpc-links/list?region=us-west-2#"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=21) "images/apigateway.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  })
+}

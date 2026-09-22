@@ -345,11 +345,14 @@ var sensitiveFieldSuffixes = []string{
 
 // fields that carry identifying values but are not named after them
 var extraSensitiveFields = map[string]bool{
+	"apiendpoint":             true,
+	"apiid":                   true,
 	"bucket":                  true,
 	"clusters":                true,
 	"comment":                 true,
 	"exclusivestarttablename": true,
 	"families":                true,
+	"id":                      true,
 	"keyfingerprint":          true,
 	"originpath":              true,
 	"prefix":                  true,

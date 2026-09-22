@@ -1067,6 +1067,134 @@ var tcs []testCase = []testCase{
 		query:       "cloudfront distributions ",
 		fixtureName: "../searchers/cloudfront_distributions_test", // reuse test fixture from this other test
 	},
+	{
+		query:       "apigateway",
+		fixtureName: "../searchers/apigateway_apis_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "apigateway ",
+		fixtureName: "../searchers/apigateway_apis_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "apigateway apis",
+		fixtureName: "../searchers/apigateway_apis_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "apigateway apis ",
+		fixtureName: "../searchers/apigateway_apis_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "eventbridge",
+		fixtureName: "../searchers/eventbridge_rules_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "eventbridge ",
+		fixtureName: "../searchers/eventbridge_rules_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "eventbridge rules",
+		fixtureName: "../searchers/eventbridge_rules_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "eventbridge rules ",
+		fixtureName: "../searchers/eventbridge_rules_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "eventbridge",
+		fixtureName: "../searchers/eventbridge_event_buses_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "eventbridge ",
+		fixtureName: "../searchers/eventbridge_event_buses_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "eventbridge eventbuses",
+		fixtureName: "../searchers/eventbridge_event_buses_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "eventbridge eventbuses ",
+		fixtureName: "../searchers/eventbridge_event_buses_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "kinesis",
+		fixtureName: "../searchers/kinesis_streams_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "kinesis ",
+		fixtureName: "../searchers/kinesis_streams_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "kinesis datastreams",
+		fixtureName: "../searchers/kinesis_streams_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "kinesis datastreams ",
+		fixtureName: "../searchers/kinesis_streams_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "codebuild",
+		fixtureName: "../searchers/codebuild_projects_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "codebuild ",
+		fixtureName: "../searchers/codebuild_projects_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "codebuild projects",
+		fixtureName: "../searchers/codebuild_projects_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "codebuild projects ",
+		fixtureName: "../searchers/codebuild_projects_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "glue",
+		fixtureName: "../searchers/glue_jobs_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "glue ",
+		fixtureName: "../searchers/glue_jobs_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "glue jobs",
+		fixtureName: "../searchers/glue_jobs_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "glue jobs ",
+		fixtureName: "../searchers/glue_jobs_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "redshift",
+		fixtureName: "../searchers/redshift_clusters_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "redshift ",
+		fixtureName: "../searchers/redshift_clusters_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "redshift clusters",
+		fixtureName: "../searchers/redshift_clusters_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "redshift clusters ",
+		fixtureName: "../searchers/redshift_clusters_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "cloudtrail",
+		fixtureName: "../searchers/cloudtrail_trails_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "cloudtrail ",
+		fixtureName: "../searchers/cloudtrail_trails_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "cloudtrail trails",
+		fixtureName: "../searchers/cloudtrail_trails_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "cloudtrail trails ",
+		fixtureName: "../searchers/cloudtrail_trails_test", // reuse test fixture from this other test
+	},
 }
 
 func testWorkflow(t *testing.T, tc testCase, forceFetch, snapshot bool) []*aw.Item {
