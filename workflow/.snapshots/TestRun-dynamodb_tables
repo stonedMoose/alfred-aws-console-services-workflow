@@ -1,0 +1,38 @@
+([]*aw.Item) (len=1) {
+  (*aw.Item)({
+    title: (string) (len=15) "dynamodb tables",
+    subtitle: (*string)((len=30) "🔎⭐️ DynamoDB – Tables"),
+    match: (*string)((len=13) "tables Tables"),
+    uid: (*string)((len=6) "tables"),
+    autocomplete: (*string)((len=16) "dynamodb tables "),
+    arg: ([]string) (len=1) {
+      (string) (len=80) "https://us-west-2.console.aws.amazon.com/dynamodbv2/home?region=us-west-2#tables"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=19) "images/dynamodb.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  })
+}

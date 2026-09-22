@@ -1,0 +1,72 @@
+---
+version: 2
+interactions:
+    - id: 0
+      request:
+        proto: ""
+        proto_major: 0
+        proto_minor: 0
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: ""
+        remote_addr: ""
+        request_uri: ""
+        body: '{"maxResults":1000}'
+        form: {}
+        headers:
+            Content-Type:
+                - application/x-amz-json-1.1
+            X-Amz-Target:
+                - AmazonEC2ContainerRegistry_V20150921.DescribeRepositories
+        url: https://api.ecr.us-west-2.amazonaws.com/
+        method: POST
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        transfer_encoding: []
+        trailer: {}
+        content_length: 879
+        uncompressed: false
+        body: |-
+            {
+              "repositories": [
+                {
+                  "createdAt": 1636551252,
+                  "encryptionConfiguration": {
+                    "encryptionType": "AES256"
+                  },
+                  "imageScanningConfiguration": {
+                    "scanOnPush": false
+                  },
+                  "imageTagMutability": "MUTABLE",
+                  "registryId": "aaaaaaaaaaaa",
+                  "repositoryArn": "arn:aws:ecr:us-west-2:0000000000:aaaaaaaaaa/aaaaaaa",
+                  "repositoryName": "aaaaaaa",
+                  "repositoryUri": "aaaaaaaaaaaa.aaa.aaa.aa-aaaa-a.aaaaaaaaa.aaa/aaaaaaa"
+                },
+                {
+                  "createdAt": 1612527695,
+                  "encryptionConfiguration": {
+                    "encryptionType": "AES256"
+                  },
+                  "imageScanningConfiguration": {
+                    "scanOnPush": true
+                  },
+                  "imageTagMutability": "IMMUTABLE",
+                  "registryId": "aaaaaaaaaaaa",
+                  "repositoryArn": "arn:aws:ecr:us-west-2:0000000000:aaaaaaaaaa/aaa-aaaaaaaaa-aaaaaaaaa-aaaaaa-aaaaaaaaaaaa-aa-aaaa-a",
+                  "repositoryName": "aaa-aaaaaaaaa-aaaaaaaaa-aaaaaa-aaaaaaaaaaaa-aa-aaaa-a",
+                  "repositoryUri": "aaaaaaaaaaaa.aaa.aaa.aa-aaaa-a.aaaaaaaaa.aaa/aaa-aaaaaaaaa-aaaaaaaaa-aaaaaa-aaaaaaaaaaaa-aa-aaaa-a"
+                }
+              ]
+            }
+        headers:
+            Connection:
+                - keep-alive
+            Content-Type:
+                - application/x-amz-json-1.1
+        status: 200 OK
+        code: 200
+        duration: 140.92925ms

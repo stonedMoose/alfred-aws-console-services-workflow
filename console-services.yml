@@ -2042,6 +2042,10 @@
   name: Secrets Manager
   description: Easily rotate, manage, and retrieve secrets throughout their lifecycle
   url: "/secretsmanager/home#!/listSecrets"
+  sub_services:
+    - id: secrets
+      name: Secrets
+      url: "/secretsmanager/listsecrets"
 
 - id: securityhub
   name: Security Hub

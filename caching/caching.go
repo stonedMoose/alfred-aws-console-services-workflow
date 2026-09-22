@@ -11,6 +11,7 @@ import (
 	cloudwatchlogs "github.com/aws/aws-sdk-go-v2/service/cloudwatchlogs/types"
 	codepipeline "github.com/aws/aws-sdk-go-v2/service/codepipeline/types"
 	ec2 "github.com/aws/aws-sdk-go-v2/service/ec2/types"
+	ecr "github.com/aws/aws-sdk-go-v2/service/ecr/types"
 	ecs "github.com/aws/aws-sdk-go-v2/service/ecs/types"
 	elasticache "github.com/aws/aws-sdk-go-v2/service/elasticache/types"
 	elasticbeanstalk "github.com/aws/aws-sdk-go-v2/service/elasticbeanstalk/types"
@@ -19,7 +20,9 @@ import (
 	rds "github.com/aws/aws-sdk-go-v2/service/rds/types"
 	route53 "github.com/aws/aws-sdk-go-v2/service/route53/types"
 	s3 "github.com/aws/aws-sdk-go-v2/service/s3/types"
+	secretsmanager "github.com/aws/aws-sdk-go-v2/service/secretsmanager/types"
 	sns "github.com/aws/aws-sdk-go-v2/service/sns/types"
+	ssm "github.com/aws/aws-sdk-go-v2/service/ssm/types"
 	wafv2 "github.com/aws/aws-sdk-go-v2/service/wafv2/types"
 	"github.com/aws/smithy-go"
 	aw "github.com/deanishe/awgo"
@@ -27,7 +30,9 @@ import (
 )
 
 type Entity interface {
-	cloudwatchlogs.LogGroup | ec2.Instance | s3.Bucket | ec2.SecurityGroup | elasticbeanstalk.EnvironmentDescription | wafv2.IPSetSummary | wafv2.WebACLSummary | lambda.FunctionConfiguration | cloudformation.Stack | rds.DBInstance | sns.Topic | sns.Subscription | elasticache.CacheCluster | elasticloadbalancingv2.LoadBalancer | elasticbeanstalk.ApplicationDescription | route53.HostedZone | cloudwatchlogs.QueryDefinition | codepipeline.PipelineSummary | ecs.Cluster
+	cloudwatchlogs.LogGroup | ec2.Instance | s3.Bucket | ec2.SecurityGroup | elasticbeanstalk.EnvironmentDescription | wafv2.IPSetSummary | wafv2.WebACLSummary | lambda.FunctionConfiguration | cloudformation.Stack | rds.DBInstance | sns.Topic | sns.Subscription | elasticache.CacheCluster | elasticloadbalancingv2.LoadBalancer | elasticbeanstalk.ApplicationDescription | route53.HostedZone | cloudwatchlogs.QueryDefinition | codepipeline.PipelineSummary | ecs.Cluster | ssm.ParameterMetadata | secretsmanager.SecretListEntry | ecr.Repository |
+		// some list APIs (DynamoDB tables, SQS queues, ...) only hand back names or URLs
+		string
 }
 
 func LoadEntityArrayFromCache[K Entity](wf *aw.Workflow, searchArgs searchutil.SearchArgs, cacheName string, fetcher func(aws.Config) ([]K, error)) []K {

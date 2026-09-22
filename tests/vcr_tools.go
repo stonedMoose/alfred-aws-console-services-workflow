@@ -308,6 +308,109 @@ func sanitizeBody(body string) string {
 	return body
 }
 
+// Interactions get recorded against whatever region the person doing the
+// recording has configured, but they are always replayed with the region in
+// tests/test_aws_config_file. Rewriting the region as the cassette is saved
+// lets a fixture be recorded from any region and still match on replay.
+const replayRegion = "us-west-2"
+
+var awsRegionRegex *regexp.Regexp = regexp.MustCompile(`\b(af|ap|ca|eu|il|me|mx|sa|us)-(gov-)?(north|south|east|west|central|northeast|northwest|southeast|southwest)-[0-9]\b`)
+
+func normalizeRegion(s string) string {
+	return awsRegionRegex.ReplaceAllString(s, replayRegion)
+}
+
+// The JSON protocol services (SSM, Secrets Manager, ECR, SQS, DynamoDB, ...)
+// carry resource names in plain JSON fields that the XML-oriented sanitizers
+// above never see. These are the fields whose values identify real resources.
+var jsonFieldsToSanitize = map[string]bool{
+	"ARN":                     true,
+	"Arn":                     true,
+	"Description":             true,
+	"ExclusiveStartTableName": true,
+	"KeyId":                   true,
+	"KmsKeyId":                true,
+	"LastEvaluatedTableName":  true,
+	"LastModifiedUser":        true,
+	"Name":                    true,
+	"NextToken":               true,
+	"QueueUrl":                true,
+	"QueueUrls":               true,
+	"TableName":               true,
+	"TableNames":              true,
+	"nextToken":               true,
+	"registryId":              true,
+	"repositoryArn":           true,
+	"repositoryName":          true,
+	"repositoryUri":           true,
+}
+
+var resourceNameWordRegex *regexp.Regexp = regexp.MustCompile(`[A-Za-z0-9]+`)
+
+// sanitizeResourceName replaces the identifying words of a resource name with
+// filler while keeping its shape — slashes, dashes, arn and url prefixes — so
+// that fixtures still exercise the url escaping each searcher does.
+func sanitizeResourceName(name string) string {
+	prefix := ""
+	rest := name
+	if strings.HasPrefix(name, "arn:") {
+		if parts := strings.SplitN(name, ":", 6); len(parts) == 6 {
+			prefix = strings.Join(parts[:5], ":") + ":"
+			rest = parts[5]
+		}
+	} else if strings.HasPrefix(name, "https://") {
+		if i := strings.Index(name[len("https://"):], "/"); i >= 0 {
+			prefix = name[:len("https://")+i+1]
+			rest = name[len("https://")+i+1:]
+		}
+	}
+
+	return prefix + resourceNameWordRegex.ReplaceAllStringFunc(rest, func(word string) string {
+		return strings.Repeat("a", len(word))
+	})
+}
+
+// array members inherit the key of the array they belong to, so that
+// "TableNames": ["orders"] is sanitized the same way a "TableName" would be
+func sanitizeJSONValue(key string, value interface{}) interface{} {
+	switch typed := value.(type) {
+	case map[string]interface{}:
+		for k, v := range typed {
+			typed[k] = sanitizeJSONValue(k, v)
+		}
+		return typed
+	case []interface{}:
+		for i, v := range typed {
+			typed[i] = sanitizeJSONValue(key, v)
+		}
+		return typed
+	case string:
+		if jsonFieldsToSanitize[key] {
+			return sanitizeResourceName(typed)
+		}
+		return typed
+	}
+	return value
+}
+
+func sanitizeJSONBody(body string) string {
+	if !json.Valid([]byte(body)) {
+		return body
+	}
+
+	var parsed interface{}
+	if err := json.Unmarshal([]byte(body), &parsed); err != nil {
+		return body
+	}
+
+	sanitized, err := json.Marshal(sanitizeJSONValue("", parsed))
+	if err != nil {
+		return body
+	}
+
+	return string(sanitized)
+}
+
 func sanitizeAndFormatBodyHook(i *cassette.Interaction) error {
 	if i.WasReplayed() {
 		// don't reformat again if we are playing back
@@ -320,8 +423,12 @@ func sanitizeAndFormatBodyHook(i *cassette.Interaction) error {
 	}
 	i.Request.ContentLength = 0
 
-	i.Request.Body = sanitizeBody(i.Request.Body)
-	i.Response.Body = sanitizeBody(i.Response.Body)
+	i.Request.URL = normalizeRegion(i.Request.URL)
+	i.Request.Host = normalizeRegion(i.Request.Host)
+	i.Request.RequestURI = normalizeRegion(i.Request.RequestURI)
+
+	i.Request.Body = sanitizeJSONBody(sanitizeBody(normalizeRegion(i.Request.Body)))
+	i.Response.Body = sanitizeJSONBody(sanitizeBody(normalizeRegion(i.Response.Body)))
 
 	if err := prettyFormatInteraction(i); err != nil {
 		return err

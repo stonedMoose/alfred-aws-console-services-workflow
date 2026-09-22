@@ -1,0 +1,398 @@
+([]*aw.Item) (len=11) {
+  (*aw.Item)({
+    title: (string) (len=18) "dynamodb dashboard",
+    subtitle: (*string)((len=22) "DynamoDB – Dashboard"),
+    match: (*string)((len=19) "dashboard Dashboard"),
+    uid: (*string)((len=9) "dashboard"),
+    autocomplete: (*string)((len=19) "dynamodb dashboard "),
+    arg: ([]string) (len=1) {
+      (string) (len=83) "https://us-west-2.console.aws.amazon.com/dynamodbv2/home?region=us-west-2#dashboard"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=19) "images/dynamodb.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=15) "dynamodb tables",
+    subtitle: (*string)((len=30) "🔎⭐️ DynamoDB – Tables"),
+    match: (*string)((len=13) "tables Tables"),
+    uid: (*string)((len=6) "tables"),
+    autocomplete: (*string)((len=16) "dynamodb tables "),
+    arg: ([]string) (len=1) {
+      (string) (len=80) "https://us-west-2.console.aws.amazon.com/dynamodbv2/home?region=us-west-2#tables"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=19) "images/dynamodb.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=14) "dynamodb items",
+    subtitle: (*string)((len=18) "DynamoDB – Items"),
+    match: (*string)((len=11) "items Items"),
+    uid: (*string)((len=5) "items"),
+    autocomplete: (*string)((len=15) "dynamodb items "),
+    arg: ([]string) (len=1) {
+      (string) (len=87) "https://us-west-2.console.aws.amazon.com/dynamodbv2/home?region=us-west-2#item-explorer"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=19) "images/dynamodb.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=22) "dynamodb partiqleditor",
+    subtitle: (*string)((len=27) "DynamoDB – PartiQL editor"),
+    match: (*string)((len=28) "partiqleditor PartiQL editor"),
+    uid: (*string)((len=13) "partiqleditor"),
+    autocomplete: (*string)((len=23) "dynamodb partiqleditor "),
+    arg: ([]string) (len=1) {
+      (string) (len=88) "https://us-west-2.console.aws.amazon.com/dynamodbv2/home?region=us-west-2#partiql-editor"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=19) "images/dynamodb.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=16) "dynamodb backups",
+    subtitle: (*string)((len=20) "DynamoDB – Backups"),
+    match: (*string)((len=15) "backups Backups"),
+    uid: (*string)((len=7) "backups"),
+    autocomplete: (*string)((len=17) "dynamodb backups "),
+    arg: ([]string) (len=1) {
+      (string) (len=86) "https://us-west-2.console.aws.amazon.com/dynamodbv2/home?region=us-west-2#list-backups"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=19) "images/dynamodb.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=20) "dynamodb exportstos3",
+    subtitle: (*string)((len=26) "DynamoDB – Exports to S3"),
+    match: (*string)((len=25) "exportstos3 Exports to S3"),
+    uid: (*string)((len=11) "exportstos3"),
+    autocomplete: (*string)((len=21) "dynamodb exportstos3 "),
+    arg: ([]string) (len=1) {
+      (string) (len=81) "https://us-west-2.console.aws.amazon.com/dynamodbv2/home?region=us-west-2#exports"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=19) "images/dynamodb.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=25) "dynamodb reservedcapacity",
+    subtitle: (*string)((len=30) "DynamoDB – Reserved capacity"),
+    match: (*string)((len=34) "reservedcapacity Reserved capacity"),
+    uid: (*string)((len=16) "reservedcapacity"),
+    autocomplete: (*string)((len=26) "dynamodb reservedcapacity "),
+    arg: ([]string) (len=1) {
+      (string) (len=91) "https://us-west-2.console.aws.amazon.com/dynamodbv2/home?region=us-west-2#reserved-capacity"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=19) "images/dynamodb.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=20) "dynamodb daxclusters",
+    subtitle: (*string)((len=25) "DynamoDB – DAX Clusters"),
+    match: (*string)((len=24) "daxclusters DAX Clusters"),
+    uid: (*string)((len=11) "daxclusters"),
+    autocomplete: (*string)((len=21) "dynamodb daxclusters "),
+    arg: ([]string) (len=1) {
+      (string) (len=86) "https://us-west-2.console.aws.amazon.com/dynamodbv2/home?region=us-west-2#dax-clusters"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=19) "images/dynamodb.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=24) "dynamodb daxsubnetgroups",
+    subtitle: (*string)((len=30) "DynamoDB – DAX Subnet groups"),
+    match: (*string)((len=33) "daxsubnetgroups DAX Subnet groups"),
+    uid: (*string)((len=15) "daxsubnetgroups"),
+    autocomplete: (*string)((len=25) "dynamodb daxsubnetgroups "),
+    arg: ([]string) (len=1) {
+      (string) (len=96) "https://us-west-2.console.aws.amazon.com/dynamodbv2/home?region=us-west-2#dax-subnet-groups-list"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=19) "images/dynamodb.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=27) "dynamodb daxparametergroups",
+    subtitle: (*string)((len=33) "DynamoDB – DAX Parameter groups"),
+    match: (*string)((len=39) "daxparametergroups DAX Parameter groups"),
+    uid: (*string)((len=18) "daxparametergroups"),
+    autocomplete: (*string)((len=28) "dynamodb daxparametergroups "),
+    arg: ([]string) (len=1) {
+      (string) (len=99) "https://us-west-2.console.aws.amazon.com/dynamodbv2/home?region=us-west-2#dax-parameter-groups-list"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=19) "images/dynamodb.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=18) "dynamodb daxevents",
+    subtitle: (*string)((len=23) "DynamoDB – DAX Events"),
+    match: (*string)((len=20) "daxevents DAX Events"),
+    uid: (*string)((len=9) "daxevents"),
+    autocomplete: (*string)((len=19) "dynamodb daxevents "),
+    arg: ([]string) (len=1) {
+      (string) (len=84) "https://us-west-2.console.aws.amazon.com/dynamodbv2/home?region=us-west-2#dax-events"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=19) "images/dynamodb.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  })
+}

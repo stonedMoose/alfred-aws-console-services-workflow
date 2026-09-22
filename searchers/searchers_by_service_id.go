@@ -23,6 +23,11 @@ var wafIPSetSearcher = &WAFIPSetSearcher{}
 var wafWebACLSearcher = &WAFWebACLSearcher{}
 
 var ecsClusterSearcher = &ECSClusterSearcher{}
+var dynamoDBTableSearcher = &DynamoDBTableSearcher{}
+var ecrRepositorySearcher = &ECRRepositorySearcher{}
+var secretsManagerSecretSearcher = &SecretsManagerSecretSearcher{}
+var sqsQueueSearcher = &SQSQueueSearcher{}
+var ssmParameterSearcher = &SSMParameterSearcher{}
 
 var SearchersByServiceId map[string]Searcher = map[string]Searcher{
 	"cloudformation":                cloudFormationStackSearcher,
@@ -32,10 +37,14 @@ var SearchersByServiceId map[string]Searcher = map[string]Searcher{
 	"cloudwatch_loginsights":        cloudwatchLogInsightsQuerySearcher,
 	"codepipeline":                  codePipelinePipelineSearcher,
 	"codepipeline_pipelines":        codePipelinePipelineSearcher,
+	"dynamodb":                      dynamoDBTableSearcher,
+	"dynamodb_tables":               dynamoDBTableSearcher,
 	"ec2":                           ec2InstanceSearcher,
 	"ec2_instances":                 ec2InstanceSearcher,
 	"ec2_loadbalancers":             ec2LoadBalancerSearcher,
 	"ec2_securitygroups":            ec2SecurityGroupSearcher,
+	"ecr":                           ecrRepositorySearcher,
+	"ecr_privaterepositories":       ecrRepositorySearcher,
 	"ecs":                           ecsClusterSearcher,
 	"ecs_clusters":                  ecsClusterSearcher,
 	"elasticache":                   elasticacheRedisClusterSearcher,
@@ -52,9 +61,15 @@ var SearchersByServiceId map[string]Searcher = map[string]Searcher{
 	"route53_hostedzones":           route53HostedZoneSearcher,
 	"s3":                            s3BucketSearcher,
 	"s3_buckets":                    s3BucketSearcher,
+	"secretsmanager":                secretsManagerSecretSearcher,
+	"secretsmanager_secrets":        secretsManagerSecretSearcher,
 	"sns":                           snsTopicSearcher,
 	"sns_subscriptions":             snsSubscriptionSearcher,
 	"sns_topics":                    snsTopicSearcher,
+	"sqs":                           sqsQueueSearcher,
+	"sqs_queues":                    sqsQueueSearcher,
+	"systemsmanager":                ssmParameterSearcher,
+	"systemsmanager_parameterstore": ssmParameterSearcher,
 	"waf":                           wafWebACLSearcher,
 	"waf_ipsets":                    wafIPSetSearcher,
 	"waf_webacls":                   wafWebACLSearcher,

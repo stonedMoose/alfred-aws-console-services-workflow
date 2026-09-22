@@ -1,0 +1,758 @@
+([]*aw.Item) (len=21) {
+  (*aw.Item)({
+    title: (string) (len=23) "systemsmanager explorer",
+    subtitle: (*string)((len=28) "Systems Manager – Explorer"),
+    match: (*string)((len=17) "explorer Explorer"),
+    uid: (*string)((len=8) "explorer"),
+    autocomplete: (*string)((len=24) "systemsmanager explorer "),
+    arg: ([]string) (len=1) {
+      (string) (len=83) "https://us-west-2.console.aws.amazon.com/systems-manager/explorer?region=us-west-2#"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=25) "images/systemsmanager.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=24) "systemsmanager opscenter",
+    subtitle: (*string)((len=29) "Systems Manager – OpsCenter"),
+    match: (*string)((len=19) "opscenter OpsCenter"),
+    uid: (*string)((len=9) "opscenter"),
+    autocomplete: (*string)((len=25) "systemsmanager opscenter "),
+    arg: ([]string) (len=1) {
+      (string) (len=83) "https://us-west-2.console.aws.amazon.com/systems-manager/opsitems?region=us-west-2#"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=25) "images/systemsmanager.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=34) "systemsmanager cloudwatchdashboard",
+    subtitle: (*string)((len=40) "Systems Manager – CloudWatch Dashboard"),
+    match: (*string)((len=40) "cloudwatchdashboard CloudWatch Dashboard"),
+    uid: (*string)((len=19) "cloudwatchdashboard"),
+    autocomplete: (*string)((len=35) "systemsmanager cloudwatchdashboard "),
+    arg: ([]string) (len=1) {
+      (string) (len=101) "https://us-west-2.console.aws.amazon.com/systems-manager/resource-groups/cloudwatch?region=us-west-2#"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=25) "images/systemsmanager.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=18) "systemsmanager phd",
+    subtitle: (*string)((len=23) "Systems Manager – PHD"),
+    match: (*string)((len=7) "phd PHD"),
+    uid: (*string)((len=3) "phd"),
+    autocomplete: (*string)((len=19) "systemsmanager phd "),
+    arg: ([]string) (len=1) {
+      (string) (len=107) "https://us-west-2.console.aws.amazon.com/systems-manager/insights/personalHealthDashboard?region=us-west-2#"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=25) "images/systemsmanager.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=30) "systemsmanager incidentmanager",
+    subtitle: (*string)((len=36) "Systems Manager – Incident Manager"),
+    match: (*string)((len=32) "incidentmanager Incident Manager"),
+    uid: (*string)((len=15) "incidentmanager"),
+    autocomplete: (*string)((len=31) "systemsmanager incidentmanager "),
+    arg: ([]string) (len=1) {
+      (string) (len=89) "https://us-west-2.console.aws.amazon.com/systems-manager/incidents/home?region=us-west-2#"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=25) "images/systemsmanager.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=33) "systemsmanager applicationmanager",
+    subtitle: (*string)((len=39) "Systems Manager – Application Manager"),
+    match: (*string)((len=38) "applicationmanager Application Manager"),
+    uid: (*string)((len=18) "applicationmanager"),
+    autocomplete: (*string)((len=34) "systemsmanager applicationmanager "),
+    arg: ([]string) (len=1) {
+      (string) (len=85) "https://us-west-2.console.aws.amazon.com/systems-manager/appmanager?region=us-west-2#"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=25) "images/systemsmanager.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=24) "systemsmanager appconfig",
+    subtitle: (*string)((len=29) "Systems Manager – AppConfig"),
+    match: (*string)((len=19) "appconfig AppConfig"),
+    uid: (*string)((len=9) "appconfig"),
+    autocomplete: (*string)((len=25) "systemsmanager appconfig "),
+    arg: ([]string) (len=1) {
+      (string) (len=84) "https://us-west-2.console.aws.amazon.com/systems-manager/appconfig?region=us-west-2#"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=25) "images/systemsmanager.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=29) "systemsmanager parameterstore",
+    subtitle: (*string)((len=46) "🔎⭐️ Systems Manager – Parameter Store"),
+    match: (*string)((len=30) "parameterstore Parameter Store"),
+    uid: (*string)((len=14) "parameterstore"),
+    autocomplete: (*string)((len=30) "systemsmanager parameterstore "),
+    arg: ([]string) (len=1) {
+      (string) (len=85) "https://us-west-2.console.aws.amazon.com/systems-manager/parameters?region=us-west-2#"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=25) "images/systemsmanager.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=28) "systemsmanager changemanager",
+    subtitle: (*string)((len=34) "Systems Manager – Change Manager"),
+    match: (*string)((len=28) "changemanager Change Manager"),
+    uid: (*string)((len=13) "changemanager"),
+    autocomplete: (*string)((len=29) "systemsmanager changemanager "),
+    arg: ([]string) (len=1) {
+      (string) (len=89) "https://us-west-2.console.aws.amazon.com/systems-manager/change-manager?region=us-west-2#"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=25) "images/systemsmanager.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=25) "systemsmanager automation",
+    subtitle: (*string)((len=30) "Systems Manager – Automation"),
+    match: (*string)((len=21) "automation Automation"),
+    uid: (*string)((len=10) "automation"),
+    autocomplete: (*string)((len=26) "systemsmanager automation "),
+    arg: ([]string) (len=1) {
+      (string) (len=85) "https://us-west-2.console.aws.amazon.com/systems-manager/automation?region=us-west-2#"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=25) "images/systemsmanager.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=29) "systemsmanager changecalendar",
+    subtitle: (*string)((len=35) "Systems Manager – Change Calendar"),
+    match: (*string)((len=30) "changecalendar Change Calendar"),
+    uid: (*string)((len=14) "changecalendar"),
+    autocomplete: (*string)((len=30) "systemsmanager changecalendar "),
+    arg: ([]string) (len=1) {
+      (string) (len=90) "https://us-west-2.console.aws.amazon.com/systems-manager/change-calendar?region=us-west-2#"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=25) "images/systemsmanager.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=33) "systemsmanager maintenancewindows",
+    subtitle: (*string)((len=39) "Systems Manager – Maintenance Windows"),
+    match: (*string)((len=38) "maintenancewindows Maintenance Windows"),
+    uid: (*string)((len=18) "maintenancewindows"),
+    autocomplete: (*string)((len=34) "systemsmanager maintenancewindows "),
+    arg: ([]string) (len=1) {
+      (string) (len=94) "https://us-west-2.console.aws.amazon.com/systems-manager/maintenance-windows?region=us-west-2#"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=25) "images/systemsmanager.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=27) "systemsmanager fleetmanager",
+    subtitle: (*string)((len=33) "Systems Manager – Fleet Manager"),
+    match: (*string)((len=26) "fleetmanager Fleet Manager"),
+    uid: (*string)((len=12) "fleetmanager"),
+    autocomplete: (*string)((len=28) "systemsmanager fleetmanager "),
+    arg: ([]string) (len=1) {
+      (string) (len=92) "https://us-west-2.console.aws.amazon.com/systems-manager/managed-instances?region=us-west-2#"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=25) "images/systemsmanager.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=25) "systemsmanager compliance",
+    subtitle: (*string)((len=30) "Systems Manager – Compliance"),
+    match: (*string)((len=21) "compliance Compliance"),
+    uid: (*string)((len=10) "compliance"),
+    autocomplete: (*string)((len=26) "systemsmanager compliance "),
+    arg: ([]string) (len=1) {
+      (string) (len=85) "https://us-west-2.console.aws.amazon.com/systems-manager/compliance?region=us-west-2#"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=25) "images/systemsmanager.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=24) "systemsmanager inventory",
+    subtitle: (*string)((len=29) "Systems Manager – Inventory"),
+    match: (*string)((len=19) "inventory Inventory"),
+    uid: (*string)((len=9) "inventory"),
+    autocomplete: (*string)((len=25) "systemsmanager inventory "),
+    arg: ([]string) (len=1) {
+      (string) (len=84) "https://us-west-2.console.aws.amazon.com/systems-manager/inventory?region=us-west-2#"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=25) "images/systemsmanager.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=32) "systemsmanager hybridactivations",
+    subtitle: (*string)((len=38) "Systems Manager – Hybrid Activations"),
+    match: (*string)((len=36) "hybridactivations Hybrid Activations"),
+    uid: (*string)((len=17) "hybridactivations"),
+    autocomplete: (*string)((len=33) "systemsmanager hybridactivations "),
+    arg: ([]string) (len=1) {
+      (string) (len=86) "https://us-west-2.console.aws.amazon.com/systems-manager/activations?region=us-west-2#"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=25) "images/systemsmanager.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=29) "systemsmanager sessionmanager",
+    subtitle: (*string)((len=35) "Systems Manager – Session Manager"),
+    match: (*string)((len=30) "sessionmanager Session Manager"),
+    uid: (*string)((len=14) "sessionmanager"),
+    autocomplete: (*string)((len=30) "systemsmanager sessionmanager "),
+    arg: ([]string) (len=1) {
+      (string) (len=90) "https://us-west-2.console.aws.amazon.com/systems-manager/session-manager?region=us-west-2#"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=25) "images/systemsmanager.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=25) "systemsmanager runcommand",
+    subtitle: (*string)((len=31) "Systems Manager – Run Command"),
+    match: (*string)((len=22) "runcommand Run Command"),
+    uid: (*string)((len=10) "runcommand"),
+    autocomplete: (*string)((len=26) "systemsmanager runcommand "),
+    arg: ([]string) (len=1) {
+      (string) (len=86) "https://us-west-2.console.aws.amazon.com/systems-manager/run-command?region=us-west-2#"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=25) "images/systemsmanager.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=27) "systemsmanager statemanager",
+    subtitle: (*string)((len=33) "Systems Manager – State Manager"),
+    match: (*string)((len=26) "statemanager State Manager"),
+    uid: (*string)((len=12) "statemanager"),
+    autocomplete: (*string)((len=28) "systemsmanager statemanager "),
+    arg: ([]string) (len=1) {
+      (string) (len=88) "https://us-west-2.console.aws.amazon.com/systems-manager/state-manager?region=us-west-2#"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=25) "images/systemsmanager.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=27) "systemsmanager patchmanager",
+    subtitle: (*string)((len=33) "Systems Manager – Patch Manager"),
+    match: (*string)((len=26) "patchmanager Patch Manager"),
+    uid: (*string)((len=12) "patchmanager"),
+    autocomplete: (*string)((len=28) "systemsmanager patchmanager "),
+    arg: ([]string) (len=1) {
+      (string) (len=88) "https://us-west-2.console.aws.amazon.com/systems-manager/patch-manager?region=us-west-2#"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=25) "images/systemsmanager.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=26) "systemsmanager distributor",
+    subtitle: (*string)((len=31) "Systems Manager – Distributor"),
+    match: (*string)((len=23) "distributor Distributor"),
+    uid: (*string)((len=11) "distributor"),
+    autocomplete: (*string)((len=27) "systemsmanager distributor "),
+    arg: ([]string) (len=1) {
+      (string) (len=86) "https://us-west-2.console.aws.amazon.com/systems-manager/distributor?region=us-west-2#"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=25) "images/systemsmanager.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  })
+}

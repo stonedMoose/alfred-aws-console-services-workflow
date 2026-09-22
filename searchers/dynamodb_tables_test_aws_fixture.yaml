@@ -1,0 +1,234 @@
+---
+version: 2
+interactions:
+    - id: 0
+      request:
+        proto: ""
+        proto_major: 0
+        proto_minor: 0
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: ""
+        remote_addr: ""
+        request_uri: ""
+        body: '{"Limit":100}'
+        form: {}
+        headers:
+            Accept-Encoding:
+                - identity
+            Content-Type:
+                - application/x-amz-json-1.0
+            X-Amz-Target:
+                - DynamoDB_20120810.ListTables
+        url: https://dynamodb.us-west-2.amazonaws.com/
+        method: POST
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        transfer_encoding: []
+        trailer: {}
+        content_length: 3316
+        uncompressed: false
+        body: |-
+            {
+              "LastEvaluatedTableName": "aaaaaa-aaa-aaaaaaa-aaaa-aaaaaaaa",
+              "TableNames": [
+                "aaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaaa",
+                "aaaaaaaa-aaaaaaaaaa-aaaa-aaaaaaaa",
+                "aaaaaaaa-aaaaaaaaaa-aaaa-aaaaaaaa",
+                "aaaaaaaa-aaaaaaaaaa-aaaa-aaaaaaaa",
+                "aaaaaaaa-aaaaaaaaaa-aaaa-aaaaaaaa",
+                "aaaaaaaaa-aaa-aaaaaaa",
+                "aaaaaaaaa-aaa-aaaaaaaaaaaaaa",
+                "aaaaaaaaa-aaa-aaaaaaaaaaa",
+                "aaaaaaaaa-aaa-aaaaaaaaaaa",
+                "aaaaaaaaa-aaa-aaaaaaaaaaaa",
+                "aaaaaaaaa-aaa-aaaaaaaaaaaa",
+                "aaaaaaaaa-aaa-aaaaaaaaaa",
+                "aaaaaaaaa-aa-aaaa-aaaaaaa",
+                "aaaaaaaaa-aa-aaaa-aaaaaaaaaaaaaa",
+                "aaaaaaaaa-aa-aaaa-aaaaaaaaaaa",
+                "aaaaaaaaa-aa-aaaa-aaaaaaaaaaa",
+                "aaaaaaaaa-aa-aaaa-aaaaaaaaaaaa",
+                "aaaaaaaaa-aa-aaaa-aaaaaaaaaaaa",
+                "aaaaaaaaa-aa-aaaa-aaaaaaaaaa",
+                "aaaaaaaaa-aa-aaaa-aaaaaaa",
+                "aaaaaaaaa-aa-aaaa-aaaaaaaaaaaaaa",
+                "aaaaaaaaa-aa-aaaa-aaaaaaaaaaa",
+                "aaaaaaaaa-aa-aaaa-aaaaaaaaaaa",
+                "aaaaaaaaa-aa-aaaa-aaaaaaaaaaaa",
+                "aaaaaaaaa-aa-aaaa-aaaaaaaaaaaa",
+                "aaaaaaaaa-aa-aaaa-aaaaaaaaaa",
+                "aaaaaaaaa-aa-aaaaaaaaaa-aaaaaaa",
+                "aaaaaaaaa-aa-aaaaaaaaaa-aaaaaaaaaaaaaa",
+                "aaaaaaaaa-aa-aaaaaaaaaa-aaaaaaaaaaa",
+                "aaaaaaaaa-aa-aaaaaaaaaa-aaaaaaaaaaa",
+                "aaaaaaaaa-aa-aaaaaaaaaa-aaaaaaaaaaaa",
+                "aaaaaaaaa-aa-aaaaaaaaaa-aaaaaaaaaaaa",
+                "aaaaaaaaa-aa-aaaaaaaaaa-aaaaaaaaaa",
+                "aaaaaaaaa-aa-aaaa-aaaaaaa",
+                "aaaaaaaaa-aa-aaaa-aaaaaaaaaaaa",
+                "aaaaaaaaa-aa-aaaa-aaaaaaa",
+                "aaaaaaaaa-aa-aaaa-aaaaaaaaaaaa",
+                "aaaaaaaaa-aa-aaaa-aaaaaaaaaaaaaaaaaaaaa",
+                "aaaaaaaaa-aa-aaaa-aaaaaaaaaaaaaaaaaaa",
+                "aaaaaaaaa-aa-aaaa-aaaaaaa",
+                "aaaaaaaaa-aa-aaaa-aaaaaaaaaaaaaa",
+                "aaaaaaaaa-aa-aaaa-aaaaaaaaaaa",
+                "aaaaaaaaa-aa-aaaa-aaaaaaaaaaa",
+                "aaaaaaaaa-aa-aaaa-aaaaaaaaaaaa",
+                "aaaaaaaaa-aa-aaaa-aaaaaaaaaaaa",
+                "aaaaaaaaa-aa-aaaa-aaaaaaaaaa",
+                "aaaaaaaaa-aa-aaaa-aaaaaaa",
+                "aaaaaaaaa-aa-aaaa-aaaaaaaaaaaaaa",
+                "aaaaaaaaa-aa-aaaa-aaaaaaaaaaa",
+                "aaaaaaaaa-aa-aaaa-aaaaaaaaaaa",
+                "aaaaaaaaa-aa-aaaa-aaaaaaaaaaaa",
+                "aaaaaaaaa-aa-aaaa-aaaaaaaaaaaa",
+                "aaaaaaaaa-aa-aaaa-aaaaaaaaaa",
+                "aaaaaaaaa-aa-aaaa-aaaaaaa",
+                "aaaaaaaaa-aa-aaaa-aaaaaaaaaaaaaa",
+                "aaaaaaaaa-aa-aaaa-aaaaaaaaaaa",
+                "aaaaaaaaa-aa-aaaa-aaaaaaaaaaa",
+                "aaaaaaaaa-aa-aaaa-aaaaaaaaaaaa",
+                "aaaaaaaaa-aa-aaaa-aaaaaaaaaaaa",
+                "aaaaaaaaa-aa-aaaa-aaaaaaaaaa",
+                "aaaaaaaaa-aa-aaaa-aaaaaaa",
+                "aaaaaaaaa-aa-aaaa-aaaaaaaaaaaaaa",
+                "aaaaaaaaa-aa-aaaa-aaaaaaaaaaa",
+                "aaaaaaaaa-aa-aaaa-aaaaaaaaaaa",
+                "aaaaaaaaa-aa-aaaa-aaaaaaaaaaaa",
+                "aaaaaaaaa-aa-aaaa-aaaaaaaaaaaa",
+                "aaaaaaaaa-aa-aaaa-aaaaaaaaaa",
+                "aaaaaaaaa-aa-aaaa-aaaaaaa",
+                "aaaaaaaaa-aa-aaaa-aaaaaaaaaaaaaa",
+                "aaaaaaaaa-aa-aaaa-aaaaaaaaaaa",
+                "aaaaaaaaa-aa-aaaa-aaaaaaaaaaa",
+                "aaaaaaaaa-aa-aaaa-aaaaaaaaaaaa",
+                "aaaaaaaaa-aa-aaaa-aaaaaaaaaaaa",
+                "aaaaaaaaa-aa-aaaa-aaaaaaaaaa",
+                "aaaaaaaaa-aaaa-aaaaaaaaaaa",
+                "aaaaaaaaa-aaaa-aaaaaaaaaaaa",
+                "aaaaaa-aaaa-aaaaa",
+                "aaaaaaa-aaa",
+                "aaaaaaaaaaaa-aaaaaaaaaa",
+                "aaaaaaaaaaaa-aaaaaa-aaaaa",
+                "aaaaaaaaaaaa-aaaaaa-aaaa",
+                "aaaaaaaaaaaa-aaaaaaa",
+                "aaaaaa-aaa-aaaaaaa-aaaa-aaaaaaaa",
+                "aaaaaa-aaa-aaaaaaa-aaaa-aaaaaaaa",
+                "aaaaaa-aaa-aaaaaaa-aaaa-aaaaaaaa",
+                "aaaaaa-aaa-aaaaaaa-aaaa-aaaaaaaa",
+                "aaaaaa-aaa-aaaaaaa-aaaa-aaaaaaaa",
+                "aaaaaa-aaa-aaaaaaa-aaaa-aaaaaaaa",
+                "aaaaaa-aaa-aaaaaaa-aaaa-aaaaaaaa",
+                "aaaaaa-aaa-aaaaaaa-aaaa-aaaaaaaa",
+                "aaaaaa-aaa-aaaaaaa-aaaa-aaaaaaaa",
+                "aaaaaa-aaa-aaaaaaa-aaaa-aaaaaaaa",
+                "aaaaaa-aaa-aaaaaaa-aaaa-aaaaaaaa",
+                "aaaaaa-aaa-aaaaaaa-aaaa-aaaaaaaa",
+                "aaaaaa-aaa-aaaaaaa-aaaa-aaaaaaaa",
+                "aaaaaa-aaa-aaaaaaa-aaaa-aaaaaaaa",
+                "aaaaaa-aaa-aaaaaaa-aaaa-aaaaaaaa",
+                "aaaaaa-aaa-aaaaaaa-aaaa-aaaaaaaa",
+                "aaaaaa-aaa-aaaaaaa-aaaa-aaaaaaaa",
+                "aaaaaa-aaa-aaaaaaa-aaaa-aaaaaaaa"
+              ]
+            }
+        headers:
+            Connection:
+                - keep-alive
+            Content-Type:
+                - application/x-amz-json-1.0
+            Server:
+                - Server
+            X-Amz-Crc32:
+                - "643577026"
+        status: 200 OK
+        code: 200
+        duration: 140.405333ms
+    - id: 1
+      request:
+        proto: ""
+        proto_major: 0
+        proto_minor: 0
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: ""
+        remote_addr: ""
+        request_uri: ""
+        body: '{"ExclusiveStartTableName":"aaaaaa-aaa-aaaaaaa-aaaa-aaaaaaaa","Limit":100}'
+        form: {}
+        headers:
+            Accept-Encoding:
+                - identity
+            Content-Type:
+                - application/x-amz-json-1.0
+            X-Amz-Target:
+                - DynamoDB_20120810.ListTables
+        url: https://dynamodb.us-west-2.amazonaws.com/
+        method: POST
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        transfer_encoding: []
+        trailer: {}
+        content_length: 1156
+        uncompressed: false
+        body: |-
+            {
+              "TableNames": [
+                "aaaaaa-aaa-aaaaaaa-aaaa-aaaaaaaa",
+                "aaaaaa-aaa-aaaaaaa-aaaa-aaaaaaaa",
+                "aaaaaa-aaa-aaaaaaa-aaaa-aaaaaaaa",
+                "aaaaaa-aaa-aaaaaaa-aaaa-aaaaaaaa",
+                "aaaaaa-aaa-aaaaaaa-aaaa-aaaaaaaa",
+                "aaaaaa-aaa-aaaaaaa-aaaa-aaaaaaaa",
+                "aaaaaa-aaa-aaaaaaa-aaaa-aaaaaaaa",
+                "aaaaaa-aaa-aaaaaaa-aaaa-aaaaaaaa",
+                "aaaaaa-aaa-aaaaaaa-aaaa-aaaaaaaa",
+                "aaaaaa-aaa-aaaaaaa-aaaa-aaaaaaaa",
+                "aaaaaa-aaa-aaaaaaa-aaaa-aaaaaaaa",
+                "aaaaaa-aaa-aaaaaaa-aaaa-aaaaaaaa",
+                "aaaaaa-aaa-aaaaaaa-aaaa-aaaaaaaa",
+                "aaaaaa-aaa-aaaaaaa-aaaa-aaaaaaaa",
+                "aaaaaa-aaa-aaaaaaa-aaaa-aaaaaaaa",
+                "aaaaaa-aaa-aaaaaaa-aaaa-aaaaaaaa",
+                "aaaaaa-aaa-aaaaaaa-aaaa-aaaaaaaa",
+                "aaaaaa-aaa-aaaaaaa-aaaa-aaaaaaaa",
+                "aaaaaa-aaa-aaaaaaa-aaaa-aaaaaaaa",
+                "aaaaaa-aaa-aaaaaaa-aaaa-aaaaaaaa",
+                "aaaaaa-aaa-aaaaaaa-aaaa-aaaaaaaa",
+                "aaaaaa-aaa-aaaaaaa-aaaa-aaaaaaaa",
+                "aaaaaa-aaa-aaaaaaa",
+                "aaaaaa-aaa-aaaaaaaaaaaaaa",
+                "aaaaaa-aaa-aaaaaaaaaaa",
+                "aaaaaa-aaa-aaaaaaaaaaa",
+                "aaaaaa-aaa-aaaaaaaaaaaa",
+                "aaaaaa-aaa-aaaaaaaaaaaa",
+                "aaaaaa-aaa-aaaaaaaaaa",
+                "aaaaaa-aaaa-aaaaaaa",
+                "aaaaaa-aaaa-aaaaaaaaaaaaaa",
+                "aaaaaa-aaaa-aaaaaaaaaaa",
+                "aaaaaa-aaaa-aaaaaaaaaaaa",
+                "aaaaaa-aaaa-aaaaaaaaaa",
+                "aaaaaa-aaaa-aaaaaa-aaa-aaaaaaa",
+                "aaaaaa-aaaa-aaaaaa-aaa-aaaaaaa"
+              ]
+            }
+        headers:
+            Connection:
+                - keep-alive
+            Content-Type:
+                - application/x-amz-json-1.0
+            Server:
+                - Server
+            X-Amz-Crc32:
+                - "2130983737"
+        status: 200 OK
+        code: 200
+        duration: 39.702041ms

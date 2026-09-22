@@ -1,0 +1,936 @@
+---
+version: 2
+interactions:
+    - id: 0
+      request:
+        proto: ""
+        proto_major: 0
+        proto_minor: 0
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: ""
+        remote_addr: ""
+        request_uri: ""
+        body: '{"MaxResults":50}'
+        form: {}
+        headers:
+            Content-Type:
+                - application/x-amz-json-1.1
+            X-Amz-Target:
+                - AmazonSSM.DescribeParameters
+        url: https://ssm.us-west-2.amazonaws.com/
+        method: POST
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        transfer_encoding: []
+        trailer: {}
+        content_length: -1
+        uncompressed: true
+        body: |-
+            {
+              "NextToken": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/aaaaaaaaaaaaaaaaaaa+aaaaaaaaaaaaaaa/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa+aaaaaaaaaaaaaaaaaaaaa/aaaaaa/a/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/aaaaaaaa/aaaa/aaaaaa+aaaaaaaaaaaaaaaaaa+aaaaaaaaaa/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/aaaaaa/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa+aaaaaaaaaaaaaa/aaaaaaa/aaaa/aaaaaaaaaaa+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa+aaa/a/aaaaaaaaaaaaaaaaaaaaaaaaaaaaa=",
+              "Parameters": [
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aa-aaaaaaa/aaaaaa-aaa/aaaaaaa-aaa",
+                  "DataType": "text",
+                  "KeyId": "aaaaa/aaa/aaa",
+                  "LastModifiedDate": 1778003412.641,
+                  "LastModifiedUser": "arn:aws:iam::0000000000:aaaa/aaaaaa",
+                  "Name": "/aa-aaaaaaa/aaaaaa-aaa/aaaaaaa-aaa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "SecureString",
+                  "Version": 2
+                },
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aa-aaaaaaa/aaaaaaa/aaaaaa",
+                  "DataType": "text",
+                  "KeyId": "aaaaa/aaa/aaa",
+                  "LastModifiedDate": 1777965543.632,
+                  "LastModifiedUser": "arn:aws:iam::0000000000:aaaa/aaaaaa",
+                  "Name": "/aa-aaaaaaa/aaaaaaa/aaaaaa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "SecureString",
+                  "Version": 1
+                },
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aaa-aaaaaaaaa/aaaaaaaaa/aaaaaaa",
+                  "DataType": "text",
+                  "LastModifiedDate": 1780302090.556,
+                  "LastModifiedUser": "arn:aws:iam::0000000000:aaaa/aaaaaa",
+                  "Name": "/aaa-aaaaaaaaa/aaaaaaaaa/aaaaaaa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "String",
+                  "Version": 5
+                },
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aaaaaaaaa/aaa/aaaaaaa-aaa-aaa",
+                  "DataType": "text",
+                  "KeyId": "aaaaa/aaa/aaa",
+                  "LastModifiedDate": 1787696768.563,
+                  "LastModifiedUser": "arn:aws:iam::0000000000:aaaa/aaaaaa",
+                  "Name": "/aaaaaaaaa/aaa/aaaaaaa-aaa-aaa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "SecureString",
+                  "Version": 1
+                },
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aaaaaaaaa/aaa/aaaaaaaaa-aaaaa-aaa-aaa-aaa",
+                  "DataType": "text",
+                  "KeyId": "aaaaa/aaa/aaa",
+                  "LastModifiedDate": 1787696851.606,
+                  "LastModifiedUser": "arn:aws:iam::0000000000:aaaa/aaaaaa",
+                  "Name": "/aaaaaaaaa/aaa/aaaaaaaaa-aaaaa-aaa-aaa-aaa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "SecureString",
+                  "Version": 1
+                },
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aaaaaaaaa/aaa/aaaaa-aaaaaa",
+                  "DataType": "text",
+                  "Description": "aaaaa (aaa aaaaaaa)",
+                  "KeyId": "aaaaa/aaa/aaa",
+                  "LastModifiedDate": 1784705292.145,
+                  "LastModifiedUser": "arn:aws:iam::0000000000:aaaa/aaaaaa",
+                  "Name": "/aaaaaaaaa/aaa/aaaaa-aaaaaa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "SecureString",
+                  "Version": 5
+                },
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aaaaaaaaa/aaa/aaaaa-aaaaaaa-aa",
+                  "DataType": "text",
+                  "KeyId": "aaaaa/aaa/aaa",
+                  "LastModifiedDate": 1739455906.45,
+                  "LastModifiedUser": "arn:aws:iam::0000000000:aaaa/aaaaaa",
+                  "Name": "/aaaaaaaaa/aaa/aaaaa-aaaaaaa-aa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "SecureString",
+                  "Version": 1
+                },
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aaaaaaaaa/aaa/aaaaaaaaa/aa-aaaaa-aaaaaa",
+                  "DataType": "text",
+                  "Description": "aaé a'aaa aaaaaaaaa aa aaa aaaaaa (aaa) (aaaaaaaaaaaaa aa aaa)",
+                  "KeyId": "aaaaa/aaa/aaa",
+                  "LastModifiedDate": 1767630240.487,
+                  "LastModifiedUser": "arn:aws:iam::0000000000:aaaa/aaaaaa",
+                  "Name": "/aaaaaaaaa/aaa/aaaaaaaaa/aa-aaaaa-aaaaaa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "SecureString",
+                  "Version": 1
+                },
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aaaaaaaaa/aaa/aaaaaa-aa",
+                  "DataType": "text",
+                  "KeyId": "aaaaa/aaa/aaa",
+                  "LastModifiedDate": 1733786117.057,
+                  "LastModifiedUser": "arn:aws:iam::0000000000:aaaa/aaaaaa",
+                  "Name": "/aaaaaaaaa/aaa/aaaaaa-aa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "SecureString",
+                  "Version": 1
+                },
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aaaaaaaaa/aaa/aaaaaa-aaaaaaa-aaaaaa",
+                  "DataType": "text",
+                  "KeyId": "aaaaa/aaa/aaa",
+                  "LastModifiedDate": 1739404932.866,
+                  "LastModifiedUser": "arn:aws:iam::0000000000:aaaa/aaaaaa",
+                  "Name": "/aaaaaaaaa/aaa/aaaaaa-aaaaaaa-aaaaaa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "SecureString",
+                  "Version": 1
+                },
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aaaaaaaaa/aaaaaaaaa/aaaaaaa-aaa-aaa",
+                  "DataType": "text",
+                  "Description": "aaa aaa aaaaaaa - aaaaaaaa aaa aaaa aaaaaa (aaaaaa aaaaaaaaaaaaaaa)",
+                  "KeyId": "aaaaa/aaa/aaa",
+                  "LastModifiedDate": 1790014809.705,
+                  "LastModifiedUser": "arn:aws:iam::0000000000:aaaa/aaaaaa",
+                  "Name": "/aaaaaaaaa/aaaaaaaaa/aaaaaaa-aaa-aaa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "SecureString",
+                  "Version": 1
+                },
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aaaaaaaaa/aaaaaaa/aaaaaa",
+                  "DataType": "text",
+                  "KeyId": "aaaaa/aaa/aaa",
+                  "LastModifiedDate": 1777905959.336,
+                  "LastModifiedUser": "arn:aws:iam::0000000000:aaaa/aaaaaa",
+                  "Name": "/aaaaaaaaa/aaaaaaa/aaaaaa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "SecureString",
+                  "Version": 4
+                },
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aaaaaaaaa/aaaa/aaaaa-aaaaaa",
+                  "DataType": "text",
+                  "Description": "aaaaa (aaa aaaa) - aaaaaaaaaa aa aaaaaaa aéaaaaèaaaaaa",
+                  "KeyId": "aaaaa/aaa/aaa",
+                  "LastModifiedDate": 1784705168.162,
+                  "LastModifiedUser": "arn:aws:iam::0000000000:aaaa/aaaaaa",
+                  "Name": "/aaaaaaaaa/aaaa/aaaaa-aaaaaa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "SecureString",
+                  "Version": 5
+                },
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aaaaaaaaa/aaaa/aaaaaaa-aaa-aaa",
+                  "DataType": "text",
+                  "KeyId": "aaaaa/aaa/aaa",
+                  "LastModifiedDate": 1787696814.77,
+                  "LastModifiedUser": "arn:aws:iam::0000000000:aaaa/aaaaaa",
+                  "Name": "/aaaaaaaaa/aaaa/aaaaaaa-aaa-aaa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "SecureString",
+                  "Version": 1
+                },
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aaaaaaaaa/aaaa/aaaaaaaaa-aaaaa-aaa-aaa-aaa",
+                  "DataType": "text",
+                  "KeyId": "aaaaa/aaa/aaa",
+                  "LastModifiedDate": 1787696883.578,
+                  "LastModifiedUser": "arn:aws:iam::0000000000:aaaa/aaaaaa",
+                  "Name": "/aaaaaaaaa/aaaa/aaaaaaaaa-aaaaa-aaa-aaa-aaa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "SecureString",
+                  "Version": 1
+                },
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aaaaaaaaa/aaaa/aaaaa-aaaaaaa-aa",
+                  "DataType": "text",
+                  "KeyId": "aaaaa/aaa/aaa",
+                  "LastModifiedDate": 1739455940.667,
+                  "LastModifiedUser": "arn:aws:iam::0000000000:aaaa/aaaaaa",
+                  "Name": "/aaaaaaaaa/aaaa/aaaaa-aaaaaaa-aa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "SecureString",
+                  "Version": 1
+                },
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aaaaaaaaa/aaaa/aaa/aaa-aaa/aaaaaaa",
+                  "DataType": "text",
+                  "KeyId": "aaaaa/aaa/aaa",
+                  "LastModifiedDate": 1735311476.681,
+                  "LastModifiedUser": "arn:aws:iam::0000000000:aaaa/aaaaaa",
+                  "Name": "/aaaaaaaaa/aaaa/aaa/aaa-aaa/aaaaaaa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "SecureString",
+                  "Version": 1
+                },
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aaaaaaaaa/aaaa/aaa/aaa-aaa/aaaaaa",
+                  "DataType": "text",
+                  "KeyId": "aaaaa/aaa/aaa",
+                  "LastModifiedDate": 1735311443.902,
+                  "LastModifiedUser": "arn:aws:iam::0000000000:aaaa/aaaaaa",
+                  "Name": "/aaaaaaaaa/aaaa/aaa/aaa-aaa/aaaaaa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "SecureString",
+                  "Version": 1
+                },
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aaaaaaaaa/aaaa/aaa/aaa-aaa/aaa-aaa",
+                  "DataType": "text",
+                  "KeyId": "aaaaa/aaa/aaa",
+                  "LastModifiedDate": 1772728039.942,
+                  "LastModifiedUser": "arn:aws:iam::0000000000:aaaa/aaaaaa",
+                  "Name": "/aaaaaaaaa/aaaa/aaa/aaa-aaa/aaa-aaa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "SecureString",
+                  "Version": 1
+                },
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aaaaaaaaa/aaaa/aaa/aaa-aaa/aaaaaaa",
+                  "DataType": "text",
+                  "KeyId": "aaaaa/aaa/aaa",
+                  "LastModifiedDate": 1746522034.232,
+                  "LastModifiedUser": "arn:aws:iam::0000000000:aaaa/aaaaaa",
+                  "Name": "/aaaaaaaaa/aaaa/aaa/aaa-aaa/aaaaaaa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "SecureString",
+                  "Version": 1
+                },
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aaaaaaaaa/aaaa/aaa/aaa-aaa/aaaaaaaaaaa",
+                  "DataType": "text",
+                  "KeyId": "aaaaa/aaa/aaa",
+                  "LastModifiedDate": 1746451119.153,
+                  "LastModifiedUser": "arn:aws:iam::0000000000:aaaa/aaaaaa",
+                  "Name": "/aaaaaaaaa/aaaa/aaa/aaa-aaa/aaaaaaaaaaa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "SecureString",
+                  "Version": 1
+                },
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aaaaaaaaa/aaaa/aaa/aaa-aaa/aaaaa-aaaa",
+                  "DataType": "text",
+                  "KeyId": "aaaaa/aaa/aaa",
+                  "LastModifiedDate": 1772125107.001,
+                  "LastModifiedUser": "arn:aws:iam::0000000000:aaaa/aaaaaa",
+                  "Name": "/aaaaaaaaa/aaaa/aaa/aaa-aaa/aaaaa-aaaa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "SecureString",
+                  "Version": 1
+                },
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aaaaaaaaa/aaaa/aaa/aaa-aaa/aaaaaaaa",
+                  "DataType": "text",
+                  "KeyId": "aaaaa/aaa/aaa",
+                  "LastModifiedDate": 1780479765.513,
+                  "LastModifiedUser": "arn:aws:iam::0000000000:aaaa/aaaaaa",
+                  "Name": "/aaaaaaaaa/aaaa/aaa/aaa-aaa/aaaaaaaa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "SecureString",
+                  "Version": 1
+                },
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aaaaaaaaa/aaaa/aaaaaaa-aaa-aaa",
+                  "DataType": "text",
+                  "KeyId": "aaaaa/aaa/aaa",
+                  "LastModifiedDate": 1785833064.186,
+                  "LastModifiedUser": "arn:aws:iam::0000000000:aaaa/aaaaaaa",
+                  "Name": "/aaaaaaaaa/aaaa/aaaaaaa-aaa-aaa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "SecureString",
+                  "Version": 1
+                },
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aaaaaaaaa/aaaa/aaaaaa-aaa",
+                  "DataType": "text",
+                  "KeyId": "aaaaa/aaa/aaa",
+                  "LastModifiedDate": 1773014215.878,
+                  "LastModifiedUser": "arn:aws:iam::0000000000:aaaa/aaaaaa",
+                  "Name": "/aaaaaaaaa/aaaa/aaaaaa-aaa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "SecureString",
+                  "Version": 1
+                },
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aaaaaaaaa/aaaa/aaaaaaaaa/aaaaaa-aa",
+                  "DataType": "text",
+                  "KeyId": "aaaaa/aaa/aaa",
+                  "LastModifiedDate": 1788277625.578,
+                  "LastModifiedUser": "arn:aws:iam::0000000000:aaaa/aaaaaaa",
+                  "Name": "/aaaaaaaaa/aaaa/aaaaaaaaa/aaaaaa-aa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "SecureString",
+                  "Version": 1
+                },
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aaaaaaaaa/aaaa/aaaaaaaaa/aaaaaa-aaaaaa",
+                  "DataType": "text",
+                  "KeyId": "aaaaa/aaa/aaa",
+                  "LastModifiedDate": 1788277644.609,
+                  "LastModifiedUser": "arn:aws:iam::0000000000:aaaa/aaaaaaa",
+                  "Name": "/aaaaaaaaa/aaaa/aaaaaaaaa/aaaaaa-aaaaaa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "SecureString",
+                  "Version": 1
+                },
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aaaaaaaaa/aaaa/aaaaaaaaa/aa-aaaaa",
+                  "DataType": "text",
+                  "Description": "aaaaaa aaaaa aaaaaaaaa aaaaa",
+                  "KeyId": "aaaaa/aaa/aaa",
+                  "LastModifiedDate": 1741170839.052,
+                  "LastModifiedUser": "arn:aws:iam::0000000000:aaaa/aaaaaa",
+                  "Name": "/aaaaaaaaa/aaaa/aaaaaaaaa/aa-aaaaa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "SecureString",
+                  "Version": 2
+                },
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aaaaaaaaa/aaaa/aaaaaaaaa/aa-aaaaa-aaaaaa",
+                  "DataType": "text",
+                  "Description": "aaé a'aaa aaaaaaaaa aa aaa aaaaaa (aaa)",
+                  "KeyId": "aaaaa/aaa/aaa",
+                  "LastModifiedDate": 1744112496.563,
+                  "LastModifiedUser": "arn:aws:iam::0000000000:aaaa/aaaaaa",
+                  "Name": "/aaaaaaaaa/aaaa/aaaaaaaaa/aa-aaaaa-aaaaaa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "SecureString",
+                  "Version": 1
+                },
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aaaaaaaaa/aaaa/aaaaaa-aa",
+                  "DataType": "text",
+                  "KeyId": "aaaaa/aaa/aaa",
+                  "LastModifiedDate": 1733786069.857,
+                  "LastModifiedUser": "arn:aws:iam::0000000000:aaaa/aaaaaa",
+                  "Name": "/aaaaaaaaa/aaaa/aaaaaa-aa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "SecureString",
+                  "Version": 1
+                },
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aaaaaaaaa/aaaa/aaaaaa-aaaaaaa-aaaaaa",
+                  "DataType": "text",
+                  "KeyId": "aaaaa/aaa/aaa",
+                  "LastModifiedDate": 1739405074.041,
+                  "LastModifiedUser": "arn:aws:iam::0000000000:aaaa/aaaaaa",
+                  "Name": "/aaaaaaaaa/aaaa/aaaaaa-aaaaaaa-aaaaaa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "SecureString",
+                  "Version": 1
+                },
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aaaaaaaaa/aaa/aaaaaa-aa",
+                  "DataType": "text",
+                  "KeyId": "aaaaa/aaa/aaa",
+                  "LastModifiedDate": 1733786144.337,
+                  "LastModifiedUser": "arn:aws:iam::0000000000:aaaa/aaaaaa",
+                  "Name": "/aaaaaaaaa/aaa/aaaaaa-aa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "SecureString",
+                  "Version": 1
+                },
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aaaaaaaaa/aaa/aaaaaa-aaaaaaa-aaaaaa",
+                  "DataType": "text",
+                  "KeyId": "aaaaa/aaa/aaa",
+                  "LastModifiedDate": 1739446741.132,
+                  "LastModifiedUser": "arn:aws:iam::0000000000:aaaa/aaaaaa",
+                  "Name": "/aaaaaaaaa/aaa/aaaaaa-aaaaaaa-aaaaaa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "SecureString",
+                  "Version": 2
+                },
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aaaaaaa/aaa-aaa",
+                  "DataType": "text",
+                  "KeyId": "aaaaa/aaa/aaa",
+                  "LastModifiedDate": 1788880451.062,
+                  "LastModifiedUser": "arn:aws:iam::0000000000:aaaa/aaaaaaa",
+                  "Name": "/aaaaaaa/aaa-aaa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "SecureString",
+                  "Version": 1
+                },
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aaaaaaa/aaaaaaaaaaa-aaa",
+                  "DataType": "text",
+                  "KeyId": "aaaaa/aaa/aaa",
+                  "LastModifiedDate": 1788880928.641,
+                  "LastModifiedUser": "arn:aws:iam::0000000000:aaaa/aaaaaaa",
+                  "Name": "/aaaaaaa/aaaaaaaaaaa-aaa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "SecureString",
+                  "Version": 1
+                },
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aaaaaa/aaaaaa/aaa-aaaa-aaaaa",
+                  "DataType": "text",
+                  "Description": "aaaaaa aaaa_aaaaaaa_aaaaaaaa aaaaaa aaaaa aaa @aaaaaa aaa (aaaaaaa aa)",
+                  "KeyId": "aaaaa/aaa/aaa",
+                  "LastModifiedDate": 1784087821.199,
+                  "LastModifiedUser": "arn:aws:iam::0000000000:aaaa/aaaaaa",
+                  "Name": "/aaaaaa/aaaaaa/aaa-aaaa-aaaaa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "SecureString",
+                  "Version": 2
+                },
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aaaaaa-aaaaaaa/aa-aaaaaa-aaaaaa-aaaaa",
+                  "DataType": "text",
+                  "KeyId": "aaaaa/aaa/aaa",
+                  "LastModifiedDate": 1779170782.178,
+                  "LastModifiedUser": "arn:aws:iam::0000000000:aaaa/aaaaaa",
+                  "Name": "/aaaaaa-aaaaaaa/aa-aaaaaa-aaaaaa-aaaaa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "SecureString",
+                  "Version": 1
+                },
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aaaaaa-aaaaaaa/aaaaaa-aaa-aa",
+                  "DataType": "aws:ec2:image",
+                  "Description": "aaaaaa aaaaaa-aaaaaa-aaaaaa aaa aa, aaaaaaa aa aaaa-aaaaa aaaaaa",
+                  "LastModifiedDate": 1789800575.586,
+                  "LastModifiedUser": "arn:aws:sts::0000000000:aaaaaaa-aaaa/aaaaaaaaaaaaaaaaaa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa/aaaaaaaaaaaaaaaaaa-aaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa",
+                  "Name": "/aaaaaa-aaaaaaa/aaaaaa-aaa-aa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "String",
+                  "Version": 21
+                },
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aaaaaa/aaaaaaa-aaaa/aaaaaa-aa",
+                  "DataType": "text",
+                  "Description": "aaaaaaa aaa-aaaaaa aa aaa aaaaaa aaaa aaa (aaaaaa: aaaaaa-aaa, aaaa: aa-aaaa-a_aaaaaaaaa)",
+                  "LastModifiedDate": 1778924448.039,
+                  "LastModifiedUser": "arn:aws:iam::0000000000:aaaa/aaaaaa",
+                  "Name": "/aaaaaa/aaaaaaa-aaaa/aaaaaa-aa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "String",
+                  "Version": 1
+                },
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aaaaaa/aaaaaaa-aaaa/aaaaaa-aaaaaa",
+                  "DataType": "text",
+                  "Description": "aaaaaaa aaa-aaaaaa aaaaaa aaa aaaaaa aaaa aaa (aaaaaa: aaaaaa-aaa, aaaa: aa-aaaa-a_aaaaaaaaa)",
+                  "KeyId": "aaaaa/aaa/aaa",
+                  "LastModifiedDate": 1778924442.881,
+                  "LastModifiedUser": "arn:aws:iam::0000000000:aaaa/aaaaaa",
+                  "Name": "/aaaaaa/aaaaaaa-aaaa/aaaaaa-aaaaaa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "SecureString",
+                  "Version": 1
+                },
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aaaaaa/aaaaa-aaa",
+                  "DataType": "text",
+                  "Description": "aaaaaa aa aaaaa aaa aaaaaaaa aaaa /aaa/aaaaaa/aaaaaa-aaaaaaa.aaa",
+                  "LastModifiedDate": 1789115669.864,
+                  "LastModifiedUser": "arn:aws:sts::0000000000:aaaaaaa-aaaa/aaa-aaaaaaaaa-aaa-aaaa-aaaa-aaaaaaaaaa-aa-aaaa-a/aaaaaaaaaaaaaaaaa",
+                  "Name": "/aaaaaa/aaaaa-aaa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "String",
+                  "Version": 2
+                },
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aaaaaa/aaaaa/aaaa-aaaaaa",
+                  "DataType": "text",
+                  "KeyId": "aaaaa/aaa/aaa",
+                  "LastModifiedDate": 1779304033.989,
+                  "LastModifiedUser": "arn:aws:iam::0000000000:aaaa/aaaaaa",
+                  "Name": "/aaaaaa/aaaaa/aaaa-aaaaaa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "SecureString",
+                  "Version": 1
+                },
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aaaaaa/aaaa-aaa",
+                  "DataType": "text",
+                  "KeyId": "aaaaa/aaa/aaa",
+                  "LastModifiedDate": 1778969904.593,
+                  "LastModifiedUser": "arn:aws:iam::0000000000:aaaa/aaaaaa",
+                  "Name": "/aaaaaa/aaaa-aaa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "SecureString",
+                  "Version": 1
+                },
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aaaaaaaaa-aaaaaaaaaa/aaaaaaaaa-aaaaaaaa",
+                  "DataType": "text",
+                  "Description": "aaaaa-aaaaaaaaa aaaaaa aaaaaaaaa aaaaaaa aaa aa aaaaa (aaaaaa aaaaa).",
+                  "KeyId": "aaaaa/aaa/aaa",
+                  "LastModifiedDate": 1790064533.521,
+                  "LastModifiedUser": "arn:aws:iam::0000000000:aaaa/aaaaaa",
+                  "Name": "/aaaaaaaaa-aaaaaaaaaa/aaaaaaaaa-aaaaaaaa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "SecureString",
+                  "Version": 1
+                },
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aaaaaaaaa-aaaaaaaaaa/aaaaaa-aaaa-aaa-aaa",
+                  "DataType": "text",
+                  "KeyId": "aaaaa/aaa/aaa",
+                  "LastModifiedDate": 1789999120.788,
+                  "LastModifiedUser": "arn:aws:iam::0000000000:aaaa/aaaaaa",
+                  "Name": "/aaaaaaaaa-aaaaaaaaaa/aaaaaa-aaaa-aaa-aaa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "SecureString",
+                  "Version": 1
+                },
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aaaaaaaaa-aaaaaaaaaa/aaaaaa-aaaaaaa-aaaaaa",
+                  "DataType": "text",
+                  "Description": "aaaaaa aaaaaaa aaaaaaa aaaaaa. aaaaaaaaaaa aaaaa aaa aaaa aaaaaaaa aa aaaaaaaaaa.",
+                  "KeyId": "aaaaa/aaa/aaa",
+                  "LastModifiedDate": 1790064533.026,
+                  "LastModifiedUser": "arn:aws:iam::0000000000:aaaa/aaaaaa",
+                  "Name": "/aaaaaaaaa-aaaaaaaaaa/aaaaaa-aaaaaaa-aaaaaa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "SecureString",
+                  "Version": 1
+                },
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aaaa/aaaaaa-aaa-aaa-aaaaaa",
+                  "DataType": "text",
+                  "KeyId": "aaaaa/aaa/aaa",
+                  "LastModifiedDate": 1783932301.181,
+                  "LastModifiedUser": "arn:aws:iam::0000000000:aaaa/aaaaaa",
+                  "Name": "/aaaa/aaaaaa-aaa-aaa-aaaaaa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "SecureString",
+                  "Version": 1
+                },
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aaaa/aaaaaaa-aaaaaaa-aaaaaaaaaa",
+                  "DataType": "text",
+                  "KeyId": "aaaaa/aaa/aaa",
+                  "LastModifiedDate": 1773403797.548,
+                  "LastModifiedUser": "arn:aws:iam::0000000000:aaaa/aaaaaa",
+                  "Name": "/aaaa/aaaaaaa-aaaaaaa-aaaaaaaaaa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "SecureString",
+                  "Version": 1
+                },
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aaaaaa-aaa-aaaaaa-aaaaaa-aa",
+                  "DataType": "text",
+                  "LastModifiedDate": 1778664506.137,
+                  "LastModifiedUser": "arn:aws:sts::0000000000:aaaaaaa-aaaa/aaa-aaaaaaaaa-aaa-aaaa-aaaa-aaaaaaaaaa-aa-aaaa-a/aaaaaaaaaaaaaaaaa",
+                  "Name": "aaaaaa-aaa-aaaaaa-aaaaaa-aa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "String",
+                  "Version": 1
+                },
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aaaaaa-aaaa-aaaaaa-aaaaaa-aa",
+                  "DataType": "text",
+                  "LastModifiedDate": 1778684419.838,
+                  "LastModifiedUser": "arn:aws:sts::0000000000:aaaaaaa-aaaa/aaa-aaaaaaaaa-aaa-aaaa-aaaa-aaaaaaaaaa-aa-aaaa-a/aaaaaaaaaaaaaaaaa",
+                  "Name": "aaaaaa-aaaa-aaaaaa-aaaaaa-aa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "String",
+                  "Version": 1
+                }
+              ]
+            }
+        headers:
+            Cache-Control:
+                - no-store
+            Connection:
+                - keep-alive
+            Content-Type:
+                - application/x-amz-json-1.1
+            Server:
+                - Server
+        status: 200 OK
+        code: 200
+        duration: 153.990458ms
+    - id: 1
+      request:
+        proto: ""
+        proto_major: 0
+        proto_minor: 0
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: ""
+        remote_addr: ""
+        request_uri: ""
+        body: '{"MaxResults":50,"NextToken":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/aaaaaaaaaaaaaaaaaaa+aaaaaaaaaaaaaaa/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa+aaaaaaaaaaaaaaaaaaaaa/aaaaaa/a/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/aaaaaaaa/aaaa/aaaaaa+aaaaaaaaaaaaaaaaaa+aaaaaaaaaa/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/aaaaaa/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa+aaaaaaaaaaaaaa/aaaaaaa/aaaa/aaaaaaaaaaa+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa+aaa/a/aaaaaaaaaaaaaaaaaaaaaaaaaaaaa="}'
+        form: {}
+        headers:
+            Content-Type:
+                - application/x-amz-json-1.1
+            X-Amz-Target:
+                - AmazonSSM.DescribeParameters
+        url: https://ssm.us-west-2.amazonaws.com/
+        method: POST
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        transfer_encoding: []
+        trailer: {}
+        content_length: -1
+        uncompressed: true
+        body: |-
+            {
+              "Parameters": [
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aaaa/aaaaaaa/aaa-aaaaaa-aaa",
+                  "DataType": "text",
+                  "Description": "aaaaaaa aaa aaaaaa aaa (aaa) aaaaa aa aaa aaa `aaa` aaaaa",
+                  "LastModifiedDate": 1789513348.265,
+                  "LastModifiedUser": "arn:aws:sts::0000000000:aaaaaaa-aaaa/aaa-aaaaaaaaa-aaa-aaaa-aaaa-aaaaaaaaaa-aa-aaaa-a/aaaaaaaaaaaaaaaaa",
+                  "Name": "/aaaa/aaaaaaa/aaa-aaaaaa-aaa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "String",
+                  "Version": 1
+                },
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aaaa/aaaaaaaaa-aaaaa-aaa-aaa-aaa",
+                  "DataType": "text",
+                  "Description": "aaa aaa aaa aaaaaa aaaaaaaaa aaaaa aaaaaaaaaa",
+                  "KeyId": "aaaaa/aaa/aaa",
+                  "LastModifiedDate": 1786955490.737,
+                  "LastModifiedUser": "arn:aws:iam::0000000000:aaaa/aaaaaa",
+                  "Name": "/aaaa/aaaaaaaaa-aaaaa-aaa-aaa-aaa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "SecureString",
+                  "Version": 3
+                },
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aaaa/aaaaaa/aaaaaaaa-aaaaaa",
+                  "DataType": "text",
+                  "Description": "aaaaaa aa aaa aaaaaaaa aa aaaaaa, aa aaa aaaa aaa aaaaaaa",
+                  "LastModifiedDate": 1789648185.715,
+                  "LastModifiedUser": "arn:aws:sts::0000000000:aaaaaaa-aaaa/aaa-aaaaaaaaa-aaa-aaaa-aaaa-aaaaaaaaaa-aa-aaaa-a/aaaaaaaaaaaaaaaaa",
+                  "Name": "/aaaa/aaaaaa/aaaaaaaa-aaaaaa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "String",
+                  "Version": 1
+                },
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aaaa/aaaa-aaaaaa-aaa-aaa",
+                  "DataType": "text",
+                  "KeyId": "aaaaa/aaa/aaa",
+                  "LastModifiedDate": 1774620270.991,
+                  "LastModifiedUser": "arn:aws:iam::0000000000:aaaa/aaaaaa",
+                  "Name": "/aaaa/aaaa-aaaaaa-aaa-aaa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "SecureString",
+                  "Version": 1
+                },
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aaaa/aaaaaa-aaaaa-aaaaaaa-aaaaaaa",
+                  "DataType": "text",
+                  "KeyId": "aaaaa/aaa/aaa",
+                  "LastModifiedDate": 1775565493.433,
+                  "LastModifiedUser": "arn:aws:iam::0000000000:aaaa/aaaaaa",
+                  "Name": "/aaaa/aaaaaa-aaaaa-aaaaaaa-aaaaaaa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "SecureString",
+                  "Version": 1
+                },
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aaaa/aaaaaa-aaaa",
+                  "DataType": "text",
+                  "KeyId": "aaaaa/aaa/aaa",
+                  "LastModifiedDate": 1775574818.455,
+                  "LastModifiedUser": "arn:aws:iam::0000000000:aaaa/aaaaaa",
+                  "Name": "/aaaa/aaaaaa-aaaa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "SecureString",
+                  "Version": 3
+                },
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aaaa/aaaaaa-aaa-aaa",
+                  "DataType": "text",
+                  "Description": "aaaaaa aaa aaa (aaaaaaaaa aaaa /aaaa/aaaaaa-aaa-aaa aaaa)",
+                  "KeyId": "aaaaa/aaa/aaa",
+                  "LastModifiedDate": 1783932352.007,
+                  "LastModifiedUser": "arn:aws:iam::0000000000:aaaa/aaaaaa",
+                  "Name": "/aaaa/aaaaaa-aaa-aaa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "SecureString",
+                  "Version": 2
+                },
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aaaa/aaaaaa-aaaaaaa-aaaaaa",
+                  "DataType": "text",
+                  "Description": "aaaaaa aaaaaaa aaaa aaaaaaa aaaaaa (aaa-aaaaaa, aaaaaaaa aa aaaaaa)",
+                  "KeyId": "aaaaa/aaa/aaa",
+                  "LastModifiedDate": 1783932393.845,
+                  "LastModifiedUser": "arn:aws:iam::0000000000:aaaa/aaaaaa",
+                  "Name": "/aaaa/aaaaaa-aaaaaaa-aaaaaa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "SecureString",
+                  "Version": 3
+                },
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aaaa/aaaaaa-aaaaaaa-aaaaaa-aaaaaa",
+                  "DataType": "text",
+                  "KeyId": "aaaaa/aaa/aaa",
+                  "LastModifiedDate": 1783932381.525,
+                  "LastModifiedUser": "arn:aws:iam::0000000000:aaaa/aaaaaa",
+                  "Name": "/aaaa/aaaaaa-aaaaaaa-aaaaaa-aaaaaa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "SecureString",
+                  "Version": 1
+                },
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aaaa/aaaaa",
+                  "DataType": "text",
+                  "KeyId": "aaaaa/aaa/aaa",
+                  "LastModifiedDate": 1770830283.05,
+                  "LastModifiedUser": "arn:aws:iam::0000000000:aaaa/aaaaaa",
+                  "Name": "/aaaa/aaaaa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "SecureString",
+                  "Version": 1
+                },
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aaaa/aaaaaaa-aaa-aaa",
+                  "DataType": "text",
+                  "KeyId": "aaaaa/aaa/aaa",
+                  "LastModifiedDate": 1773403780.481,
+                  "LastModifiedUser": "arn:aws:iam::0000000000:aaaa/aaaaaa",
+                  "Name": "/aaaa/aaaaaaa-aaa-aaa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "SecureString",
+                  "Version": 2
+                },
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aaaa/aaaaaaaaa/aaa-aaa",
+                  "DataType": "text",
+                  "KeyId": "aaaaa/aaa/aaa",
+                  "LastModifiedDate": 1769781706.577,
+                  "LastModifiedUser": "arn:aws:iam::0000000000:aaaa/aaaaaa",
+                  "Name": "/aaaa/aaaaaaaaa/aaa-aaa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "SecureString",
+                  "Version": 1
+                },
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aaaaaaaaaaaa/aaaa/aaaaaa-aaa-aaa",
+                  "DataType": "text",
+                  "KeyId": "aaaaa/aaa/aaa",
+                  "LastModifiedDate": 1789073492.157,
+                  "LastModifiedUser": "arn:aws:iam::0000000000:aaaa/aaaaaa",
+                  "Name": "/aaaaaaaaaaaa/aaaa/aaaaaa-aaa-aaa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "SecureString",
+                  "Version": 1
+                },
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aaaaaaaaaaaa/aaaa/aaa-aaa-aaaaaa-aa",
+                  "DataType": "text",
+                  "Description": "aaaaaaaaaaa aa aaaaaa a'aaaaaaaaaaa aaaaaaa aa aaaaaaaa aaa, aa aaa aaa aéaaaaaaaaaaa a'aaaaaaaa aa aa aéaaaaaaaaa aa aaaaaaaa",
+                  "LastModifiedDate": 1789243568.772,
+                  "LastModifiedUser": "arn:aws:sts::0000000000:aaaaaaa-aaaa/aaa-aaaaaaaaa-aaa-aaaa-aaaa-aaaaaaaaaa-aa-aaaa-a/aaaaaaaaaaaaaaaaa",
+                  "Name": "/aaaaaaaaaaaa/aaaa/aaa-aaa-aaaaaa-aa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "String",
+                  "Version": 1
+                },
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aaaa/aaaaaaaa-aaaaaaaaaa",
+                  "DataType": "text",
+                  "Description": "aa aaa aaaaaaaaa",
+                  "KeyId": "aaaaa/aaa/aaa",
+                  "LastModifiedDate": 1738574835.675,
+                  "LastModifiedUser": "arn:aws:iam::0000000000:aaaa/aaaaaa",
+                  "Name": "/aaaa/aaaaaaaa-aaaaaaaaaa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "SecureString",
+                  "Version": 7
+                },
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aaaa/aaaa-aaaaaaaaa",
+                  "DataType": "text",
+                  "Description": "aa aaa aaaaaaaaa",
+                  "KeyId": "aaaaa/aaa/aaa",
+                  "LastModifiedDate": 1738574536.096,
+                  "LastModifiedUser": "arn:aws:iam::0000000000:aaaa/aaaaaa",
+                  "Name": "/aaaa/aaaa-aaaaaaaaa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "SecureString",
+                  "Version": 2
+                },
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aaaa/aaaaaa-aaaaaaaaa",
+                  "DataType": "text",
+                  "Description": "aa aaa aaaaaaaaa",
+                  "KeyId": "aaaaa/aaa/aaa",
+                  "LastModifiedDate": 1738574374.215,
+                  "LastModifiedUser": "arn:aws:iam::0000000000:aaaa/aaaaaa",
+                  "Name": "/aaaa/aaaaaa-aaaaaaaaa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "SecureString",
+                  "Version": 1
+                },
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aaaaaa/aaaa/aaaaaaa-aaa-aaa",
+                  "DataType": "text",
+                  "KeyId": "aaaaa/aaa/aaa",
+                  "LastModifiedDate": 1764240584.673,
+                  "LastModifiedUser": "arn:aws:iam::0000000000:aaaa/aaaaaa",
+                  "Name": "/aaaaaa/aaaa/aaaaaaa-aaa-aaa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "SecureString",
+                  "Version": 2
+                },
+                {
+                  "ARN": "arn:aws:ssm:us-west-2:0000000000:aaaaaaaaa/aaaaaa/aaaa/aaaaaaa-aaaaa",
+                  "DataType": "text",
+                  "Description": "aaaaaaa aaa aaaaa",
+                  "KeyId": "aaaaa/aaa/aaa",
+                  "LastModifiedDate": 1779976494.583,
+                  "LastModifiedUser": "arn:aws:iam::0000000000:aaaa/aaaaaa",
+                  "Name": "/aaaaaa/aaaa/aaaaaaa-aaaaa",
+                  "Policies": [],
+                  "Tier": "Standard",
+                  "Type": "SecureString",
+                  "Version": 5
+                }
+              ]
+            }
+        headers:
+            Cache-Control:
+                - no-store
+            Connection:
+                - keep-alive
+            Content-Type:
+                - application/x-amz-json-1.1
+            Server:
+                - Server
+        status: 200 OK
+        code: 200
+        duration: 64.754917ms

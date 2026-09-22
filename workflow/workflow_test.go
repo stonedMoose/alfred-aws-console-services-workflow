@@ -691,6 +691,86 @@ var tcs []testCase = []testCase{
 		query:       "@sso-profile1 elasticbeanstalk applications",
 		fixtureName: "../searchers/elastic_beanstalk_applications_test_us-east-1", // reuse test fixture from this other test
 	},
+	{
+		query:       "dynamodb",
+		fixtureName: "../searchers/dynamodb_tables_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "dynamodb ",
+		fixtureName: "../searchers/dynamodb_tables_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "dynamodb tables",
+		fixtureName: "../searchers/dynamodb_tables_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "dynamodb tables ",
+		fixtureName: "../searchers/dynamodb_tables_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "ecr",
+		fixtureName: "../searchers/ecr_repositories_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "ecr ",
+		fixtureName: "../searchers/ecr_repositories_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "ecr privaterepositories",
+		fixtureName: "../searchers/ecr_repositories_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "ecr privaterepositories ",
+		fixtureName: "../searchers/ecr_repositories_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "secretsmanager",
+		fixtureName: "../searchers/secretsmanager_secrets_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "secretsmanager ",
+		fixtureName: "../searchers/secretsmanager_secrets_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "secretsmanager secrets",
+		fixtureName: "../searchers/secretsmanager_secrets_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "secretsmanager secrets ",
+		fixtureName: "../searchers/secretsmanager_secrets_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "sqs",
+		fixtureName: "../searchers/sqs_queues_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "sqs ",
+		fixtureName: "../searchers/sqs_queues_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "sqs queues",
+		fixtureName: "../searchers/sqs_queues_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "sqs queues ",
+		fixtureName: "../searchers/sqs_queues_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "systemsmanager",
+		fixtureName: "../searchers/ssm_parameters_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "systemsmanager ",
+		fixtureName: "../searchers/ssm_parameters_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "systemsmanager parameterstore",
+		fixtureName: "../searchers/ssm_parameters_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "systemsmanager parameterstore ",
+		fixtureName: "../searchers/ssm_parameters_test", // reuse test fixture from this other test
+	},
 }
 
 func testWorkflow(t *testing.T, tc testCase, forceFetch, snapshot bool) []*aw.Item {

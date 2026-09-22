@@ -1,12 +1,12 @@
 ([]*aw.Item) (len=2) {
   (*aw.Item)({
-    title: (string) (len=22) "ecr publicrepositories",
-    subtitle: (*string)((len=27) "ECR – Public repositories"),
-    match: (*string)((len=38) "publicrepositories Public repositories"),
-    uid: (*string)((len=18) "publicrepositories"),
-    autocomplete: (*string)((len=23) "ecr publicrepositories "),
+    title: (string) (len=7) "aaaaaaa",
+    subtitle: (*string)((len=105) "aaaaaaaaaaaa.aaa.aaa.aa-aaaa-a.aaaaaaaaa.aaa/aaaaaaa – mutable – Created Wed Nov 10 13:34:12 UTC 2021"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=8) "aaaaaaa "),
     arg: ([]string) (len=1) {
-      (string) (len=90) "https://us-west-2.console.aws.amazon.com/ecr/public-registry/repositories?region=us-west-2"
+      (string) (len=103) "https://us-west-2.console.aws.amazon.com/ecr/repositories/private/aaaaaaaaaaaa/aaaaaaa?region=us-west-2"
     },
     valid: (bool) true,
     file: (bool) false,
@@ -36,13 +36,13 @@
     noUID: (bool) false
   }),
   (*aw.Item)({
-    title: (string) (len=23) "ecr privaterepositories",
-    subtitle: (*string)((len=39) "🔎⭐️ ECR – Private repositories"),
-    match: (*string)((len=40) "privaterepositories Private repositories"),
-    uid: (*string)((len=19) "privaterepositories"),
-    autocomplete: (*string)((len=24) "ecr privaterepositories "),
+    title: (string) (len=53) "aaa-aaaaaaaaa-aaaaaaaaa-aaaaaa-aaaaaaaaaaaa-aa-aaaa-a",
+    subtitle: (*string)((len=153) "aaaaaaaaaaaa.aaa.aaa.aa-aaaa-a.aaaaaaaaa.aaa/aaa-aaaaaaaaa-aaaaaaaaa-aaaaaa-aaaaaaaaaaaa-aa-aaaa-a – immutable – Created Fri Feb  5 12:21:35 UTC 2021"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=54) "aaa-aaaaaaaaa-aaaaaaaaa-aaaaaa-aaaaaaaaaaaa-aa-aaaa-a "),
     arg: ([]string) (len=1) {
-      (string) (len=91) "https://us-west-2.console.aws.amazon.com/ecr/private-registry/repositories?region=us-west-2"
+      (string) (len=149) "https://us-west-2.console.aws.amazon.com/ecr/repositories/private/aaaaaaaaaaaa/aaa-aaaaaaaaa-aaaaaaaaa-aaaaaa-aaaaaaaaaaaa-aa-aaaa-a?region=us-west-2"
     },
     valid: (bool) true,
     file: (bool) false,
