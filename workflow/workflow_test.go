@@ -1195,6 +1195,21 @@ var tcs []testCase = []testCase{
 		query:       "cloudtrail trails ",
 		fixtureName: "../searchers/cloudtrail_trails_test", // reuse test fixture from this other test
 	},
+	{
+		query: "cloud,watch",
+	},
+	{
+		query:       "cloudwatch loggroups beanstalk,error",
+		fixtureName: "../searchers/cloudwatch_log_groups_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "cloudwatch loggroups beanstalk,",
+		fixtureName: "../searchers/cloudwatch_log_groups_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "cloudwatch loggroups ,",
+		fixtureName: "../searchers/cloudwatch_log_groups_test", // reuse test fixture from this other test
+	},
 }
 
 func testWorkflow(t *testing.T, tc testCase, forceFetch, snapshot bool) []*aw.Item {

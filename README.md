@@ -35,6 +35,7 @@ At any time:
 ## Advanced Features
 
 - [Fuzzy filtering](https://godoc.org/github.com/deanishe/awgo/fuzzy) a la Sublime Text is supported
+- Multi-term search – separate a search into several terms with `,` and a result has to match all of them. For example, `aws cloudwatch loggroups beanstalk,error` returns only the log groups whose name contains both. Results are ranked on the first term. This is independent of the search alias below, which is only recognised at the start of a term, so `aws ec2 ,foo,bar` still means "search EC2 instances for foo and bar".
 - Configurable [workflow environment variables](https://www.alfredapp.com/help/workflows/advanced/variables/#environment)
   - Search alias – If a sub-service has a ⭐ in the subtitle, you can use `,` as an alias for it to more quickly search for that entity. For example, in this workflow, the EC2 service's default entity is an EC2 instance, so `aws ec2 ,searchterm` is a shorter alias for `aws ec2 instances searchterm`. You can customize this alias by setting the `ALFRED_AWS_CONSOLE_SERVICES_WORKFLOW_SEARCH_ALIAS` environment variable to any other string.
   - Region override - By default, searchers will use the region configured in your `~/.aws/config` file. However, you can override this on a single query basis by typing `$`. This workflow will then populate a list of regions to select for this query. You can customize this alias by setting the `ALFRED_AWS_CONSOLE_SERVICES_OVERRIDE_AWS_REGION_ALIAS` environment variable to any other string.

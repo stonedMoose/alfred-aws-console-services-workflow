@@ -130,10 +130,30 @@ func Run(wf *aw.Workflow, rawQuery string, transport http.RoundTripper, forceFet
 		}
 	}
 
-	if searchArgs.Query != "" {
-		log.Printf("filtering with query %q", searchArgs.Query)
-		res := wf.Filter(searchArgs.Query)
-		log.Printf("%d results match %q", len(res), searchArgs.Query)
+	filterOnEveryTerm(wf, searchArgs.Query)
+}
+
+// multiTermSeparator splits a search into terms that must all match. It is
+// deliberately not the configurable search alias: someone who rebinds that
+// alias to "." would otherwise find every domain name chopped in half.
+const multiTermSeparator = ","
+
+// filterOnEveryTerm keeps the items that match all of the query's terms. awgo's
+// Filter both ranks and drops, so running it once per term intersects them. The
+// terms go last to first, leaving the surviving ranking to the first term,
+// which is the one the person typed most deliberately.
+func filterOnEveryTerm(wf *aw.Workflow, query string) {
+	var terms []string
+	for _, term := range strings.Split(query, multiTermSeparator) {
+		if term = strings.TrimSpace(term); term != "" {
+			terms = append(terms, term)
+		}
+	}
+
+	for i := len(terms) - 1; i >= 0; i-- {
+		log.Printf("filtering with query %q", terms[i])
+		res := wf.Filter(terms[i])
+		log.Printf("%d results match %q", len(res), terms[i])
 	}
 }
 
