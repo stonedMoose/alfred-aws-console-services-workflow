@@ -1,0 +1,388 @@
+---
+version: 2
+interactions:
+    - id: 0
+      request:
+        proto: ""
+        proto_major: 0
+        proto_minor: 0
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: ""
+        remote_addr: ""
+        request_uri: ""
+        body: '{"MaxResults":60}'
+        form: {}
+        headers:
+            Content-Type:
+                - application/x-amz-json-1.1
+            X-Amz-Target:
+                - AWSCognitoIdentityProviderService.ListUserPools
+        url: https://cognito-idp.us-west-2.amazonaws.com/
+        method: POST
+      response:
+        proto: HTTP/2.0
+        proto_major: 2
+        proto_minor: 0
+        transfer_encoding: []
+        trailer: {}
+        content_length: 6624
+        uncompressed: false
+        body: |-
+            {
+              "UserPools": [
+                {
+                  "CreationDate": 1710162137.458,
+                  "Id": "aa-aaaa-a_aaaaaaaaa",
+                  "LambdaConfig": {},
+                  "LastModifiedDate": 1710162137.458,
+                  "Name": "aaaa-aaaaaaaaa-aaaaaa-aaaaaaaa",
+                  "ReplicaRegions": [
+                    "us-west-2"
+                  ]
+                },
+                {
+                  "CreationDate": 1630011723.232,
+                  "Id": "aa-aaaa-a_aaaaaaaaa",
+                  "LambdaConfig": {
+                    "PostAuthentication": "arn:aws:lambda:us-west-2:0000000000:aaaaaaaa:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                  },
+                  "LastModifiedDate": 1778684416.319,
+                  "Name": "aaaaaa-aaaa-aaaa-aaaa",
+                  "ReplicaRegions": [
+                    "us-west-2"
+                  ]
+                },
+                {
+                  "CreationDate": 1677498071.861,
+                  "Id": "aa-aaaa-a_aaaaaaaaa",
+                  "LambdaConfig": {},
+                  "LastModifiedDate": 1766065490.472,
+                  "Name": "aaaaaa-aaaa-aaaa-aaaa",
+                  "ReplicaRegions": [
+                    "us-west-2"
+                  ]
+                },
+                {
+                  "CreationDate": 1789051777.218,
+                  "Id": "aa-aaaa-a_aaaaaaaaa",
+                  "LambdaConfig": {},
+                  "LastModifiedDate": 1789051777.218,
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aaaa",
+                  "ReplicaRegions": [
+                    "us-west-2"
+                  ]
+                },
+                {
+                  "CreationDate": 1790085788.239,
+                  "Id": "aa-aaaa-a_aaaaaaaaa",
+                  "LambdaConfig": {},
+                  "LastModifiedDate": 1790085788.239,
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaaaa-aaaa-aaaa",
+                  "ReplicaRegions": [
+                    "us-west-2"
+                  ]
+                },
+                {
+                  "CreationDate": 1789602996.784,
+                  "Id": "aa-aaaa-a_aaaaaaaaa",
+                  "LambdaConfig": {},
+                  "LastModifiedDate": 1789602996.784,
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aaaa",
+                  "ReplicaRegions": [
+                    "us-west-2"
+                  ]
+                },
+                {
+                  "CreationDate": 1648567908.849,
+                  "Id": "aa-aaaa-a_aaaaaaaaa",
+                  "LambdaConfig": {},
+                  "LastModifiedDate": 1778616974.919,
+                  "Name": "aaaaaaaaa-aaa-aaaa-aaaa",
+                  "ReplicaRegions": [
+                    "us-west-2"
+                  ]
+                },
+                {
+                  "CreationDate": 1708522079.252,
+                  "Id": "aa-aaaa-a_aaaaaaaaa",
+                  "LambdaConfig": {},
+                  "LastModifiedDate": 1708522079.252,
+                  "Name": "aaaa-aaaaaaaaa-aaaaaa-aaaaaaaa",
+                  "ReplicaRegions": [
+                    "us-west-2"
+                  ]
+                },
+                {
+                  "CreationDate": 1648567908.056,
+                  "Id": "aa-aaaa-a_aaaaaaaaa",
+                  "LambdaConfig": {},
+                  "LastModifiedDate": 1778616975.214,
+                  "Name": "aaaaaaaaa-aaa-aaaaaa-aaaa-aaaa",
+                  "ReplicaRegions": [
+                    "us-west-2"
+                  ]
+                },
+                {
+                  "CreationDate": 1701957429.142,
+                  "Id": "aa-aaaa-a_aaaaaaaaa",
+                  "LambdaConfig": {},
+                  "LastModifiedDate": 1774523095.676,
+                  "Name": "aaaaaaaaaa-aaaa-aaaa-aaaa",
+                  "ReplicaRegions": [
+                    "us-west-2"
+                  ]
+                },
+                {
+                  "CreationDate": 1710864596.793,
+                  "Id": "aa-aaaa-a_aaaaaaaaa",
+                  "LambdaConfig": {},
+                  "LastModifiedDate": 1710864596.793,
+                  "Name": "aaaa-aaaaaaaaa-aaaaaa-aaaaaaaa",
+                  "ReplicaRegions": [
+                    "us-west-2"
+                  ]
+                },
+                {
+                  "CreationDate": 1710864571.081,
+                  "Id": "aa-aaaa-a_aaaaaaaaa",
+                  "LambdaConfig": {},
+                  "LastModifiedDate": 1710864571.081,
+                  "Name": "aaaa-aaaaaaaaa-aaaaaa-aaaaaaaa",
+                  "ReplicaRegions": [
+                    "us-west-2"
+                  ]
+                },
+                {
+                  "CreationDate": 1709472463.658,
+                  "Id": "aa-aaaa-a_aaaaaaaaa",
+                  "LambdaConfig": {},
+                  "LastModifiedDate": 1709472463.658,
+                  "Name": "aaaa-aaaaaaaaa-aaaaaa-aaaaaaaa",
+                  "ReplicaRegions": [
+                    "us-west-2"
+                  ]
+                },
+                {
+                  "CreationDate": 1790004708.71,
+                  "Id": "aa-aaaa-a_aaaaaaaaa",
+                  "LambdaConfig": {},
+                  "LastModifiedDate": 1790004708.71,
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aaaa",
+                  "ReplicaRegions": [
+                    "us-west-2"
+                  ]
+                },
+                {
+                  "CreationDate": 1789401114.516,
+                  "Id": "aa-aaaa-a_aaaaaaaaa",
+                  "LambdaConfig": {},
+                  "LastModifiedDate": 1789401114.516,
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aaaa",
+                  "ReplicaRegions": [
+                    "us-west-2"
+                  ]
+                },
+                {
+                  "CreationDate": 1706030021.267,
+                  "Id": "aa-aaaa-a_aaaaaaaaa",
+                  "LambdaConfig": {},
+                  "LastModifiedDate": 1706030021.267,
+                  "Name": "aaaa-aaaaaaaaa-aaaaaa-aaaaaaaa",
+                  "ReplicaRegions": [
+                    "us-west-2"
+                  ]
+                },
+                {
+                  "CreationDate": 1787239704.614,
+                  "Id": "aa-aaaa-a_aaaaaaaaa",
+                  "LambdaConfig": {},
+                  "LastModifiedDate": 1787239704.614,
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aaaa",
+                  "ReplicaRegions": [
+                    "us-west-2"
+                  ]
+                },
+                {
+                  "CreationDate": 1789735431.661,
+                  "Id": "aa-aaaa-a_aaaaaaaaa",
+                  "LambdaConfig": {},
+                  "LastModifiedDate": 1789735431.661,
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaaaa-aaaa-aaaa",
+                  "ReplicaRegions": [
+                    "us-west-2"
+                  ]
+                },
+                {
+                  "CreationDate": 1620052124.172,
+                  "Id": "aa-aaaa-a_aaaaaaaaa",
+                  "LambdaConfig": {
+                    "PostAuthentication": "arn:aws:lambda:us-west-2:0000000000:aaaaaaaa:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                  },
+                  "LastModifiedDate": 1778673138.402,
+                  "Name": "aaaaaa-aaa-aaaa-aaaa",
+                  "ReplicaRegions": [
+                    "us-west-2"
+                  ]
+                },
+                {
+                  "CreationDate": 1790085789.27,
+                  "Id": "aa-aaaa-a_aaaaaaaaa",
+                  "LambdaConfig": {},
+                  "LastModifiedDate": 1790085789.27,
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aaaa",
+                  "ReplicaRegions": [
+                    "us-west-2"
+                  ]
+                },
+                {
+                  "CreationDate": 1790004708.509,
+                  "Id": "aa-aaaa-a_aaaaaaaaa",
+                  "LambdaConfig": {},
+                  "LastModifiedDate": 1790004708.509,
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaaaa-aaaa-aaaa",
+                  "ReplicaRegions": [
+                    "us-west-2"
+                  ]
+                },
+                {
+                  "CreationDate": 1787239704.556,
+                  "Id": "aa-aaaa-a_aaaaaaaaa",
+                  "LambdaConfig": {},
+                  "LastModifiedDate": 1787239704.556,
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaaaa-aaaa-aaaa",
+                  "ReplicaRegions": [
+                    "us-west-2"
+                  ]
+                },
+                {
+                  "CreationDate": 1613741144.218,
+                  "Id": "aa-aaaa-a_aaaaaaaaa",
+                  "LambdaConfig": {
+                    "PostAuthentication": "arn:aws:lambda:us-west-2:0000000000:aaaaaaaa:aaaaaaaaaaa-aaaaaaaaaaaaaaaaaaaaa-aaaaaaaaaaaa"
+                  },
+                  "LastModifiedDate": 1780910674.093,
+                  "Name": "aaaaaaaaa-aaaa-aaaa-aaaa",
+                  "ReplicaRegions": [
+                    "us-west-2"
+                  ]
+                },
+                {
+                  "CreationDate": 1790006353.743,
+                  "Id": "aa-aaaa-a_aaaaaaaaa",
+                  "LambdaConfig": {},
+                  "LastModifiedDate": 1790006353.743,
+                  "Name": "aaaaaaaaa-aa-aaaaaaaaaa-aaaaaa-aaaa-aaaa",
+                  "ReplicaRegions": [
+                    "us-west-2"
+                  ]
+                },
+                {
+                  "CreationDate": 1709816541.985,
+                  "Id": "aa-aaaa-a_aaaaaaaaa",
+                  "LambdaConfig": {},
+                  "LastModifiedDate": 1709816541.985,
+                  "Name": "aaaa-aaaaaaaaa-aaaaaa-aaaaaaaa",
+                  "ReplicaRegions": [
+                    "us-west-2"
+                  ]
+                },
+                {
+                  "CreationDate": 1789108962.804,
+                  "Id": "aa-aaaa-a_aaaaaaaaa",
+                  "LambdaConfig": {},
+                  "LastModifiedDate": 1789108962.804,
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aaaa",
+                  "ReplicaRegions": [
+                    "us-west-2"
+                  ]
+                },
+                {
+                  "CreationDate": 1790088856.23,
+                  "Id": "aa-aaaa-a_aaaaaaaaa",
+                  "LambdaConfig": {},
+                  "LastModifiedDate": 1790088856.23,
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaaaa-aaaa-aaaa",
+                  "ReplicaRegions": [
+                    "us-west-2"
+                  ]
+                },
+                {
+                  "CreationDate": 1790088854.899,
+                  "Id": "aa-aaaa-a_aaaaaaaaa",
+                  "LambdaConfig": {},
+                  "LastModifiedDate": 1790088854.899,
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aaaa",
+                  "ReplicaRegions": [
+                    "us-west-2"
+                  ]
+                },
+                {
+                  "CreationDate": 1789602996.519,
+                  "Id": "aa-aaaa-a_aaaaaaaaa",
+                  "LambdaConfig": {},
+                  "LastModifiedDate": 1789602996.519,
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaaaa-aaaa-aaaa",
+                  "ReplicaRegions": [
+                    "us-west-2"
+                  ]
+                },
+                {
+                  "CreationDate": 1789051777.253,
+                  "Id": "aa-aaaa-a_aaaaaaaaa",
+                  "LambdaConfig": {},
+                  "LastModifiedDate": 1789051777.253,
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaaaa-aaaa-aaaa",
+                  "ReplicaRegions": [
+                    "us-west-2"
+                  ]
+                },
+                {
+                  "CreationDate": 1789735431.7,
+                  "Id": "aa-aaaa-a_aaaaaaaaa",
+                  "LambdaConfig": {},
+                  "LastModifiedDate": 1789735431.7,
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaa-aaaa",
+                  "ReplicaRegions": [
+                    "us-west-2"
+                  ]
+                },
+                {
+                  "CreationDate": 1789108962.84,
+                  "Id": "aa-aaaa-a_aaaaaaaaa",
+                  "LambdaConfig": {},
+                  "LastModifiedDate": 1789108962.84,
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaaaa-aaaa-aaaa",
+                  "ReplicaRegions": [
+                    "us-west-2"
+                  ]
+                },
+                {
+                  "CreationDate": 1790006353.805,
+                  "Id": "aa-aaaa-a_aaaaaaaaa",
+                  "LambdaConfig": {},
+                  "LastModifiedDate": 1790006353.805,
+                  "Name": "aaaaaaaaa-aa-aaaaaaaaaa-aaaa-aaaa",
+                  "ReplicaRegions": [
+                    "us-west-2"
+                  ]
+                },
+                {
+                  "CreationDate": 1789401114.599,
+                  "Id": "aa-aaaa-a_aaaaaaaaa",
+                  "LambdaConfig": {},
+                  "LastModifiedDate": 1789401114.599,
+                  "Name": "aaaaaaaaa-aa-aaaa-aaaaaa-aaaa-aaaa",
+                  "ReplicaRegions": [
+                    "us-west-2"
+                  ]
+                }
+              ]
+            }
+        headers:
+            Content-Type:
+                - application/x-amz-json-1.1
+        status: 200 OK
+        code: 200
+        duration: 306.617833ms

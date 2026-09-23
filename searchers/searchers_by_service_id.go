@@ -57,6 +57,8 @@ var codeBuildProjectSearcher = &CodeBuildProjectSearcher{}
 var glueJobSearcher = &GlueJobSearcher{}
 var redshiftClusterSearcher = &RedshiftClusterSearcher{}
 var cloudTrailTrailSearcher = &CloudTrailTrailSearcher{}
+var cognitoUserPoolSearcher = &CognitoUserPoolSearcher{}
+var cognitoIdentityPoolSearcher = &CognitoIdentityPoolSearcher{}
 
 var SearchersByServiceId map[string]Searcher = map[string]Searcher{
 	"apprunner":                     appRunnerServiceSearcher,
@@ -148,4 +150,7 @@ var SearchersByServiceId map[string]Searcher = map[string]Searcher{
 	"redshift_clusters":        redshiftClusterSearcher,
 	"cloudtrail":               cloudTrailTrailSearcher,
 	"cloudtrail_trails":        cloudTrailTrailSearcher,
+	"cognito":                  cognitoUserPoolSearcher,
+	"cognito_userpools":        cognitoUserPoolSearcher,
+	"cognito_identitypools":    cognitoIdentityPoolSearcher,
 }

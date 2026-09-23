@@ -543,6 +543,13 @@
   name: Cognito
   description: User Identity and App Data Synchronization
   url: "/cognito/home#"
+  sub_services:
+    - id: userpools
+      name: User pools
+      url: "/cognito/v2/idp/user-pools"
+    - id: identitypools
+      name: Identity pools
+      url: "/cognito/v2/identity/identity-pools"
 
 - id: comprehend
   name: Comprehend

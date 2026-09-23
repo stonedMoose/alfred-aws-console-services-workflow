@@ -1,0 +1,58 @@
+---
+version: 2
+interactions:
+    - id: 0
+      request:
+        proto: ""
+        proto_major: 0
+        proto_minor: 0
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: ""
+        remote_addr: ""
+        request_uri: ""
+        body: '{"MaxResults":60}'
+        form: {}
+        headers:
+            Content-Type:
+                - application/x-amz-json-1.1
+            X-Amz-Target:
+                - AWSCognitoIdentityService.ListIdentityPools
+        url: https://cognito-identity.us-west-2.amazonaws.com/
+        method: POST
+      response:
+        proto: HTTP/2.0
+        proto_major: 2
+        proto_minor: 0
+        transfer_encoding: []
+        trailer: {}
+        content_length: 630
+        uncompressed: false
+        body: |-
+            {
+              "IdentityPools": [
+                {
+                  "CreationDate": 1659970777.183,
+                  "IdentityPoolArn": "arn:aws:cognito-identity:us-west-2:0000000000:aaaaaaaaaaaa/aa-aaaa-a:aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
+                  "IdentityPoolId": "us-west-2:00000000-0000-0000-0000-000000000000",
+                  "IdentityPoolName": "aaaaaaaaaaaaaaaaaa",
+                  "LastModifiedDate": 1659971303.796
+                },
+                {
+                  "CreationDate": 1789513348.035,
+                  "IdentityPoolArn": "arn:aws:cognito-identity:us-west-2:0000000000:aaaaaaaaaaaa/aa-aaaa-a:aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
+                  "IdentityPoolId": "us-west-2:00000000-0000-0000-0000-000000000000",
+                  "IdentityPoolName": "aaaaaaaaaaaaaaaaaaaaa",
+                  "LastModifiedDate": 1789513369.548
+                }
+              ]
+            }
+        headers:
+            Content-Type:
+                - application/x-amz-json-1.1
+            Strict-Transport-Security:
+                - max-age=31536000; includeSubDomains
+        status: 200 OK
+        code: 200
+        duration: 562.461458ms

@@ -434,7 +434,8 @@ func sanitizeJSONValue(key string, value interface{}) interface{} {
 		}
 		return typed
 	case string:
-		if isSensitiveField(key) {
+		// an ARN identifies a resource whatever its field is called, e.g. a Cognito Lambda trigger
+		if isSensitiveField(key) || strings.HasPrefix(typed, "arn:") {
 			return sanitizeResourceName(typed)
 		}
 		return typed

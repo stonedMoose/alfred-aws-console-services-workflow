@@ -1153,7 +1153,7 @@
   }),
   (*aw.Item)({
     title: (string) (len=7) "cognito",
-    subtitle: (*string)((len=54) "Cognito – User Identity and App Data Synchronization"),
+    subtitle: (*string)((len=59) "🗂 Cognito – User Identity and App Data Synchronization"),
     match: (*string)((len=15) "cognito Cognito"),
     uid: (*string)((len=7) "cognito"),
     autocomplete: (*string)((len=19) "$us-east-1 cognito "),

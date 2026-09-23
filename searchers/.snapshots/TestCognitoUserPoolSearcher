@@ -1,0 +1,1226 @@
+([]*aw.Item) (len=34) {
+  (*aw.Item)({
+    title: (string) (len=30) "aaaa-aaaaaaaaa-aaaaaa-aaaaaaaa",
+    subtitle: (*string)((len=61) "aa-aaaa-a_aaaaaaaaa – Modified Mon Mar 11 13:02:17 UTC 2024"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=31) "aaaa-aaaaaaaaa-aaaaaa-aaaaaaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=109) "https://us-west-2.console.aws.amazon.com/cognito/v2/idp/user-pools/aa-aaaa-a_aaaaaaaaa/users?region=us-west-2"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=18) "images/cognito.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=21) "aaaaaa-aaaa-aaaa-aaaa",
+    subtitle: (*string)((len=61) "aa-aaaa-a_aaaaaaaaa – Modified Wed May 13 15:00:16 UTC 2026"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=22) "aaaaaa-aaaa-aaaa-aaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=109) "https://us-west-2.console.aws.amazon.com/cognito/v2/idp/user-pools/aa-aaaa-a_aaaaaaaaa/users?region=us-west-2"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=18) "images/cognito.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=21) "aaaaaa-aaaa-aaaa-aaaa",
+    subtitle: (*string)((len=61) "aa-aaaa-a_aaaaaaaaa – Modified Thu Dec 18 13:44:50 UTC 2025"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=22) "aaaaaa-aaaa-aaaa-aaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=109) "https://us-west-2.console.aws.amazon.com/cognito/v2/idp/user-pools/aa-aaaa-a_aaaaaaaaa/users?region=us-west-2"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=18) "images/cognito.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=27) "aaaaaaaaa-aa-aaaa-aaaa-aaaa",
+    subtitle: (*string)((len=61) "aa-aaaa-a_aaaaaaaaa – Modified Thu Sep 10 14:49:37 UTC 2026"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=28) "aaaaaaaaa-aa-aaaa-aaaa-aaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=109) "https://us-west-2.console.aws.amazon.com/cognito/v2/idp/user-pools/aa-aaaa-a_aaaaaaaaa/users?region=us-west-2"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=18) "images/cognito.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=34) "aaaaaaaaa-aa-aaaa-aaaaaa-aaaa-aaaa",
+    subtitle: (*string)((len=61) "aa-aaaa-a_aaaaaaaaa – Modified Tue Sep 22 14:03:08 UTC 2026"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=35) "aaaaaaaaa-aa-aaaa-aaaaaa-aaaa-aaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=109) "https://us-west-2.console.aws.amazon.com/cognito/v2/idp/user-pools/aa-aaaa-a_aaaaaaaaa/users?region=us-west-2"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=18) "images/cognito.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=27) "aaaaaaaaa-aa-aaaa-aaaa-aaaa",
+    subtitle: (*string)((len=61) "aa-aaaa-a_aaaaaaaaa – Modified Wed Sep 16 23:56:36 UTC 2026"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=28) "aaaaaaaaa-aa-aaaa-aaaa-aaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=109) "https://us-west-2.console.aws.amazon.com/cognito/v2/idp/user-pools/aa-aaaa-a_aaaaaaaaa/users?region=us-west-2"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=18) "images/cognito.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=23) "aaaaaaaaa-aaa-aaaa-aaaa",
+    subtitle: (*string)((len=61) "aa-aaaa-a_aaaaaaaaa – Modified Tue May 12 20:16:14 UTC 2026"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=24) "aaaaaaaaa-aaa-aaaa-aaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=109) "https://us-west-2.console.aws.amazon.com/cognito/v2/idp/user-pools/aa-aaaa-a_aaaaaaaaa/users?region=us-west-2"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=18) "images/cognito.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=30) "aaaa-aaaaaaaaa-aaaaaa-aaaaaaaa",
+    subtitle: (*string)((len=61) "aa-aaaa-a_aaaaaaaaa – Modified Wed Feb 21 13:27:59 UTC 2024"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=31) "aaaa-aaaaaaaaa-aaaaaa-aaaaaaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=109) "https://us-west-2.console.aws.amazon.com/cognito/v2/idp/user-pools/aa-aaaa-a_aaaaaaaaa/users?region=us-west-2"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=18) "images/cognito.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=30) "aaaaaaaaa-aaa-aaaaaa-aaaa-aaaa",
+    subtitle: (*string)((len=61) "aa-aaaa-a_aaaaaaaaa – Modified Tue May 12 20:16:15 UTC 2026"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=31) "aaaaaaaaa-aaa-aaaaaa-aaaa-aaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=109) "https://us-west-2.console.aws.amazon.com/cognito/v2/idp/user-pools/aa-aaaa-a_aaaaaaaaa/users?region=us-west-2"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=18) "images/cognito.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=25) "aaaaaaaaaa-aaaa-aaaa-aaaa",
+    subtitle: (*string)((len=61) "aa-aaaa-a_aaaaaaaaa – Modified Thu Mar 26 11:04:55 UTC 2026"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=26) "aaaaaaaaaa-aaaa-aaaa-aaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=109) "https://us-west-2.console.aws.amazon.com/cognito/v2/idp/user-pools/aa-aaaa-a_aaaaaaaaa/users?region=us-west-2"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=18) "images/cognito.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=30) "aaaa-aaaaaaaaa-aaaaaa-aaaaaaaa",
+    subtitle: (*string)((len=61) "aa-aaaa-a_aaaaaaaaa – Modified Tue Mar 19 16:09:56 UTC 2024"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=31) "aaaa-aaaaaaaaa-aaaaaa-aaaaaaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=109) "https://us-west-2.console.aws.amazon.com/cognito/v2/idp/user-pools/aa-aaaa-a_aaaaaaaaa/users?region=us-west-2"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=18) "images/cognito.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=30) "aaaa-aaaaaaaaa-aaaaaa-aaaaaaaa",
+    subtitle: (*string)((len=61) "aa-aaaa-a_aaaaaaaaa – Modified Tue Mar 19 16:09:31 UTC 2024"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=31) "aaaa-aaaaaaaaa-aaaaaa-aaaaaaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=109) "https://us-west-2.console.aws.amazon.com/cognito/v2/idp/user-pools/aa-aaaa-a_aaaaaaaaa/users?region=us-west-2"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=18) "images/cognito.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=30) "aaaa-aaaaaaaaa-aaaaaa-aaaaaaaa",
+    subtitle: (*string)((len=61) "aa-aaaa-a_aaaaaaaaa – Modified Sun Mar  3 13:27:43 UTC 2024"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=31) "aaaa-aaaaaaaaa-aaaaaa-aaaaaaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=109) "https://us-west-2.console.aws.amazon.com/cognito/v2/idp/user-pools/aa-aaaa-a_aaaaaaaaa/users?region=us-west-2"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=18) "images/cognito.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=27) "aaaaaaaaa-aa-aaaa-aaaa-aaaa",
+    subtitle: (*string)((len=61) "aa-aaaa-a_aaaaaaaaa – Modified Mon Sep 21 15:31:48 UTC 2026"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=28) "aaaaaaaaa-aa-aaaa-aaaa-aaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=109) "https://us-west-2.console.aws.amazon.com/cognito/v2/idp/user-pools/aa-aaaa-a_aaaaaaaaa/users?region=us-west-2"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=18) "images/cognito.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=27) "aaaaaaaaa-aa-aaaa-aaaa-aaaa",
+    subtitle: (*string)((len=61) "aa-aaaa-a_aaaaaaaaa – Modified Mon Sep 14 15:51:54 UTC 2026"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=28) "aaaaaaaaa-aa-aaaa-aaaa-aaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=109) "https://us-west-2.console.aws.amazon.com/cognito/v2/idp/user-pools/aa-aaaa-a_aaaaaaaaa/users?region=us-west-2"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=18) "images/cognito.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=30) "aaaa-aaaaaaaaa-aaaaaa-aaaaaaaa",
+    subtitle: (*string)((len=61) "aa-aaaa-a_aaaaaaaaa – Modified Tue Jan 23 17:13:41 UTC 2024"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=31) "aaaa-aaaaaaaaa-aaaaaa-aaaaaaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=109) "https://us-west-2.console.aws.amazon.com/cognito/v2/idp/user-pools/aa-aaaa-a_aaaaaaaaa/users?region=us-west-2"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=18) "images/cognito.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=27) "aaaaaaaaa-aa-aaaa-aaaa-aaaa",
+    subtitle: (*string)((len=61) "aa-aaaa-a_aaaaaaaaa – Modified Thu Aug 20 15:28:24 UTC 2026"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=28) "aaaaaaaaa-aa-aaaa-aaaa-aaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=109) "https://us-west-2.console.aws.amazon.com/cognito/v2/idp/user-pools/aa-aaaa-a_aaaaaaaaa/users?region=us-west-2"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=18) "images/cognito.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=34) "aaaaaaaaa-aa-aaaa-aaaaaa-aaaa-aaaa",
+    subtitle: (*string)((len=61) "aa-aaaa-a_aaaaaaaaa – Modified Fri Sep 18 12:43:51 UTC 2026"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=35) "aaaaaaaaa-aa-aaaa-aaaaaa-aaaa-aaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=109) "https://us-west-2.console.aws.amazon.com/cognito/v2/idp/user-pools/aa-aaaa-a_aaaaaaaaa/users?region=us-west-2"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=18) "images/cognito.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=20) "aaaaaa-aaa-aaaa-aaaa",
+    subtitle: (*string)((len=61) "aa-aaaa-a_aaaaaaaaa – Modified Wed May 13 11:52:18 UTC 2026"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=21) "aaaaaa-aaa-aaaa-aaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=109) "https://us-west-2.console.aws.amazon.com/cognito/v2/idp/user-pools/aa-aaaa-a_aaaaaaaaa/users?region=us-west-2"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=18) "images/cognito.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=27) "aaaaaaaaa-aa-aaaa-aaaa-aaaa",
+    subtitle: (*string)((len=61) "aa-aaaa-a_aaaaaaaaa – Modified Tue Sep 22 14:03:09 UTC 2026"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=28) "aaaaaaaaa-aa-aaaa-aaaa-aaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=109) "https://us-west-2.console.aws.amazon.com/cognito/v2/idp/user-pools/aa-aaaa-a_aaaaaaaaa/users?region=us-west-2"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=18) "images/cognito.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=34) "aaaaaaaaa-aa-aaaa-aaaaaa-aaaa-aaaa",
+    subtitle: (*string)((len=61) "aa-aaaa-a_aaaaaaaaa – Modified Mon Sep 21 15:31:48 UTC 2026"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=35) "aaaaaaaaa-aa-aaaa-aaaaaa-aaaa-aaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=109) "https://us-west-2.console.aws.amazon.com/cognito/v2/idp/user-pools/aa-aaaa-a_aaaaaaaaa/users?region=us-west-2"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=18) "images/cognito.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=34) "aaaaaaaaa-aa-aaaa-aaaaaa-aaaa-aaaa",
+    subtitle: (*string)((len=61) "aa-aaaa-a_aaaaaaaaa – Modified Thu Aug 20 15:28:24 UTC 2026"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=35) "aaaaaaaaa-aa-aaaa-aaaaaa-aaaa-aaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=109) "https://us-west-2.console.aws.amazon.com/cognito/v2/idp/user-pools/aa-aaaa-a_aaaaaaaaa/users?region=us-west-2"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=18) "images/cognito.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=24) "aaaaaaaaa-aaaa-aaaa-aaaa",
+    subtitle: (*string)((len=61) "aa-aaaa-a_aaaaaaaaa – Modified Mon Jun  8 09:24:34 UTC 2026"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=25) "aaaaaaaaa-aaaa-aaaa-aaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=109) "https://us-west-2.console.aws.amazon.com/cognito/v2/idp/user-pools/aa-aaaa-a_aaaaaaaaa/users?region=us-west-2"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=18) "images/cognito.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=40) "aaaaaaaaa-aa-aaaaaaaaaa-aaaaaa-aaaa-aaaa",
+    subtitle: (*string)((len=61) "aa-aaaa-a_aaaaaaaaa – Modified Mon Sep 21 15:59:13 UTC 2026"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=41) "aaaaaaaaa-aa-aaaaaaaaaa-aaaaaa-aaaa-aaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=109) "https://us-west-2.console.aws.amazon.com/cognito/v2/idp/user-pools/aa-aaaa-a_aaaaaaaaa/users?region=us-west-2"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=18) "images/cognito.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=30) "aaaa-aaaaaaaaa-aaaaaa-aaaaaaaa",
+    subtitle: (*string)((len=61) "aa-aaaa-a_aaaaaaaaa – Modified Thu Mar  7 13:02:21 UTC 2024"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=31) "aaaa-aaaaaaaaa-aaaaaa-aaaaaaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=109) "https://us-west-2.console.aws.amazon.com/cognito/v2/idp/user-pools/aa-aaaa-a_aaaaaaaaa/users?region=us-west-2"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=18) "images/cognito.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=27) "aaaaaaaaa-aa-aaaa-aaaa-aaaa",
+    subtitle: (*string)((len=61) "aa-aaaa-a_aaaaaaaaa – Modified Fri Sep 11 06:42:42 UTC 2026"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=28) "aaaaaaaaa-aa-aaaa-aaaa-aaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=109) "https://us-west-2.console.aws.amazon.com/cognito/v2/idp/user-pools/aa-aaaa-a_aaaaaaaaa/users?region=us-west-2"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=18) "images/cognito.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=34) "aaaaaaaaa-aa-aaaa-aaaaaa-aaaa-aaaa",
+    subtitle: (*string)((len=61) "aa-aaaa-a_aaaaaaaaa – Modified Tue Sep 22 14:54:16 UTC 2026"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=35) "aaaaaaaaa-aa-aaaa-aaaaaa-aaaa-aaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=109) "https://us-west-2.console.aws.amazon.com/cognito/v2/idp/user-pools/aa-aaaa-a_aaaaaaaaa/users?region=us-west-2"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=18) "images/cognito.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=27) "aaaaaaaaa-aa-aaaa-aaaa-aaaa",
+    subtitle: (*string)((len=61) "aa-aaaa-a_aaaaaaaaa – Modified Tue Sep 22 14:54:14 UTC 2026"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=28) "aaaaaaaaa-aa-aaaa-aaaa-aaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=109) "https://us-west-2.console.aws.amazon.com/cognito/v2/idp/user-pools/aa-aaaa-a_aaaaaaaaa/users?region=us-west-2"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=18) "images/cognito.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=34) "aaaaaaaaa-aa-aaaa-aaaaaa-aaaa-aaaa",
+    subtitle: (*string)((len=61) "aa-aaaa-a_aaaaaaaaa – Modified Wed Sep 16 23:56:36 UTC 2026"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=35) "aaaaaaaaa-aa-aaaa-aaaaaa-aaaa-aaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=109) "https://us-west-2.console.aws.amazon.com/cognito/v2/idp/user-pools/aa-aaaa-a_aaaaaaaaa/users?region=us-west-2"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=18) "images/cognito.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=34) "aaaaaaaaa-aa-aaaa-aaaaaa-aaaa-aaaa",
+    subtitle: (*string)((len=61) "aa-aaaa-a_aaaaaaaaa – Modified Thu Sep 10 14:49:37 UTC 2026"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=35) "aaaaaaaaa-aa-aaaa-aaaaaa-aaaa-aaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=109) "https://us-west-2.console.aws.amazon.com/cognito/v2/idp/user-pools/aa-aaaa-a_aaaaaaaaa/users?region=us-west-2"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=18) "images/cognito.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=27) "aaaaaaaaa-aa-aaaa-aaaa-aaaa",
+    subtitle: (*string)((len=61) "aa-aaaa-a_aaaaaaaaa – Modified Fri Sep 18 12:43:51 UTC 2026"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=28) "aaaaaaaaa-aa-aaaa-aaaa-aaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=109) "https://us-west-2.console.aws.amazon.com/cognito/v2/idp/user-pools/aa-aaaa-a_aaaaaaaaa/users?region=us-west-2"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=18) "images/cognito.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=34) "aaaaaaaaa-aa-aaaa-aaaaaa-aaaa-aaaa",
+    subtitle: (*string)((len=61) "aa-aaaa-a_aaaaaaaaa – Modified Fri Sep 11 06:42:42 UTC 2026"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=35) "aaaaaaaaa-aa-aaaa-aaaaaa-aaaa-aaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=109) "https://us-west-2.console.aws.amazon.com/cognito/v2/idp/user-pools/aa-aaaa-a_aaaaaaaaa/users?region=us-west-2"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=18) "images/cognito.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=33) "aaaaaaaaa-aa-aaaaaaaaaa-aaaa-aaaa",
+    subtitle: (*string)((len=61) "aa-aaaa-a_aaaaaaaaa – Modified Mon Sep 21 15:59:13 UTC 2026"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=34) "aaaaaaaaa-aa-aaaaaaaaaa-aaaa-aaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=109) "https://us-west-2.console.aws.amazon.com/cognito/v2/idp/user-pools/aa-aaaa-a_aaaaaaaaa/users?region=us-west-2"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=18) "images/cognito.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  }),
+  (*aw.Item)({
+    title: (string) (len=34) "aaaaaaaaa-aa-aaaa-aaaaaa-aaaa-aaaa",
+    subtitle: (*string)((len=61) "aa-aaaa-a_aaaaaaaaa – Modified Mon Sep 14 15:51:54 UTC 2026"),
+    match: (*string)(<nil>),
+    uid: (*string)(<nil>),
+    autocomplete: (*string)((len=35) "aaaaaaaaa-aa-aaaa-aaaaaa-aaaa-aaaa "),
+    arg: ([]string) (len=1) {
+      (string) (len=109) "https://us-west-2.console.aws.amazon.com/cognito/v2/idp/user-pools/aa-aaaa-a_aaaaaaaaa/users?region=us-west-2"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=18) "images/cognito.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  })
+}

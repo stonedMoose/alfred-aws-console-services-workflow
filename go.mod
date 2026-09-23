@@ -46,6 +46,8 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/cloudfront v1.73.0 // indirect
 	github.com/aws/aws-sdk-go-v2/service/cloudtrail v1.65.0 // indirect
 	github.com/aws/aws-sdk-go-v2/service/codebuild v1.78.0 // indirect
+	github.com/aws/aws-sdk-go-v2/service/cognitoidentity v1.42.0 // indirect
+	github.com/aws/aws-sdk-go-v2/service/cognitoidentityprovider v1.74.0 // indirect
 	github.com/aws/aws-sdk-go-v2/service/dynamodb v1.69.0 // indirect
 	github.com/aws/aws-sdk-go-v2/service/ecr v1.66.0 // indirect
 	github.com/aws/aws-sdk-go-v2/service/efs v1.49.0 // indirect
