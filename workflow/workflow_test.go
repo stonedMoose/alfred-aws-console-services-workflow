@@ -1210,6 +1210,30 @@ var tcs []testCase = []testCase{
 		query:       "cloudwatch loggroups ,",
 		fixtureName: "../searchers/cloudwatch_log_groups_test", // reuse test fixture from this other test
 	},
+	{
+		query:       "cognito",
+		fixtureName: "../searchers/cognito_user_pools_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "cognito ",
+		fixtureName: "../searchers/cognito_user_pools_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "cognito userpools",
+		fixtureName: "../searchers/cognito_user_pools_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "cognito userpools ",
+		fixtureName: "../searchers/cognito_user_pools_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "cognito identitypools",
+		fixtureName: "../searchers/cognito_identity_pools_test", // reuse test fixture from this other test
+	},
+	{
+		query:       "cognito identitypools ",
+		fixtureName: "../searchers/cognito_identity_pools_test", // reuse test fixture from this other test
+	},
 }
 
 func testWorkflow(t *testing.T, tc testCase, forceFetch, snapshot bool) []*aw.Item {

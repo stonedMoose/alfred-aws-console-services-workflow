@@ -1,0 +1,38 @@
+([]*aw.Item) (len=1) {
+  (*aw.Item)({
+    title: (string) (len=21) "cognito identitypools",
+    subtitle: (*string)((len=31) "🔎 Cognito – Identity pools"),
+    match: (*string)((len=28) "identitypools Identity pools"),
+    uid: (*string)((len=13) "identitypools"),
+    autocomplete: (*string)((len=22) "cognito identitypools "),
+    arg: ([]string) (len=1) {
+      (string) (len=92) "https://us-west-2.console.aws.amazon.com/cognito/v2/identity/identity-pools?region=us-west-2"
+    },
+    valid: (bool) true,
+    file: (bool) false,
+    copytext: (*string)(<nil>),
+    largetype: (*string)(<nil>),
+    ql: (*string)(<nil>),
+    vars: (map[string]string) (len=1) {
+      (string) (len=6) "action": (string) (len=8) "open-url"
+    },
+    mods: (map[string]*aw.Modifier) (len=1) {
+      (string) (len=3) "cmd": (*aw.Modifier)({
+        Key: (string) (len=3) "cmd",
+        arg: ([]string) <nil>,
+        subtitle: (*string)((len=21) "Copy URL to clipboard"),
+        valid: (bool) false,
+        icon: (*aw.Icon)(<nil>),
+        vars: (map[string]string) (len=1) {
+          (string) (len=6) "action": (string) (len=17) "copy-to-clipboard"
+        }
+      })
+    },
+    actions: (map[string][]string) <nil>,
+    icon: (*aw.Icon)({
+      Value: (string) (len=18) "images/cognito.png",
+      Type: (aw.IconType) ""
+    }),
+    noUID: (bool) false
+  })
+}
